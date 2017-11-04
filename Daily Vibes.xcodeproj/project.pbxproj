@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D9028E891FAD4D6A002D64E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */; };
+		D9028E8B1FAD4D6A002D64E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E8A1FAD4D6A002D64E3 /* ViewController.swift */; };
+		D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */; };
+		D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */; };
+		D9028E931FAD4D6A002D64E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9028E911FAD4D6A002D64E3 /* LaunchScreen.storyboard */; };
+		D9028E9E1FAD4D6A002D64E3 /* Daily_VibesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D9028E9A1FAD4D6A002D64E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9028E7D1FAD4D6A002D64E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9028E841FAD4D6A002D64E3;
+			remoteInfo = "Daily Vibes";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D9028E851FAD4D6A002D64E3 /* Daily Vibes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Vibes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D9028E8A1FAD4D6A002D64E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D9028E8D1FAD4D6A002D64E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9028E921FAD4D6A002D64E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D9028E941FAD4D6A002D64E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9028E991FAD4D6A002D64E3 /* Daily VibesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daily VibesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily_VibesTests.swift; sourceTree = "<group>"; };
+		D9028E9F1FAD4D6A002D64E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D9028E821FAD4D6A002D64E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9028E961FAD4D6A002D64E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D9028E7C1FAD4D6A002D64E3 = {
+			isa = PBXGroup;
+			children = (
+				D9028E871FAD4D6A002D64E3 /* Daily Vibes */,
+				D9028E9C1FAD4D6A002D64E3 /* Daily VibesTests */,
+				D9028E861FAD4D6A002D64E3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D9028E861FAD4D6A002D64E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9028E851FAD4D6A002D64E3 /* Daily Vibes.app */,
+				D9028E991FAD4D6A002D64E3 /* Daily VibesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D9028E871FAD4D6A002D64E3 /* Daily Vibes */ = {
+			isa = PBXGroup;
+			children = (
+				D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */,
+				D9028E8A1FAD4D6A002D64E3 /* ViewController.swift */,
+				D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */,
+				D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */,
+				D9028E911FAD4D6A002D64E3 /* LaunchScreen.storyboard */,
+				D9028E941FAD4D6A002D64E3 /* Info.plist */,
+			);
+			path = "Daily Vibes";
+			sourceTree = "<group>";
+		};
+		D9028E9C1FAD4D6A002D64E3 /* Daily VibesTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */,
+				D9028E9F1FAD4D6A002D64E3 /* Info.plist */,
+			);
+			path = "Daily VibesTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D9028E841FAD4D6A002D64E3 /* Daily Vibes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9028EA21FAD4D6A002D64E3 /* Build configuration list for PBXNativeTarget "Daily Vibes" */;
+			buildPhases = (
+				D9028E811FAD4D6A002D64E3 /* Sources */,
+				D9028E821FAD4D6A002D64E3 /* Frameworks */,
+				D9028E831FAD4D6A002D64E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Daily Vibes";
+			productName = "Daily Vibes";
+			productReference = D9028E851FAD4D6A002D64E3 /* Daily Vibes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D9028E981FAD4D6A002D64E3 /* Daily VibesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9028EA51FAD4D6A002D64E3 /* Build configuration list for PBXNativeTarget "Daily VibesTests" */;
+			buildPhases = (
+				D9028E951FAD4D6A002D64E3 /* Sources */,
+				D9028E961FAD4D6A002D64E3 /* Frameworks */,
+				D9028E971FAD4D6A002D64E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9028E9B1FAD4D6A002D64E3 /* PBXTargetDependency */,
+			);
+			name = "Daily VibesTests";
+			productName = "Daily VibesTests";
+			productReference = D9028E991FAD4D6A002D64E3 /* Daily VibesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D9028E7D1FAD4D6A002D64E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Alex Kluew";
+				TargetAttributes = {
+					D9028E841FAD4D6A002D64E3 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					D9028E981FAD4D6A002D64E3 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D9028E841FAD4D6A002D64E3;
+					};
+				};
+			};
+			buildConfigurationList = D9028E801FAD4D6A002D64E3 /* Build configuration list for PBXProject "Daily Vibes" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D9028E7C1FAD4D6A002D64E3;
+			productRefGroup = D9028E861FAD4D6A002D64E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D9028E841FAD4D6A002D64E3 /* Daily Vibes */,
+				D9028E981FAD4D6A002D64E3 /* Daily VibesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D9028E831FAD4D6A002D64E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9028E931FAD4D6A002D64E3 /* LaunchScreen.storyboard in Resources */,
+				D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */,
+				D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9028E971FAD4D6A002D64E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D9028E811FAD4D6A002D64E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9028E8B1FAD4D6A002D64E3 /* ViewController.swift in Sources */,
+				D9028E891FAD4D6A002D64E3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9028E951FAD4D6A002D64E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9028E9E1FAD4D6A002D64E3 /* Daily_VibesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D9028E9B1FAD4D6A002D64E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9028E841FAD4D6A002D64E3 /* Daily Vibes */;
+			targetProxy = D9028E9A1FAD4D6A002D64E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9028E8D1FAD4D6A002D64E3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D9028E911FAD4D6A002D64E3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9028E921FAD4D6A002D64E3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D9028EA01FAD4D6A002D64E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D9028EA11FAD4D6A002D64E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D9028EA31FAD4D6A002D64E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6E9FSS8PG2;
+				INFOPLIST_FILE = "Daily Vibes/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sugarplumoriginals.Daily-Vibes";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D9028EA41FAD4D6A002D64E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6E9FSS8PG2;
+				INFOPLIST_FILE = "Daily Vibes/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sugarplumoriginals.Daily-Vibes";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D9028EA61FAD4D6A002D64E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6E9FSS8PG2;
+				INFOPLIST_FILE = "Daily VibesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sugarplumoriginals.Daily-VibesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daily Vibes.app/Daily Vibes";
+			};
+			name = Debug;
+		};
+		D9028EA71FAD4D6A002D64E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6E9FSS8PG2;
+				INFOPLIST_FILE = "Daily VibesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sugarplumoriginals.Daily-VibesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daily Vibes.app/Daily Vibes";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D9028E801FAD4D6A002D64E3 /* Build configuration list for PBXProject "Daily Vibes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9028EA01FAD4D6A002D64E3 /* Debug */,
+				D9028EA11FAD4D6A002D64E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9028EA21FAD4D6A002D64E3 /* Build configuration list for PBXNativeTarget "Daily Vibes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9028EA31FAD4D6A002D64E3 /* Debug */,
+				D9028EA41FAD4D6A002D64E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9028EA51FAD4D6A002D64E3 /* Build configuration list for PBXNativeTarget "Daily VibesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9028EA61FAD4D6A002D64E3 /* Debug */,
+				D9028EA71FAD4D6A002D64E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D9028E7D1FAD4D6A002D64E3 /* Project object */;
+}
