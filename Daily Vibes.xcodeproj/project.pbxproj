@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		D9028E891FAD4D6A002D64E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */; };
-		D9028E8B1FAD4D6A002D64E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E8A1FAD4D6A002D64E3 /* ViewController.swift */; };
+		D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */; };
 		D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */; };
 		D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */; };
 		D9028E931FAD4D6A002D64E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9028E911FAD4D6A002D64E3 /* LaunchScreen.storyboard */; };
 		D9028E9E1FAD4D6A002D64E3 /* Daily_VibesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */; };
+		D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */; };
+		D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */; };
+		D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +31,7 @@
 /* Begin PBXFileReference section */
 		D9028E851FAD4D6A002D64E3 /* Daily Vibes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Vibes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D9028E8A1FAD4D6A002D64E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemViewController.swift; sourceTree = "<group>"; };
 		D9028E8D1FAD4D6A002D64E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9028E921FAD4D6A002D64E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +39,9 @@
 		D9028E991FAD4D6A002D64E3 /* Daily VibesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daily VibesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily_VibesTests.swift; sourceTree = "<group>"; };
 		D9028E9F1FAD4D6A002D64E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
+		D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */,
-				D9028E8A1FAD4D6A002D64E3 /* ViewController.swift */,
+				D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */,
+				D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */,
+				D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */,
 				D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */,
+				D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */,
 				D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */,
 				D9028E911FAD4D6A002D64E3 /* LaunchScreen.storyboard */,
 				D9028E941FAD4D6A002D64E3 /* Info.plist */,
@@ -199,8 +208,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9028E8B1FAD4D6A002D64E3 /* ViewController.swift in Sources */,
+				D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */,
 				D9028E891FAD4D6A002D64E3 /* AppDelegate.swift in Sources */,
+				D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */,
+				D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */,
+				D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
