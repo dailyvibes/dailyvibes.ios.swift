@@ -8,9 +8,9 @@
 
 import UIKit
 import os.log
+import CoreData
 
-class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate {
-    
+class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK: Properties
     var todoItem: TodoItem?
     
@@ -38,7 +38,22 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     @IBOutlet weak var wasCompletedSwitch: UISwitch!
     @IBOutlet weak var statusPicker: UIDatePicker!
     
+    @IBOutlet weak var emotionPicker: UIPickerView!
+    @IBOutlet weak var currentEmotionLabel: UILabel!
+    
     var statusPickerVisible: Bool = false
+    
+    let emotionsList = [
+        ["Love", UIColor.red],
+        ["Happy", UIColor.orange],
+        ["Excited", UIColor.yellow],
+        ["Fear", UIColor.green],
+        ["Sad", UIColor.blue],
+        ["Angry", UIColor.purple]
+    ]
+    
+    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    var moc: NSManagedObjectContext?
     
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -54,6 +69,12 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     func textFieldDidEndEditing(_ textField: UITextField) {
 //        updateSaveButtonState()
         if textField === todoItemTextField {
+            todoItem?.todoItemText = textField.text
+            updateSaveButtonState()
+        }
+        
+        if textField === todoItemTagsTextField {
+            todoItem?.tags = textField.text
             updateSaveButtonState()
         }
     }
@@ -72,19 +93,24 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
         todoItemTextField.delegate = self
         todoItemTagsTextField.delegate = self
         
-        if let todoItem = todoItem {
-            todoItemTextField.text = todoItem.todoItemText
-            todoItemTagsTextField.text = todoItem.tags?.joined(separator: " ")
-            navigationItem.title = "Editing \(todoItem.todoItemText)"
-            if todoItem.completed {
+        // Handle picker
+        emotionPicker.delegate = self
+        emotionPicker.dataSource = self
+        
+        if todoItem != nil {
+            todoItemTextField.text = todoItem!.todoItemText
+//            todoItemTagsTextField.text = todoItem.tags?.joined(separator: " ")
+            todoItemTagsTextField.text = todoItem!.tags
+            if !(todoItem!.isNew) {
+                navigationItem.title = "Details"
+            }
+            if todoItem!.completed {
                 wasCompletedSwitch.isOn = true
-                self.plannedDateLabel.text = todoItem.completedAt?.description
+                plannedDateLabel.text = todoItem!.completedAt?.description
                 statusPicker.isEnabled = false
             }
-            plannedDateLabel.text = todoItem.completedAt?.description ?? "Date"
+            plannedDateLabel.text = todoItem!.completedAt?.description ?? "Date"
         }
-        
-        updateSaveButtonState()
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,6 +143,8 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         let isPresentingInADDMode = presentingViewController is UINavigationController
         
+        moc?.rollback()
+        
         if isPresentingInADDMode {
             dismiss(animated: true, completion: nil)
         } else if let owningNavigationController = navigationController {
@@ -134,16 +162,74 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
             return
         }
         
-        let todoText = todoItemTextField.text ?? ""
-        let todoTags = todoItemTagsTextField.text ?? ""
+        todoItem?.updatedAt = Date()
         
-        if let todoItem = todoItem {
-            os_log("todoItem exists, doin nothing", log: OSLog.default, type: .debug)
-        } else {
-            os_log("new todoItem, creating", log: OSLog.default, type: .debug)
-            todoItem = TodoItem(todoItemText: todoText, tags: [todoTags])
+        do {
+            todoItem?.isNew = false
+            try moc!.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
         }
     }
+    
+    //MARK: - Delegates and data sources
+    //MARK: Data Sources
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return emotionsList.count
+    }
+    
+    //MARK: Delegates
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        guard let result = emotionsList[row][0] as? String else {
+            fatalError("Expected a string, did not get a string =(")
+        }
+        return result
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        currentEmotionLabel.text = emotionsList[row][0] as! String
+    }
+    
+    //MARK: visual view
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel = view as! UILabel!
+        if view == nil {  //if no label there yet
+            pickerLabel = UILabel()
+            //color the label's background
+//            let hue = CGFloat(row)/CGFloat(emotionsList.count)
+//            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+//            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+            pickerLabel?.backgroundColor = emotionsList[row][1] as! UIColor
+        }
+        let titleData = emotionsList[row][0] as! String
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 26.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
+        pickerLabel!.attributedText = myTitle
+        pickerLabel!.textAlignment = .center
+        return pickerLabel!
+    }
+//    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return emotionsList.count
+//    }
+//
+//    //MARK: Delegates
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return emotionsList[row]
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        //myLabel.text = emotionsList[row]
+//    }
+//    
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
     
     // MARK: Private Methods
     private func updateSaveButtonState() {

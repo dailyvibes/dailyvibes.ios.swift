@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -131,7 +132,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Mood" id="pmO-Z4-wMJ">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Ng1-c6-OsU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="Ng1-c6-OsU">
                                         <rect key="frame" x="0.0" y="179" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ng1-c6-OsU" id="VUk-mW-24a">
@@ -144,40 +145,66 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFa-kb-76z">
                                                             <rect key="frame" x="0.0" y="0.0" width="114.5" height="43.5"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Yellow">
+                                                            <state key="normal" title="Excited">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pd5-Ru-Lo3">
                                                             <rect key="frame" x="114.5" y="0.0" width="114" height="43.5"/>
                                                             <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Red">
+                                                            <state key="normal" title="Love">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdj-g2-lSc">
                                                             <rect key="frame" x="228.5" y="0.0" width="114.5" height="43.5"/>
                                                             <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Orange">
+                                                            <state key="normal" title="Happy">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ccs-Fc-n4I">
+                                                    <rect key="frame" x="16" y="11" width="343" height="22.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Your current emotion:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyq-op-9bd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="280" height="22.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaa-jj-lZN">
+                                                            <rect key="frame" x="280" y="0.0" width="63" height="22.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ccs-Fc-n4I" secondAttribute="bottom" id="1ib-Rd-tac"/>
+                                                <constraint firstItem="Ccs-Fc-n4I" firstAttribute="top" secondItem="VUk-mW-24a" secondAttribute="topMargin" id="5B9-Zh-ntx"/>
                                                 <constraint firstItem="3Hq-yy-qZ3" firstAttribute="leading" secondItem="VUk-mW-24a" secondAttribute="leadingMargin" id="KNg-9b-CRy"/>
+                                                <constraint firstItem="Ccs-Fc-n4I" firstAttribute="leading" secondItem="VUk-mW-24a" secondAttribute="leadingMargin" id="ga6-WM-IFU"/>
                                                 <constraint firstAttribute="bottom" secondItem="3Hq-yy-qZ3" secondAttribute="bottom" id="i8Z-bP-hrE"/>
                                                 <constraint firstItem="3Hq-yy-qZ3" firstAttribute="top" secondItem="VUk-mW-24a" secondAttribute="top" id="qkK-e6-SXf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ccs-Fc-n4I" secondAttribute="trailing" id="wyu-Lq-29j"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="3Hq-yy-qZ3" secondAttribute="trailing" id="ylb-7f-KRx"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="3Hq-yy-qZ3"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="dHr-ly-k9w">
-                                        <rect key="frame" x="0.0" y="223" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="88" id="dHr-ly-k9w">
+                                        <rect key="frame" x="0.0" y="223" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dHr-ly-k9w" id="lvf-RR-gfO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dVc-3J-QVy">
@@ -186,26 +213,30 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Gb-3i-cuw">
                                                             <rect key="frame" x="0.0" y="0.0" width="114.5" height="43.5"/>
                                                             <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Green">
+                                                            <state key="normal" title="Fear">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lM-Pv-Qa7">
                                                             <rect key="frame" x="114.5" y="0.0" width="114" height="43.5"/>
                                                             <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Blue">
+                                                            <state key="normal" title="Sad">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-2f-u1C">
                                                             <rect key="frame" x="228.5" y="0.0" width="114.5" height="43.5"/>
                                                             <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Purple">
+                                                            <state key="normal" title="Angry">
                                                                 <color key="titleColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pTT-86-mAd">
+                                                    <rect key="frame" x="16" y="-22" width="343" height="87.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </pickerView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dVc-3J-QVy" secondAttribute="trailing" id="4ey-zV-4e1"/>
@@ -213,10 +244,15 @@
                                                 <constraint firstAttribute="bottom" secondItem="dVc-3J-QVy" secondAttribute="bottom" id="X3B-ae-yAM"/>
                                                 <constraint firstItem="dVc-3J-QVy" firstAttribute="leading" secondItem="lvf-RR-gfO" secondAttribute="leadingMargin" id="ncA-Nt-B8W"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="dVc-3J-QVy"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Qlf-B8-mSM">
-                                        <rect key="frame" x="0.0" y="267" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="Qlf-B8-mSM">
+                                        <rect key="frame" x="0.0" y="311" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qlf-B8-mSM" id="pNE-hQ-9Sz">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -252,8 +288,8 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Planned Date" id="FKl-F2-xzY">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="af4-jR-iTQ">
-                                        <rect key="frame" x="0.0" y="367" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="af4-jR-iTQ">
+                                        <rect key="frame" x="0.0" y="411" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="af4-jR-iTQ" id="wL4-zh-uPC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -285,15 +321,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="G4E-R3-dMI">
-                                        <rect key="frame" x="0.0" y="411" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="88" id="G4E-R3-dMI">
+                                        <rect key="frame" x="0.0" y="455" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G4E-R3-dMI" id="iDs-ys-wiK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Aco-Wf-YVl">
-                                                    <rect key="frame" x="16" y="-60" width="343" height="161"/>
+                                                    <rect key="frame" x="16" y="-60" width="343" height="205"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="531705109.66773099">
                                                         <!--2017-11-06 23:51:49 +0000-->
                                                     </date>
@@ -332,6 +368,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="blueBtn" destination="1lM-Pv-Qa7" id="5Ee-0w-2MW"/>
+                        <outlet property="currentEmotionLabel" destination="iaa-jj-lZN" id="EFd-at-cfd"/>
+                        <outlet property="emotionPicker" destination="pTT-86-mAd" id="ahL-DG-hgV"/>
                         <outlet property="greenBtn" destination="9Gb-3i-cuw" id="7aa-k8-63q"/>
                         <outlet property="orangeBtn" destination="sdj-g2-lSc" id="ZUd-YG-TJi"/>
                         <outlet property="plannedDateLabel" destination="BgY-zM-nxw" id="SBB-GG-D25"/>
@@ -348,7 +386,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRy-Cf-czD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Zx0-hs-XXq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3446" y="125"/>
+            <point key="canvasLocation" x="3445.5999999999999" y="124.58770614692655"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fuG-Ba-f6G">
@@ -394,6 +432,6 @@
         <image name="uncheckedCheckbox" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IYm-Xk-lZM"/>
+        <segue reference="tVC-Bx-6w1"/>
     </inferredMetricsTieBreakers>
 </document>
