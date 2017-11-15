@@ -69,8 +69,10 @@ class TodoItem: NSManagedObject {
     
     // MARK: markCompleted() function
     func markCompleted() {
-        completed = true
-        completedAt = Date()
-        updatedAt = Date()
+        if !isNew {
+            completed = true
+            completedAt = Date()
+            updatedAt = Date()
+        }
     }
 }

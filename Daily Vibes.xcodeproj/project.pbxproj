@@ -11,13 +11,15 @@
 		D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */; };
 		D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */; };
 		D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */; };
-		D9028E931FAD4D6A002D64E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9028E911FAD4D6A002D64E3 /* LaunchScreen.storyboard */; };
 		D9028E9E1FAD4D6A002D64E3 /* Daily_VibesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */; };
 		D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */; };
 		D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */; };
 		D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */; };
+		D918207E1FBA6D1D00A2A6EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D918207D1FBA6D1D00A2A6EA /* LaunchScreen.storyboard */; };
 		D973FADC1FB4EC2E0075C02F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D973FADB1FB4EC2E0075C02F /* DataController.swift */; };
 		D9E2CDC51FB41A110084EB12 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* Model.xcdatamodeld */; };
+		D9F25A841FB7B807002246C2 /* UI_Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F25A831FB7B807002246C2 /* UI_Util.swift */; };
+		D9F25A861FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F25A851FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,13 +32,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D9E3FE8C1FB9292900785E4B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D9028E851FAD4D6A002D64E3 /* Daily Vibes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Vibes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemViewController.swift; sourceTree = "<group>"; };
 		D9028E8D1FAD4D6A002D64E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D9028E921FAD4D6A002D64E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9028E941FAD4D6A002D64E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9028E991FAD4D6A002D64E3 /* Daily VibesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daily VibesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily_VibesTests.swift; sourceTree = "<group>"; };
@@ -44,8 +58,12 @@
 		D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
 		D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsTableViewController.swift; sourceTree = "<group>"; };
+		D918207D1FBA6D1D00A2A6EA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D973FADB1FB4EC2E0075C02F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D9E2CDC41FB41A110084EB12 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D9E3FE7D1FB9292900785E4B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D9F25A831FB7B807002246C2 /* UI_Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_Util.swift; sourceTree = "<group>"; };
+		D9F25A851FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +89,7 @@
 			children = (
 				D9028E871FAD4D6A002D64E3 /* Daily Vibes */,
 				D9028E9C1FAD4D6A002D64E3 /* Daily VibesTests */,
+				D9E3FE7C1FB9292900785E4B /* Frameworks */,
 				D9028E861FAD4D6A002D64E3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -93,10 +112,12 @@
 				D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */,
 				D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */,
 				D973FADB1FB4EC2E0075C02F /* DataController.swift */,
+				D9F25A831FB7B807002246C2 /* UI_Util.swift */,
 				D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */,
 				D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */,
-				D9028E911FAD4D6A002D64E3 /* LaunchScreen.storyboard */,
+				D918207D1FBA6D1D00A2A6EA /* LaunchScreen.storyboard */,
 				D9028E941FAD4D6A002D64E3 /* Info.plist */,
+				D9F25A851FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift */,
 				D9E2CDC31FB41A110084EB12 /* Model.xcdatamodeld */,
 			);
 			path = "Daily Vibes";
@@ -111,6 +132,14 @@
 			path = "Daily VibesTests";
 			sourceTree = "<group>";
 		};
+		D9E3FE7C1FB9292900785E4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D9E3FE7D1FB9292900785E4B /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,6 +150,7 @@
 				D9028E811FAD4D6A002D64E3 /* Sources */,
 				D9028E821FAD4D6A002D64E3 /* Frameworks */,
 				D9028E831FAD4D6A002D64E3 /* Resources */,
+				D9E3FE8C1FB9292900785E4B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -194,7 +224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9028E931FAD4D6A002D64E3 /* LaunchScreen.storyboard in Resources */,
+				D918207E1FBA6D1D00A2A6EA /* LaunchScreen.storyboard in Resources */,
 				D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */,
 				D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */,
 			);
@@ -217,10 +247,12 @@
 				D973FADC1FB4EC2E0075C02F /* DataController.swift in Sources */,
 				D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */,
 				D9028E891FAD4D6A002D64E3 /* AppDelegate.swift in Sources */,
+				D9F25A841FB7B807002246C2 /* UI_Util.swift in Sources */,
 				D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */,
 				D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */,
 				D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */,
 				D9E2CDC51FB41A110084EB12 /* Model.xcdatamodeld in Sources */,
+				D9F25A861FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,14 +281,6 @@
 				D9028E8D1FAD4D6A002D64E3 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D9028E911FAD4D6A002D64E3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9028E921FAD4D6A002D64E3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -372,7 +396,9 @@
 		D9028EA31FAD4D6A002D64E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E9FSS8PG2;
 				INFOPLIST_FILE = "Daily Vibes/Info.plist";
@@ -387,7 +413,9 @@
 		D9028EA41FAD4D6A002D64E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E9FSS8PG2;
 				INFOPLIST_FILE = "Daily Vibes/Info.plist";

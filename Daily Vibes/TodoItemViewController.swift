@@ -40,8 +40,17 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     @IBOutlet weak var emotionPicker: UIPickerView!
     @IBOutlet weak var currentEmotionLabel: UILabel!
+    @IBOutlet weak var emotionPickerCell: UITableViewCell!
+    @IBOutlet weak var emotionPickerLabelCell: UITableViewCell!
     
     var statusPickerVisible: Bool = false
+    
+    private var editingEmotionPicker: Bool = false
+    private var editingCompletionDate: Bool = false
+    private var dateFormatter: DateFormatter?
+    
+    @IBOutlet weak var completionDateLabelCell: UITableViewCell!
+    
     
     let emotionsList = [
         ["Love", UIColor.red],
@@ -89,13 +98,19 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
         // Handle the text field’s user input through delegate callbacks.
         todoItemTextField.delegate = self
         todoItemTagsTextField.delegate = self
         
-        // Handle picker
+        // Handle emotion picker
         emotionPicker.delegate = self
         emotionPicker.dataSource = self
+        
+        dateFormatter = DateFormatter()
+        dateFormatter?.dateStyle = DateFormatter.Style.short
+        dateFormatter?.timeStyle = DateFormatter.Style.short
         
         if todoItem != nil {
             todoItemTextField.text = todoItem!.todoItemText
@@ -103,13 +118,26 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
             todoItemTagsTextField.text = todoItem!.tags
             if !(todoItem!.isNew) {
                 navigationItem.title = "Details"
+            } else {
+                // a new todoItem
+                // don't allow them to set the completed value on creation
+                // don't allow them to save without filling out the data
+                wasCompletedSwitch.isEnabled = false
+                saveTodoitemButton.isEnabled = false
             }
             if todoItem!.completed {
                 wasCompletedSwitch.isOn = true
-                plannedDateLabel.text = todoItem!.completedAt?.description
+//                plannedDateLabel.text = todoItem!.completedAt?.description
                 statusPicker.isEnabled = false
             }
-            plannedDateLabel.text = todoItem!.completedAt?.description ?? "Date"
+            
+            var strDate: String? = nil
+            
+            if let date = todoItem?.completedAt {
+                strDate = dateFormatter?.string(from: date)
+            }
+            
+            plannedDateLabel.text = strDate ?? ""
         }
     }
 
@@ -120,9 +148,9 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     // MARK: Actions
     @IBAction func completedAtChanged(_ sender: UIDatePicker) {
-        plannedDateLabel.text = sender.date.description
         if let todoItem = todoItem {
             todoItem.completedAt = sender.date
+            plannedDateLabel.text = dateFormatter?.string(from: sender.date)
         }
     }
     
@@ -130,7 +158,7 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
         if let todoItem = todoItem {
         if sender.isOn {
             todoItem.markCompleted()
-            print("ON")
+//            print("ON")
         } else {
             sender.isOn = true
             }
@@ -191,7 +219,7 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currentEmotionLabel.text = emotionsList[row][0] as! String
+        currentEmotionLabel.text = emotionsList[row][0] as? String
     }
     
     //MARK: visual view
@@ -203,7 +231,7 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
 //            let hue = CGFloat(row)/CGFloat(emotionsList.count)
 //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
 //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
-            pickerLabel?.backgroundColor = emotionsList[row][1] as! UIColor
+            pickerLabel?.backgroundColor = emotionsList[row][1] as? UIColor
         }
         let titleData = emotionsList[row][0] as! String
         let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 26.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
@@ -236,6 +264,49 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
         // Disable the Save button if the text field is empty.
         let text = todoItemTextField.text ?? ""
         saveTodoitemButton.isEnabled = !text.isEmpty
+    }
+    
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.section == 2 && indexPath.row == 1 && !editingEmotionPicker) {
+            return 0
+        } else if (indexPath.section == 2 && indexPath.row == 1 && editingEmotionPicker) {
+            return 216
+        } else if (indexPath.section == 3 && indexPath.row == 1 && !editingCompletionDate) {
+            return 0
+        } else if (indexPath.section == 3 && indexPath.row == 1 && editingCompletionDate) {
+            return 216
+        } else {
+            return 44
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: false);
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        self.tableView.beginUpdates()
+        if (cell == self.emotionPickerLabelCell) {
+            editingEmotionPicker = !editingEmotionPicker
+        }
+        if editingEmotionPicker {
+            currentEmotionLabel.textColor = UIColor.red
+        } else {
+            currentEmotionLabel.textColor = UIColor.black
+        }
+        if (cell == self.completionDateLabelCell) {
+            editingCompletionDate = !editingCompletionDate
+        }
+        if editingCompletionDate {
+            plannedDateLabel.textColor = UIColor.red
+        } else {
+            plannedDateLabel.textColor = UIColor.black
+        }
+        self.tableView.endUpdates()
     }
 
 }

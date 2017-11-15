@@ -34,6 +34,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
+        //UI_Util.setGradientGreenBlue(uiView: self.view)
 //        loadSampleTodos()
     }
 
@@ -217,6 +218,69 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         }
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = fetchedResultsController?.sections, sections.count > 0 {
+            let sectionInfo = sections[section]
+            if let todoItem: TodoItem = sectionInfo.objects?.first as? TodoItem, todoItem.completed {
+                return "Completed"
+            } else {
+                return "Todo List"
+            }
+//            print("*** \(sections[section].name) - \(sections[section].indexTitle) - \(sections[section].numberOfObjects)***")
+//            return "\(sections[section].numberOfObjects) Items"
+//            return sections[section].name
+        } else {
+            return nil
+        }
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return fetchedResultsController?.sectionIndexTitles
+    }
+    
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return fetchedResultsController?.section(forSectionIndexTitle: title, at: index) ?? 0
+    }
+    
+    // MARK: - Custom swipe right
+    override func tableView(_ tableView: UITableView,
+                   leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let closeAction = UIContextualAction(style: .normal, title:  "Complete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            if let todoItem = self.fetchedResultsController?.object(at: indexPath) {
+                todoItem.markCompleted()
+                do {
+                    try self.moc!.save()
+                } catch {
+                    print("Error \(error) in leadingSwipeActionsConfigurationForRowAt")
+                }
+            }
+            success(true)
+        })
+        closeAction.image = UIImage(named: "checkmark")
+        closeAction.title = "Complete"
+        closeAction.backgroundColor = .purple
+
+        return UISwipeActionsConfiguration(actions: [closeAction])
+
+    }
+
+    
+    // MARK: - Custom swipe left
+//    https://developerslogblog.wordpress.com/2017/06/28/ios-11-swipe-leftright-in-uitableviewcell/
+//    override func tableView(_ tableView: UITableView,
+//                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+//    {
+//        let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+//            print("Update action ...")
+//            success(true)
+//        })
+//        modifyAction.image = UIImage(named: "hammer")
+//        modifyAction.backgroundColor = .blue
+//
+//        return UISwipeActionsConfiguration(actions: [modifyAction])
+//    }
+    
     // MARK: - Actions
     @IBAction func unwindToTodoItemsList(sender: UIStoryboardSegue) {
         self.tableView.reloadData()
@@ -271,9 +335,10 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     func initializeFetchedResultsController() {
         if let context = container?.viewContext {
             let request = NSFetchRequest<TodoItem>(entityName: "TodoItem")
+            let completedSort = NSSortDescriptor(key: "completed", ascending: true)
             let createdAtSort = NSSortDescriptor(key: "createdAt", ascending: true)
-            request.sortDescriptors = [createdAtSort]
-            fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "createdAt", cacheName: nil)
+            request.sortDescriptors = [completedSort, createdAtSort]
+            fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "completed", cacheName: nil)
             fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
             
             do {
@@ -327,5 +392,41 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
+    
+//    func gradient(frame:CGRect) -> CAGradientLayer {
+//        let layer = CAGradientLayer()
+//        layer.frame = frame
+//        layer.startPoint = CGPointMake(0,0.5)
+//        layer.endPoint = CGPointMake(1,0.5)
+//        layer.colors = [
+//            UIColor.red.cgColor,UIColor.blue.cgColor]
+//        return layer
+//    }
+    
+//    func setGradientBackground() {
+//        let colorTop =  UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+//        let colorBottom = UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0).cgColor
+//
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.colors = [ colorTop, colorBottom]
+//        gradientLayer.locations = [ 0.0, 1.0]
+//        gradientLayer.frame = self.view.bounds
+//
+//        self.layer.insertSublayer(gradientLayer)
+//    }
 
 }
+
+//extension UIView{
+//    func addGradientBackground(firstColor: UIColor, secondColor: UIColor){
+//        clipsToBounds = true
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
+//        gradientLayer.frame = self.bounds
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+//        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+//        print(gradientLayer.frame)
+//        self.layer.insertSublayer(gradientLayer, at: 0)
+//    }
+//}
+
