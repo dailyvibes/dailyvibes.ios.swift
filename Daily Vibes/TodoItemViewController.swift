@@ -9,33 +9,25 @@
 import UIKit
 import os.log
 import CoreData
+import WSTagsField
 
 class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK: Properties
     var todoItem: TodoItem?
     
     // MARK: Outlets
-    @IBOutlet weak var plannedDateLabel: UILabel!
-    @IBOutlet weak var _todoItemTextField: UITextField!
+    @IBOutlet weak var plannedDateLabel: UILabel! // EDIT THIS ONE
     @IBOutlet weak var todoItemTextField: UITextField!
-    @IBOutlet weak var _todoItemTagsTextField: UITextField!
     @IBOutlet weak var todoItemTagsTextField: UITextField!
-    @IBOutlet weak var _yellowBtn: UIButton!
     @IBOutlet weak var yellowBtn: UIButton!
-    @IBOutlet weak var _orangeBtn: UIButton!
     @IBOutlet weak var orangeBtn: UIButton!
-    @IBOutlet weak var _redBtn: UIButton!
     @IBOutlet weak var redBtn: UIButton!
-    @IBOutlet weak var _greenBtn: UIButton!
     @IBOutlet weak var greenBtn: UIButton!
-    @IBOutlet weak var _blueBtn: UIButton!
     @IBOutlet weak var blueBtn: UIButton!
-    @IBOutlet weak var _purpleBtn: UIButton!
     @IBOutlet weak var purpleBtn: UIButton!
-    @IBOutlet weak var _saveTodoitemButton: UIBarButtonItem!
     @IBOutlet weak var saveTodoitemButton: UIBarButtonItem!
-    @IBOutlet weak var _wasCompletedSwitch: UISwitch!
-    @IBOutlet weak var wasCompletedSwitch: UISwitch!
+    @IBOutlet weak var wasCompletedSwitch: UISwitch! = UISwitch()
+    
     @IBOutlet weak var statusPicker: UIDatePicker!
     
     @IBOutlet weak var emotionPicker: UIPickerView!
@@ -127,8 +119,13 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
             }
             if todoItem!.completed {
                 wasCompletedSwitch.isOn = true
+                emotionPickerLabelCell?.detailTextLabel?.text = todoItem?.completedAtEmotion
 //                plannedDateLabel.text = todoItem!.completedAt?.description
-                statusPicker.isEnabled = false
+                if let completedEmotion = todoItem?.completedAtEmotion {
+                    statusPicker.isEnabled = false
+                    emotionPicker.isUserInteractionEnabled = false
+                    emotionPickerLabelCell?.detailTextLabel?.text = completedEmotion
+                }
             }
             
             var strDate: String? = nil
@@ -137,7 +134,7 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
                 strDate = dateFormatter?.string(from: date)
             }
             
-            plannedDateLabel.text = strDate ?? ""
+            completionDateLabelCell?.detailTextLabel?.text = strDate
         }
     }
 
@@ -150,7 +147,8 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     @IBAction func completedAtChanged(_ sender: UIDatePicker) {
         if let todoItem = todoItem {
             todoItem.completedAt = sender.date
-            plannedDateLabel.text = dateFormatter?.string(from: sender.date)
+            completionDateLabelCell?.detailTextLabel?.text = dateFormatter?.string(from: sender.date)
+            tableView.reloadData()
         }
     }
     
@@ -158,6 +156,7 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
         if let todoItem = todoItem {
         if sender.isOn {
             todoItem.markCompleted()
+            todoItem.completedAtEmotion = emotionPickerLabelCell?.detailTextLabel?.text
 //            print("ON")
         } else {
             sender.isOn = true
@@ -219,7 +218,19 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currentEmotionLabel.text = emotionsList[row][0] as? String
+//        currentEmotionLabel!.text = emotionsList[row][0] as? String
+//        emotionPickerCell.detailTextLabel?.text = emotionsList[row][0] as? String
+        emotionPickerLabelCell.detailTextLabel?.text = emotionsList[row][0] as? String
+        if todoItem!.isNew {
+            todoItem?.createdAtEmotion = emotionsList[row][0] as? String
+        } else {
+            if todoItem!.completed {
+                todoItem?.completedAtEmotion = emotionsList[row][0] as? String
+            } else {
+                todoItem?.updatedAtEmotion = emotionsList[row][0] as? String
+            }
+        }
+        tableView.reloadData()
     }
     
     //MARK: visual view
@@ -294,20 +305,19 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
             editingEmotionPicker = !editingEmotionPicker
         }
         if editingEmotionPicker {
-            currentEmotionLabel.textColor = UIColor.red
+            emotionPickerLabelCell?.detailTextLabel?.textColor = UIColor.red
         } else {
-            currentEmotionLabel.textColor = UIColor.black
+            emotionPickerLabelCell?.detailTextLabel?.textColor = UIColor.black
         }
         if (cell == self.completionDateLabelCell) {
             editingCompletionDate = !editingCompletionDate
         }
         if editingCompletionDate {
-            plannedDateLabel.textColor = UIColor.red
+            completionDateLabelCell.detailTextLabel?.textColor = UIColor.red
         } else {
-            plannedDateLabel.textColor = UIColor.black
+            completionDateLabelCell.detailTextLabel?.textColor = UIColor.black
         }
         self.tableView.endUpdates()
     }
-
+    
 }
-
