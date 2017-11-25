@@ -7,18 +7,22 @@
 //
 
 import UIKit
-import os.log
+//import os.log
 import CoreData
-import WSTagsField
+//import WSTagsField
 
-class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK: Properties
     var todoItem: TodoItem?
     
+    private var expandingCellHeight: CGFloat = 200
+    private let expandingIndexRow = 5
+    
     // MARK: Outlets
-    @IBOutlet weak var plannedDateLabel: UILabel! // EDIT THIS ONE
-    @IBOutlet weak var todoItemTextField: UITextField!
-    @IBOutlet weak var todoItemTagsTextField: UITextField!
+    @IBOutlet weak var todoItemTextFieldCell: NewTodoItemTableViewCell!
+    @IBOutlet weak var tagsCell: UITableViewCell!
+    
+    @IBOutlet weak var todoItemTextView: UITextView!
     @IBOutlet weak var yellowBtn: UIButton!
     @IBOutlet weak var orangeBtn: UIButton!
     @IBOutlet weak var redBtn: UIButton!
@@ -35,16 +39,16 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     @IBOutlet weak var emotionPickerCell: UITableViewCell!
     @IBOutlet weak var emotionPickerLabelCell: UITableViewCell!
     
-    var statusPickerVisible: Bool = false
+    private var statusPickerVisible: Bool = false
     
     private var editingEmotionPicker: Bool = false
     private var editingCompletionDate: Bool = false
     private var dateFormatter: DateFormatter?
+    private var showCompletedCell: Bool = false
     
     @IBOutlet weak var completionDateLabelCell: UITableViewCell!
     
-    
-    let emotionsList = [
+    private let emotionsList = [
         ["Love", UIColor.red],
         ["Happy", UIColor.orange],
         ["Excited", UIColor.yellow],
@@ -55,46 +59,17 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     var moc: NSManagedObjectContext?
-    
-    // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // hide the keyboard
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        saveTodoitemButton.isEnabled = false
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-//        updateSaveButtonState()
-        if textField === todoItemTextField {
-            todoItem?.todoItemText = textField.text
-            updateSaveButtonState()
-        }
-        
-        if textField === todoItemTagsTextField {
-            todoItem?.tags = textField.text
-            updateSaveButtonState()
-        }
-    }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.statusPickerVisible = false
-//        self.statusPicker.isHidden = true
-////        self.statusPicker.translatesAutoresizingMaskIntoConstraints = false
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         // Handle the text field’s user input through delegate callbacks.
-        todoItemTextField.delegate = self
-        todoItemTagsTextField.delegate = self
+        todoItemTextView.delegate = self
         
         // Handle emotion picker
         emotionPicker.delegate = self
@@ -105,22 +80,41 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
         dateFormatter?.timeStyle = DateFormatter.Style.short
         
         if todoItem != nil {
-            todoItemTextField.text = todoItem!.todoItemText
-//            todoItemTagsTextField.text = todoItem.tags?.joined(separator: " ")
-            todoItemTagsTextField.text = todoItem!.tags
+            todoItemTextView.text = todoItem!.todoItemText
+            
+            var tagsText = String()
+            
+            if let tagsCount = todoItem?.tagz?.count, tagsCount > 0 {
+//                let tags = todoItem?.tagz?.allObjects as! [Tag]
+//
+//                for tag in tags {
+//                    tagsText += tag.label!
+//                    print("~~~~~~~~~~ tag label = \(tag.label!)")
+//                }
+                tagsText = "view tags"
+            } else {
+                tagsText = "new tag"
+            }
+            
+            tagsCell.detailTextLabel?.tintColor = .black
+            tagsCell.detailTextLabel?.text = tagsText
+            
+            print("tagText = \(tagsText)")
+            
             if !(todoItem!.isNew) {
+                // not new todo
                 navigationItem.title = "Details"
+                showCompletedCell = true
             } else {
                 // a new todoItem
-                // don't allow them to set the completed value on creation
-                // don't allow them to save without filling out the data
+                todoItemTextView.becomeFirstResponder()
                 wasCompletedSwitch.isEnabled = false
                 saveTodoitemButton.isEnabled = false
+                showCompletedCell = false
             }
             if todoItem!.completed {
                 wasCompletedSwitch.isOn = true
                 emotionPickerLabelCell?.detailTextLabel?.text = todoItem?.completedAtEmotion
-//                plannedDateLabel.text = todoItem!.completedAt?.description
                 if let completedEmotion = todoItem?.completedAtEmotion {
                     statusPicker.isEnabled = false
                     emotionPicker.isUserInteractionEnabled = false
@@ -157,7 +151,6 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
         if sender.isOn {
             todoItem.markCompleted()
             todoItem.completedAtEmotion = emotionPickerLabelCell?.detailTextLabel?.text
-//            print("ON")
         } else {
             sender.isOn = true
             }
@@ -170,7 +163,25 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         let isPresentingInADDMode = presentingViewController is UINavigationController
         
-        moc?.rollback()
+        if (todoItem?.isNew)! {
+            // the item was saved because we called save context on the new tag
+            // so we have to remove it... delete it now
+            // have to fetch the todos
+            // remove this particular todo from that list
+            removefromTodos(this: todoItem, in: moc)
+            // a better way to approach this is:
+            // create a structure for the new to do screen
+            // have two properties on this structure
+            // todo property
+            // tags to attach property
+            // if todo has tags -> populate this property with these tags
+            // manipulate those tags there
+            // on save or cancel either add the tags or not
+            // this way the tags get auto created/ attached but the todo does not
+            // unless the person clicks save
+        } else {
+            moc?.rollback()
+        }
         
         if isPresentingInADDMode {
             dismiss(animated: true, completion: nil)
@@ -184,19 +195,53 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        guard let button = sender as? UIBarButtonItem, button === saveTodoitemButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
+        switch segue.identifier ?? "" {
+        case "saveButtonSegue":
+            todoItem?.updatedAt = Date()
+            
+            do {
+                todoItem?.isNew = false
+                try moc!.save()
+            } catch {
+                fatalError("Failure to save context: \(error)")
+            }
+        case "newTagSegue":
+            //todo process new todos
+            // get the vc for the segue destination
+            guard let tagsTVC = segue.destination as? TagsTableViewController else {
+                fatalError("wasn't a TagsTableViewController segue")
+            }
+            // setup the todo so that tags know what to work with
+            tagsTVC.configure(task: todoItem!, managedObjectContext: moc!)
+        default:
+            fatalError("Should not be here")
         }
         
-        todoItem?.updatedAt = Date()
+//        let button = sender
+//        
+//        if button as! UIBarButtonItem === saveTodoitemButton {
+//            todoItem?.updatedAt = Date()
+//            
+//            do {
+//                todoItem?.isNew = false
+//                try moc!.save()
+//            } catch {
+//                fatalError("Failure to save context: \(error)")
+//            }
+//        }
         
-        do {
-            todoItem?.isNew = false
-            try moc!.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
+//        guard let button = sender as? UIBarButtonItem, button === saveTodoitemButton else {
+//            fatalError("save button was not pressed, cancelling")
+//        }
+//
+//        todoItem?.updatedAt = Date()
+//
+//        do {
+//            todoItem?.isNew = false
+//            try moc!.save()
+//        } catch {
+//            fatalError("Failure to save context: \(error)")
+//        }
     }
     
     //MARK: - Delegates and data sources
@@ -207,6 +252,45 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return emotionsList.count
+    }
+    
+    // MARK: - UITextViewDelegate
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        saveTodoitemButton.isEnabled = false
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == todoItemTextView {
+            todoItem?.todoItemText = textView.text
+            updateSaveButtonState()
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            // stop keyboard and close it
+            textView.resignFirstResponder()
+            updateSaveButtonState()
+        }
+        return true;
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == todoItemTextView {
+            todoItem?.todoItemText = textView.text
+            let newHeight = todoItemTextFieldCell.frame.size.height + textView.contentSize.height
+            todoItemTextFieldCell.frame.size.height = newHeight
+            updateTableViewContentOffsetForTextView()
+        }
+    }
+    
+    func updateTableViewContentOffsetForTextView() {
+        let currentOffset = tableView.contentOffset
+        UIView.setAnimationsEnabled(false)
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        UIView.setAnimationsEnabled(true)
+        tableView.setContentOffset(currentOffset, animated: false)
     }
     
     //MARK: Delegates
@@ -273,7 +357,7 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
     // MARK: Private Methods
     private func updateSaveButtonState() {
         // Disable the Save button if the text field is empty.
-        let text = todoItemTextField.text ?? ""
+        let text = todoItemTextView.text ?? ""
         saveTodoitemButton.isEnabled = !text.isEmpty
     }
     
@@ -281,17 +365,28 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
 //        <#code#>
 //    }
     
+//    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+//        return showCompletedCell ? nil : super.tableView(tableView, titleForFooterInSection: section)
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return showCompletedCell ? 0 : UITableViewAutomaticDimension
+//    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.section == 1 && indexPath.row == 0 && !showCompletedCell) {
+            return 0
+        }
         if (indexPath.section == 2 && indexPath.row == 1 && !editingEmotionPicker) {
             return 0
         } else if (indexPath.section == 2 && indexPath.row == 1 && editingEmotionPicker) {
-            return 216
+            return 216.0
         } else if (indexPath.section == 3 && indexPath.row == 1 && !editingCompletionDate) {
             return 0
         } else if (indexPath.section == 3 && indexPath.row == 1 && editingCompletionDate) {
-            return 216
+            return 216.0
         } else {
-            return 44
+            return UITableViewAutomaticDimension
         }
     }
     
@@ -318,6 +413,16 @@ class TodoItemViewController: UITableViewController, UITextFieldDelegate, UINavi
             completionDateLabelCell.detailTextLabel?.textColor = UIColor.black
         }
         self.tableView.endUpdates()
+    }
+    
+    private func removefromTodos(this todo: TodoItem!, in managedObjectcontext: NSManagedObjectContext!) {
+        managedObjectcontext.delete(todo)
+        do {
+            try managedObjectcontext.save()
+        } catch {
+            managedObjectcontext.rollback()
+            fatalError("removefromTodos failed")
+        }
     }
     
 }

@@ -16,12 +16,17 @@
 		D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */; };
 		D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */; };
 		D918207E1FBA6D1D00A2A6EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D918207D1FBA6D1D00A2A6EA /* LaunchScreen.storyboard */; };
-		D973FADC1FB4EC2E0075C02F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D973FADB1FB4EC2E0075C02F /* DataController.swift */; };
+		D92A63C01FC15146002E4F99 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63BF1FC15146002E4F99 /* Tag.swift */; };
+		D92A63C21FC151AF002E4F99 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63C11FC151AF002E4F99 /* Streak.swift */; };
+		D9598A621FBDE20C000854ED /* Pods_Daily_Vibes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9ADE040777F2563195D1CF5 /* Pods_Daily_Vibes.framework */; };
+		D9598A631FBDE20C000854ED /* Pods_Daily_Vibes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9ADE040777F2563195D1CF5 /* Pods_Daily_Vibes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */; };
+		D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */; };
+		D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */; };
+		D9B8BFB51FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B8BFB41FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib */; };
+		D9B8BFB71FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */; };
+		D9B8BFB91FBF913400BBEC70 /* TodoItemUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */; };
 		D9E2CDC51FB41A110084EB12 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* Model.xcdatamodeld */; };
-		D9F25A841FB7B807002246C2 /* UI_Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F25A831FB7B807002246C2 /* UI_Util.swift */; };
-		D9F25A861FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F25A851FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift */; };
-		ED2CDF109EB9110FEB64A4DA /* Pods_Daily_Vibes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9ADE040777F2563195D1CF5 /* Pods_Daily_Vibes.framework */; };
-		EE8FF1825ED90BD5BBDBEFA8 /* Pods_Daily_VibesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524EEB8538CF222BCF795321 /* Pods_Daily_VibesTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		D9598A641FBDE20D000854ED /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D9598A631FBDE20C000854ED /* Pods_Daily_Vibes.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9E3FE8C1FB9292900785E4B /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,10 +65,7 @@
 
 /* Begin PBXFileReference section */
 		3BE85DBB90888B9D5B45A1CE /* Pods-Daily Vibes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Vibes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes.debug.xcconfig"; sourceTree = "<group>"; };
-		524EEB8538CF222BCF795321 /* Pods_Daily_VibesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily_VibesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		986C52008905D82A602A2D6A /* Pods-Daily Vibes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Vibes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes.release.xcconfig"; sourceTree = "<group>"; };
-		A36D9D186DAD47275F5B7BD7 /* Pods-Daily VibesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily VibesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Daily VibesTests/Pods-Daily VibesTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B471A79A9CBD8C37E88F637C /* Pods-Daily VibesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily VibesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Daily VibesTests/Pods-Daily VibesTests.release.xcconfig"; sourceTree = "<group>"; };
 		D9028E851FAD4D6A002D64E3 /* Daily Vibes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Vibes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemViewController.swift; sourceTree = "<group>"; };
@@ -66,11 +79,16 @@
 		D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsTableViewController.swift; sourceTree = "<group>"; };
 		D918207D1FBA6D1D00A2A6EA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D973FADB1FB4EC2E0075C02F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		D92A63BF1FC15146002E4F99 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		D92A63C11FC151AF002E4F99 /* Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
+		D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewController.swift; sourceTree = "<group>"; };
+		D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCreationTableViewCell.swift; sourceTree = "<group>"; };
+		D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoItemTableViewCell.swift; sourceTree = "<group>"; };
+		D9B8BFB41FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewEmptyView.xib; sourceTree = "<group>"; };
+		D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewEmptyView.swift; sourceTree = "<group>"; };
+		D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemUITableView.swift; sourceTree = "<group>"; };
 		D9E2CDC41FB41A110084EB12 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D9E3FE7D1FB9292900785E4B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		D9F25A831FB7B807002246C2 /* UI_Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_Util.swift; sourceTree = "<group>"; };
-		D9F25A851FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsCollectionViewController.swift; sourceTree = "<group>"; };
 		F9ADE040777F2563195D1CF5 /* Pods_Daily_Vibes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily_Vibes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -79,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED2CDF109EB9110FEB64A4DA /* Pods_Daily_Vibes.framework in Frameworks */,
+				D9598A621FBDE20C000854ED /* Pods_Daily_Vibes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE8FF1825ED90BD5BBDBEFA8 /* Pods_Daily_VibesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,8 +116,6 @@
 			children = (
 				3BE85DBB90888B9D5B45A1CE /* Pods-Daily Vibes.debug.xcconfig */,
 				986C52008905D82A602A2D6A /* Pods-Daily Vibes.release.xcconfig */,
-				A36D9D186DAD47275F5B7BD7 /* Pods-Daily VibesTests.debug.xcconfig */,
-				B471A79A9CBD8C37E88F637C /* Pods-Daily VibesTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -129,18 +144,23 @@
 			isa = PBXGroup;
 			children = (
 				D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */,
+				D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */,
+				D9B8BFB41FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib */,
+				D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */,
 				D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */,
+				D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */,
 				D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */,
 				D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */,
 				D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */,
-				D973FADB1FB4EC2E0075C02F /* DataController.swift */,
-				D9F25A831FB7B807002246C2 /* UI_Util.swift */,
+				D92A63BF1FC15146002E4F99 /* Tag.swift */,
 				D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */,
 				D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */,
+				D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */,
+				D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */,
 				D918207D1FBA6D1D00A2A6EA /* LaunchScreen.storyboard */,
 				D9028E941FAD4D6A002D64E3 /* Info.plist */,
-				D9F25A851FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift */,
 				D9E2CDC31FB41A110084EB12 /* Model.xcdatamodeld */,
+				D92A63C11FC151AF002E4F99 /* Streak.swift */,
 			);
 			path = "Daily Vibes";
 			sourceTree = "<group>";
@@ -159,7 +179,6 @@
 			children = (
 				D9E3FE7D1FB9292900785E4B /* NotificationCenter.framework */,
 				F9ADE040777F2563195D1CF5 /* Pods_Daily_Vibes.framework */,
-				524EEB8538CF222BCF795321 /* Pods_Daily_VibesTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -178,6 +197,7 @@
 				D9E3FE8C1FB9292900785E4B /* Embed App Extensions */,
 				56F579FBCF47AACDD4B5FB67 /* [CP] Embed Pods Frameworks */,
 				030330699AA113210BBBE763 /* [CP] Copy Pods Resources */,
+				D9598A641FBDE20D000854ED /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -192,12 +212,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9028EA51FAD4D6A002D64E3 /* Build configuration list for PBXNativeTarget "Daily VibesTests" */;
 			buildPhases = (
-				1A3872537E0B1BA023548646 /* [CP] Check Pods Manifest.lock */,
 				D9028E951FAD4D6A002D64E3 /* Sources */,
 				D9028E961FAD4D6A002D64E3 /* Frameworks */,
 				D9028E971FAD4D6A002D64E3 /* Resources */,
-				8D6E40467C6A210F08D4C1F9 /* [CP] Embed Pods Frameworks */,
-				4FB892D47E827002A01E5CEE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D918207E1FBA6D1D00A2A6EA /* LaunchScreen.storyboard in Resources */,
+				D9B8BFB51FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib in Resources */,
 				D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */,
 				D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */,
 			);
@@ -285,39 +303,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1A3872537E0B1BA023548646 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Daily VibesTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4FB892D47E827002A01E5CEE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily VibesTests/Pods-Daily VibesTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		56F579FBCF47AACDD4B5FB67 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,30 +310,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
 				"${BUILT_PRODUCTS_DIR}/WSTagsField/WSTagsField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WSTagsField.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D6E40467C6A210F08D4C1F9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily VibesTests/Pods-Daily VibesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C9FBABCF76A60159DAC26D97 /* [CP] Check Pods Manifest.lock */ = {
@@ -376,15 +348,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D973FADC1FB4EC2E0075C02F /* DataController.swift in Sources */,
+				D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */,
 				D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */,
 				D9028E891FAD4D6A002D64E3 /* AppDelegate.swift in Sources */,
-				D9F25A841FB7B807002246C2 /* UI_Util.swift in Sources */,
+				D92A63C01FC15146002E4F99 /* Tag.swift in Sources */,
+				D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */,
 				D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */,
 				D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */,
+				D92A63C21FC151AF002E4F99 /* Streak.swift in Sources */,
+				D9B8BFB91FBF913400BBEC70 /* TodoItemUITableView.swift in Sources */,
 				D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */,
 				D9E2CDC51FB41A110084EB12 /* Model.xcdatamodeld in Sources */,
-				D9F25A861FB7CEFB002246C2 /* TodoItemsCollectionViewController.swift in Sources */,
+				D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */,
+				D9B8BFB71FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,7 +505,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3BE85DBB90888B9D5B45A1CE /* Pods-Daily Vibes.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
@@ -547,7 +522,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 986C52008905D82A602A2D6A /* Pods-Daily Vibes.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
@@ -563,7 +537,6 @@
 		};
 		D9028EA61FAD4D6A002D64E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A36D9D186DAD47275F5B7BD7 /* Pods-Daily VibesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -581,7 +554,6 @@
 		};
 		D9028EA71FAD4D6A002D64E3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B471A79A9CBD8C37E88F637C /* Pods-Daily VibesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

@@ -7,32 +7,53 @@
 //
 
 import UIKit
-import os.log
+//import os.log
 import CoreData
 
 class TodoItemsTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: Properties
-    var todoItems = [TodoItem]()
+//    var todoItems = [TodoItem]()
     
     var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     var fetchedResultsController: NSFetchedResultsController<TodoItem>!
-    
     var moc: NSManagedObjectContext?
+    
+//    var emptyView: LoadingTableViewEmptyView = UINib(nibName: "LoadingTableViewEmptyView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! LoadingTableViewEmptyView
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        moc = container?.viewContext
+//        initializeFetchedResultsController()
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         moc = container?.viewContext
         initializeFetchedResultsController()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.tableFooterView = UIView.init()
+        
+        hideOrShowTableView()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        
+//        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+//        var bounds = view.bounds
+//        bounds.size.height += 20
+//        bounds.origin.y -= 20
+//        visualEffectView.isUserInteractionEnabled = false
+//        visualEffectView.frame = bounds
+//        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        
+//        self.navigationController?.navigationBar.addSubview(visualEffectView)
+//        visualEffectView.layer.zPosition = -1
+        
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
         
         //UI_Util.setGradientGreenBlue(uiView: self.view)
 //        loadSampleTodos()
@@ -70,69 +91,27 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         }
         
         if let todoItem = fetchedResultsController?.object(at: indexPath) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = DateFormatter.Style.short
+            dateFormatter.timeStyle = DateFormatter.Style.short
             if todoItem.completed {
                 cell.todoItemLabel.attributedText = stringStrikeThrough(input: todoItem.todoItemText!)
                 cell.emotionsImageView.image = UIImage(named: "checkedCheckbox")
+                if let completedDate = todoItem.completedAt {
+                    let dateString = dateFormatter.string(from: completedDate)
+                    cell.todoItemTagsLabel.text = "Completed \(dateString)"
+                }
             } else {
                 cell.todoItemLabel.text = todoItem.todoItemText ?? "No Text"
                 cell.emotionsImageView.image = UIImage(named: "uncheckedCheckbox")
+                let dateString = dateFormatter.string(from: todoItem.createdAt!)
+                cell.todoItemTagsLabel.text = "Created \(dateString)"
             }
-            cell.todoItemTagsLabel.text = todoItem.tags
+//            cell.todoItemTagsLabel.text = todoItem.tags
         }
         
         return cell
     }
-
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cellIdentifier = "TodoItemTableViewCell"
-//
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TodoItemTableViewCell else {
-//            fatalError("The dequeued cell is not an instance of TodoItemTableViewCell.")
-//        }
-//
-//        let todoItem = todoItems[indexPath.row]
-//        var tagText = ""
-//
-//        // Configure the cell...
-//        if let tags = todoItem.tags {
-//            tagText = tags.joined(separator: " ")
-//        } else {
-//            tagText = "#Add #some #tags"
-//        }
-//
-//        cell.todoItemTagsLabel.text = tagText
-//
-//        if todoItem.completed {
-//            /*
-//            let attrString = NSAttributedString(todoItem.todoItemText,
-//                                                    UIStringAttributes { StrikethroughStyle = NSUnderlineStyle.Single })
-//            */
-////            let attribute = [NSAttributedStringKey.strikethroughStyle : 2]
-////            self.attributedText = attributedString
-//
-//            /*
-//             Type 1
-//
-//            let attributedString = NSMutableAttributedString(string: todoItem.todoItemText)
-//            attributedString.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.red, range: NSMakeRange(0, attributedString.length))
-//            cell.todoItemLabel.attributedText = attributedString
-//            */
-//
-//            /*
-//             TYPE 2 - works - https://stackoverflow.com/q/44152721
-//             */
-//             cell.todoItemLabel.attributedText = stringStrikeThrough(input: todoItem.todoItemText)
-//
-//            cell.emotionsImageView.image = UIImage(named: "checkedCheckbox")
-//        } else {
-//            cell.todoItemLabel.text = todoItem.todoItemText
-//            cell.emotionsImageView.image = UIImage(named: "uncheckedCheckbox")
-////            cell.emotionsImageView.image
-////            cell.emotionsImageView.image = UIImageView(named: uncheckedCheckbox)
-//        }
-//
-//        return cell
-//    }
 
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -194,7 +173,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         
         switch(segue.identifier ?? "") {
         case "AddTodoItem":
-            os_log("Adding todo item.", log: OSLog.default, type: .debug)
+//            os_log("Adding todo item.", log: OSLog.default, type: .debug)
             let navVC = segue.destination as? UINavigationController
             let vC = navVC?.viewControllers.first as! TodoItemViewController
             vC.moc = moc
@@ -222,13 +201,10 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         if let sections = fetchedResultsController?.sections, sections.count > 0 {
             let sectionInfo = sections[section]
             if let todoItem: TodoItem = sectionInfo.objects?.first as? TodoItem, todoItem.completed {
-                return "Completed"
+                return "Done"
             } else {
-                return "Todo List"
+                return "To do"
             }
-//            print("*** \(sections[section].name) - \(sections[section].indexTitle) - \(sections[section].numberOfObjects)***")
-//            return "\(sections[section].numberOfObjects) Items"
-//            return sections[section].name
         } else {
             return nil
         }
@@ -243,84 +219,34 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     // MARK: - Custom swipe right
+    //    https://developerslogblog.wordpress.com/2017/06/28/ios-11-swipe-leftright-in-uitableviewcell/
     override func tableView(_ tableView: UITableView,
                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let closeAction = UIContextualAction(style: .normal, title:  "Complete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let closeAction = UIContextualAction(style: .normal, title:  "Done", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             if let todoItem = self.fetchedResultsController?.object(at: indexPath) {
                 todoItem.markCompleted()
                 do {
                     try self.moc!.save()
                 } catch {
-                    print("Error \(error) in leadingSwipeActionsConfigurationForRowAt")
+                    fatalError("Error \(error) in leadingSwipeActionsConfigurationForRowAt")
                 }
             }
             success(true)
         })
-        closeAction.image = UIImage(named: "checkmark")
-        closeAction.title = "Complete"
-        closeAction.backgroundColor = .purple
+//        closeAction.image = UIImage(named: "checkmark")
+        closeAction.title = "Done"
+        closeAction.backgroundColor = .green
 
         return UISwipeActionsConfiguration(actions: [closeAction])
 
     }
-
-    
-    // MARK: - Custom swipe left
-//    https://developerslogblog.wordpress.com/2017/06/28/ios-11-swipe-leftright-in-uitableviewcell/
-//    override func tableView(_ tableView: UITableView,
-//                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-//    {
-//        let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-//            print("Update action ...")
-//            success(true)
-//        })
-//        modifyAction.image = UIImage(named: "hammer")
-//        modifyAction.backgroundColor = .blue
-//
-//        return UISwipeActionsConfiguration(actions: [modifyAction])
-//    }
     
     // MARK: - Actions
     @IBAction func unwindToTodoItemsList(sender: UIStoryboardSegue) {
-        self.tableView.reloadData()
-//        if let sourceViewController = sender.source as? TodoItemViewController, let todoItem = sourceViewController.todoItem {
-//            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-//                // update existing todo
-//                todoItems[selectedIndexPath.row] = todoItem
-//                if todoItem.completed {
-//                    os_log("this item was marked completed", log: OSLog.default, type: .debug)
-//                }
-//                tableView.reloadRows(at: [selectedIndexPath], with: .none)
-//            } else {
-//                // create a new to do
-//                let newIndexPath = IndexPath(row: todoItems.count, section: 0)
-//                todoItems.append(todoItem)
-//                tableView.insertRows(at: [newIndexPath], with: .automatic)
-//            }
-//        }
+//        do nothing
+//        self.tableView.reloadData()
     }
-    
-    // MARK: - Private Methods
-//    private func loadSampleTodos() {
-//        guard let todo1 = TodoItem.init(todoItemText: "create a todo item", tags: ["producthunthackathon", "vibes"]) else {
-//            fatalError("Unable to instantiate todo1")
-//        }
-//        guard let todo2 = TodoItem.init(todoItemText: "create a second todo and add to array", tags: ["producthunthackathon", "vibes"]) else {
-//            fatalError("Unable to instantiate todo2")
-//        }
-//        guard let todo3 = TodoItem.init(todoItemText: "display this list", tags: ["producthunthackathon", "vibes"]) else {
-//            fatalError("Unable to instantiate todo3")
-//        }
-//
-//        guard let todo4 = TodoItem.init(todoItemText: "completed task", tags: ["producthunthackathon", "vibes"]) else {
-//            fatalError("Unable to instantiate todo3")
-//        }
-//
-//        todo4.markCompleted()
-//
-//        todoItems += [todo1, todo2, todo3, todo4]
-//    }
     
     private func stringStrikeThrough(input: String) -> NSMutableAttributedString {
         // based on - https://stackoverflow.com/q/44152721
@@ -332,12 +258,13 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         return result;
     }
     
-    func initializeFetchedResultsController() {
+    private func initializeFetchedResultsController() {
         if let context = container?.viewContext {
             let request = NSFetchRequest<TodoItem>(entityName: "TodoItem")
             let completedSort = NSSortDescriptor(key: "completed", ascending: true)
-            let createdAtSort = NSSortDescriptor(key: "createdAt", ascending: true)
-            request.sortDescriptors = [completedSort, createdAtSort]
+            let completedAt = NSSortDescriptor(key: "completedAt", ascending: true)
+            
+            request.sortDescriptors = [completedSort, completedAt]
             fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "completed", cacheName: nil)
             fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
             
@@ -345,15 +272,6 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                 try fetchedResultsController.performFetch()
             } catch {
                 fatalError("Failed to initialize FetchedResultsController: \(error)")
-            }
-        }
-        printDatabaseStatistics()
-    }
-    
-    private func printDatabaseStatistics() {
-        if let context = container?.viewContext {
-            if let todoItemCount = try? context.count(for: TodoItem.fetchRequest()) {
-                print("\(todoItemCount) Todos")
             }
         }
     }
@@ -391,42 +309,20 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+        hideOrShowTableView()
     }
     
-//    func gradient(frame:CGRect) -> CAGradientLayer {
-//        let layer = CAGradientLayer()
-//        layer.frame = frame
-//        layer.startPoint = CGPointMake(0,0.5)
-//        layer.endPoint = CGPointMake(1,0.5)
-//        layer.colors = [
-//            UIColor.red.cgColor,UIColor.blue.cgColor]
-//        return layer
-//    }
-    
-//    func setGradientBackground() {
-//        let colorTop =  UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
-//        let colorBottom = UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0).cgColor
-//
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = [ colorTop, colorBottom]
-//        gradientLayer.locations = [ 0.0, 1.0]
-//        gradientLayer.frame = self.view.bounds
-//
-//        self.layer.insertSublayer(gradientLayer)
-//    }
-
+    private func hideOrShowTableView() {
+        if let count = fetchedResultsController.fetchedObjects?.count, count == 0 {
+            guard let view = tableView as? TodoItemUITableView else {
+                fatalError("hideOrShowTableView - Fail couldn't claim the view as TodoItemUITableView")
+            }
+            view.showEmptyView()
+        } else {
+            guard let view = tableView as? TodoItemUITableView else {
+                fatalError("hideOrShowTableView - Fail couldn't claim the view as TodoItemUITableView")
+            }
+            view.hideEmptyView()
+        }
+    }
 }
-
-//extension UIView{
-//    func addGradientBackground(firstColor: UIColor, secondColor: UIColor){
-//        clipsToBounds = true
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
-//        gradientLayer.frame = self.bounds
-//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-//        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-//        print(gradientLayer.frame)
-//        self.layer.insertSublayer(gradientLayer, at: 0)
-//    }
-//}
-
