@@ -24,9 +24,8 @@ struct TagCreator {
 class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
     
     // MARK: - Properties
-//    private var tags = [Tag]()
-    private var todoItem : TodoItem?
     private var tagCreator = TagCreator()
+    private var todoItemSettingsData: TodoItemSettingsData?
     
     // flip to ensure that the cell at position 0 in cellForRowAt is only used once
     private var addingNewCell: Bool = false
@@ -48,9 +47,9 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
     }
     
     // MARK: - configure func
-    func configure(task: TodoItem, managedObjectContext: NSManagedObjectContext) {
-        todoItem = task
-        moc = managedObjectContext
+    func configure(todoItemSettingsData data: TodoItemSettingsData,in managedObjectContext: NSManagedObjectContext) {
+        self.todoItemSettingsData = data
+        self.moc = managedObjectContext
     }
 
     // MARK: - Table view data source
@@ -61,14 +60,6 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
-//        let minimumRows = 1
-//
-//        if let sections = fetchedResultsController?.sections, sections.count > 0 {
-//            return ((sections[section].numberOfObjects) + minimumRows)
-//        }
-        
         return (fetchedResultsController?.fetchedObjects?.count)! + 1;
     }
 
@@ -84,6 +75,7 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
             cell.tagLabeler.delegate = self
             return cell
         } else {
+            guard let data = todoItemSettingsData else { fatalError("todoItemSettingsData should be set by now") }
             // display
             let cell = tableView.dequeueReusableCell(withIdentifier: displayCell, for: indexPath)
             // we need adjustedIndexPath b/c our initial row is set to input row
@@ -92,7 +84,7 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
             let adjustedIndexPath = IndexPath.init(row: adjustedRow(indexPath.row), section: indexPath.section)
             if let tag = fetchedResultsController?.object(at: adjustedIndexPath) {
                 cell.textLabel?.text = tag.label
-                if let todoItemContainsTag = todoItem?.tagz?.contains(tag), todoItemContainsTag == true {
+                if data.contains(tag: tag) {
                     cell.accessoryType = .checkmark
                     cell.tintColor = .orange
                 } else {
@@ -119,32 +111,22 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
             // don't want anything to happen when people select the first row
             if let tag = fetchedResultsController?.object(at: adjustedIndexPath) {
                 
-                if let todoItemContainsTag = todoItem?.tagz?.contains(tag), todoItemContainsTag == true {
-                    // todoItem contains the tag, remove it
-                    todoItem?.removeFromTagz(tag)
-                    if let context = moc {
-                        do {
-                            try context.save()
-                            //                            cell.accessoryType = .none
-                        } catch {
-                            context.rollback()
-                            fatalError("textFieldDidEndEditing failed")
-                        }
-                    }
-                } else {
-                    // todo item does NOT contain the tag, add it
-                    todoItem?.addToTagz(tag)
-                    if let context = moc {
-                        do {
-                            try context.save()
-                            //                            cell.accessoryType = .checkmark
-                            //                            cell.tintColor = .orange
-                        } catch {
-                            context.rollback()
-                            fatalError("textFieldDidEndEditing failed")
-                        }
+                guard let data = todoItemSettingsData else { fatalError("should have todoItemSettingsData by here") }
+                
+                if let context = moc {
+                    do {
+                        try context.save()
+                    } catch {
+                        context.rollback()
+                        fatalError("textFieldDidEndEditing failed")
                     }
                 }
+                
+                guard data.addOrRemove(this: tag) else {
+                    fatalError("should have processed data")
+                }
+                
+                tableView.reloadData()
             }
         }
     }
@@ -161,18 +143,18 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-//            tableView.deleteRows(at: [indexPath], with: .fade)
             let adjustedIndexPath = IndexPath.init(row: adjustedRow(indexPath.row), section: indexPath.section)
             if let removable = fetchedResultsController?.object(at: adjustedIndexPath), let context = moc {
-//                print("wanting to delete: row \(indexPath.row) section \(indexPath.section)")
-//                print("should delete: row \(adjustedIndexPath.row) section \(adjustedIndexPath.section)")
                 context.delete(removable)
                 do {
                     try context.save()
                 } catch {
                     context.rollback()
                     fatalError("could not remove in TagsTableViewController")
+                }
+                guard let data = todoItemSettingsData else { fatalError("this must exist") }
+                guard data.addOrRemove(this: removable) else {
+                    fatalError("this should not fail")
                 }
             }
         }   
@@ -213,17 +195,24 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
         if let tagLabel = textField.text, !tagLabel.isEmpty {
             let tag = Tag.createTag(in: moc!)
             tag.label = tagLabel
-            todoItem?.addToTagz(tag)
+            
+            guard let data = todoItemSettingsData else { fatalError("todoItemSettingsData should be set") }
+
             if let context = moc {
                 do {
                     try context.save()
-                    // clear textfield
                     clearTextfield(at: textField)
                 } catch {
                     context.rollback()
                     fatalError("textFieldDidEndEditing failed")
                 }
             }
+            
+            guard data.addOrRemove(this: tag) else {
+                fatalError("should ")
+            }
+            
+            tableView.reloadData()
         }
     }
     
@@ -287,17 +276,17 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
         textField.text = String()
     }
     
-    private func printIndexPath(indexPath: IndexPath?) {
-        print("row === \(String(describing: indexPath?.row)) ||| section === \(String(describing: indexPath?.section))")
-    }
-    
-    private func printTodoTags(todoItem: TodoItem) {
-        if let tags = todoItem.tagz?.allObjects, tags.count > 0 {
-            for tag in tags {
-                print("\(String(describing: (tag as! Tag).uuid))")
-            }
-        }
-    }
+//    private func printIndexPath(indexPath: IndexPath?) {
+//        print("row === \(String(describing: indexPath?.row)) ||| section === \(String(describing: indexPath?.section))")
+//    }
+//
+//    private func printTodoTags(todoItem: TodoItem) {
+//        if let tags = todoItem.tagz?.allObjects, tags.count > 0 {
+//            for tag in tags {
+//                print("\(String(describing: (tag as! Tag).uuid))")
+//            }
+//        }
+//    }
     
     private func initializeFetchedResultsController() {
         if let context = moc {

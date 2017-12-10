@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     
     var window: UIWindow?
     
@@ -69,12 +69,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+//        print("\(container.persistentStoreCoordinator.persistentStores.first?.url)")
         return container
     }()
     
     // MARK: - Core Data Saving support
     
-    func saveContext () {
+    private func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

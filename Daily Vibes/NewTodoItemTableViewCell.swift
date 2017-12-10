@@ -8,13 +8,8 @@
 
 import UIKit
 
-//protocol ExpandingCellDelegate {
-//    func updated(height: CGFloat)
-//}
-
 class NewTodoItemTableViewCell: UITableViewCell, UITextViewDelegate {
     
-//    var delegate: ExpandingCellDelegate?
     var callBack: ((UITextView) -> ())?
     
     @IBOutlet weak var textView: UITextView!
@@ -32,13 +27,3 @@ class NewTodoItemTableViewCell: UITableViewCell, UITextViewDelegate {
     }
 
 }
-
-//extension NewTodoItemTableViewCell: UITextViewDelegate {
-//
-//    func textViewDidChange(_ textView: UITextView) {
-//
-//        let height = textView.newHeight(withBaseHeight: 200)
-//        delegate?.updated(height: height)
-//    }
-//}
-
