@@ -28,9 +28,9 @@
                                         <rect key="frame" x="20" y="7" width="374" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
-                                            <segment title="Inbox"/>
-                                            <segment title="Done"/>
-                                            <segment title="Archive"/>
+                                            <segment title=""/>
+                                            <segment title=""/>
+                                            <segment title=""/>
                                         </segments>
                                         <connections>
                                             <action selector="segmentedControllerEventHandler:" destination="Toj-2D-Equ" eventType="valueChanged" id="l3J-G4-em0"/>
@@ -84,12 +84,15 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Daily Vibes" leftItemsSupplementBackButton="YES" id="NEe-C8-mgy"/>
+                    <connections>
+                        <outlet property="segmentController" destination="4UE-2m-kSK" id="tmn-cl-qPw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPI-yR-qtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1572" y="90.404797601199405"/>
         </scene>
-        <!--Add a to do-->
+        <!--Todo Item View Controller-->
         <scene sceneID="Xfx-Zs-th0">
             <objects>
                 <tableViewController id="pEL-D5-MQR" customClass="TodoItemViewController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
@@ -319,7 +322,7 @@
                             <outlet property="delegate" destination="pEL-D5-MQR" id="Cdm-Qb-JbR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add a to do" id="6s7-yJ-Qf6">
+                    <navigationItem key="navigationItem" id="6s7-yJ-Qf6" userLabel="addATodoNavigationBarLabel">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cKO-kg-k3S">
                             <connections>
                                 <action selector="cancel:" destination="pEL-D5-MQR" id="TEM-Bz-Pn9"/>
@@ -335,6 +338,7 @@
                     <connections>
                         <outlet property="completionDateLabelCell" destination="af4-jR-iTQ" id="Jkn-Ir-Cxa"/>
                         <outlet property="currentEmotionLabel" destination="7pm-8C-dfe" id="Uub-mS-ItC"/>
+                        <outlet property="doneCellLabel" destination="Dke-nc-vk9" id="m1T-Bd-dNh"/>
                         <outlet property="emotionPicker" destination="pTT-86-mAd" id="ahL-DG-hgV"/>
                         <outlet property="emotionPickerCell" destination="dHr-ly-k9w" id="1FD-ps-Ndd"/>
                         <outlet property="emotionPickerLabelCell" destination="Ng1-c6-OsU" id="iPg-9h-EKc"/>
@@ -351,7 +355,7 @@
             </objects>
             <point key="canvasLocation" x="3324" y="687"/>
         </scene>
-        <!--Tags-->
+        <!--Tags Table View Controller-->
         <scene sceneID="dUe-me-eYf">
             <objects>
                 <tableViewController id="GiO-LN-yCI" customClass="TagsTableViewController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
@@ -367,7 +371,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create a new tag or use one below" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gw1-E7-xUs">
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gw1-E7-xUs">
                                             <rect key="frame" x="20" y="6" width="374" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
@@ -403,17 +407,17 @@
                             <outlet property="delegate" destination="GiO-LN-yCI" id="Y89-Na-5Qe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tags" id="Bwk-gb-RaT"/>
+                    <navigationItem key="navigationItem" id="Bwk-gb-RaT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVz-eq-KG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6362.3999999999996" y="-23.838080959520241"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="fuG-Ba-f6G">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2no-lC-OBf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="tabbar_home" selectedImage="tabbed_home_filledin" id="W5M-Bz-otb">
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_home" selectedImage="tabbed_home_filledin" id="W5M-Bz-otb">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -457,31 +461,6 @@
             </objects>
             <point key="canvasLocation" x="1910" y="1332"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="mDA-hS-fRy">
-            <objects>
-                <navigationController storyboardIdentifier="tagCreatorNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="GFW-Ab-XOI" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7qO-Tb-LbC">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GiO-LN-yCI" kind="relationship" relationship="rootViewController" id="74n-ZV-pAG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PU6-hE-y6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5608.8000000000002" y="611.24437781109452"/>
-        </scene>
         <!--MainTabBarVC-->
         <scene sceneID="Cp1-z1-bQR">
             <objects>
@@ -514,7 +493,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="VOu-JV-Sbm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add" image="tabbar_add" landscapeImage="tabbar_add" largeContentSizeImage="tabbar_add" id="bnW-oe-xTu"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_add" landscapeImage="tabbar_add" largeContentSizeImage="tabbar_add" id="bnW-oe-xTu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBj-J6-VZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -554,7 +533,6 @@
         <image name="uncheckedFilledinCircle" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8mo-CA-hIB"/>
-        <segue reference="IYm-Xk-lZM"/>
+        <segue reference="iNs-Ih-7gk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -34,18 +34,27 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
     
     private let menuButton = UIButton(frame: CGRect.zero)
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupTabLocalization()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
 //        setupMiddleButton()
     }
     
+    fileprivate func setupTabLocalization() {
+        self.tabBar.items?[0].title = NSLocalizedString("Home", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Home**", comment: "")
+        self.tabBar.items?[1].title = NSLocalizedString("Add", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Add**", comment: "")
+        self.tabBar.items?[2].title = NSLocalizedString("Progress", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Progress**", comment: "")
+        self.tabBar.items?[3].title = NSLocalizedString("Settings", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Settings**", comment: "")
+    }
+    
     // MARK - Custom TabBarControllerAction
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print("trying to show the new controller...")
-        print("viewController = \(viewController)")
         if viewController is DummyViewController {
-            print("trying to show the new controller...")
             if let newVC = tabBarController.storyboard?.instantiateViewController(withIdentifier: "AddNavigationVC") {
                 tabBarController.present(newVC, animated: true)
                 return false

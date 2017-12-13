@@ -1,0 +1,57 @@
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "2Qz-Im-9KX"; */
+"2Qz-Im-9KX.text" = "Detail";
+
+/* Class = "UILabel"; text = "Done:"; ObjectID = "Dke-nc-vk9"; */
+"Dke-nc-vk9.text" = "Done:";
+
+/* Class = "UILabel"; text = "Tags"; ObjectID = "FJo-9v-uxH"; */
+"FJo-9v-uxH.text" = "Tags";
+
+/* Class = "UITableViewSection"; footerTitle = "While I take care of tracking the date when you create your new task or perform a modification, it is a good idea for you to set a realistic completion date. You will be able to measure your progress and observe if this task was realistic, specific, and attainable. Don't worry, you need to start somewhere. Might as well do it with this task. "; ObjectID = "FKl-F2-xzY"; */
+"FKl-F2-xzY.footerTitle" = "While I take care of tracking the date when you create your new task or perform a modification, it is a good idea for you to set a realistic completion date. You will be able to measure your progress and observe if this task was realistic, specific, and attainable. Don't worry, you need to start somewhere. Might as well do it with this task. ";
+
+/* Class = "UITableViewSection"; headerTitle = "Projected Completion Date"; ObjectID = "FKl-F2-xzY"; */
+"FKl-F2-xzY.headerTitle" = "Projected Completion Date";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "GqN-s5-Rq2"; */
+"GqN-s5-Rq2.text" = "Date";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "KJw-WI-w92"; */
+"KJw-WI-w92.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "Daily Vibes"; ObjectID = "NEe-C8-mgy"; */
+"NEe-C8-mgy.title" = "Daily Vibes";
+
+/* Class = "UILabel"; text = "How do you feel?"; ObjectID = "O9t-GE-dJF"; */
+"O9t-GE-dJF.text" = "How do you feel?";
+
+/* Class = "UITabBarController"; title = "MainTabBarVC"; ObjectID = "ZV9-I2-7pZ"; */
+"ZV9-I2-7pZ.title" = "MainTabBarVC";
+
+/* Class = "UITabBarItem"; title = "Add"; ObjectID = "c8z-ZE-dgo"; */
+"c8z-ZE-dgo.title" = "Add";
+
+/* Class = "UIViewController"; title = "DummyViewController"; ObjectID = "g6u-CQ-JQK"; */
+"g6u-CQ-JQK.title" = "DummyViewController";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "h93-BN-bdj"; */
+"h93-BN-bdj.title" = "Item";
+
+/* Class = "UITableViewSection"; footerTitle = "Break overwhelming objectives into achievable and specific goals. Use tags to group these specific goals together and measure your progress."; ObjectID = "iFf-Tt-NR6"; */
+"iFf-Tt-NR6.footerTitle" = "Break overwhelming objectives into achievable and specific goals. Use tags to group these specific goals together and measure your progress.";
+
+/* Class = "UITableViewSection"; footerTitle = "Whenever you are here, feel free to update your emotion while working on this task. Over time, you'll be able to see if this task is worth doing for you."; ObjectID = "pmO-Z4-wMJ"; */
+"pmO-Z4-wMJ.footerTitle" = "Whenever you are here, feel free to update your emotion while working on this task. Over time, you'll be able to see if this task is worth doing for you.";
+
+/* Class = "UITableViewSection"; headerTitle = "Emotion"; ObjectID = "pmO-Z4-wMJ"; */
+"pmO-Z4-wMJ.headerTitle" = "Emotion";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "q5B-Gn-xNA"; */
+"q5B-Gn-xNA.text" = "Title";
+
+/* Class = "UILabel"; text = "new tag"; ObjectID = "sKv-yc-6FP"; */
+"sKv-yc-6FP.text" = "new tag";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "wpZ-K1-0Lj"; */
+"wpZ-K1-0Lj.text" = "Title";

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B25443E7A8C6F6EF4E8DAD74 /* Pods_Daily_Vibes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CDC871D6F3A121DFF2C7AB /* Pods_Daily_Vibes.framework */; };
 		D9028E891FAD4D6A002D64E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */; };
 		D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */; };
 		D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */; };
@@ -15,23 +16,26 @@
 		D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */; };
 		D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */; };
 		D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */; };
-		D918207E1FBA6D1D00A2A6EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D918207D1FBA6D1D00A2A6EA /* LaunchScreen.storyboard */; };
+		D92747511FE0D1F800BB2247 /* ProgressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */; };
 		D92A63C01FC15146002E4F99 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63BF1FC15146002E4F99 /* Tag.swift */; };
 		D92A63C21FC151AF002E4F99 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63C11FC151AF002E4F99 /* Streak.swift */; };
-		D9598A621FBDE20C000854ED /* Pods_Daily_Vibes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9ADE040777F2563195D1CF5 /* Pods_Daily_Vibes.framework */; };
-		D9598A631FBDE20C000854ED /* Pods_Daily_Vibes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9ADE040777F2563195D1CF5 /* Pods_Daily_Vibes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */; };
 		D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */; };
+		D97102381FDE15AF0079B222 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97102371FDE15AF0079B222 /* ProgressViewController.swift */; };
 		D98999A41FDCA636002E7937 /* Progress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98999A31FDCA636002E7937 /* Progress.storyboard */; };
-		D9A824A11FDB281C004699F3 /* SettingzViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9A824A01FDB281C004699F3 /* SettingzViewController.storyboard */; };
+		D99D44081FDD652A007323FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99D440A1FDD652A007323FA /* LaunchScreen.storyboard */; };
+		D99D440B1FDD6545007323FA /* SettingzViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99D440D1FDD6545007323FA /* SettingzViewController.storyboard */; };
+		D99D44111FDD65CA007323FA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D99D44131FDD65CA007323FA /* Localizable.strings */; };
+		D99D44141FDD66EB007323FA /* LoadingTableViewEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99D44161FDD66EB007323FA /* LoadingTableViewEmptyView.xib */; };
+		D99D441B1FDDA0C7007323FA /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D441A1FDDA0C7007323FA /* SettingsTableVC.swift */; };
 		D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */; };
-		D9B8BFB51FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B8BFB41FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib */; };
 		D9B8BFB71FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */; };
 		D9B8BFB91FBF913400BBEC70 /* TodoItemUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */; };
+		D9D4396E1FDEE53B0056E655 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4396D1FDEE53B0056E655 /* StreakManager.swift */; };
 		D9E0F2D01FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E0F2CF1FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift */; };
 		D9E0F2D21FDC64230072D3B8 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E0F2D11FDC64230072D3B8 /* DummyViewController.swift */; };
 		D9E2CDC51FB41A110084EB12 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* Model.xcdatamodeld */; };
-		D9EADD6F1FD9EBAB0040F918 /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EADD6E1FD9EBAB0040F918 /* SettingsStoryboard.storyboard */; };
 		D9FD88C21FCA78690055674A /* TodoItemSettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD88C11FCA78690055674A /* TodoItemSettingsData.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +56,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D9598A631FBDE20C000854ED /* Pods_Daily_Vibes.framework in Embed Frameworks */,
+				D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,8 +74,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3BE85DBB90888B9D5B45A1CE /* Pods-Daily Vibes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Vibes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes.debug.xcconfig"; sourceTree = "<group>"; };
-		986C52008905D82A602A2D6A /* Pods-Daily Vibes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Vibes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes.release.xcconfig"; sourceTree = "<group>"; };
+		667650383722341A3C9CC8A6 /* Pods-Daily Vibes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Vibes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes.release.xcconfig"; sourceTree = "<group>"; };
+		6E60AF11ADB618FF5099E070 /* Pods-Daily Vibes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Vibes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes.debug.xcconfig"; sourceTree = "<group>"; };
+		83CDC871D6F3A121DFF2C7AB /* Pods_Daily_Vibes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily_Vibes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9028E851FAD4D6A002D64E3 /* Daily Vibes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Vibes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemViewController.swift; sourceTree = "<group>"; };
@@ -84,24 +89,38 @@
 		D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
 		D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsTableViewController.swift; sourceTree = "<group>"; };
-		D918207D1FBA6D1D00A2A6EA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressTableViewController.swift; path = "Daily Vibes/features/progress/ProgressTableViewController.swift"; sourceTree = "<group>"; };
 		D92A63BF1FC15146002E4F99 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D92A63C11FC151AF002E4F99 /* Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
 		D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewController.swift; sourceTree = "<group>"; };
 		D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCreationTableViewCell.swift; sourceTree = "<group>"; };
+		D97102371FDE15AF0079B222 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		D98999A31FDCA636002E7937 /* Progress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Progress.storyboard; sourceTree = "<group>"; };
-		D9A824A01FDB281C004699F3 /* SettingzViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingzViewController.storyboard; sourceTree = "<group>"; };
+		D99D44091FDD652A007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D99D440C1FDD6545007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingzViewController.storyboard; sourceTree = "<group>"; };
+		D99D44151FDD66EB007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoadingTableViewEmptyView.xib; sourceTree = "<group>"; };
+		D99D44171FDD6700007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D99D441A1FDDA0C7007323FA /* SettingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsTableVC.swift; path = "Daily Vibes/features/settings/SettingsTableVC.swift"; sourceTree = SOURCE_ROOT; };
+		D99D441C1FDDA423007323FA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D99D441D1FDDA423007323FA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LoadingTableViewEmptyView.strings; sourceTree = "<group>"; };
+		D99D441E1FDDA423007323FA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingzViewController.strings; sourceTree = "<group>"; };
+		D99D441F1FDDA424007323FA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		D99D44201FDDA424007323FA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D99D44211FDDA430007323FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D99D44221FDDA430007323FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LoadingTableViewEmptyView.strings; sourceTree = "<group>"; };
+		D99D44231FDDA431007323FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingzViewController.strings; sourceTree = "<group>"; };
+		D99D44241FDDA431007323FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		D99D44251FDDA431007323FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D99D44261FDDA508007323FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoItemTableViewCell.swift; sourceTree = "<group>"; };
-		D9B8BFB41FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewEmptyView.xib; sourceTree = "<group>"; };
 		D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewEmptyView.swift; sourceTree = "<group>"; };
 		D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemUITableView.swift; sourceTree = "<group>"; };
-		D9E0F2CF1FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyVibesTabBarViewController.swift; path = customTabBar/DailyVibesTabBarViewController.swift; sourceTree = "<group>"; };
+		D9D4396D1FDEE53B0056E655 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
+		D9E0F2CF1FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVibesTabBarViewController.swift; sourceTree = "<group>"; };
 		D9E0F2D11FDC64230072D3B8 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		D9E2CDC41FB41A110084EB12 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D9E3FE7D1FB9292900785E4B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		D9EADD6E1FD9EBAB0040F918 /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = SettingsStoryboard.storyboard; path = "Daily Vibes/features/settings/SettingsStoryboard.storyboard"; sourceTree = SOURCE_ROOT; };
 		D9FD88C11FCA78690055674A /* TodoItemSettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemSettingsData.swift; sourceTree = "<group>"; };
-		F9ADE040777F2563195D1CF5 /* Pods_Daily_Vibes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily_Vibes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9598A621FBDE20C000854ED /* Pods_Daily_Vibes.framework in Frameworks */,
+				B25443E7A8C6F6EF4E8DAD74 /* Pods_Daily_Vibes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,11 +142,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		92D554258E08DC00143B6E1B /* Pods */ = {
+		A90D6C12D60EC0EBA55A949F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3BE85DBB90888B9D5B45A1CE /* Pods-Daily Vibes.debug.xcconfig */,
-				986C52008905D82A602A2D6A /* Pods-Daily Vibes.release.xcconfig */,
+				6E60AF11ADB618FF5099E070 /* Pods-Daily Vibes.debug.xcconfig */,
+				667650383722341A3C9CC8A6 /* Pods-Daily Vibes.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -135,11 +154,12 @@
 		D9028E7C1FAD4D6A002D64E3 = {
 			isa = PBXGroup;
 			children = (
+				D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */,
 				D9028E871FAD4D6A002D64E3 /* Daily Vibes */,
 				D9028E9C1FAD4D6A002D64E3 /* Daily VibesTests */,
 				D9E3FE7C1FB9292900785E4B /* Frameworks */,
 				D9028E861FAD4D6A002D64E3 /* Products */,
-				92D554258E08DC00143B6E1B /* Pods */,
+				A90D6C12D60EC0EBA55A949F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,28 +175,15 @@
 		D9028E871FAD4D6A002D64E3 /* Daily Vibes */ = {
 			isa = PBXGroup;
 			children = (
-				D9E0F2D11FDC64230072D3B8 /* DummyViewController.swift */,
 				D9EADD6C1FD9EB620040F918 /* features */,
-				D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */,
-				D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */,
-				D9FD88C11FCA78690055674A /* TodoItemSettingsData.swift */,
 				D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */,
-				D9E0F2CF1FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift */,
 				D92A63BF1FC15146002E4F99 /* Tag.swift */,
 				D92A63C11FC151AF002E4F99 /* Streak.swift */,
-				D9B8BFB41FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib */,
-				D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */,
-				D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */,
-				D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */,
-				D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */,
-				D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */,
-				D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */,
-				D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */,
 				D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */,
 				D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */,
-				D918207D1FBA6D1D00A2A6EA /* LaunchScreen.storyboard */,
 				D9028E941FAD4D6A002D64E3 /* Info.plist */,
 				D9E2CDC31FB41A110084EB12 /* Model.xcdatamodeld */,
+				D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */,
 			);
 			path = "Daily Vibes";
 			sourceTree = "<group>";
@@ -190,11 +197,91 @@
 			path = "Daily VibesTests";
 			sourceTree = "<group>";
 		};
+		D99D43FC1FDD5812007323FA /* progress */ = {
+			isa = PBXGroup;
+			children = (
+				D98999A31FDCA636002E7937 /* Progress.storyboard */,
+				D97102371FDE15AF0079B222 /* ProgressViewController.swift */,
+			);
+			path = progress;
+			sourceTree = "<group>";
+		};
+		D99D43FD1FDD5838007323FA /* emptyView */ = {
+			isa = PBXGroup;
+			children = (
+				D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */,
+				D99D44161FDD66EB007323FA /* LoadingTableViewEmptyView.xib */,
+				D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */,
+			);
+			path = emptyView;
+			sourceTree = "<group>";
+		};
+		D99D43FE1FDD5858007323FA /* singleTodoTask */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD88C11FCA78690055674A /* TodoItemSettingsData.swift */,
+				D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */,
+				D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */,
+			);
+			path = singleTodoTask;
+			sourceTree = "<group>";
+		};
+		D99D43FF1FDD5872007323FA /* mainTodoList */ = {
+			isa = PBXGroup;
+			children = (
+				D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */,
+				D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */,
+			);
+			path = mainTodoList;
+			sourceTree = "<group>";
+		};
+		D99D44001FDD5897007323FA /* tabs */ = {
+			isa = PBXGroup;
+			children = (
+				D9E0F2CF1FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift */,
+			);
+			path = tabs;
+			sourceTree = "<group>";
+		};
+		D99D44011FDD58A8007323FA /* tags */ = {
+			isa = PBXGroup;
+			children = (
+				D9E0F2D11FDC64230072D3B8 /* DummyViewController.swift */,
+				D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */,
+				D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */,
+			);
+			path = tags;
+			sourceTree = "<group>";
+		};
+		D99D44071FDD6511007323FA /* launchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D99D440A1FDD652A007323FA /* LaunchScreen.storyboard */,
+			);
+			path = launchScreen;
+			sourceTree = "<group>";
+		};
+		D99D44101FDD65BC007323FA /* i18n */ = {
+			isa = PBXGroup;
+			children = (
+				D99D44131FDD65CA007323FA /* Localizable.strings */,
+			);
+			path = i18n;
+			sourceTree = "<group>";
+		};
+		D9D4396C1FDEE5190056E655 /* streaks */ = {
+			isa = PBXGroup;
+			children = (
+				D9D4396D1FDEE53B0056E655 /* StreakManager.swift */,
+			);
+			path = streaks;
+			sourceTree = "<group>";
+		};
 		D9E3FE7C1FB9292900785E4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				D9E3FE7D1FB9292900785E4B /* NotificationCenter.framework */,
-				F9ADE040777F2563195D1CF5 /* Pods_Daily_Vibes.framework */,
+				83CDC871D6F3A121DFF2C7AB /* Pods_Daily_Vibes.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,7 +289,15 @@
 		D9EADD6C1FD9EB620040F918 /* features */ = {
 			isa = PBXGroup;
 			children = (
-				D98999A31FDCA636002E7937 /* Progress.storyboard */,
+				D9D4396C1FDEE5190056E655 /* streaks */,
+				D99D44101FDD65BC007323FA /* i18n */,
+				D99D44071FDD6511007323FA /* launchScreen */,
+				D99D44011FDD58A8007323FA /* tags */,
+				D99D44001FDD5897007323FA /* tabs */,
+				D99D43FF1FDD5872007323FA /* mainTodoList */,
+				D99D43FE1FDD5858007323FA /* singleTodoTask */,
+				D99D43FD1FDD5838007323FA /* emptyView */,
+				D99D43FC1FDD5812007323FA /* progress */,
 				D9EADD6D1FD9EB910040F918 /* settings */,
 			);
 			name = features;
@@ -212,8 +307,8 @@
 		D9EADD6D1FD9EB910040F918 /* settings */ = {
 			isa = PBXGroup;
 			children = (
-				D9A824A01FDB281C004699F3 /* SettingzViewController.storyboard */,
-				D9EADD6E1FD9EBAB0040F918 /* SettingsStoryboard.storyboard */,
+				D99D440D1FDD6545007323FA /* SettingzViewController.storyboard */,
+				D99D441A1FDDA0C7007323FA /* SettingsTableVC.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -225,14 +320,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9028EA21FAD4D6A002D64E3 /* Build configuration list for PBXNativeTarget "Daily Vibes" */;
 			buildPhases = (
-				C9FBABCF76A60159DAC26D97 /* [CP] Check Pods Manifest.lock */,
+				81A2478739573DFD863E4007 /* [CP] Check Pods Manifest.lock */,
 				D9028E811FAD4D6A002D64E3 /* Sources */,
 				D9028E821FAD4D6A002D64E3 /* Frameworks */,
 				D9028E831FAD4D6A002D64E3 /* Resources */,
 				D9E3FE8C1FB9292900785E4B /* Embed App Extensions */,
-				56F579FBCF47AACDD4B5FB67 /* [CP] Embed Pods Frameworks */,
-				030330699AA113210BBBE763 /* [CP] Copy Pods Resources */,
 				D9598A641FBDE20D000854ED /* Embed Frameworks */,
+				480AFBB1EBFDF9C6807D7D0F /* [CP] Embed Pods Frameworks */,
+				B5588125FDFA5DE11DA5A3BF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,6 +384,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				ru,
 			);
 			mainGroup = D9028E7C1FAD4D6A002D64E3;
 			productRefGroup = D9028E861FAD4D6A002D64E3 /* Products */;
@@ -306,13 +403,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9EADD6F1FD9EBAB0040F918 /* SettingsStoryboard.storyboard in Resources */,
-				D918207E1FBA6D1D00A2A6EA /* LaunchScreen.storyboard in Resources */,
-				D9B8BFB51FBF8E2F00BBEC70 /* LoadingTableViewEmptyView.xib in Resources */,
+				D99D44081FDD652A007323FA /* LaunchScreen.storyboard in Resources */,
+				D99D44141FDD66EB007323FA /* LoadingTableViewEmptyView.xib in Resources */,
 				D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */,
+				D99D44111FDD65CA007323FA /* Localizable.strings in Resources */,
 				D98999A41FDCA636002E7937 /* Progress.storyboard in Resources */,
 				D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */,
-				D9A824A11FDB281C004699F3 /* SettingzViewController.storyboard in Resources */,
+				D99D440B1FDD6545007323FA /* SettingzViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,42 +423,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		030330699AA113210BBBE763 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		56F579FBCF47AACDD4B5FB67 /* [CP] Embed Pods Frameworks */ = {
+		480AFBB1EBFDF9C6807D7D0F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
-				"${BUILT_PRODUCTS_DIR}/WSTagsField/WSTagsField.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WSTagsField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C9FBABCF76A60159DAC26D97 /* [CP] Check Pods Manifest.lock */ = {
+		81A2478739573DFD863E4007 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -379,6 +459,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B5588125FDFA5DE11DA5A3BF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -394,12 +489,16 @@
 				D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */,
 				D9FD88C21FCA78690055674A /* TodoItemSettingsData.swift in Sources */,
 				D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */,
+				D99D441B1FDDA0C7007323FA /* SettingsTableVC.swift in Sources */,
 				D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */,
+				D9D4396E1FDEE53B0056E655 /* StreakManager.swift in Sources */,
 				D92A63C21FC151AF002E4F99 /* Streak.swift in Sources */,
 				D9B8BFB91FBF913400BBEC70 /* TodoItemUITableView.swift in Sources */,
 				D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */,
 				D9E2CDC51FB41A110084EB12 /* Model.xcdatamodeld in Sources */,
 				D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */,
+				D92747511FE0D1F800BB2247 /* ProgressTableViewController.swift in Sources */,
+				D97102381FDE15AF0079B222 /* ProgressViewController.swift in Sources */,
 				D9B8BFB71FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift in Sources */,
 				D9E0F2D21FDC64230072D3B8 /* DummyViewController.swift in Sources */,
 			);
@@ -428,8 +527,51 @@
 			isa = PBXVariantGroup;
 			children = (
 				D9028E8D1FAD4D6A002D64E3 /* Base */,
+				D99D441F1FDDA424007323FA /* fr */,
+				D99D44241FDDA431007323FA /* ru */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D99D440A1FDD652A007323FA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D99D44091FDD652A007323FA /* Base */,
+				D99D441C1FDDA423007323FA /* fr */,
+				D99D44211FDDA430007323FA /* ru */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D99D440D1FDD6545007323FA /* SettingzViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D99D440C1FDD6545007323FA /* Base */,
+				D99D441E1FDDA423007323FA /* fr */,
+				D99D44231FDDA431007323FA /* ru */,
+			);
+			name = SettingzViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		D99D44131FDD65CA007323FA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D99D44171FDD6700007323FA /* Base */,
+				D99D44201FDDA424007323FA /* fr */,
+				D99D44251FDDA431007323FA /* ru */,
+				D99D44261FDDA508007323FA /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D99D44161FDD66EB007323FA /* LoadingTableViewEmptyView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D99D44151FDD66EB007323FA /* Base */,
+				D99D441D1FDDA423007323FA /* fr */,
+				D99D44221FDDA430007323FA /* ru */,
+			);
+			name = LoadingTableViewEmptyView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -439,6 +581,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -496,6 +639,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -544,7 +688,7 @@
 		};
 		D9028EA31FAD4D6A002D64E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BE85DBB90888B9D5B45A1CE /* Pods-Daily Vibes.debug.xcconfig */;
+			baseConfigurationReference = 6E60AF11ADB618FF5099E070 /* Pods-Daily Vibes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -560,7 +704,7 @@
 		};
 		D9028EA41FAD4D6A002D64E3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 986C52008905D82A602A2D6A /* Pods-Daily Vibes.release.xcconfig */;
+			baseConfigurationReference = 667650383722341A3C9CC8A6 /* Pods-Daily Vibes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

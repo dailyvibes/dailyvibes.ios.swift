@@ -1,0 +1,55 @@
+/*
+ Localizable.strings
+ Daily Vibes
+ 
+ Created by Alex Kluew on 2017-12-10.
+ Copyright © 2017 Alex Kluew. All rights reserved.
+ */
+
+// General Actions
+"Done" = "Done";
+"Cancel" = "Cancel";
+"Archive" = "Archive";
+"Delete" = "Delete";
+"Inbox" = "Inbox";
+"Save" = "Save";
+
+// Tab labels
+"Home" = "Home";
+"Add" = "Add";
+"Settings" = "Settings";
+"Progress" = "Progress";
+
+// Main table Actions
+// Main todo item actions
+"Mark this task as done?" = "Mark this task as done?";
+"This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over." = "This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over.";
+"Yes, Mark this as Done" = "Yes, Mark this as Done";
+"Are you sure?" = "Are you sure?";
+"You're about to delete forever" = "You're about to delete forever";
+"Yes, Delete Forever." = "Yes, Delete Forever.";
+
+// Todo Item Modification Screen
+"Add a to do" = "Add a to do";
+"Details" = "Details";
+"Tags" = "Tags";
+"new tag" = "new tag";
+"view tags" = "view tags";
+"How do you feel?" = "How do you feel?";
+"What would you like to do?" = "What would you like to do?";
+"Date" = "Date";
+
+// Tags Modification Screen
+"Create a new tag or use one below" = "Create a new tag or use one below";
+
+// Empty Screen
+"Your list is currently empty" = "Your list is currently empty";
+"You can add a new to-do to get started" = "You can add a new to-do to get started";
+
+// Settings
+"About" = "About";
+"Support" = "Support";
+"Acknowledgement" = "Acknowledgement";
+"Language" = "Language";
+"Made in Toronto" = "🍁 Made in Toronto 🇨🇦";
+"English" = "English";

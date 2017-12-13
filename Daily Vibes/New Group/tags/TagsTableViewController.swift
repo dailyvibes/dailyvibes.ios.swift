@@ -34,6 +34,11 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
     private var fetchedResultsController: NSFetchedResultsController<Tag>!
     private var moc: NSManagedObjectContext?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = NSLocalizedString("Tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Tags **", comment: "")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,9 +52,9 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
     }
     
     // MARK: - configure func
-    func configure(todoItemSettingsData data: TodoItemSettingsData,in managedObjectContext: NSManagedObjectContext) {
+    func configure(todoItemSettingsData data: TodoItemSettingsData) {
         self.todoItemSettingsData = data
-        self.moc = managedObjectContext
+        self.moc = container?.viewContext
     }
 
     // MARK: - Table view data source
@@ -86,7 +91,7 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
                 cell.textLabel?.text = tag.label
                 if data.contains(tag: tag) {
                     cell.accessoryType = .checkmark
-                    cell.tintColor = .orange
+//                    cell.tintColor = .orange
                 } else {
                     cell.accessoryType = .none
                 }
@@ -113,14 +118,15 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
                 
                 guard let data = todoItemSettingsData else { fatalError("should have todoItemSettingsData by here") }
                 
-                if let context = moc {
-                    do {
-                        try context.save()
-                    } catch {
-                        context.rollback()
-                        fatalError("textFieldDidEndEditing failed")
-                    }
-                }
+                // TODO: REMOVE
+//                if let context = moc {
+//                    do {
+//                        try context.save()
+//                    } catch {
+//                        context.rollback()
+//                        fatalError("error: \(error)")
+//                    }
+//                }
                 
                 guard data.addOrRemove(this: tag) else {
                     fatalError("should have processed data")
@@ -203,6 +209,9 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
                     try context.save()
                     clearTextfield(at: textField)
                 } catch {
+                    let fetchError = error as NSError
+                    print("Unable to Perform Fetch Request")
+                    print("\(fetchError), \(fetchError.localizedDescription)")
                     context.rollback()
                     fatalError("textFieldDidEndEditing failed")
                 }

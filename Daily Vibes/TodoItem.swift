@@ -141,4 +141,18 @@ extension Date {
     var isInThePast: Bool {
         return self < Date()
     }
+    
+    func makeDayPredicate(dateField date:String) -> NSPredicate {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
+        components.hour = 00
+        components.minute = 00
+        components.second = 00
+        let startDate = calendar.date(from: components)
+        components.hour = 23
+        components.minute = 59
+        components.second = 59
+        let endDate = calendar.date(from: components)
+        return NSPredicate(format: "%@ >= %@ AND %@ =< %@", argumentArray: [date, startDate!, date, endDate!])
+    }
 }

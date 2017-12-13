@@ -55,6 +55,8 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="cns-mE-oCS"/>
             <connections>
+                <outlet property="emptyListHeader" destination="XQB-Js-uXh" id="SZN-Dc-wGQ"/>
+                <outlet property="emptyListMainText" destination="zqR-nh-nNy" id="bW3-2Q-ibd"/>
                 <outlet property="view" destination="osa-uo-2hR" id="PqN-Zr-5hS"/>
             </connections>
         </view>

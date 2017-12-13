@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    
     // MARK: Properties
     private var todoItem: TodoItem?
     private var todoItemSettingsData: TodoItemSettingsData?
@@ -20,6 +21,8 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
     // MARK: Outlets
     @IBOutlet private weak var todoItemTextFieldCell: NewTodoItemTableViewCell!
     @IBOutlet private weak var tagsCell: UITableViewCell!
+    @IBOutlet private weak var doneCellLabel: UILabel!
+    @IBOutlet private weak var cancelButton: UIBarButtonItem!
     
     @IBOutlet private weak var todoItemTextView: UITextView!
     @IBOutlet private weak var yellowBtn: UIButton!
@@ -58,6 +61,15 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
     
     private var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     private var moc: NSManagedObjectContext?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tagsCell.textLabel?.text = NSLocalizedString("Tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Tags **", comment: "")
+        doneCellLabel?.text = NSLocalizedString("Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done **", comment: "")
+        completionDateLabelCell.textLabel?.text = NSLocalizedString("Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Date **", comment: "")
+        emotionPickerLabelCell.textLabel?.text = NSLocalizedString("How do you feel?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND How do you feel? **", comment: "")
+    }
     
     override func viewDidLoad() {
         // good place to init and setup objects used in viewController
@@ -108,7 +120,8 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
     }
     
     func setData(toProcess todoItem: TodoItem?, inContext context: NSManagedObjectContext?) {
-        self.moc = context
+//        self.moc = context
+        self.moc = container?.viewContext
         self.todoItem = todoItem
     }
     
@@ -131,13 +144,19 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         
         if sender.isOn && !data.wasCompleted() {
             // TODO: Remove this duplication
-            let alert = UIAlertController(title: "Mark this task as done?", message: "This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes, Mark this as Done", comment: "Default action"), style: .destructive, handler: { _ in
+            
+            let doneAlertTitle = NSLocalizedString("Mark this task as done?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Mark this task as done? ***", comment: "")
+            let doneAlertMessage = NSLocalizedString("This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over.", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over. ***", comment: "")
+            let doneAlertConfirmation = NSLocalizedString("Yes, Mark this as Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Yes, Mark this as Done ***", comment: "")
+            let doneAlertCancel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+            
+            let alert = UIAlertController(title: doneAlertTitle, message: doneAlertMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .destructive, handler: { _ in
                 guard data.markCompleted(with: self.emotionPickerLabelCell?.detailTextLabel?.text) else {
                     fatalError("should return always true")
                 }
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default cancel action"), style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: doneAlertCancel, style: .default, handler: { _ in
                 sender.isOn = false
             }))
             self.present(alert, animated: true, completion: nil)
@@ -186,7 +205,7 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
             guard let tagsTVC = segue.destination as? TagsTableViewController else {
                 fatalError("wasn't a TagsTableViewController segue")
             }
-            tagsTVC.configure(todoItemSettingsData: data, in: moc!)
+            tagsTVC.configure(todoItemSettingsData: data)
         default:
             fatalError("Should not be here")
         }
@@ -335,9 +354,9 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
             let tagsText: String?
             
             if let result = data.holdingAnyTags() as Bool?, result {
-                tagsText = "view tags"
+                tagsText = NSLocalizedString("view tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND view tags **", comment: "")
             } else {
-                tagsText = "new tag"
+                tagsText = NSLocalizedString("new tag", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND new tag **", comment: "")
             }
             
             cell.detailTextLabel?.tintColor = .black
@@ -402,6 +421,8 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
             print("~~~ todo exists ~~~")
             todoItemSettingsData = TodoItemSettingsData.init(for: todoItem!, in: tableView)
         } else {
+            // TODO: fix problem with tags not working
+            
             // a new to do which we need to create
             print("~~~ create a new todo ~~~~")
             
@@ -410,8 +431,7 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
             }
             
             self.moc = _moc
-            let _todoItem = TodoItem.createTodoItem(in: moc!)
-            todoItemSettingsData = TodoItemSettingsData.init(for: _todoItem, in: tableView)
+            todoItemSettingsData = TodoItemSettingsData.init(for: nil, in: tableView)
         }
         guard let data = todoItemSettingsData as TodoItemSettingsData? else {
             fatalError("todoItemSettingsData should be set by now")
@@ -421,7 +441,7 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
             // handle already created to do Item
             
             todoItemTextView.text = data.getTodoText()
-            navigationItem.title = "Details"
+            navigationItem.title = NSLocalizedString("Details", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Details **", comment: "")
             showCompletedCell = true
             
             if data.wasCompleted() {
@@ -443,6 +463,7 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
             completionDateLabelCell?.detailTextLabel?.text = strDate
         } else {
             // a new to do
+            navigationItem.title = NSLocalizedString("Add a to do", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Add a to do **", comment: "")
             todoItemTextView.text = data.getTodoPlaceholderText()
             todoItemTextView.textColor = .gray
             wasCompletedSwitch.isEnabled = false
@@ -453,9 +474,9 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         let tagsText: String?
         
         if data.holdingAnyTags() {
-            tagsText = "view tags"
+            tagsText = NSLocalizedString("view tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND view tags **", comment: "")
         } else {
-            tagsText = "new tag"
+            tagsText = NSLocalizedString("new tag", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND new tag **", comment: "")
         }
         
         tagsCell.detailTextLabel?.tintColor = .black

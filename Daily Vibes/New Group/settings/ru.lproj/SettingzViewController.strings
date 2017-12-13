@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "English"; ObjectID = "8qV-Ty-MzU"; */
+"8qV-Ty-MzU.text" = "English";
+
+/* Class = "UILabel"; text = "Acknowledgement"; ObjectID = "F9t-gc-7jK"; */
+"F9t-gc-7jK.text" = "Acknowledgement";
+
+/* Class = "UILabel"; text = "Support"; ObjectID = "Odh-Db-Ura"; */
+"Odh-Db-Ura.text" = "Support";
+
+/* Class = "UILabel"; text = "🍁 Made in Toronto 🇨🇦"; ObjectID = "PZl-9j-WJa"; */
+"PZl-9j-WJa.text" = "🍁 Made in Toronto 🇨🇦";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "WZo-ea-8Ta"; */
+"WZo-ea-8Ta.text" = "About";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "hdw-9u-OgY"; */
+"hdw-9u-OgY.text" = "Language";
+
+/* Class = "UITableViewController"; title = "SettingsViewController"; ObjectID = "kvH-uq-xI1"; */
+"kvH-uq-xI1.title" = "SettingsViewController";

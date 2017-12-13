@@ -22,6 +22,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     private var inArchiveView: Bool = false
     
     private var segmentPosition = SegmentOption.inbox
+    @IBOutlet private weak var segmentController: UISegmentedControl!
     
     var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     var fetchedResultsController: NSFetchedResultsController<TodoItem>!
@@ -29,6 +30,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configLocalization()
         
         initializeFetchedResultsController(with: segmentPosition)
         
@@ -36,10 +38,19 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
         hideOrShowTableView()
-        
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    private func configLocalization() {
+        setupSegmentControllerLocalization()
+    }
+    
+    fileprivate func setupSegmentControllerLocalization() {
+        let inboxLabel = NSLocalizedString("Inbox", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Inbox ***", comment: "")
+        let doneLabel = NSLocalizedString("Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+        let archiveLabel = NSLocalizedString("Archive", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Archive ***", comment: "")
+        segmentController.setTitle(inboxLabel, forSegmentAt: 0)
+        segmentController.setTitle(doneLabel, forSegmentAt: 1)
+        segmentController.setTitle(archiveLabel, forSegmentAt: 2)
     }
 
     // MARK: - Table view data source
@@ -119,6 +130,8 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         
         switch(segue.identifier ?? "") {
         case "AddTodoItem":
+            // TODO: REMOVE
+            // this and move it to the TAB BAR action handler or somewhere else
             guard let navigationViewController = segue.destination as? UINavigationController else {
                 fatalError("should be UINavigationController for the AddTodoItem segue")
             }
@@ -140,6 +153,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             
             todoItemDetailViewController.setData(toProcess: _todoItem, inContext: moc)
         case "ShowSettings":
+            // TODO: REMOVE
             print("Going to settings")
         default:
             fatalError("Unexpected segue identifier: \(String(describing: segue.identifier))")
@@ -192,28 +206,36 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         var actions = [UIContextualAction]()
         
         if !_todo.completed && !_todo.isArchived {
-            let closeAction = UIContextualAction(style: .normal, title:  "Done", handler: { (ac:UIContextualAction, view:UIView, success:@escaping (Bool) -> Void) in
+            let doneLabel = NSLocalizedString("Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+            
+            let closeAction = UIContextualAction(style: .normal, title: doneLabel, handler: { (ac:UIContextualAction, view:UIView, success:@escaping (Bool) -> Void) in
+                let doneAlertTitle = NSLocalizedString("Mark this task as done?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Mark this task as done? ***", comment: "")
+                let doneAlertMessage = NSLocalizedString("This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over.", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over. ***", comment: "")
+                let doneAlertConfirmation = NSLocalizedString("Yes, Mark this as Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Yes, Mark this as Done ***", comment: "")
+                let doneAlertCancel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
                 
-                let alert = UIAlertController(title: "Mark this task as done?", message: "This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Yes, Mark this as Done", comment: "Default action"), style: .destructive, handler: { _ in
+                let alert = UIAlertController(title: doneAlertTitle, message: doneAlertMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .destructive, handler: { _ in
                     do {
                         _todo.markCompleted()
                         try self.moc!.save()
                         self.tableView.reloadData()
+                        guard StreakManager.process(item: _todo) else {
+                            fatalError("StreakManager should not fail")
+                        }
                     } catch {
                         self.moc!.rollback()
                         fatalError("Error \(error) in leadingSwipeActionsConfigurationForRowAt")
                     }
                 }))
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default cancel action"), style: .default, handler: { _ in
+                alert.addAction(UIAlertAction(title: doneAlertCancel, style: .default, handler: { _ in
                     success(true)
                 }))
                 self.present(alert, animated: true, completion: nil)
             })
             
             actions.append(closeAction)
-            //        closeAction.image = UIImage(named: "checkmark")
-            closeAction.title = "Done"
+            closeAction.title = doneLabel
             closeAction.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         }
         
@@ -240,12 +262,17 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     private func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
         if let removeable = fetchedResultsController?.object(at: indexPath), let context = container?.viewContext {
             
+            let deleteLabel = NSLocalizedString("Delete", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Delete ***", comment: "")
+            let deleteAlertTitle = NSLocalizedString("Are you sure?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Are you sure? ***", comment: "")
+            let deleteAlertMessage = NSLocalizedString("You're about to delete forever", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND You're about to delete forever ***", comment: "")
+            let deleteAlertConfirmation = NSLocalizedString("Yes, Delete Forever.", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Yes, Delete Forever. ***", comment: "")
+            
             let action = UIContextualAction(style: .normal, title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: @escaping (Bool) -> Void) in
                 
-                let defaultLabelText = "this item"
-                let todoLabel = "\"\(removeable.todoItemText ?? defaultLabelText)\""
-                let alertController = UIAlertController(title: "Are you sure?", message: "You're about to delete \(todoLabel) forever", preferredStyle: .actionSheet)
-                let delete = UIAlertAction(title: "Yes, Delete Forever.", style: .destructive, handler: { action in
+//                let defaultLabelText = "this item"
+//                let todoLabel = "\"\(removeable.todoItemText ?? defaultLabelText)\""
+                let alertController = UIAlertController(title: deleteAlertTitle, message: deleteAlertMessage, preferredStyle: .actionSheet)
+                let delete = UIAlertAction(title: deleteAlertConfirmation, style: .destructive, handler: { action in
                     
                     do {
                         context.delete(removeable)
@@ -258,7 +285,8 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                     }
                 })
                 
-                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+                let cancelLabel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+                let cancel = UIAlertAction(title: cancelLabel, style: .cancel, handler: { action in
                     
                     //this is optional, it makes the delete button go away on the cell
                     context.rollback()
@@ -270,7 +298,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                 alertController.addAction(cancel)
                 self.present(alertController, animated: true, completion: nil)
             }
-            action.title = "Delete"
+            action.title = deleteLabel
             action.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
             return action
         } else {
@@ -284,8 +312,9 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             
             if !_todoItem.isArchived {
                 // if item is not archived... return action for user to archive
+                let archiveLabel = NSLocalizedString("Archive", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Archive ***", comment: "")
                 
-                let action = UIContextualAction(style: .normal, title: "Archive") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+                let action = UIContextualAction(style: .normal, title: archiveLabel) { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
                     if _todoItem.archive() {
                         do {
                             try context.save()
@@ -300,7 +329,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                 }
                 
                 // 7
-                action.title = "Archive"
+                action.title = archiveLabel
                 action.backgroundColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
                 return action
             } else {

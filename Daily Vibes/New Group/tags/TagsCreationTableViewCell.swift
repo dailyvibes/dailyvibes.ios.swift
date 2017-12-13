@@ -15,6 +15,7 @@ class TagsCreationTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        tagLabeler.placeholder = NSLocalizedString("Create a new tag or use one below", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Create a new tag or use one below **", comment: "")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

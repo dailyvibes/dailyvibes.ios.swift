@@ -10,14 +10,43 @@ import Foundation
 import CoreData
 import UIKit
 
-fileprivate struct Data {
+fileprivate class TagsData {
     // used to hold the data for the screen...
     // no point in saving the data if someone clicks cancel
-    private var string: String?
-    private var createdAt: Date?
-    private var updatedAt: Date?
-    private var completedAt: Date?
-    private var isNew: Bool = true
+    var uuid: UUID?
+    var string: String?
+    var createdAt: Date?
+    var updatedAt: Date?
+    var completedAt: Date?
+    var archivedAt: Date?
+    var isNew: Bool = true
+    var isCompleted: Bool = false
+    var isArchived: Bool = false
+    
+    var createdAtEmotion: String?
+    var updatedAtEmotion: String?
+    var completedAtEmotion: String?
+    
+    init(dataFor todoItem:TodoItem?) {
+        if let todoItem = todoItem as TodoItem? {
+            self.uuid = todoItem.id
+            self.string = todoItem.todoItemText
+            self.createdAt = todoItem.createdAt
+            self.updatedAt = todoItem.updatedAt
+            self.completedAt = todoItem.completedAt
+            self.archivedAt = todoItem.archivedAt
+            self.isNew = todoItem.isNew
+            self.isCompleted = todoItem.completed
+            self.isArchived = todoItem.isArchived
+            self.createdAtEmotion = todoItem.createdAtEmotion
+            self.updatedAtEmotion = todoItem.updatedAtEmotion
+            self.completedAtEmotion = todoItem.completedAtEmotion
+        } else {
+            self.uuid = UUID.init()
+            self.createdAt = Date()
+            self.updatedAt = Date()
+        }
+    }
 }
 
 class TodoItemSettingsData {
@@ -28,20 +57,31 @@ class TodoItemSettingsData {
     private let tableView: UITableView?
     private let tagsCellIndexPath = IndexPath(row: 1, section: 0)
     
-    private let taskPlaceholderText = "What would you like to do?"
+    private let taskPlaceholderText = NSLocalizedString("What would you like to do?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND What would you like to do? **", comment: "")
     
-    private let data = Data()
+    private let data: TagsData?
     
-    init(for todoItem: TodoItem,in tableView: UITableView) {
-        self.todoItem = todoItem
-        self.tableView = tableView
-        if (todoItem.tagz?.count)! > 0 {
-            guard let _tags = todoItem.tagz?.allObjects as? [Tag] else {
-                fatalError("there should be tags... since count is more than 0")
+    init(for todoItem: TodoItem?,in tableView: UITableView) {
+        if let todoItem = todoItem as TodoItem? {
+            // existing todo task
+            self.data = TagsData(dataFor: todoItem)
+            self.todoItem = todoItem
+            self.tableView = tableView
+            
+            let tagsCounter = todoItem.tagz?.count ?? -1
+            
+            if tagsCounter > 0 {
+                guard let _tags = todoItem.tagz?.allObjects as? [Tag] else {
+                    fatalError("there should be tags... since count is more than 0")
+                }
+                self.tags = _tags
             }
-            self.tags = _tags
+        } else {
+            // brand new todo task
+            self.todoItem = nil
+            self.tableView = tableView
+            self.data = TagsData(dataFor: nil)
         }
-        print("~~~ created todoitemsettingsdata ~~~")
     }
     
     fileprivate func processTags() {
@@ -111,6 +151,12 @@ class TodoItemSettingsData {
             _todo.isNew = false
             
             try context.save()
+            
+            if _todo.completed {
+                guard StreakManager.process(item: _todo) else {
+                    fatalError("StreakManager should not fail")
+                }
+            }
             
             return true
         } catch {
@@ -232,10 +278,10 @@ class TodoItemSettingsData {
     }
     
     func isNewTodo() -> Bool {
-        guard let result = todoItem?.isNew else {
-            fatalError("isNewTodo")
-        }
-        return result
+        //        guard let result = todoItem?.isNew else {
+        //            fatalError("isNewTodo")
+        //        }
+        return data?.isNew ?? true
     }
     
     func getTodoCompletedAt() -> Date? {
@@ -261,7 +307,8 @@ class TodoItemSettingsData {
     
     func getTodoText() -> String {
         
-        return todoItem!.todoItemText ?? ""
+//        return todoItem!.todoItemText ?? ""
+        return data?.string ?? ""
     }
     
     func getTodoCompletedEmotion() -> String? {
