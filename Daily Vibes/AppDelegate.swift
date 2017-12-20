@@ -15,6 +15,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let defaults = UserDefaults.standard
+        
+        let openingCounter = defaults.integer(forKey: "hasRun")
+        defaults.set(openingCounter + 1, forKey: "hasRun")
+        
+        if !defaults.bool(forKey: "hasLaunchedOnce") {
+            defaults.set(true, forKey: "hasLaunchedOnce")
+            defaults.set(Date(), forKey: "FirstRun")
+            defaults.set(Date(), forKey: "LastRun")
+            
+            defaults.set(true, forKey: "todo.showOnDoneAlert")
+            defaults.set(true, forKey: "todo.showOnDeleteAlert")
+            
+            defaults.synchronize()
+        } else {
+            defaults.set(Date(), forKey: "LastRun")
+            
+            defaults.synchronize()
+        }
+        
+//        http://d.pr/97Hx8g
+//        if(!NSUserDefaults.standardUserDefaults().boolForKey("firstlaunch1.0")){
+//            //Put any code here and it will be executed only once.
+//            println("Is a first launch")
+//            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstlaunch1.0")
+//            NSUserDefaults.standardUserDefaults().synchronize();
+//        }
+        
+//        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+//        if launchedBefore {
+//        print("Has launched before")
+//        } else {
+//        print("First launch")
+//        UserDefaults.standard.set(true, forKey: "launchedBefore")
+//        }
+//        
         // Override point for customization after application launch.
         return true
     }

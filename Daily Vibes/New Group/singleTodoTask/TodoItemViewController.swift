@@ -11,6 +11,13 @@ import CoreData
 
 class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    // TODO: REMOVE THESE
+    @IBOutlet private weak var createdAtDateLabelCell: UITableViewCell!
+    @IBOutlet private weak var createdAtDatePicker: UIDatePicker!
+    @IBOutlet private weak var completedAtDateLabelCell: UITableViewCell!
+    @IBOutlet private weak var archivedAtDateLabelCell: UITableViewCell!
+    
+    
     // MARK: Properties
     private var todoItem: TodoItem?
     private var todoItemSettingsData: TodoItemSettingsData?
@@ -92,7 +99,7 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         dateFormatter?.dateStyle = DateFormatter.Style.short
         dateFormatter?.timeStyle = DateFormatter.Style.short
         
-//        print("about to call performTodoItemSetup")
+        //        print("about to call performTodoItemSetup")
         performTodoItemSetup()
         updateSaveButtonState()
     }
@@ -100,29 +107,58 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
-//            fatalError("todoItemSettingsData should be set by now")
-//        }
+        //        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
+        //            fatalError("todoItemSettingsData should be set by now")
+        //        }
         
-//        if data.isNewTodo() {
-//            todoItemTextView.becomeFirstResponder()
-//        }
+        //        if data.isNewTodo() {
+        //            todoItemTextView.becomeFirstResponder()
+        //        }
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-//        performTodoItemSetup()
+        //        performTodoItemSetup()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func setData(toProcess todoItem: TodoItem?, inContext context: NSManagedObjectContext?) {
-//        self.moc = context
+        //        self.moc = context
         self.moc = container?.viewContext
         self.todoItem = todoItem
+    }
+    
+    @IBAction func createdAtDateChanged(_ sender: UIDatePicker) {
+        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
+            fatalError("should be set by now")
+        }
+        guard data.setCreatedAt(date: sender.date) else { fatalError("should not fail") }
+        createdAtDateLabelCell?.detailTextLabel?.text = dateFormatter?.string(from: sender.date)
+    }
+    
+    @IBAction func completedAtDateChanged(_ sender: UIDatePicker) {
+        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
+            fatalError("should be set by now")
+        }
+        guard data.setCompletedAtDate(date: sender.date) else {
+            fatalError("should not fail")
+        }
+        completedAtDateLabelCell?.detailTextLabel?.text = dateFormatter?.string(from: sender.date)
+    }
+    
+    @IBAction func archivedAtDateChanged(_ sender: UIDatePicker) {
+        fatalError("not implemented yet")
+        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
+            fatalError("should be set by now")
+        }
+        guard data.setArchivedAt(date: sender.date) else {
+            fatalError("should not fail")
+        }
+        archivedAtDateLabelCell?.detailTextLabel?.text = dateFormatter?.string(from: sender.date)
     }
     
     // MARK: Actions
@@ -150,16 +186,26 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
             let doneAlertConfirmation = NSLocalizedString("Yes, Mark this as Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Yes, Mark this as Done ***", comment: "")
             let doneAlertCancel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
             
-            let alert = UIAlertController(title: doneAlertTitle, message: doneAlertMessage, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .destructive, handler: { _ in
+            let defaults = UserDefaults.standard
+            let showDoneAlert = defaults.bool(forKey: "todo.showOnDoneAlert")
+            
+            if showDoneAlert {
+                let alert = UIAlertController(title: doneAlertTitle, message: doneAlertMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .destructive, handler: { _ in
+                    guard data.markCompleted(with: self.emotionPickerLabelCell?.detailTextLabel?.text) else {
+                        fatalError("should return always true")
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: doneAlertCancel, style: .default, handler: { _ in
+                    sender.isOn = false
+                }))
+                self.present(alert, animated: true, completion: nil)
+            } else {
                 guard data.markCompleted(with: self.emotionPickerLabelCell?.detailTextLabel?.text) else {
                     fatalError("should return always true")
                 }
-            }))
-            alert.addAction(UIAlertAction(title: doneAlertCancel, style: .default, handler: { _ in
-                sender.isOn = false
-            }))
-            self.present(alert, animated: true, completion: nil)
+                sender.isOn = true
+            }
         } else {
             sender.isOn = true
         }
@@ -167,10 +213,10 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
     
     // MARK: Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-//        let isPresentingInADDMode = presentingViewController is UINavigationController
+        //        let isPresentingInADDMode = presentingViewController is UINavigationController
         let isPresentingInADDMode = presentingViewController is DailyVibesTabBarViewController
         
-//        print("var presentingViewController: \(presentingViewController)")
+        //        print("var presentingViewController: \(presentingViewController)")
         
         guard let data = todoItemSettingsData else {
             fatalError("todoItemSettingsData should be set by now")

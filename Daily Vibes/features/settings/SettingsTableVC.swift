@@ -12,6 +12,7 @@ class SettingsTableVC: UITableViewController {
     
     // MARK: Properties
     @IBOutlet private weak var madeInTorontoLabel: UILabel!
+    @IBOutlet private weak var userPreferencesCell: UITableViewCell!
     @IBOutlet private weak var aboutCell: UITableViewCell!
     @IBOutlet private weak var supportCell: UITableViewCell!
     @IBOutlet private weak var acknowledgementCell: UITableViewCell!
@@ -19,6 +20,7 @@ class SettingsTableVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        userPreferencesCell.textLabel?.text = NSLocalizedString("Notifications", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Preferences **", comment: "")
         aboutCell.textLabel?.text = NSLocalizedString("About", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND About **", comment: "")
         supportCell.textLabel?.text = NSLocalizedString("Support", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Support **", comment: "")
         acknowledgementCell.textLabel?.text = NSLocalizedString("Acknowledgement", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Acknowledgement **", comment: "")

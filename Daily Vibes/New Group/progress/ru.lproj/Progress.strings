@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "6kn-sZ-X5P"; */
+"6kn-sZ-X5P.text" = "Detail";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PTI-jF-Fhi"; */
+"PTI-jF-Fhi.text" = "Label";
+
+/* Class = "UIViewController"; title = "ProgressVC"; ObjectID = "Qfv-7p-4hR"; */
+"Qfv-7p-4hR.title" = "ProgressVC";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fQ4-vG-jO9"; */
+"fQ4-vG-jO9.text" = "Label";
+
+/* Class = "UILabel"; text = "Done"; ObjectID = "koK-x2-75y"; */
+"koK-x2-75y.text" = "Done";
+
+/* Class = "UILabel"; text = "Longest Streak"; ObjectID = "n8A-rI-XfV"; */
+"n8A-rI-XfV.text" = "Longest Streak";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "s2o-z3-Y8z"; */
+"s2o-z3-Y8z.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ud1-Vw-Uc4"; */
+"ud1-Vw-Uc4.text" = "Title";
+
+/* Class = "UILabel"; text = "Days in a row"; ObjectID = "xBC-Ko-u9n"; */
+"xBC-Ko-u9n.text" = "Days in a row";

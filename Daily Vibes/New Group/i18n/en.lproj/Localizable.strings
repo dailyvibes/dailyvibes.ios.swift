@@ -28,6 +28,8 @@
 "Are you sure?" = "Are you sure?";
 "You're about to delete forever" = "You're about to delete forever";
 "Yes, Delete Forever." = "Yes, Delete Forever.";
+"Today" = "Today";
+"Yesterday" = "Yesterday";
 
 // Todo Item Modification Screen
 "Add a to do" = "Add a to do";
@@ -46,6 +48,9 @@
 "Your list is currently empty" = "Your list is currently empty";
 "You can add a new to-do to get started" = "You can add a new to-do to get started";
 
+// Progress Screen
+"Daily task completion history" = "Daily task completion history";
+
 // Settings
 "About" = "About";
 "Support" = "Support";
@@ -53,3 +58,7 @@
 "Language" = "Language";
 "Made in Toronto" = "🍁 Made in Toronto 🇨🇦";
 "English" = "English";
+"Notifications" = "Notifications";
+"Alert" = "Alert";
+"Done Notifications" = "Done Notifications";
+"Delete Notifications" = "Delete Notifications";

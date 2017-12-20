@@ -85,7 +85,8 @@ class StreakManager {
                     // add current todo to the streak
                 } else {
                     // time to create a new streak
-                    // set recordDaysInARow = 1
+                    // set recordDaysInARow = 1 ... nope ..
+                    // to previous record
                     // set currentStreakDay to 1
                     //
                     // add current todo to the streak
@@ -103,9 +104,20 @@ class StreakManager {
                         _newStreak.updatedAt = Date()
                         _newStreak.addToTodos(todoItem!)
                         _newStreak.currentDaysInARow = 1
-                        _newStreak.recordDaysInARow = 1
+                        _newStreak.recordDaysInARow = streak.recordDaysInARow
                         _newStreak.tasksCompletedToday = 1
                         _newStreak.tasksCompletedTotal = streak.tasksCompletedTotal + 1
+                        
+                        ////
+//                        _newStreak.tasksCompletedTotal = streak.tasksCompletedTotal + 1
+//                        _newStreak.currentDaysInARow = streak.currentDaysInARow + 1
+                        
+//                        if streak.recordDaysInARow <= _newStreak.currentDaysInARow {
+//                            _newStreak.recordDaysInARow = _newStreak.currentDaysInARow
+//                        } else {
+//                            fatalError("this should not happen")
+//                        }
+                        ////
                         
                         try context.save()
                         return true

@@ -17,17 +17,26 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         case done
     }
     
-    // MARK: Properties
-    private var commitPredicate: NSPredicate?
-    private var inArchiveView: Bool = false
+    private enum FilteredOption {
+        case none
+        case byTag
+    }
     
+    private struct FiltrationData {
+        var tag: Tag?
+    }
+    
+    // MARK: Properties
     private var segmentPosition = SegmentOption.inbox
+    private var filteredOption = FilteredOption.none
+    private var filtrationData = FiltrationData()
+    
     @IBOutlet private weak var segmentController: UISegmentedControl!
     
-    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
-    var fetchedResultsController: NSFetchedResultsController<TodoItem>!
-    var moc: NSManagedObjectContext?
-
+    private var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    private var fetchedResultsController: NSFetchedResultsController<TodoItem>!
+    private var moc: NSManagedObjectContext?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configLocalization()
@@ -44,7 +53,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         setupSegmentControllerLocalization()
     }
     
-    fileprivate func setupSegmentControllerLocalization() {
+    private func setupSegmentControllerLocalization() {
         let inboxLabel = NSLocalizedString("Inbox", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Inbox ***", comment: "")
         let doneLabel = NSLocalizedString("Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
         let archiveLabel = NSLocalizedString("Archive", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Archive ***", comment: "")
@@ -52,13 +61,13 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         segmentController.setTitle(doneLabel, forSegmentAt: 1)
         segmentController.setTitle(archiveLabel, forSegmentAt: 2)
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController?.sections?.count ?? 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController?.sections, sections.count > 0 {
             return sections[section].numberOfObjects
@@ -92,7 +101,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                 cell.todoItemLabel.text = todoItem.todoItemText ?? "No Text"
                 cell.todoItemLabel.textColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
                 cell.emotionsImageView.image = UIImage(named: "uncheckedCheckbox")
-//                cell.emotionsImageView.image = #imageLiteral(resourceName: "uncheckedFilledinCircle")
+                //                cell.emotionsImageView.image = #imageLiteral(resourceName: "uncheckedFilledinCircle")
                 let dateString = dateFormatter.string(from: todoItem.createdAt!)
                 cell.todoItemTagsLabel.text = "Created \(dateString)"
             }
@@ -100,30 +109,14 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         
         return cell
     }
-
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
-    // Override to support editing the table view.
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // Delete the row from the data source
-//            if let removeable = fetchedResultsController?.object(at: indexPath), let context = container?.viewContext {
-//                context.delete(removeable)
-//                do {
-//                    try context.save()
-//                } catch {
-//                    context.rollback()
-//                    fatalError("Could not remove because of error: \(error)")
-//                }
-//            }
-//        }
-//    }
-
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -163,9 +156,11 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let sections = fetchedResultsController?.sections, sections.count > 0 {
             let sectionInfo = sections[section]
+            let sectionName = sectionInfo.name
+            let numericSection = Int(sectionName)
             
             if let todoItem: TodoItem = sectionInfo.objects?.first as? TodoItem {
-                return sectionHeaderHelper(for: todoItem)
+                return sectionHeaderHelper(for: todoItem, numericSection: numericSection)
             } else {
                 return nil
             }
@@ -174,20 +169,99 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         }
     }
     
-    private func sectionHeaderHelper(for item:TodoItem) -> String? {
+    private func sectionHeaderHelper(for item:TodoItem, numericSection section: Int?) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE d yyyy"
         
         switch segmentPosition {
         case .inbox:
-            let date = dateFormatter.string(from: item.createdAt!)
-            return "\(date)"
+            guard let numericSection = section else { return "Nothing" }
+            
+            //            let date = dateFormatter.string(from: item.createdAt!)
+            let year = numericSection / 10000
+            let month = (numericSection / 100) % 100
+            let day = numericSection % 100
+            
+            // Reconstruct the date from these components.
+            var components = DateComponents()
+            components.calendar = Calendar.current
+            components.day = day
+            components.month = month
+            components.year = year
+            
+            let todayString = NSLocalizedString("Today", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Today ***", comment: "")
+            let yesterdayString = NSLocalizedString("Yesterday", tableName: "Localizable", bundle: .main, value: "*** NOT FOUND YESTERDAY ***", comment: "")
+            
+            if let date = components.date {
+                if Calendar.current.isDateInToday(date) {
+                    return todayString
+                }
+                if Calendar.current.isDateInYesterday(date) {
+                    return yesterdayString
+                }
+                return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
+            }
+            return String()
         case .archived:
-            let date = dateFormatter.string(from: item.archivedAt!)
-            return "\(date)"
+            //            let date = dateFormatter.string(from: item.archivedAt!)
+            //            return "\(date)"
+            guard let numericSection = section else { return "Nothing" }
+            
+            //            let date = dateFormatter.string(from: item.createdAt!)
+            let year = numericSection / 10000
+            let month = (numericSection / 100) % 100
+            let day = numericSection % 100
+            
+            // Reconstruct the date from these components.
+            var components = DateComponents()
+            components.calendar = Calendar.current
+            components.day = day
+            components.month = month
+            components.year = year
+            
+            let todayString = NSLocalizedString("Today", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Today ***", comment: "")
+            let yesterdayString = NSLocalizedString("Yesterday", tableName: "Localizable", bundle: .main, value: "*** NOT FOUND YESTERDAY ***", comment: "")
+            
+            if let date = components.date {
+                if Calendar.current.isDateInToday(date) {
+                    return todayString
+                }
+                if Calendar.current.isDateInYesterday(date) {
+                    return yesterdayString
+                }
+                return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
+            }
+            return String()
         case .done:
-            let date = dateFormatter.string(from: item.completedAt!)
-            return "\(date)"
+            //            let date = dateFormatter.string(from: item.completedAt!)
+            //            return "\(date)"
+            guard let numericSection = section else { return "Nothing" }
+            
+            //            let date = dateFormatter.string(from: item.createdAt!)
+            let year = numericSection / 10000
+            let month = (numericSection / 100) % 100
+            let day = numericSection % 100
+            
+            // Reconstruct the date from these components.
+            var components = DateComponents()
+            components.calendar = Calendar.current
+            components.day = day
+            components.month = month
+            components.year = year
+            
+            let todayString = NSLocalizedString("Today", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Today ***", comment: "")
+            let yesterdayString = NSLocalizedString("Yesterday", tableName: "Localizable", bundle: .main, value: "*** NOT FOUND YESTERDAY ***", comment: "")
+            
+            if let date = components.date {
+                if Calendar.current.isDateInToday(date) {
+                    return todayString
+                }
+                if Calendar.current.isDateInYesterday(date) {
+                    return yesterdayString
+                }
+                return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
+            }
+            return String()
         }
     }
     
@@ -214,8 +288,29 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                 let doneAlertConfirmation = NSLocalizedString("Yes, Mark this as Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Yes, Mark this as Done ***", comment: "")
                 let doneAlertCancel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
                 
-                let alert = UIAlertController(title: doneAlertTitle, message: doneAlertMessage, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .destructive, handler: { _ in
+                let defaults = UserDefaults.standard
+                let showDoneAlert = defaults.bool(forKey: "todo.showOnDoneAlert")
+                
+                if showDoneAlert {
+                    let alert = UIAlertController(title: doneAlertTitle, message: doneAlertMessage, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .destructive, handler: { _ in
+                        do {
+                            _todo.markCompleted()
+                            try self.moc!.save()
+                            self.tableView.reloadData()
+                            guard StreakManager.process(item: _todo) else {
+                                fatalError("StreakManager should not fail")
+                            }
+                        } catch {
+                            self.moc!.rollback()
+                            fatalError("Error \(error) in leadingSwipeActionsConfigurationForRowAt")
+                        }
+                    }))
+                    alert.addAction(UIAlertAction(title: doneAlertCancel, style: .default, handler: { _ in
+                        success(true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
                     do {
                         _todo.markCompleted()
                         try self.moc!.save()
@@ -227,11 +322,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                         self.moc!.rollback()
                         fatalError("Error \(error) in leadingSwipeActionsConfigurationForRowAt")
                     }
-                }))
-                alert.addAction(UIAlertAction(title: doneAlertCancel, style: .default, handler: { _ in
-                    success(true)
-                }))
-                self.present(alert, animated: true, completion: nil)
+                }
             })
             
             actions.append(closeAction)
@@ -269,11 +360,37 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             
             let action = UIContextualAction(style: .normal, title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: @escaping (Bool) -> Void) in
                 
-//                let defaultLabelText = "this item"
-//                let todoLabel = "\"\(removeable.todoItemText ?? defaultLabelText)\""
-                let alertController = UIAlertController(title: deleteAlertTitle, message: deleteAlertMessage, preferredStyle: .actionSheet)
-                let delete = UIAlertAction(title: deleteAlertConfirmation, style: .destructive, handler: { action in
+                let defaults = UserDefaults.standard
+                let showDoneAlert = defaults.bool(forKey: "todo.showOnDeleteAlert")
+                
+                if showDoneAlert {
+                    let alertController = UIAlertController(title: deleteAlertTitle, message: deleteAlertMessage, preferredStyle: .actionSheet)
+                    let delete = UIAlertAction(title: deleteAlertConfirmation, style: .destructive, handler: { action in
+                        
+                        do {
+                            context.delete(removeable)
+                            try context.save()
+                            completionHandler(true)
+                        } catch {
+                            context.rollback()
+                            completionHandler(false)
+                            fatalError("UIAlertAction failed to delete from context")
+                        }
+                    })
                     
+                    let cancelLabel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+                    let cancel = UIAlertAction(title: cancelLabel, style: .cancel, handler: { action in
+                        
+                        //this is optional, it makes the delete button go away on the cell
+                        context.rollback()
+                        completionHandler(true)
+                        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    })
+                    
+                    alertController.addAction(delete)
+                    alertController.addAction(cancel)
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
                     do {
                         context.delete(removeable)
                         try context.save()
@@ -283,20 +400,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                         completionHandler(false)
                         fatalError("UIAlertAction failed to delete from context")
                     }
-                })
-                
-                let cancelLabel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
-                let cancel = UIAlertAction(title: cancelLabel, style: .cancel, handler: { action in
-                    
-                    //this is optional, it makes the delete button go away on the cell
-                    context.rollback()
-                    completionHandler(true)
-                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
-                })
-                
-                alertController.addAction(delete)
-                alertController.addAction(cancel)
-                self.present(alertController, animated: true, completion: nil)
+                }
             }
             action.title = deleteLabel
             action.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
@@ -341,7 +445,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             return UIContextualAction.init()
         }
     }
-
+    
     
     // MARK: - Actions
     @IBAction func segmentedControllerEventHandler(_ sender: UISegmentedControl) {
@@ -429,31 +533,63 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         if let context = container?.viewContext {
             let request = NSFetchRequest<TodoItem>(entityName: "TodoItem")
             
-            switch segmentPosition {
-            case .inbox:
-                // process inbox data
-                request.predicate = NSPredicate(format: "isArchived != true AND completed != true")
-                let createdAt = NSSortDescriptor(key: "createdAt", ascending: false)
-                let createdAtYearDayNumber = NSSortDescriptor(key: "createdAtYearDayNumber", ascending: false)
-                request.sortDescriptors = [createdAt, createdAtYearDayNumber]
-                fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "createdAtYearDayNumber", cacheName: nil)
-                fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
-            case .archived:
-                // process archived data
-                request.predicate = NSPredicate(format: "isArchived = true")
-                let archivedAt = NSSortDescriptor(key: "archivedAt", ascending: false)
-                let archivedAtYearDayNumber = NSSortDescriptor(key: "archivedAtYearDayNumber", ascending: false)
-                request.sortDescriptors = [archivedAt, archivedAtYearDayNumber]
-                fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "archivedAtYearDayNumber", cacheName: nil)
-                fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
-            case .done:
-                //process done data
-                request.predicate = NSPredicate(format: "isArchived != true AND completed = true")
-                let completedAt = NSSortDescriptor(key: "completedAt", ascending: false)
-                let completedAtYearDayNumber = NSSortDescriptor(key: "completedAtYearDayNumber", ascending: false)
-                request.sortDescriptors = [completedAt, completedAtYearDayNumber]
-                fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "completedAtYearDayNumber", cacheName: nil)
-                fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
+            switch filteredOption {
+            case .none:
+                switch segmentPosition {
+                case .inbox:
+                    // process inbox data
+                    request.predicate = NSPredicate(format: "isArchived != true AND completed != true")
+                    let createdAt = NSSortDescriptor(key: "createdAt", ascending: false)
+                    //                let createdAtYearDayNumber = NSSortDescriptor(key: "createdAtYearDayNumber", ascending: false)
+                    //                request.sortDescriptors = [createdAt, createdAtYearDayNumber]
+                    request.sortDescriptors = [createdAt]
+                    fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "inboxDaySectionIdentifier", cacheName: nil)
+                    fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
+                case .archived:
+                    // process archived data
+                    request.predicate = NSPredicate(format: "isArchived = true")
+                    let archivedAt = NSSortDescriptor(key: "archivedAt", ascending: false)
+                    //                let archivedAtYearDayNumber = NSSortDescriptor(key: "archivedAtYearDayNumber", ascending: false)
+                    request.sortDescriptors = [archivedAt]
+                    fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "archivedDaySectionIdentifier", cacheName: nil)
+                    fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
+                case .done:
+                    //process done data
+                    request.predicate = NSPredicate(format: "isArchived != true AND completed = true")
+                    let completedAt = NSSortDescriptor(key: "completedAt", ascending: false)
+                    //                let completedAtYearDayNumber = NSSortDescriptor(key: "completedAtYearDayNumber", ascending: false)
+                    request.sortDescriptors = [completedAt]
+                    fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "doneDaySectionIdentifier", cacheName: nil)
+                    fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
+                }
+            case .byTag:
+                switch segmentPosition {
+                case .inbox:
+                    // process inbox data
+                    request.predicate = NSPredicate(format: "isArchived != true AND completed != true AND tagz.label CONTAINS[cd] %@", (filtrationData.tag?.label)!)
+                    let createdAt = NSSortDescriptor(key: "createdAt", ascending: false)
+                    //                let createdAtYearDayNumber = NSSortDescriptor(key: "createdAtYearDayNumber", ascending: false)
+                    //                request.sortDescriptors = [createdAt, createdAtYearDayNumber]
+                    request.sortDescriptors = [createdAt]
+                    fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "inboxDaySectionIdentifier", cacheName: nil)
+                    fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
+                case .archived:
+                    // process archived data
+                    request.predicate = NSPredicate(format: "isArchived = true AND tagz.label CONTAINS[cd] %@", (filtrationData.tag?.label)!)
+                    let archivedAt = NSSortDescriptor(key: "archivedAt", ascending: false)
+                    //                let archivedAtYearDayNumber = NSSortDescriptor(key: "archivedAtYearDayNumber", ascending: false)
+                    request.sortDescriptors = [archivedAt]
+                    fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "archivedDaySectionIdentifier", cacheName: nil)
+                    fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
+                case .done:
+                    //process done data
+                    request.predicate = NSPredicate(format: "isArchived != true AND completed = true AND tagz.label CONTAINS[cd] %@", (filtrationData.tag?.label)!)
+                    let completedAt = NSSortDescriptor(key: "completedAt", ascending: false)
+                    //                let completedAtYearDayNumber = NSSortDescriptor(key: "completedAtYearDayNumber", ascending: false)
+                    request.sortDescriptors = [completedAt]
+                    fetchedResultsController = NSFetchedResultsController<TodoItem>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "doneDaySectionIdentifier", cacheName: nil)
+                    fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
+                }
             }
             
             
@@ -477,5 +613,12 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             }
             view.hideEmptyView()
         }
+    }
+    
+    func setupTodoItemsTVC(using filter: Tag?) {
+        filteredOption = .byTag
+        filtrationData.tag = filter
+        let navigationBarLabel = filter?.label
+        self.navigationItem.title = navigationBarLabel
     }
 }

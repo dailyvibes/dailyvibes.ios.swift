@@ -16,20 +16,22 @@
 		D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */; };
 		D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */; };
 		D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */; };
+		D91A32421FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */; };
 		D92747511FE0D1F800BB2247 /* ProgressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */; };
 		D92A63C01FC15146002E4F99 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63BF1FC15146002E4F99 /* Tag.swift */; };
 		D92A63C21FC151AF002E4F99 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63C11FC151AF002E4F99 /* Streak.swift */; };
+		D937B7091FE5831A00D5E1FA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D937B7081FE5831A00D5E1FA /* UIViewExtension.swift */; };
 		D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */; };
 		D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */; };
 		D97102381FDE15AF0079B222 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97102371FDE15AF0079B222 /* ProgressViewController.swift */; };
-		D98999A41FDCA636002E7937 /* Progress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98999A31FDCA636002E7937 /* Progress.storyboard */; };
 		D99D44081FDD652A007323FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99D440A1FDD652A007323FA /* LaunchScreen.storyboard */; };
 		D99D440B1FDD6545007323FA /* SettingzViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99D440D1FDD6545007323FA /* SettingzViewController.storyboard */; };
 		D99D44111FDD65CA007323FA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D99D44131FDD65CA007323FA /* Localizable.strings */; };
 		D99D44141FDD66EB007323FA /* LoadingTableViewEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99D44161FDD66EB007323FA /* LoadingTableViewEmptyView.xib */; };
 		D99D441B1FDDA0C7007323FA /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D441A1FDDA0C7007323FA /* SettingsTableVC.swift */; };
 		D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */; };
+		D9AE6A551FE3760500A28656 /* Progress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9AE6A571FE3760500A28656 /* Progress.storyboard */; };
 		D9B8BFB71FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */; };
 		D9B8BFB91FBF913400BBEC70 /* TodoItemUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */; };
 		D9D4396E1FDEE53B0056E655 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4396D1FDEE53B0056E655 /* StreakManager.swift */; };
@@ -89,13 +91,14 @@
 		D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
 		D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsTableViewController.swift; sourceTree = "<group>"; };
-		D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressTableViewController.swift; path = "Daily Vibes/features/progress/ProgressTableViewController.swift"; sourceTree = "<group>"; };
+		D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserPreferencesTVC.swift; sourceTree = "<group>"; };
+		D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewController.swift; sourceTree = "<group>"; };
 		D92A63BF1FC15146002E4F99 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D92A63C11FC151AF002E4F99 /* Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
+		D937B7081FE5831A00D5E1FA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewController.swift; sourceTree = "<group>"; };
 		D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCreationTableViewCell.swift; sourceTree = "<group>"; };
 		D97102371FDE15AF0079B222 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
-		D98999A31FDCA636002E7937 /* Progress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Progress.storyboard; sourceTree = "<group>"; };
 		D99D44091FDD652A007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D99D440C1FDD6545007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingzViewController.storyboard; sourceTree = "<group>"; };
 		D99D44151FDD66EB007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoadingTableViewEmptyView.xib; sourceTree = "<group>"; };
@@ -113,6 +116,11 @@
 		D99D44251FDDA431007323FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D99D44261FDDA508007323FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoItemTableViewCell.swift; sourceTree = "<group>"; };
+		D9AE6A561FE3760500A28656 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Progress.storyboard; sourceTree = "<group>"; };
+		D9AE6A591FE3760900A28656 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Progress.strings; sourceTree = "<group>"; };
+		D9AE6A5B1FE3760B00A28656 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Progress.strings; sourceTree = "<group>"; };
+		D9AE6A5D1FE3760D00A28656 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Progress.strings; sourceTree = "<group>"; };
+		D9AE6A5F1FE376E300A28656 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewEmptyView.swift; sourceTree = "<group>"; };
 		D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemUITableView.swift; sourceTree = "<group>"; };
 		D9D4396D1FDEE53B0056E655 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
@@ -154,7 +162,6 @@
 		D9028E7C1FAD4D6A002D64E3 = {
 			isa = PBXGroup;
 			children = (
-				D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */,
 				D9028E871FAD4D6A002D64E3 /* Daily Vibes */,
 				D9028E9C1FAD4D6A002D64E3 /* Daily VibesTests */,
 				D9E3FE7C1FB9292900785E4B /* Frameworks */,
@@ -200,8 +207,10 @@
 		D99D43FC1FDD5812007323FA /* progress */ = {
 			isa = PBXGroup;
 			children = (
-				D98999A31FDCA636002E7937 /* Progress.storyboard */,
+				D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */,
+				D9AE6A571FE3760500A28656 /* Progress.storyboard */,
 				D97102371FDE15AF0079B222 /* ProgressViewController.swift */,
+				D937B7081FE5831A00D5E1FA /* UIViewExtension.swift */,
 			);
 			path = progress;
 			sourceTree = "<group>";
@@ -307,6 +316,7 @@
 		D9EADD6D1FD9EB910040F918 /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */,
 				D99D440D1FDD6545007323FA /* SettingzViewController.storyboard */,
 				D99D441A1FDDA0C7007323FA /* SettingsTableVC.swift */,
 			);
@@ -407,7 +417,7 @@
 				D99D44141FDD66EB007323FA /* LoadingTableViewEmptyView.xib in Resources */,
 				D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */,
 				D99D44111FDD65CA007323FA /* Localizable.strings in Resources */,
-				D98999A41FDCA636002E7937 /* Progress.storyboard in Resources */,
+				D9AE6A551FE3760500A28656 /* Progress.storyboard in Resources */,
 				D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */,
 				D99D440B1FDD6545007323FA /* SettingzViewController.storyboard in Resources */,
 			);
@@ -483,7 +493,9 @@
 			files = (
 				D9E0F2D01FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift in Sources */,
 				D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */,
+				D937B7091FE5831A00D5E1FA /* UIViewExtension.swift in Sources */,
 				D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */,
+				D91A32421FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift in Sources */,
 				D9028E891FAD4D6A002D64E3 /* AppDelegate.swift in Sources */,
 				D92A63C01FC15146002E4F99 /* Tag.swift in Sources */,
 				D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */,
@@ -529,6 +541,7 @@
 				D9028E8D1FAD4D6A002D64E3 /* Base */,
 				D99D441F1FDDA424007323FA /* fr */,
 				D99D44241FDDA431007323FA /* ru */,
+				D9AE6A5F1FE376E300A28656 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -572,6 +585,17 @@
 				D99D44221FDDA430007323FA /* ru */,
 			);
 			name = LoadingTableViewEmptyView.xib;
+			sourceTree = "<group>";
+		};
+		D9AE6A571FE3760500A28656 /* Progress.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9AE6A561FE3760500A28656 /* Base */,
+				D9AE6A591FE3760900A28656 /* en */,
+				D9AE6A5B1FE3760B00A28656 /* fr */,
+				D9AE6A5D1FE3760D00A28656 /* ru */,
+			);
+			name = Progress.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -12,6 +12,60 @@ import CoreData
 
 class TodoItem: NSManagedObject {
     
+    @objc dynamic public var inboxDaySectionIdentifier: String? {
+        let currentCalendar = Calendar.current
+        self.willAccessValue(forKey: "inboxDaySectionIdentifier")
+        var sectionIdentifier = String()
+        
+        if let date = self.createdAt as Date? {
+            let day = currentCalendar.component(.day, from: date)
+            let month = currentCalendar.component(.month, from: date)
+            let year = currentCalendar.component(.year, from: date)
+            
+            // Construct integer from year, month, day. Convert to string.
+            sectionIdentifier = "\(year * 10000 + month * 100 + day)"
+        }
+        self.didAccessValue(forKey: "inboxDaySectionIdentifier")
+        
+        return sectionIdentifier
+    }
+    
+    @objc dynamic public var doneDaySectionIdentifier: String? {
+        let currentCalendar = Calendar.current
+        self.willAccessValue(forKey: "doneDaySectionIdentifier")
+        var sectionIdentifier = String()
+        
+        if let date = self.completedAt as Date? {
+            let day = currentCalendar.component(.day, from: date)
+            let month = currentCalendar.component(.month, from: date)
+            let year = currentCalendar.component(.year, from: date)
+            
+            // Construct integer from year, month, day. Convert to string.
+            sectionIdentifier = "\(year * 10000 + month * 100 + day)"
+        }
+        self.didAccessValue(forKey: "doneDaySectionIdentifier")
+        
+        return sectionIdentifier
+    }
+    
+    @objc dynamic public var archivedDaySectionIdentifier: String? {
+        let currentCalendar = Calendar.current
+        self.willAccessValue(forKey: "archivedDaySectionIdentifier")
+        var sectionIdentifier = String()
+        
+        if let date = self.archivedAt as Date? {
+            let day = currentCalendar.component(.day, from: date)
+            let month = currentCalendar.component(.month, from: date)
+            let year = currentCalendar.component(.year, from: date)
+            
+            // Construct integer from year, month, day. Convert to string.
+            sectionIdentifier = "\(year * 10000 + month * 100 + day)"
+        }
+        self.didAccessValue(forKey: "archivedDaySectionIdentifier")
+        
+        return sectionIdentifier
+    }
+    
     // isArchived - archive vs delete
     // isFavourite - bookmarks/pins in the future
     // isPublic - when public API - can external people see it
@@ -101,6 +155,17 @@ class TodoItem: NSManagedObject {
 }
 
 extension Date {
+    func startTime() -> Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    func endTime() -> Date {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startTime())!
+    }
+    
     func weekDayNumber() -> String? {
         return "\(Calendar.current.dateComponents([.weekday], from: self).weekday ?? 0)"
     }
@@ -154,5 +219,28 @@ extension Date {
         components.second = 59
         let endDate = calendar.date(from: components)
         return NSPredicate(format: "%@ >= %@ AND %@ =< %@", argumentArray: [date, startDate!, date, endDate!])
+    }
+    
+    /// Returns a Date with the specified days added to the one it is called with
+    func add(years: Int = 0, months: Int = 0, days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date {
+        var targetDay: Date
+        targetDay = Calendar.current.date(byAdding: .year, value: years, to: self)!
+        targetDay = Calendar.current.date(byAdding: .month, value: months, to: targetDay)!
+        targetDay = Calendar.current.date(byAdding: .day, value: days, to: targetDay)!
+        targetDay = Calendar.current.date(byAdding: .hour, value: hours, to: targetDay)!
+        targetDay = Calendar.current.date(byAdding: .minute, value: minutes, to: targetDay)!
+        targetDay = Calendar.current.date(byAdding: .second, value: seconds, to: targetDay)!
+        return targetDay
+    }
+    
+    /// Returns a Date with the specified days subtracted from the one it is called with
+    func subtract(years: Int = 0, months: Int = 0, days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date {
+        let inverseYears = -1 * years
+        let inverseMonths = -1 * months
+        let inverseDays = -1 * days
+        let inverseHours = -1 * hours
+        let inverseMinutes = -1 * minutes
+        let inverseSeconds = -1 * seconds
+        return add(years: inverseYears, months: inverseMonths, days: inverseDays, hours: inverseHours, minutes: inverseMinutes, seconds: inverseSeconds)
     }
 }

@@ -28,6 +28,8 @@
 "Are you sure?" = "Are you sure?";
 "You're about to delete forever" = "You're about to delete forever";
 "Yes, Delete Forever." = "Yes, Delete Forever.";
+"Today" = "Today";
+"Yesterday" = "Yesterday";
 
 // Todo Item Modification Screen
 "Add a to do" = "Add a to do";
