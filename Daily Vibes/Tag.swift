@@ -13,9 +13,10 @@ import CoreData
 class Tag: NSManagedObject {
     class func createTag(in context: NSManagedObjectContext) -> Tag {
         let tag = Tag(context: context)
+        let curDate = Date()
         tag.uuid = UUID.init()
-        tag.createdAt = Date()
-        tag.updatedAt = Date()
+        tag.createdAt = curDate
+        tag.updatedAt = curDate
         return tag
     }
 }

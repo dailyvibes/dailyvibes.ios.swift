@@ -21,7 +21,7 @@ struct TagCreator {
     }
 }
 
-class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
+class TagsTableViewController: ThemableTableViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
     
     // MARK: - Properties
     private var tagCreator = TagCreator()
@@ -30,13 +30,17 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
     // flip to ensure that the cell at position 0 in cellForRowAt is only used once
     private var addingNewCell: Bool = false
     
-    private var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    private var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.store.persistentContainer
     private var fetchedResultsController: NSFetchedResultsController<Tag>!
     private var moc: NSManagedObjectContext?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = NSLocalizedString("Tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Tags **", comment: "")
+        let titleString = "Tags"
+        setupNavigationTitleText(title: titleString)
+        
+        tableView.theme_backgroundColor = "Global.backgroundColor"
+        tableView.theme_separatorColor = "ListViewController.separatorColor"
     }
     
     override func viewDidLoad() {
@@ -78,6 +82,11 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
             // create
             let cell = tableView.dequeueReusableCell(withIdentifier: createCell, for: indexPath) as! TagsCreationTableViewCell
             cell.tagLabeler.delegate = self
+//            cell.theme_backgroundColor = "Global.barTintColor"
+//            cell.theme_tintColor = "Global.textColor"
+//            cell.tagLabeler.theme_backgroundColor = "Global.barTintColor"
+//            cell.tagLabeler.theme_tintColor = "Global.textColor"
+//            cell.tagLabeler.theme_textColor = "Global.textColor"
             return cell
         } else {
             guard let data = todoItemSettingsData else { fatalError("todoItemSettingsData should be set by now") }
@@ -88,6 +97,7 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
             // and we are only having 1 section for the forseable future
             let adjustedIndexPath = IndexPath.init(row: adjustedRow(indexPath.row), section: indexPath.section)
             if let tag = fetchedResultsController?.object(at: adjustedIndexPath) {
+                cell.imageView?.image = #imageLiteral(resourceName: "tagsFilledinCircle")
                 cell.textLabel?.text = tag.label
                 if data.contains(tag: tag) {
                     cell.accessoryType = .checkmark
@@ -96,6 +106,9 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
                     cell.accessoryType = .none
                 }
             }
+            cell.theme_backgroundColor = "Global.barTintColor"
+            cell.textLabel?.theme_textColor = "Global.textColor"
+            cell.theme_tintColor = "Global.barTextColor"
             return cell
         }
     }
@@ -107,26 +120,11 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
 
         let adjustedIndexPath = IndexPath.init(row: adjustedRow(indexPath.row), section: 0)
         
-//        print("~~~~ didSelectRowAt ~~~~")
-//        printIndexPath(indexPath: indexPath)
-//        print("~~~~ didSelectRowAt adjusted ~~~~")
-//        printIndexPath(indexPath: adjustedIndexPath)
-        
         if !tagCreator.isLocated(at: indexPath) {
             // don't want anything to happen when people select the first row
             if let tag = fetchedResultsController?.object(at: adjustedIndexPath) {
                 
                 guard let data = todoItemSettingsData else { fatalError("should have todoItemSettingsData by here") }
-                
-                // TODO: REMOVE
-//                if let context = moc {
-//                    do {
-//                        try context.save()
-//                    } catch {
-//                        context.rollback()
-//                        fatalError("error: \(error)")
-//                    }
-//                }
                 
                 guard data.addOrRemove(this: tag) else {
                     fatalError("should have processed data")
@@ -284,18 +282,6 @@ class TagsTableViewController: UITableViewController, UITextFieldDelegate, NSFet
     private func clearTextfield(at textField: UITextField) {
         textField.text = String()
     }
-    
-//    private func printIndexPath(indexPath: IndexPath?) {
-//        print("row === \(String(describing: indexPath?.row)) ||| section === \(String(describing: indexPath?.section))")
-//    }
-//
-//    private func printTodoTags(todoItem: TodoItem) {
-//        if let tags = todoItem.tagz?.allObjects, tags.count > 0 {
-//            for tag in tags {
-//                print("\(String(describing: (tag as! Tag).uuid))")
-//            }
-//        }
-//    }
     
     private func initializeFetchedResultsController() {
         if let context = moc {

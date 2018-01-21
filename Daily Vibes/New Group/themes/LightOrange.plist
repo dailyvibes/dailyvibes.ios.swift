@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIStatusBarStyle</key>
+	<string>default</string>
+	<key>ChangeThemeCell</key>
+	<dict>
+		<key>buttonBackgroundColor</key>
+		<string>#000000</string>
+		<key>buttonTitleColorHighlighted</key>
+		<string>#FFFFFF</string>
+		<key>buttonTitleColorNormal</key>
+		<string>#FFFFFF</string>
+	</dict>
+	<key>SwitchNightCell</key>
+	<dict>
+		<key>iconImage</key>
+		<string>icon_night_light</string>
+	</dict>
+	<key>SelectThemeCell</key>
+	<dict>
+		<key>iconImage</key>
+		<string>icon_theme_light</string>
+	</dict>
+	<key>ListViewController</key>
+	<dict>
+		<key>separatorColor</key>
+		<string>#ECF0F1</string>
+	</dict>
+	<key>Global</key>
+	<dict>
+		<key>keyboardStyle</key>
+		<string>light</string>
+		<key>placeholderColor</key>
+		<string>#999999</string>
+		<key>barTintColor</key>
+		<string>#FFFFFF</string>
+		<key>barTextColor</key>
+		<string>#96281B</string>
+		<key>textColor</key>
+		<string>#111111</string>
+		<key>backgroundColor</key>
+		<string>#FABE58</string>
+	</dict>
+</dict>
+</plist>

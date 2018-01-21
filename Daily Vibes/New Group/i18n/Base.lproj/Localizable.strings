@@ -32,7 +32,7 @@
 "Yesterday" = "Yesterday";
 
 // Todo Item Modification Screen
-"Add a to do" = "Add a to do";
+"Add a to do" = "Add a to-do";
 "Details" = "Details";
 "Tags" = "Tags";
 "new tag" = "new tag";
@@ -40,6 +40,8 @@
 "How do you feel?" = "How do you feel?";
 "What would you like to do?" = "What would you like to do?";
 "Date" = "Date";
+"Set Due Date" = "Set Due Date";
+"Set" = "Set";
 
 // Tags Modification Screen
 "Create a new tag or use one below" = "Create a new tag or use one below";

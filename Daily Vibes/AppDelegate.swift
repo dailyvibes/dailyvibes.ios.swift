@@ -8,11 +8,14 @@
 
 import UIKit
 import CoreData
+import SwiftTheme
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     
     var window: UIWindow?
+    
+    let store = CoreDataManager.store
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -26,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             defaults.set(Date(), forKey: "FirstRun")
             defaults.set(Date(), forKey: "LastRun")
             
+            defaults.set(MyThemes.DVDefault.rawValue, forKey: "themeSelected")
             defaults.set(true, forKey: "todo.showOnDoneAlert")
             defaults.set(true, forKey: "todo.showOnDeleteAlert")
             
@@ -53,6 +57,76 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
 //        }
 //        
         // Override point for customization after application launch.
+        
+        // -------------------------- TODO REMOVE --------------------------
+//        if let path = Bundle.main.path(forResource: "fakeDataDump-Jan202018", ofType: "json") {
+//            do {
+//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+//                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
+////                let jsonResult = try JSON.init
+//                
+//                for task in (jsonResult)! {
+////                    let taskId = task["id"]
+//                    let taskText = task["todoItemText"] as! String
+//                    let completedAtString = task["completedAt"] as! String
+//                    let taskCompleted = Date.UTCToLocal(___date: completedAtString)
+//                    store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+//                }
+//            } catch {
+//                // handle error
+//                fatalError("OOPS")
+//            }
+//        }
+        // -------------------------- TODO REMOVE --------------------------
+        
+        // default: Red.plist
+        if let theme = MyThemes(rawValue: defaults.integer(forKey: "themeSelected")) {
+            MyThemes.switchTo(theme)
+        } else {
+            ThemeManager.setTheme(plistName: "Default", path: .mainBundle)
+        }
+        
+        // status bar
+        
+//        UIApplication.shared.theme_setStatusBarStyle("UIStatusBarStyle", animated: true)
+        
+        UIApplication.shared.theme_setStatusBarStyle("UIStatusBarStyle", animated: true)
+        
+        // navigation bar
+        
+        let navigationBar = UINavigationBar.appearance()
+        
+        navigationBar.theme_tintColor = "Global.barTextColor"
+        navigationBar.theme_barTintColor = "Global.barTintColor"
+        navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker(keyPath: "Global.barTextColor") { value -> [NSAttributedStringKey : AnyObject]? in
+            guard let rgba = value as? String else {
+                return nil
+            }
+            
+            let color = UIColor(rgba: rgba)
+            let shadow = NSShadow(); shadow.shadowOffset = CGSize.zero
+            let titleTextAttributes = [
+                NSAttributedStringKey.foregroundColor: color,
+                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16),
+                NSAttributedStringKey.shadow: shadow
+            ]
+            
+            return titleTextAttributes
+        }
+        
+        // tab bar
+        
+        let tabBar = UITabBar.appearance()
+        
+        tabBar.theme_tintColor = "Global.barTextColor"
+        tabBar.theme_barTintColor = "Global.barTintColor"
+        
+        let uiTextView = UITextView.appearance()
+        uiTextView.theme_keyboardAppearance = "Global.keyboardStyle"
+        
+        let uiTextField = UITextField.appearance()
+        uiTextField.theme_keyboardAppearance = "Global.keyboardStyle"
+        
         return true
     }
     
@@ -77,54 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
-    }
-    
-    // MARK: - Core Data stack
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        let container = NSPersistentContainer(name: "Model")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-//        print("\(container.persistentStoreCoordinator.persistentStores.first?.url)")
-        return container
-    }()
-    
-    // MARK: - Core Data Saving support
-    
-    private func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
+        store.saveContext()
     }
     
 }
-

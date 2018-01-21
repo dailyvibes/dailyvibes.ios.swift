@@ -10,12 +10,6 @@ import UIKit
 
 class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Do any additional setup after loading the view.
-//    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -32,7 +26,7 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
     }
     */
     
-    private let menuButton = UIButton(frame: CGRect.zero)
+//    private let menuButton = UIButton(frame: CGRect.zero)
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,25 +58,25 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
         return true
     }
     
-    func setupMiddleButton() {
-        let numberOfItems = CGFloat(tabBar.items!.count)
-        let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
-        menuButton.frame = CGRect(x: 0, y: 0, width: tabBarItemSize.width, height: tabBar.frame.size.height)
-        var menuButtonFrame = menuButton.frame
-        menuButtonFrame.origin.y = self.view.bounds.height - menuButtonFrame.height - self.view.safeAreaInsets.bottom
-        menuButtonFrame.origin.x = self.view.bounds.width/2 - menuButtonFrame.size.width/2
-        menuButton.frame = menuButtonFrame
-//        menuButton.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-        menuButton.setImage(#imageLiteral(resourceName: "tabbed_add"), for: .normal)
-        menuButton.tintColor = .blue
-        menuButton.addTarget(self, action: #selector(clickAddButton), for: .touchUpInside)
-        self.view.addSubview(menuButton)
-        self.view.layoutIfNeeded()
-    }
-    
-    @objc private func clickAddButton() {
-        performSegue(withIdentifier: "AddTodoItem", sender: nil)
-    }
+//    func setupMiddleButton() {
+//        let numberOfItems = CGFloat(tabBar.items!.count)
+//        let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
+//        menuButton.frame = CGRect(x: 0, y: 0, width: tabBarItemSize.width, height: tabBar.frame.size.height)
+//        var menuButtonFrame = menuButton.frame
+//        menuButtonFrame.origin.y = self.view.bounds.height - menuButtonFrame.height - self.view.safeAreaInsets.bottom
+//        menuButtonFrame.origin.x = self.view.bounds.width/2 - menuButtonFrame.size.width/2
+//        menuButton.frame = menuButtonFrame
+////        menuButton.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+//        menuButton.setImage(#imageLiteral(resourceName: "tabbed_add"), for: .normal)
+//        menuButton.tintColor = .blue
+//        menuButton.addTarget(self, action: #selector(clickAddButton), for: .touchUpInside)
+//        self.view.addSubview(menuButton)
+//        self.view.layoutIfNeeded()
+//    }
+//
+//    @objc private func clickAddButton() {
+//        performSegue(withIdentifier: "AddTodoItem", sender: nil)
+//    }
     
 //    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 //        guard let items = tabBar.items else { return }

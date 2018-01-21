@@ -7,9 +7,11 @@
  */
 
 // General Actions
-"Done" = "Done";
+"To-do" = "🚧 To-do";
+"Done" = "✅ Done";
 "Cancel" = "Cancel";
 "Archive" = "Archive";
+"Archived" = "💼 Archived";
 "Delete" = "Delete";
 "Inbox" = "Inbox";
 "Save" = "Save";
@@ -32,14 +34,26 @@
 "Yesterday" = "Yesterday";
 
 // Todo Item Modification Screen
-"Add a to do" = "Add a to do";
+//"Add a to do" = "Add a to-do";
+"Add a to do" = "New To-do";
 "Details" = "Details";
+"Project" = "Project";
+"Projects" = "Projects";
 "Tags" = "Tags";
 "new tag" = "new tag";
+"None" = "None";
+"Description (140 characters)" = "Description (140 characters)";
 "view tags" = "view tags";
 "How do you feel?" = "How do you feel?";
-"What would you like to do?" = "What would you like to do?";
+"What would you like to do?" = "Title";
 "Date" = "Date";
+"Set Due Date" = "Set Due Date";
+"Set" = "Set";
+"Notes" = "Notes";
+
+// DailyVibesList Modification Screen
+"Lists" = "Lists";
+"ex: Groceries, Upcoming project" = "Create a new list (ex: Groceries, Upcoming project) or select one below";
 
 // Tags Modification Screen
 "Create a new tag or use one below" = "Create a new tag or use one below";
@@ -52,6 +66,7 @@
 "Daily task completion history" = "Daily task completion history";
 
 // Settings
+"Themes" = "Themes";
 "About" = "About";
 "Support" = "Support";
 "Acknowledgement" = "Acknowledgement";

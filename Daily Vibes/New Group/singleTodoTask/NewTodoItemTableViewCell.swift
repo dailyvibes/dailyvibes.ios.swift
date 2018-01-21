@@ -6,6 +6,8 @@
 //  Copyright © 2017 Alex Kluew. All rights reserved.
 //
 
+// https://stackoverflow.com/a/47037937
+
 import UIKit
 
 class NewTodoItemTableViewCell: UITableViewCell, UITextViewDelegate {
@@ -16,7 +18,7 @@ class NewTodoItemTableViewCell: UITableViewCell, UITextViewDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         textView.delegate = self
         textView.isScrollEnabled = false
     }

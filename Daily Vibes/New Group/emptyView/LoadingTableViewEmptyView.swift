@@ -19,6 +19,11 @@ class LoadingTableViewEmptyView: UIView {
         super.awakeFromNib()
         emptyListHeader.text = NSLocalizedString("Your list is currently empty", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Your list is currently empty. **", comment: "")
         emptyListMainText.text = NSLocalizedString("You can add a new to-do to get started", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND You can add a new to-do to get started **", comment: "")
+        
+        view.theme_backgroundColor = "Global.backgroundColor"
+        
+        emptyListHeader.theme_textColor = "Global.textColor"
+        emptyListMainText.theme_textColor = "Global.textColor"
     }
     
 }

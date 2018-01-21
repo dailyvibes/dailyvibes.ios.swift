@@ -12,32 +12,92 @@
 		D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */; };
 		D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */; };
 		D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */; };
-		D9028E9E1FAD4D6A002D64E3 /* Daily_VibesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */; };
 		D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */; };
 		D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */; };
 		D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */; };
+		D90DED201FEC269B007E7DAE /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4396D1FDEE53B0056E655 /* StreakManager.swift */; };
+		D90DED211FEC26A6007E7DAE /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4396D1FDEE53B0056E655 /* StreakManager.swift */; };
+		D90DED251FEC29DB007E7DAE /* StreaksManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90DED241FEC29DB007E7DAE /* StreaksManagerTest.swift */; };
+		D911E0BA2002A17800B739C8 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63C11FC151AF002E4F99 /* Streak.swift */; };
+		D911E0BB2002A1A200B739C8 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */; };
+		D9156E292010DC2300E7F04E /* ThemableBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9156E282010DC2300E7F04E /* ThemableBaseTableViewCell.swift */; };
 		D91A32421FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */; };
-		D92747511FE0D1F800BB2247 /* ProgressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */; };
+		D9235A811FEC1FBB00386A5F /* DailyVibesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */; };
 		D92A63C01FC15146002E4F99 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63BF1FC15146002E4F99 /* Tag.swift */; };
 		D92A63C21FC151AF002E4F99 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63C11FC151AF002E4F99 /* Streak.swift */; };
 		D937B7091FE5831A00D5E1FA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D937B7081FE5831A00D5E1FA /* UIViewExtension.swift */; };
+		D93A902120128A3900228515 /* DVProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A902020128A3900228515 /* DVProgressViewController.swift */; };
+		D93A90232012940A00228515 /* DVTodoItemTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A90222012940A00228515 /* DVTodoItemTaskViewModel.swift */; };
+		D93A902420129C2900228515 /* DVTodoItemTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A90222012940A00228515 /* DVTodoItemTaskViewModel.swift */; };
+		D94FDAA1200984310065AB29 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94FDAA0200984310065AB29 /* ListTableViewController.swift */; };
+		D94FDAA5200984580065AB29 /* ListCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94FDAA4200984580065AB29 /* ListCreationTableViewCell.swift */; };
+		D957461920038F8C000038AE /* SupportSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461820038F8C000038AE /* SupportSettingsViewController.swift */; };
+		D957461D2003966B000038AE /* AcknowledgementSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461C2003966B000038AE /* AcknowledgementSettingsViewController.swift */; };
+		D957461F20039892000038AE /* AboutSettingsViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461E20039892000038AE /* AboutSettingsViewControllerViewController.swift */; };
 		D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */; };
 		D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */; };
+		D9694C34200845B400B49CE4 /* DailyVibesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9694C33200845B400B49CE4 /* DailyVibesList.swift */; };
+		D9694C35200845F800B49CE4 /* DailyVibesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9694C33200845B400B49CE4 /* DailyVibesList.swift */; };
 		D97102381FDE15AF0079B222 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97102371FDE15AF0079B222 /* ProgressViewController.swift */; };
+		D97853C4200073A700665B2E /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97853C3200073A700665B2E /* DatePickerDialog.swift */; };
+		D98793BD1FFBDCEA0083AAC2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */; };
+		D98793BE1FFBE2BD0083AAC2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */; };
+		D99286F620114CB600C9D1FE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99286F520114CB600C9D1FE /* UIColor+Extension.swift */; };
+		D996344220046D1F00AD216C /* TodoTaskItemFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D996344120046D1F00AD216C /* TodoTaskItemFiltersViewController.swift */; };
 		D99D44081FDD652A007323FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99D440A1FDD652A007323FA /* LaunchScreen.storyboard */; };
 		D99D440B1FDD6545007323FA /* SettingzViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99D440D1FDD6545007323FA /* SettingzViewController.storyboard */; };
 		D99D44111FDD65CA007323FA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D99D44131FDD65CA007323FA /* Localizable.strings */; };
 		D99D44141FDD66EB007323FA /* LoadingTableViewEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99D44161FDD66EB007323FA /* LoadingTableViewEmptyView.xib */; };
 		D99D441B1FDDA0C7007323FA /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D441A1FDDA0C7007323FA /* SettingsTableVC.swift */; };
+		D9A278CB200A98F70084D882 /* DailyVibesNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A278CA200A98F70084D882 /* DailyVibesNote.swift */; };
+		D9A278CC200A98F70084D882 /* DailyVibesNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A278CA200A98F70084D882 /* DailyVibesNote.swift */; };
+		D9A278CF200A9B790084D882 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A278CE200A9B790084D882 /* NotesViewController.swift */; };
+		D9AA5DB22001C97000CAE847 /* SegmentedUIToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA5DB12001C97000CAE847 /* SegmentedUIToolBar.swift */; };
+		D9AA5DB32001C97000CAE847 /* SegmentedUIToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA5DB12001C97000CAE847 /* SegmentedUIToolBar.swift */; };
+		D9AA5DB52001CC9F00CAE847 /* LightOrange.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9AA5DB42001CC9F00CAE847 /* LightOrange.plist */; };
+		D9AA5DB62001CC9F00CAE847 /* LightOrange.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9AA5DB42001CC9F00CAE847 /* LightOrange.plist */; };
+		D9AA5DB82001CE9600CAE847 /* NightBlue.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9AA5DB72001CE9600CAE847 /* NightBlue.plist */; };
+		D9AA5DB92001CE9600CAE847 /* NightBlue.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9AA5DB72001CE9600CAE847 /* NightBlue.plist */; };
+		D9AA5DBB2001D06100CAE847 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA5DBA2001D06100CAE847 /* ThemeManager.swift */; };
+		D9AA5DBC2001D06100CAE847 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA5DBA2001D06100CAE847 /* ThemeManager.swift */; };
+		D9AA5DBE2001D9C500CAE847 /* ThemesSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA5DBD2001D9C500CAE847 /* ThemesSettingsTableViewController.swift */; };
+		D9AA5DBF2001D9C500CAE847 /* ThemesSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA5DBD2001D9C500CAE847 /* ThemesSettingsTableViewController.swift */; };
+		D9AA5DC12001E83E00CAE847 /* Default.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9AA5DC02001E83E00CAE847 /* Default.plist */; };
+		D9AA5DC22001E83E00CAE847 /* Default.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9AA5DC02001E83E00CAE847 /* Default.plist */; };
+		D9AC17401FEC253F00EE0303 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */; };
+		D9AC17411FEC254300EE0303 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63BF1FC15146002E4F99 /* Tag.swift */; };
+		D9AC17421FEC254500EE0303 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63C11FC151AF002E4F99 /* Streak.swift */; };
+		D9AC17441FEC262800EE0303 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */; };
 		D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */; };
 		D9AE6A551FE3760500A28656 /* Progress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9AE6A571FE3760500A28656 /* Progress.storyboard */; };
+		D9B2686220121E250057D5AA /* ThemableBaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B2686120121E250057D5AA /* ThemableBaseTextView.swift */; };
+		D9B37A332013695600EF3314 /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B37A322013695600EF3314 /* DateValueFormatter.swift */; };
+		D9B37A3520138EE500EF3314 /* fakeDataDump-Jan202018.json in Resources */ = {isa = PBXBuildFile; fileRef = D9B37A3420138EE500EF3314 /* fakeDataDump-Jan202018.json */; };
 		D9B8BFB71FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */; };
 		D9B8BFB91FBF913400BBEC70 /* TodoItemUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */; };
-		D9D4396E1FDEE53B0056E655 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4396D1FDEE53B0056E655 /* StreakManager.swift */; };
+		D9D0D6DA200C3DF700F1BC5F /* NotesInlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0D6D9200C3DF700F1BC5F /* NotesInlineTableViewCell.swift */; };
+		D9DC2D8120114EA6001B2014 /* ThemableBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC2D8020114EA6001B2014 /* ThemableBaseTextField.swift */; };
+		D9DC3A1D2002B5DA00D1DCC3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC3A1C2002B5DA00D1DCC3 /* CoreDataManager.swift */; };
+		D9DC3A1E2002B8AA00D1DCC3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC3A1C2002B5DA00D1DCC3 /* CoreDataManager.swift */; };
+		D9DC3A1F2002CBA300D1DCC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */; };
 		D9E0F2D01FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E0F2CF1FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift */; };
 		D9E0F2D21FDC64230072D3B8 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E0F2D11FDC64230072D3B8 /* DummyViewController.swift */; };
-		D9E2CDC51FB41A110084EB12 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* Model.xcdatamodeld */; };
+		D9E2CDC51FB41A110084EB12 /* DailyVibesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */; };
+		D9E2EEF02001B88E00858F22 /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E2EEEF2001B88E00858F22 /* SettingsNavigationController.swift */; };
+		D9E2EEF32001B92600858F22 /* Night.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9E2EEF22001B92600858F22 /* Night.plist */; };
+		D9F0C94A200D5DCA0048BB1D /* ThemableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0C949200D5DCA0048BB1D /* ThemableTableViewController.swift */; };
+		D9F0C94C200D85D60048BB1D /* ThemableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0C94B200D85D60048BB1D /* ThemableViewController.swift */; };
+		D9F0C94E200D8D4B0048BB1D /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0C94D200D8D4B0048BB1D /* DeleteTableViewCell.swift */; };
+		D9F3DC6220028A2500F8A586 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3DC6120028A2500F8A586 /* ShareViewController.swift */; };
+		D9F3DC6520028A2500F8A586 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F3DC6320028A2500F8A586 /* MainInterface.storyboard */; };
+		D9F3DC6920028A2500F8A586 /* DailyVibesShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D9F3DC5F20028A2500F8A586 /* DailyVibesShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D9F3DC6F20029C7200F8A586 /* DailyVibesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */; };
+		D9F3DC7020029CEE00F8A586 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3DC6120028A2500F8A586 /* ShareViewController.swift */; };
+		D9F3DC7120029CFF00F8A586 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F3DC6320028A2500F8A586 /* MainInterface.storyboard */; };
+		D9F3DC7220029D1F00F8A586 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63BF1FC15146002E4F99 /* Tag.swift */; };
+		D9F3DC7320029D2300F8A586 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */; };
+		D9FA2D93200B2F68003A35A0 /* UITextViewFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA2D92200B2F68003A35A0 /* UITextViewFixed.swift */; };
 		D9FD88C21FCA78690055674A /* TodoItemSettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD88C11FCA78690055674A /* TodoItemSettingsData.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +108,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D9028E841FAD4D6A002D64E3;
 			remoteInfo = "Daily Vibes";
+		};
+		D9F3DC6720028A2500F8A586 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9028E7D1FAD4D6A002D64E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9F3DC5E20028A2500F8A586;
+			remoteInfo = DailyVibesShareExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -69,6 +136,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				D9F3DC6920028A2500F8A586 /* DailyVibesShareExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,19 +154,33 @@
 		D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9028E941FAD4D6A002D64E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9028E991FAD4D6A002D64E3 /* Daily VibesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daily VibesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily_VibesTests.swift; sourceTree = "<group>"; };
 		D9028E9F1FAD4D6A002D64E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
 		D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsTableViewController.swift; sourceTree = "<group>"; };
+		D90DED241FEC29DB007E7DAE /* StreaksManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreaksManagerTest.swift; sourceTree = "<group>"; };
+		D9156E282010DC2300E7F04E /* ThemableBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableBaseTableViewCell.swift; sourceTree = "<group>"; };
 		D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserPreferencesTVC.swift; sourceTree = "<group>"; };
-		D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewController.swift; sourceTree = "<group>"; };
 		D92A63BF1FC15146002E4F99 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D92A63C11FC151AF002E4F99 /* Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
 		D937B7081FE5831A00D5E1FA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		D93A902020128A3900228515 /* DVProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVProgressViewController.swift; sourceTree = "<group>"; };
+		D93A90222012940A00228515 /* DVTodoItemTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVTodoItemTaskViewModel.swift; sourceTree = "<group>"; };
+		D94FDAA0200984310065AB29 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		D94FDAA4200984580065AB29 /* ListCreationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCreationTableViewCell.swift; sourceTree = "<group>"; };
+		D957461820038F8C000038AE /* SupportSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportSettingsViewController.swift; sourceTree = "<group>"; };
+		D957461B20039229000038AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SettingzViewController.strings; sourceTree = "<group>"; };
+		D957461C2003966B000038AE /* AcknowledgementSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementSettingsViewController.swift; sourceTree = "<group>"; };
+		D957461E20039892000038AE /* AboutSettingsViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsViewControllerViewController.swift; sourceTree = "<group>"; };
 		D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewController.swift; sourceTree = "<group>"; };
 		D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCreationTableViewCell.swift; sourceTree = "<group>"; };
+		D96114692006FB4900BFE753 /* DailyVibesModelv02.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DailyVibesModelv02.xcdatamodel; sourceTree = "<group>"; };
+		D9694C33200845B400B49CE4 /* DailyVibesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVibesList.swift; sourceTree = "<group>"; };
 		D97102371FDE15AF0079B222 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		D97853C3200073A700665B2E /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
+		D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		D99286F520114CB600C9D1FE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		D996344120046D1F00AD216C /* TodoTaskItemFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTaskItemFiltersViewController.swift; sourceTree = "<group>"; };
 		D99D44091FDD652A007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D99D440C1FDD6545007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingzViewController.storyboard; sourceTree = "<group>"; };
 		D99D44151FDD66EB007323FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoadingTableViewEmptyView.xib; sourceTree = "<group>"; };
@@ -115,19 +197,46 @@
 		D99D44241FDDA431007323FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		D99D44251FDDA431007323FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D99D44261FDDA508007323FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9A278C9200A952C0084D882 /* DailyVibesModelv03.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DailyVibesModelv03.xcdatamodel; sourceTree = "<group>"; };
+		D9A278CA200A98F70084D882 /* DailyVibesNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVibesNote.swift; sourceTree = "<group>"; };
+		D9A278CE200A9B790084D882 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		D9AA5DB12001C97000CAE847 /* SegmentedUIToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedUIToolBar.swift; sourceTree = "<group>"; };
+		D9AA5DB42001CC9F00CAE847 /* LightOrange.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LightOrange.plist; sourceTree = "<group>"; };
+		D9AA5DB72001CE9600CAE847 /* NightBlue.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NightBlue.plist; sourceTree = "<group>"; };
+		D9AA5DBA2001D06100CAE847 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		D9AA5DBD2001D9C500CAE847 /* ThemesSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesSettingsTableViewController.swift; sourceTree = "<group>"; };
+		D9AA5DC02001E83E00CAE847 /* Default.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Default.plist; sourceTree = "<group>"; };
 		D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoItemTableViewCell.swift; sourceTree = "<group>"; };
 		D9AE6A561FE3760500A28656 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Progress.storyboard; sourceTree = "<group>"; };
 		D9AE6A591FE3760900A28656 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Progress.strings; sourceTree = "<group>"; };
 		D9AE6A5B1FE3760B00A28656 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Progress.strings; sourceTree = "<group>"; };
 		D9AE6A5D1FE3760D00A28656 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Progress.strings; sourceTree = "<group>"; };
 		D9AE6A5F1FE376E300A28656 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		D9B2686120121E250057D5AA /* ThemableBaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableBaseTextView.swift; sourceTree = "<group>"; };
+		D9B37A322013695600EF3314 /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
+		D9B37A3420138EE500EF3314 /* fakeDataDump-Jan202018.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "fakeDataDump-Jan202018.json"; sourceTree = "<group>"; };
 		D9B8BFB61FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewEmptyView.swift; sourceTree = "<group>"; };
 		D9B8BFB81FBF913400BBEC70 /* TodoItemUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemUITableView.swift; sourceTree = "<group>"; };
+		D9D0D6D9200C3DF700F1BC5F /* NotesInlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesInlineTableViewCell.swift; sourceTree = "<group>"; };
 		D9D4396D1FDEE53B0056E655 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
+		D9DC2D8020114EA6001B2014 /* ThemableBaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableBaseTextField.swift; sourceTree = "<group>"; };
+		D9DC3A1C2002B5DA00D1DCC3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D9E0F2CF1FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVibesTabBarViewController.swift; sourceTree = "<group>"; };
 		D9E0F2D11FDC64230072D3B8 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		D9E2CDC41FB41A110084EB12 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D9E2EEEF2001B88E00858F22 /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
+		D9E2EEF22001B92600858F22 /* Night.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Night.plist; sourceTree = "<group>"; };
 		D9E3FE7D1FB9292900785E4B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D9F0C949200D5DCA0048BB1D /* ThemableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableTableViewController.swift; sourceTree = "<group>"; };
+		D9F0C94B200D85D60048BB1D /* ThemableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableViewController.swift; sourceTree = "<group>"; };
+		D9F0C94D200D8D4B0048BB1D /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
+		D9F3DC5F20028A2500F8A586 /* DailyVibesShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyVibesShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9F3DC6120028A2500F8A586 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		D9F3DC6420028A2500F8A586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D9F3DC6620028A2500F8A586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9F3DC6D200297C400F8A586 /* Daily Vibes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Daily Vibes.entitlements"; sourceTree = "<group>"; };
+		D9F3DC6E2002981B00F8A586 /* DailyVibesShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyVibesShareExtension.entitlements; sourceTree = "<group>"; };
+		D9FA2D92200B2F68003A35A0 /* UITextViewFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewFixed.swift; sourceTree = "<group>"; };
 		D9FD88C11FCA78690055674A /* TodoItemSettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemSettingsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +250,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D9028E961FAD4D6A002D64E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9F3DC5C20028A2500F8A586 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -164,6 +280,7 @@
 			children = (
 				D9028E871FAD4D6A002D64E3 /* Daily Vibes */,
 				D9028E9C1FAD4D6A002D64E3 /* Daily VibesTests */,
+				D9F3DC6020028A2500F8A586 /* DailyVibesShareExtension */,
 				D9E3FE7C1FB9292900785E4B /* Frameworks */,
 				D9028E861FAD4D6A002D64E3 /* Products */,
 				A90D6C12D60EC0EBA55A949F /* Pods */,
@@ -175,6 +292,7 @@
 			children = (
 				D9028E851FAD4D6A002D64E3 /* Daily Vibes.app */,
 				D9028E991FAD4D6A002D64E3 /* Daily VibesTests.xctest */,
+				D9F3DC5F20028A2500F8A586 /* DailyVibesShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,14 +300,17 @@
 		D9028E871FAD4D6A002D64E3 /* Daily Vibes */ = {
 			isa = PBXGroup;
 			children = (
+				D9F3DC6D200297C400F8A586 /* Daily Vibes.entitlements */,
 				D9EADD6C1FD9EB620040F918 /* features */,
 				D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */,
+				D9A278CA200A98F70084D882 /* DailyVibesNote.swift */,
+				D9694C33200845B400B49CE4 /* DailyVibesList.swift */,
 				D92A63BF1FC15146002E4F99 /* Tag.swift */,
 				D92A63C11FC151AF002E4F99 /* Streak.swift */,
 				D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */,
 				D9028E8C1FAD4D6A002D64E3 /* Main.storyboard */,
 				D9028E941FAD4D6A002D64E3 /* Info.plist */,
-				D9E2CDC31FB41A110084EB12 /* Model.xcdatamodeld */,
+				D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */,
 				D9028E881FAD4D6A002D64E3 /* AppDelegate.swift */,
 			);
 			path = "Daily Vibes";
@@ -198,19 +319,62 @@
 		D9028E9C1FAD4D6A002D64E3 /* Daily VibesTests */ = {
 			isa = PBXGroup;
 			children = (
-				D9028E9D1FAD4D6A002D64E3 /* Daily_VibesTests.swift */,
+				D90DED221FEC29A3007E7DAE /* features */,
 				D9028E9F1FAD4D6A002D64E3 /* Info.plist */,
 			);
 			path = "Daily VibesTests";
 			sourceTree = "<group>";
 		};
+		D90DED221FEC29A3007E7DAE /* features */ = {
+			isa = PBXGroup;
+			children = (
+				D90DED231FEC29AB007E7DAE /* streaks */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
+		D90DED231FEC29AB007E7DAE /* streaks */ = {
+			isa = PBXGroup;
+			children = (
+				D90DED241FEC29DB007E7DAE /* StreaksManagerTest.swift */,
+			);
+			path = streaks;
+			sourceTree = "<group>";
+		};
+		D94FDA9F200983F70065AB29 /* lists */ = {
+			isa = PBXGroup;
+			children = (
+				D94FDAA0200984310065AB29 /* ListTableViewController.swift */,
+				D94FDAA4200984580065AB29 /* ListCreationTableViewCell.swift */,
+			);
+			path = lists;
+			sourceTree = "<group>";
+		};
+		D97853C22000739000665B2E /* DatePickerDialog */ = {
+			isa = PBXGroup;
+			children = (
+				D97853C3200073A700665B2E /* DatePickerDialog.swift */,
+			);
+			path = DatePickerDialog;
+			sourceTree = "<group>";
+		};
+		D98793BB1FFBDCD00083AAC2 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */,
+				D99286F520114CB600C9D1FE /* UIColor+Extension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		D99D43FC1FDD5812007323FA /* progress */ = {
 			isa = PBXGroup;
 			children = (
-				D92747501FE0D1F800BB2247 /* ProgressTableViewController.swift */,
 				D9AE6A571FE3760500A28656 /* Progress.storyboard */,
 				D97102371FDE15AF0079B222 /* ProgressViewController.swift */,
 				D937B7081FE5831A00D5E1FA /* UIViewExtension.swift */,
+				D93A902020128A3900228515 /* DVProgressViewController.swift */,
+				D9B37A322013695600EF3314 /* DateValueFormatter.swift */,
 			);
 			path = progress;
 			sourceTree = "<group>";
@@ -231,6 +395,9 @@
 				D9FD88C11FCA78690055674A /* TodoItemSettingsData.swift */,
 				D9028E8A1FAD4D6A002D64E3 /* TodoItemViewController.swift */,
 				D9ADB4C31FC102BC0024D419 /* NewTodoItemTableViewCell.swift */,
+				D9FA2D92200B2F68003A35A0 /* UITextViewFixed.swift */,
+				D9D0D6D9200C3DF700F1BC5F /* NotesInlineTableViewCell.swift */,
+				D9F0C94D200D8D4B0048BB1D /* DeleteTableViewCell.swift */,
 			);
 			path = singleTodoTask;
 			sourceTree = "<group>";
@@ -240,6 +407,8 @@
 			children = (
 				D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */,
 				D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */,
+				D9AA5DB12001C97000CAE847 /* SegmentedUIToolBar.swift */,
+				D996344120046D1F00AD216C /* TodoTaskItemFiltersViewController.swift */,
 			);
 			path = mainTodoList;
 			sourceTree = "<group>";
@@ -278,12 +447,48 @@
 			path = i18n;
 			sourceTree = "<group>";
 		};
+		D9A278CD200A9B610084D882 /* notes */ = {
+			isa = PBXGroup;
+			children = (
+				D9A278CE200A9B790084D882 /* NotesViewController.swift */,
+			);
+			path = notes;
+			sourceTree = "<group>";
+		};
 		D9D4396C1FDEE5190056E655 /* streaks */ = {
 			isa = PBXGroup;
 			children = (
 				D9D4396D1FDEE53B0056E655 /* StreakManager.swift */,
 			);
 			path = streaks;
+			sourceTree = "<group>";
+		};
+		D9DC3A1B2002B5BD00D1DCC3 /* dataStuff */ = {
+			isa = PBXGroup;
+			children = (
+				D9DC3A1C2002B5DA00D1DCC3 /* CoreDataManager.swift */,
+				D93A90222012940A00228515 /* DVTodoItemTaskViewModel.swift */,
+				D9B37A3420138EE500EF3314 /* fakeDataDump-Jan202018.json */,
+			);
+			path = dataStuff;
+			sourceTree = "<group>";
+		};
+		D9E2EEF12001B90000858F22 /* themes */ = {
+			isa = PBXGroup;
+			children = (
+				D9AA5DC02001E83E00CAE847 /* Default.plist */,
+				D9E2EEF22001B92600858F22 /* Night.plist */,
+				D9AA5DB72001CE9600CAE847 /* NightBlue.plist */,
+				D9AA5DB42001CC9F00CAE847 /* LightOrange.plist */,
+				D9AA5DBA2001D06100CAE847 /* ThemeManager.swift */,
+				D9AA5DBD2001D9C500CAE847 /* ThemesSettingsTableViewController.swift */,
+				D9F0C949200D5DCA0048BB1D /* ThemableTableViewController.swift */,
+				D9F0C94B200D85D60048BB1D /* ThemableViewController.swift */,
+				D9156E282010DC2300E7F04E /* ThemableBaseTableViewCell.swift */,
+				D9DC2D8020114EA6001B2014 /* ThemableBaseTextField.swift */,
+				D9B2686120121E250057D5AA /* ThemableBaseTextView.swift */,
+			);
+			path = themes;
 			sourceTree = "<group>";
 		};
 		D9E3FE7C1FB9292900785E4B /* Frameworks */ = {
@@ -298,6 +503,12 @@
 		D9EADD6C1FD9EB620040F918 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				D9A278CD200A9B610084D882 /* notes */,
+				D94FDA9F200983F70065AB29 /* lists */,
+				D9DC3A1B2002B5BD00D1DCC3 /* dataStuff */,
+				D9E2EEF12001B90000858F22 /* themes */,
+				D97853C22000739000665B2E /* DatePickerDialog */,
+				D98793BB1FFBDCD00083AAC2 /* extensions */,
 				D9D4396C1FDEE5190056E655 /* streaks */,
 				D99D44101FDD65BC007323FA /* i18n */,
 				D99D44071FDD6511007323FA /* launchScreen */,
@@ -318,9 +529,24 @@
 			children = (
 				D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */,
 				D99D440D1FDD6545007323FA /* SettingzViewController.storyboard */,
+				D9E2EEEF2001B88E00858F22 /* SettingsNavigationController.swift */,
 				D99D441A1FDDA0C7007323FA /* SettingsTableVC.swift */,
+				D957461820038F8C000038AE /* SupportSettingsViewController.swift */,
+				D957461C2003966B000038AE /* AcknowledgementSettingsViewController.swift */,
+				D957461E20039892000038AE /* AboutSettingsViewControllerViewController.swift */,
 			);
 			path = settings;
+			sourceTree = "<group>";
+		};
+		D9F3DC6020028A2500F8A586 /* DailyVibesShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				D9F3DC6E2002981B00F8A586 /* DailyVibesShareExtension.entitlements */,
+				D9F3DC6120028A2500F8A586 /* ShareViewController.swift */,
+				D9F3DC6320028A2500F8A586 /* MainInterface.storyboard */,
+				D9F3DC6620028A2500F8A586 /* Info.plist */,
+			);
+			path = DailyVibesShareExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +568,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D9F3DC6820028A2500F8A586 /* PBXTargetDependency */,
 			);
 			name = "Daily Vibes";
 			productName = "Daily Vibes";
@@ -366,24 +593,55 @@
 			productReference = D9028E991FAD4D6A002D64E3 /* Daily VibesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D9F3DC5E20028A2500F8A586 /* DailyVibesShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9F3DC6C20028A2500F8A586 /* Build configuration list for PBXNativeTarget "DailyVibesShareExtension" */;
+			buildPhases = (
+				D9F3DC5B20028A2500F8A586 /* Sources */,
+				D9F3DC5C20028A2500F8A586 /* Frameworks */,
+				D9F3DC5D20028A2500F8A586 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DailyVibesShareExtension;
+			productName = DailyVibesShareExtension;
+			productReference = D9F3DC5F20028A2500F8A586 /* DailyVibesShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D9028E7D1FAD4D6A002D64E3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0910;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Alex Kluew";
 				TargetAttributes = {
 					D9028E841FAD4D6A002D64E3 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D9028E981FAD4D6A002D64E3 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D9028E841FAD4D6A002D64E3;
+					};
+					D9F3DC5E20028A2500F8A586 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -403,6 +661,7 @@
 			projectRoot = "";
 			targets = (
 				D9028E841FAD4D6A002D64E3 /* Daily Vibes */,
+				D9F3DC5E20028A2500F8A586 /* DailyVibesShareExtension */,
 				D9028E981FAD4D6A002D64E3 /* Daily VibesTests */,
 			);
 		};
@@ -414,12 +673,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D99D44081FDD652A007323FA /* LaunchScreen.storyboard in Resources */,
+				D9F3DC7120029CFF00F8A586 /* MainInterface.storyboard in Resources */,
 				D99D44141FDD66EB007323FA /* LoadingTableViewEmptyView.xib in Resources */,
 				D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */,
 				D99D44111FDD65CA007323FA /* Localizable.strings in Resources */,
+				D9AA5DB82001CE9600CAE847 /* NightBlue.plist in Resources */,
+				D9AA5DB52001CC9F00CAE847 /* LightOrange.plist in Resources */,
 				D9AE6A551FE3760500A28656 /* Progress.storyboard in Resources */,
 				D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */,
 				D99D440B1FDD6545007323FA /* SettingzViewController.storyboard in Resources */,
+				D9E2EEF32001B92600858F22 /* Night.plist in Resources */,
+				D9B37A3520138EE500EF3314 /* fakeDataDump-Jan202018.json in Resources */,
+				D9AA5DC12001E83E00CAE847 /* Default.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +692,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9AA5DB92001CE9600CAE847 /* NightBlue.plist in Resources */,
+				D9AA5DC22001E83E00CAE847 /* Default.plist in Resources */,
+				D9AA5DB62001CC9F00CAE847 /* LightOrange.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9F3DC5D20028A2500F8A586 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9DC3A1F2002CBA300D1DCC3 /* Assets.xcassets in Resources */,
+				D9F3DC6520028A2500F8A586 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,10 +718,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -491,25 +770,53 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9AA5DBE2001D9C500CAE847 /* ThemesSettingsTableViewController.swift in Sources */,
 				D9E0F2D01FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift in Sources */,
+				D9E2EEF02001B88E00858F22 /* SettingsNavigationController.swift in Sources */,
 				D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */,
 				D937B7091FE5831A00D5E1FA /* UIViewExtension.swift in Sources */,
+				D9AA5DB22001C97000CAE847 /* SegmentedUIToolBar.swift in Sources */,
 				D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */,
 				D91A32421FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift in Sources */,
+				D9F0C94C200D85D60048BB1D /* ThemableViewController.swift in Sources */,
+				D9A278CF200A9B790084D882 /* NotesViewController.swift in Sources */,
+				D97853C4200073A700665B2E /* DatePickerDialog.swift in Sources */,
 				D9028E891FAD4D6A002D64E3 /* AppDelegate.swift in Sources */,
+				D98793BD1FFBDCEA0083AAC2 /* Date+Extension.swift in Sources */,
 				D92A63C01FC15146002E4F99 /* Tag.swift in Sources */,
 				D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */,
+				D94FDAA1200984310065AB29 /* ListTableViewController.swift in Sources */,
+				D9B37A332013695600EF3314 /* DateValueFormatter.swift in Sources */,
+				D9DC2D8120114EA6001B2014 /* ThemableBaseTextField.swift in Sources */,
+				D94FDAA5200984580065AB29 /* ListCreationTableViewCell.swift in Sources */,
 				D9FD88C21FCA78690055674A /* TodoItemSettingsData.swift in Sources */,
+				D957461D2003966B000038AE /* AcknowledgementSettingsViewController.swift in Sources */,
+				D9FA2D93200B2F68003A35A0 /* UITextViewFixed.swift in Sources */,
+				D9A278CB200A98F70084D882 /* DailyVibesNote.swift in Sources */,
+				D9F0C94E200D8D4B0048BB1D /* DeleteTableViewCell.swift in Sources */,
+				D93A902120128A3900228515 /* DVProgressViewController.swift in Sources */,
+				D996344220046D1F00AD216C /* TodoTaskItemFiltersViewController.swift in Sources */,
 				D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */,
+				D9AA5DBB2001D06100CAE847 /* ThemeManager.swift in Sources */,
+				D957461F20039892000038AE /* AboutSettingsViewControllerViewController.swift in Sources */,
+				D9694C34200845B400B49CE4 /* DailyVibesList.swift in Sources */,
+				D957461920038F8C000038AE /* SupportSettingsViewController.swift in Sources */,
 				D99D441B1FDDA0C7007323FA /* SettingsTableVC.swift in Sources */,
+				D9F3DC7020029CEE00F8A586 /* ShareViewController.swift in Sources */,
+				D9D0D6DA200C3DF700F1BC5F /* NotesInlineTableViewCell.swift in Sources */,
+				D9DC3A1D2002B5DA00D1DCC3 /* CoreDataManager.swift in Sources */,
 				D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */,
-				D9D4396E1FDEE53B0056E655 /* StreakManager.swift in Sources */,
+				D93A90232012940A00228515 /* DVTodoItemTaskViewModel.swift in Sources */,
 				D92A63C21FC151AF002E4F99 /* Streak.swift in Sources */,
+				D9156E292010DC2300E7F04E /* ThemableBaseTableViewCell.swift in Sources */,
 				D9B8BFB91FBF913400BBEC70 /* TodoItemUITableView.swift in Sources */,
+				D9B2686220121E250057D5AA /* ThemableBaseTextView.swift in Sources */,
 				D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */,
-				D9E2CDC51FB41A110084EB12 /* Model.xcdatamodeld in Sources */,
+				D9F0C94A200D5DCA0048BB1D /* ThemableTableViewController.swift in Sources */,
+				D90DED211FEC26A6007E7DAE /* StreakManager.swift in Sources */,
+				D99286F620114CB600C9D1FE /* UIColor+Extension.swift in Sources */,
+				D9E2CDC51FB41A110084EB12 /* DailyVibesModel.xcdatamodeld in Sources */,
 				D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */,
-				D92747511FE0D1F800BB2247 /* ProgressTableViewController.swift in Sources */,
 				D97102381FDE15AF0079B222 /* ProgressViewController.swift in Sources */,
 				D9B8BFB71FBF8F9900BBEC70 /* LoadingTableViewEmptyView.swift in Sources */,
 				D9E0F2D21FDC64230072D3B8 /* DummyViewController.swift in Sources */,
@@ -520,7 +827,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9028E9E1FAD4D6A002D64E3 /* Daily_VibesTests.swift in Sources */,
+				D9AC17421FEC254500EE0303 /* Streak.swift in Sources */,
+				D9235A811FEC1FBB00386A5F /* DailyVibesModel.xcdatamodeld in Sources */,
+				D90DED251FEC29DB007E7DAE /* StreaksManagerTest.swift in Sources */,
+				D9AC17411FEC254300EE0303 /* Tag.swift in Sources */,
+				D90DED201FEC269B007E7DAE /* StreakManager.swift in Sources */,
+				D9AA5DB32001C97000CAE847 /* SegmentedUIToolBar.swift in Sources */,
+				D98793BE1FFBE2BD0083AAC2 /* Date+Extension.swift in Sources */,
+				D9AA5DBC2001D06100CAE847 /* ThemeManager.swift in Sources */,
+				D9AC17441FEC262800EE0303 /* AppDelegate.swift in Sources */,
+				D9AC17401FEC253F00EE0303 /* TodoItem.swift in Sources */,
+				D9AA5DBF2001D9C500CAE847 /* ThemesSettingsTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9F3DC5B20028A2500F8A586 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D93A902420129C2900228515 /* DVTodoItemTaskViewModel.swift in Sources */,
+				D9F3DC7220029D1F00F8A586 /* Tag.swift in Sources */,
+				D9F3DC6220028A2500F8A586 /* ShareViewController.swift in Sources */,
+				D9F3DC7320029D2300F8A586 /* TodoItem.swift in Sources */,
+				D9F3DC6F20029C7200F8A586 /* DailyVibesModel.xcdatamodeld in Sources */,
+				D911E0BA2002A17800B739C8 /* Streak.swift in Sources */,
+				D9A278CC200A98F70084D882 /* DailyVibesNote.swift in Sources */,
+				D9DC3A1E2002B8AA00D1DCC3 /* CoreDataManager.swift in Sources */,
+				D911E0BB2002A1A200B739C8 /* Date+Extension.swift in Sources */,
+				D9694C35200845F800B49CE4 /* DailyVibesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +865,11 @@
 			isa = PBXTargetDependency;
 			target = D9028E841FAD4D6A002D64E3 /* Daily Vibes */;
 			targetProxy = D9028E9A1FAD4D6A002D64E3 /* PBXContainerItemProxy */;
+		};
+		D9F3DC6820028A2500F8A586 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9F3DC5E20028A2500F8A586 /* DailyVibesShareExtension */;
+			targetProxy = D9F3DC6720028A2500F8A586 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -562,6 +901,7 @@
 				D99D440C1FDD6545007323FA /* Base */,
 				D99D441E1FDDA423007323FA /* fr */,
 				D99D44231FDDA431007323FA /* ru */,
+				D957461B20039229000038AE /* en */,
 			);
 			name = SettingzViewController.storyboard;
 			sourceTree = "<group>";
@@ -596,6 +936,14 @@
 				D9AE6A5D1FE3760D00A28656 /* ru */,
 			);
 			name = Progress.storyboard;
+			sourceTree = "<group>";
+		};
+		D9F3DC6320028A2500F8A586 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9F3DC6420028A2500F8A586 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -714,7 +1062,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6E60AF11ADB618FF5099E070 /* Pods-Daily Vibes.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = DailyVibesAppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Daily Vibes/Daily Vibes.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E9FSS8PG2;
 				INFOPLIST_FILE = "Daily Vibes/Info.plist";
@@ -730,7 +1079,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 667650383722341A3C9CC8A6 /* Pods-Daily Vibes.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = DailyVibesAppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Daily Vibes/Daily Vibes.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E9FSS8PG2;
 				INFOPLIST_FILE = "Daily Vibes/Info.plist";
@@ -745,7 +1095,6 @@
 		D9028EA61FAD4D6A002D64E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E9FSS8PG2;
@@ -762,7 +1111,6 @@
 		D9028EA71FAD4D6A002D64E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E9FSS8PG2;
@@ -773,6 +1121,40 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daily Vibes.app/Daily Vibes";
+			};
+			name = Release;
+		};
+		D9F3DC6A20028A2500F8A586 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DailyVibesShareExtension/DailyVibesShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6E9FSS8PG2;
+				INFOPLIST_FILE = DailyVibesShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sugarplumoriginals.Daily-Vibes.DailyVibesShareExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D9F3DC6B20028A2500F8A586 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DailyVibesShareExtension/DailyVibesShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6E9FSS8PG2;
+				INFOPLIST_FILE = DailyVibesShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sugarplumoriginals.Daily-Vibes.DailyVibesShareExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -806,16 +1188,27 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D9F3DC6C20028A2500F8A586 /* Build configuration list for PBXNativeTarget "DailyVibesShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9F3DC6A20028A2500F8A586 /* Debug */,
+				D9F3DC6B20028A2500F8A586 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D9E2CDC31FB41A110084EB12 /* Model.xcdatamodeld */ = {
+		D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9A278C9200A952C0084D882 /* DailyVibesModelv03.xcdatamodel */,
+				D96114692006FB4900BFE753 /* DailyVibesModelv02.xcdatamodel */,
 				D9E2CDC41FB41A110084EB12 /* Model.xcdatamodel */,
 			);
-			currentVersion = D9E2CDC41FB41A110084EB12 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = D9A278C9200A952C0084D882 /* DailyVibesModelv03.xcdatamodel */;
+			path = DailyVibesModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

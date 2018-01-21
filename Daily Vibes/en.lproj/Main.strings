@@ -11,8 +11,8 @@
 /* Class = "UITableViewSection"; footerTitle = "While I take care of tracking the date when you create your new task or perform a modification, it is a good idea for you to set a realistic completion date. You will be able to measure your progress and observe if this task was realistic, specific, and attainable. Don't worry, you need to start somewhere. Might as well do it with this task. "; ObjectID = "FKl-F2-xzY"; */
 "FKl-F2-xzY.footerTitle" = "While I take care of tracking the date when you create your new task or perform a modification, it is a good idea for you to set a realistic completion date. You will be able to measure your progress and observe if this task was realistic, specific, and attainable. Don't worry, you need to start somewhere. Might as well do it with this task. ";
 
-/* Class = "UITableViewSection"; headerTitle = "Projected Completion Date"; ObjectID = "FKl-F2-xzY"; */
-"FKl-F2-xzY.headerTitle" = "Projected Completion Date";
+/* Class = "UITableViewSection"; headerTitle = "To-do date settings"; ObjectID = "FKl-F2-xzY"; */
+"FKl-F2-xzY.headerTitle" = "To-do date settings";
 
 /* Class = "UILabel"; text = "Date"; ObjectID = "GqN-s5-Rq2"; */
 "GqN-s5-Rq2.text" = "Date";

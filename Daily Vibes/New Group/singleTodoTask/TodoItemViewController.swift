@@ -6,47 +6,35 @@
 //  Copyright © 2017 Alex Kluew. All rights reserved.
 //
 
+// Emotion section footer text for later
+// Whenever you are here, feel free to update your emotion while working on this task. Over time, you'll be able to see if this task is worth doing for you.
+
 import UIKit
 import CoreData
 
-class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    // TODO: REMOVE THESE
-    @IBOutlet private weak var createdAtDateLabelCell: UITableViewCell!
-    @IBOutlet private weak var createdAtDatePicker: UIDatePicker!
-    @IBOutlet private weak var completedAtDateLabelCell: UITableViewCell!
-    @IBOutlet private weak var archivedAtDateLabelCell: UITableViewCell!
-    
-    
+class TodoItemViewController: ThemableTableViewController,
+    UITextViewDelegate,
+    UINavigationControllerDelegate,
+    UIPickerViewDataSource,
+UIPickerViewDelegate {
     // MARK: Properties
     private var todoItem: TodoItem?
     private var todoItemSettingsData: TodoItemSettingsData?
     
-    private var expandingCellHeight: CGFloat = 200
-    private let expandingIndexRow = 5
-    
     // MARK: Outlets
     @IBOutlet private weak var todoItemTextFieldCell: NewTodoItemTableViewCell!
     @IBOutlet private weak var tagsCell: UITableViewCell!
-    @IBOutlet private weak var doneCellLabel: UILabel!
-    @IBOutlet private weak var cancelButton: UIBarButtonItem!
+    @IBOutlet private weak var listsCell: UITableViewCell!
+    @IBOutlet private weak var notesInlineCell: NotesInlineTableViewCell!
+    @IBOutlet private weak var deleteCell: DeleteTableViewCell!
     
     @IBOutlet private weak var todoItemTextView: UITextView!
-    @IBOutlet private weak var yellowBtn: UIButton!
-    @IBOutlet private weak var orangeBtn: UIButton!
-    @IBOutlet private weak var redBtn: UIButton!
-    @IBOutlet private weak var greenBtn: UIButton!
-    @IBOutlet private weak var blueBtn: UIButton!
-    @IBOutlet private weak var purpleBtn: UIButton!
     @IBOutlet private weak var saveTodoitemButton: UIBarButtonItem!
-    @IBOutlet private weak var wasCompletedSwitch: UISwitch! = UISwitch()
     
-    @IBOutlet private weak var statusPicker: UIDatePicker!
-    
-    @IBOutlet private weak var emotionPicker: UIPickerView!
-    @IBOutlet private weak var currentEmotionLabel: UILabel!
-    @IBOutlet private weak var emotionPickerCell: UITableViewCell!
-    @IBOutlet private weak var emotionPickerLabelCell: UITableViewCell!
+    @IBOutlet private weak var createdAtDateCell: UITableViewCell!
+    @IBOutlet private weak var duedateAtDateCell: UITableViewCell!
+    @IBOutlet private weak var completedAtDateCell: UITableViewCell!
+    @IBOutlet private weak var archivedAtDateCell: UITableViewCell!
     
     private var statusPickerVisible: Bool = false
     
@@ -54,8 +42,6 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
     private var editingCompletionDate: Bool = false
     private var dateFormatter: DateFormatter?
     private var showCompletedCell: Bool = false
-    
-    @IBOutlet private weak var completionDateLabelCell: UITableViewCell!
     
     private let emotionsList = [
         ["Love", UIColor.red],
@@ -66,16 +52,53 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         ["Angry", UIColor.purple]
     ]
     
-    private var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    private var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.store.persistentContainer
     private var moc: NSManagedObjectContext?
+    
+    fileprivate func refreshNotesInlineCell() {
+        let notesContent = todoItemSettingsData?.getNoteText()
+        let isEmptyField = notesContent?.trimmingCharacters(in: .whitespaces).isEmpty
+        
+        if let isEmpty = isEmptyField, isEmpty {
+            let emptyNotesText = NSLocalizedString("Notes", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Notes **", comment: "")
+            notesInlineCell.setText(text: emptyNotesText)
+        } else {
+            notesInlineCell.setText(text: notesContent)
+        }
+    }
+    
+    private func setupTheming() {
+        todoItemTextView.theme_textColor = "Global.textColor"
+        todoItemTextView.theme_tintColor = "Global.textColor"
+    
+        tableView.theme_backgroundColor = "Global.backgroundColor"
+        tableView.theme_separatorColor = "ListViewController.separatorColor"
+    
+        todoItemTextFieldCell.theme_backgroundColor = "Global.barTintColor"
+    
+        tagsCell.theme_backgroundColor = "Global.barTintColor"
+        tagsCell.theme_tintColor = "Global.textColor"
+        tagsCell.textLabel?.theme_textColor = "Global.textColor"
+        tagsCell.detailTextLabel?.theme_textColor = "Global.placeholderColor"
+    
+        listsCell.theme_backgroundColor = "Global.barTintColor"
+        listsCell.theme_tintColor = "Global.textColor"
+        listsCell.textLabel?.theme_textColor = "Global.textColor"
+        listsCell.detailTextLabel?.theme_textColor = "Global.placeholderColor"
+    
+        duedateAtDateCell.theme_backgroundColor = "Global.barTintColor"
+        duedateAtDateCell.theme_tintColor = "Global.textColor"
+        duedateAtDateCell.textLabel?.theme_textColor = "Global.textColor"
+        duedateAtDateCell.detailTextLabel?.theme_textColor = "Global.placeholderColor"
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tagsCell.textLabel?.text = NSLocalizedString("Tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Tags **", comment: "")
-        doneCellLabel?.text = NSLocalizedString("Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done **", comment: "")
-        completionDateLabelCell.textLabel?.text = NSLocalizedString("Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Date **", comment: "")
-        emotionPickerLabelCell.textLabel?.text = NSLocalizedString("How do you feel?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND How do you feel? **", comment: "")
+        
+        setupTheming()
+        refreshNotesInlineCell()
     }
     
     override func viewDidLoad() {
@@ -83,47 +106,34 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        //        self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        tableView.estimatedRowHeight = 44.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         // Handle the text field’s user input through delegate callbacks.
         todoItemTextView.delegate = self
-        
-        // Handle emotion picker
-        emotionPicker.delegate = self
-        emotionPicker.dataSource = self
+        deleteCell.delegate = self
         
         dateFormatter = DateFormatter()
         dateFormatter?.dateStyle = DateFormatter.Style.short
         dateFormatter?.timeStyle = DateFormatter.Style.short
         
-        //        print("about to call performTodoItemSetup")
         performTodoItemSetup()
         updateSaveButtonState()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        //        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
-        //            fatalError("todoItemSettingsData should be set by now")
-        //        }
-        
-        //        if data.isNewTodo() {
-        //            todoItemTextView.becomeFirstResponder()
-        //        }
+        showOrHideKeyboard()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        //        performTodoItemSetup()
+    private func showOrHideKeyboard() {
+        if let isNew = todoItemSettingsData?.isNewTodo(), isNew {
+            todoItemTextView.becomeFirstResponder()
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        super.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func setData(toProcess todoItem: TodoItem?, inContext context: NSManagedObjectContext?) {
@@ -132,99 +142,9 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         self.todoItem = todoItem
     }
     
-    @IBAction func createdAtDateChanged(_ sender: UIDatePicker) {
-        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
-            fatalError("should be set by now")
-        }
-        guard data.setCreatedAt(date: sender.date) else { fatalError("should not fail") }
-        createdAtDateLabelCell?.detailTextLabel?.text = dateFormatter?.string(from: sender.date)
-    }
-    
-    @IBAction func completedAtDateChanged(_ sender: UIDatePicker) {
-        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
-            fatalError("should be set by now")
-        }
-        guard data.setCompletedAtDate(date: sender.date) else {
-            fatalError("should not fail")
-        }
-        completedAtDateLabelCell?.detailTextLabel?.text = dateFormatter?.string(from: sender.date)
-    }
-    
-    @IBAction func archivedAtDateChanged(_ sender: UIDatePicker) {
-        fatalError("not implemented yet")
-        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
-            fatalError("should be set by now")
-        }
-        guard data.setArchivedAt(date: sender.date) else {
-            fatalError("should not fail")
-        }
-        archivedAtDateLabelCell?.detailTextLabel?.text = dateFormatter?.string(from: sender.date)
-    }
-    
-    // MARK: Actions
-    @IBAction func completedAtChanged(_ sender: UIDatePicker) {
-        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
-            fatalError("should be set by now")
-        }
-        guard data.setTodoCompleted(at: sender.date) else {
-            fatalError("should be always true")
-        }
-        completionDateLabelCell?.detailTextLabel?.text = dateFormatter?.string(from: sender.date)
-        tableView.reloadData()
-    }
-    
-    @IBAction func setMarkCompleted(_ sender: UISwitch) {
-        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
-            fatalError("should be set by now")
-        }
-        
-        if sender.isOn && !data.wasCompleted() {
-            // TODO: Remove this duplication
-            
-            let doneAlertTitle = NSLocalizedString("Mark this task as done?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Mark this task as done? ***", comment: "")
-            let doneAlertMessage = NSLocalizedString("This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over.", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over. ***", comment: "")
-            let doneAlertConfirmation = NSLocalizedString("Yes, Mark this as Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Yes, Mark this as Done ***", comment: "")
-            let doneAlertCancel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
-            
-            let defaults = UserDefaults.standard
-            let showDoneAlert = defaults.bool(forKey: "todo.showOnDoneAlert")
-            
-            if showDoneAlert {
-                let alert = UIAlertController(title: doneAlertTitle, message: doneAlertMessage, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .destructive, handler: { _ in
-                    guard data.markCompleted(with: self.emotionPickerLabelCell?.detailTextLabel?.text) else {
-                        fatalError("should return always true")
-                    }
-                }))
-                alert.addAction(UIAlertAction(title: doneAlertCancel, style: .default, handler: { _ in
-                    sender.isOn = false
-                }))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                guard data.markCompleted(with: self.emotionPickerLabelCell?.detailTextLabel?.text) else {
-                    fatalError("should return always true")
-                }
-                sender.isOn = true
-            }
-        } else {
-            sender.isOn = true
-        }
-    }
-    
     // MARK: Navigation
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
-        //        let isPresentingInADDMode = presentingViewController is UINavigationController
+    fileprivate func closeView() {
         let isPresentingInADDMode = presentingViewController is DailyVibesTabBarViewController
-        
-        //        print("var presentingViewController: \(presentingViewController)")
-        
-        guard let data = todoItemSettingsData else {
-            fatalError("todoItemSettingsData should be set by now")
-        }
-        
-        guard data.processCancel(in: moc!) else {
-            fatalError("cancel should have been processed")
-        }
         
         if isPresentingInADDMode {
             dismiss(animated: true, completion: nil)
@@ -233,6 +153,18 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         } else {
             fatalError("The TodoItemViewController is not inside a navigation controller.")
         }
+    }
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        guard let data = todoItemSettingsData else {
+            fatalError("todoItemSettingsData should be set by now")
+        }
+        
+        guard data.processCancel(in: moc!) else {
+            fatalError("cancel should have been processed")
+        }
+        
+        closeView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -252,6 +184,22 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
                 fatalError("wasn't a TagsTableViewController segue")
             }
             tagsTVC.configure(todoItemSettingsData: data)
+        case "listsSegue":
+            guard let listsTVC = segue.destination as? ListTableViewController else {
+                fatalError("wasnt a ListTableViewController segue")
+            }
+            listsTVC.configure(todoItemSettingsData: data)
+        case "newNoteSegue":
+            guard let notesVC = segue.destination as? NotesViewController else {
+                fatalError("wasnt a NotesViewController segue")
+            }
+            
+            let noteTextTitle = data.getNoteTitle()
+            let noteTextString = data.getNoteText()
+            
+            //            notesVC.setup(title: noteTextTitle, textContent: noteTextString)
+            notesVC.delegate = self
+            notesVC.setup(title: noteTextTitle, textContent: noteTextString, for: data)
         default:
             fatalError("Should not be here")
         }
@@ -273,15 +221,17 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
             fatalError("todoItemSettingsData should be init by now")
         }
         if textView == todoItemTextView {
-            if !textView.isFirstResponder {
-                textView.becomeFirstResponder()
-            }
-            
+//            if !textView.isFirstResponder {
+//                textView.becomeFirstResponder()
+//            }
+//            
             saveTodoitemButton.isEnabled = false
             
             if textView.text == data.getTodoPlaceholderText() {
                 textView.text = ""
-                textView.textColor = .black
+//                textView.textColor = .black
+//                textView.theme_textColor = "Global.textColor"
+//                textView.theme_tintColor = "Global.textColor"
             }
         }
     }
@@ -298,7 +248,9 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
             
             if textView.text.trimmingCharacters(in: .whitespaces).isEmpty {
                 textView.text = data.getTodoPlaceholderText()
-                textView.textColor = .lightGray
+                textView.textColor = UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)
+                textView.theme_tintColor = "Global.textColor"
+                textView.theme_textColor = "Global.textColor"
             }
             
             updateSaveButtonState()
@@ -311,7 +263,6 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
-            // stop keyboard and close it
             textView.resignFirstResponder()
             updateSaveButtonState()
         }
@@ -341,54 +292,8 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         tableView.setContentOffset(currentOffset, animated: false)
     }
     
-    //MARK: Delegates
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let result = emotionsList[row][0] as? String else {
-            fatalError("Expected a string, did not get a string =(")
-        }
-        return result
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let emotionSelection = emotionsList[row][0] as? String
-        emotionPickerLabelCell.detailTextLabel?.text = emotionSelection
-        
-        guard let data = todoItemSettingsData as TodoItemSettingsData? else {
-            fatalError("should be set by now")
-        }
-        
-        if data.isNewTodo() {
-            guard data.setCreatedAt(emotion: emotionSelection) else {
-                fatalError("should always be true")
-            }
-        } else {
-            if data.wasCompleted() {
-                guard data.setCompletedAt(emotion: emotionSelection) else {
-                    fatalError("should be always true")
-                }
-            } else {
-                guard data.setUpdatedAt(emotion: emotionSelection) else {
-                    fatalError("should be always true")
-                }
-            }
-        }
-        
-        tableView.reloadData()
-    }
-    
-    //MARK: visual view
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel = view as! UILabel!
-        if view == nil {  //if no label there yet
-            pickerLabel = UILabel()
-            pickerLabel?.backgroundColor = emotionsList[row][1] as? UIColor
-        }
-        let titleData = emotionsList[row][0] as! String
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 26.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
-        pickerLabel!.attributedText = myTitle
-        pickerLabel!.textAlignment = .center
-        return pickerLabel!
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -396,36 +301,44 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         guard let data = todoItemSettingsData as TodoItemSettingsData? else {
             fatalError("should definitely exist already")
         }
-        if data.tagsCellIndexPath(equals: indexPath) {
+        
+        if cell == tagsCell {
             let tagsText: String?
             
             if let result = data.holdingAnyTags() as Bool?, result {
-                tagsText = NSLocalizedString("view tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND view tags **", comment: "")
+                tagsText = data.getTagsLabels().joined(separator: " ")
             } else {
-                tagsText = NSLocalizedString("new tag", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND new tag **", comment: "")
+                tagsText = NSLocalizedString("None", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND new tag **", comment: "")
             }
             
-            cell.detailTextLabel?.tintColor = .black
             cell.detailTextLabel?.text = tagsText
         }
+        
+        if cell == listsCell {
+            let listLabel = data.getListLabel()
+            let isEmpty = listLabel.trimmingCharacters(in: .whitespaces).isEmpty
+            
+            if isEmpty {
+                let emptyLabel = NSLocalizedString("None", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND None **", comment: "")
+                cell.detailTextLabel?.text = emptyLabel
+            } else {
+                cell.detailTextLabel?.text = listLabel
+            }
+        }
+        
+        if cell == notesInlineCell {
+            refreshNotesInlineCell()
+        }
+        
+        if cell == deleteCell {
+            if !data.isNewTodo() {
+                self.tableView.beginUpdates()
+                deleteCell.enableDeleteButton()
+                self.tableView.endUpdates()
+            }
+        }
+        
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath.section == 1 && indexPath.row == 0 && !showCompletedCell) {
-            return 0
-        }
-        if (indexPath.section == 2 && indexPath.row == 1 && !editingEmotionPicker) {
-            return 0
-        } else if (indexPath.section == 2 && indexPath.row == 1 && editingEmotionPicker) {
-            return 216.0
-        } else if (indexPath.section == 3 && indexPath.row == 1 && !editingCompletionDate) {
-            return 0
-        } else if (indexPath.section == 3 && indexPath.row == 1 && editingCompletionDate) {
-            return 216.0
-        } else {
-            return UITableViewAutomaticDimension
-        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -434,23 +347,37 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         let cell = tableView.cellForRow(at: indexPath)
         
         self.tableView.beginUpdates()
-        if (cell == self.emotionPickerLabelCell) {
-            editingEmotionPicker = !editingEmotionPicker
+        
+        if (cell == self.duedateAtDateCell) {
+            datePickerTappedForDuedateAtDateCell()
         }
-        if editingEmotionPicker {
-            emotionPickerLabelCell?.detailTextLabel?.textColor = UIColor.red
-        } else {
-            emotionPickerLabelCell?.detailTextLabel?.textColor = UIColor.black
-        }
-        if (cell == self.completionDateLabelCell) {
-            editingCompletionDate = !editingCompletionDate
-        }
-        if editingCompletionDate {
-            completionDateLabelCell.detailTextLabel?.textColor = UIColor.red
-        } else {
-            completionDateLabelCell.detailTextLabel?.textColor = UIColor.black
-        }
+        
         self.tableView.endUpdates()
+    }
+    
+    // MARK: Datepickertapped
+    func datePickerTappedForDuedateAtDateCell() {
+        let datePicker = DatePickerDialog()
+        
+        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
+        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+        
+        datePicker.show(setDueDateTitle,
+                        doneButtonTitle: setString,
+                        cancelButtonTitle: cancelString,
+                        defaultDate: Date().endTime()) { (date) in
+                            if let dt = date {
+                                guard let data = self.todoItemSettingsData as TodoItemSettingsData? else {
+                                    fatalError("should be set by now")
+                                }
+                                guard data.setTodoDueDate(at: dt) else {
+                                    fatalError("should be always true")
+                                }
+                                self.duedateAtDateCell.detailTextLabel?.text = self.dateFormatter?.string(from: dt)
+                                self.tableView.reloadData()
+                            }
+        }
     }
     
     // MARK: Private Methods
@@ -461,17 +388,36 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         saveTodoitemButton.isEnabled = !isEmptyField
     }
     
+    //    override func viewDidLoad() {
+    //        super.viewDidLoad()
+    //        let _title = NSLocalizedString("Settings", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Settings **", comment: "")
+    //        setupTitleView(withString: _title)
+    //    }
+    
+    //    private func setupTitleView(withString string: String) {
+    //        let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 15)]
+    //        let _title:NSMutableAttributedString = NSMutableAttributedString(string: string, attributes: attrs)
+    //
+    //        let size = _title.size()
+    //
+    //        let width = size.width
+    //        guard let height = navigationController?.navigationBar.frame.size.height else {return}
+    //
+    //        let titleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
+    //        titleLabel.attributedText = _title
+    //        titleLabel.numberOfLines = 0
+    //        titleLabel.textAlignment = .center
+    //        titleLabel.theme_backgroundColor = "Global.barTintColor"
+    //        titleLabel.theme_textColor = "Global.textColor"
+    //
+    //        navigationItem.titleView = titleLabel
+    //    }
+    
     fileprivate func performTodoItemSetup() {
         if todoItem != nil {
             // handle already created to do Item
-            print("~~~ todo exists ~~~")
             todoItemSettingsData = TodoItemSettingsData.init(for: todoItem!, in: tableView)
         } else {
-            // TODO: fix problem with tags not working
-            
-            // a new to do which we need to create
-            print("~~~ create a new todo ~~~~")
-            
             guard let _moc = container?.viewContext as NSManagedObjectContext? else {
                 fatalError("this should not happen")
             }
@@ -485,36 +431,28 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         
         if !data.isNewTodo() {
             // handle already created to do Item
-            
             todoItemTextView.text = data.getTodoText()
-            navigationItem.title = NSLocalizedString("Details", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Details **", comment: "")
-            showCompletedCell = true
+            let _title = "Details"
+            //            setupTitleView(withString:
+            setupNavigationTitleText(title: _title)
             
-            if data.wasCompleted() {
-                wasCompletedSwitch.isOn = true
-                statusPicker.isEnabled = false
-                
-                if let completedEmotion = data.getTodoCompletedEmotion() {
-                    emotionPicker.isUserInteractionEnabled = false
-                    emotionPickerLabelCell?.detailTextLabel?.text = completedEmotion
-                }
-            }
-            
-            var strDate: String? = nil
-            
-            if let date = data.getTodoCompletedAt() {
-                strDate = dateFormatter?.string(from: date)
-            }
-            
-            completionDateLabelCell?.detailTextLabel?.text = strDate
         } else {
             // a new to do
-            navigationItem.title = NSLocalizedString("Add a to do", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Add a to do **", comment: "")
+            let _title = "Add a to do"
+            setupNavigationTitleText(title: _title)
+            
             todoItemTextView.text = data.getTodoPlaceholderText()
-            todoItemTextView.textColor = .gray
-            wasCompletedSwitch.isEnabled = false
+            //            todoItemTextView.textColor = .gray
+            //            todoItemTextView.textColor = UIColor.lightText
+            todoItemTextView.textColor = UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)
             saveTodoitemButton.isEnabled = false
-            showCompletedCell = false
+//            showCompletedCell = false
+        }
+        
+        if let duedateAtDate = todoItemSettingsData?.getTodoDuedateAt() {
+            duedateAtDateCell?.detailTextLabel?.text = dateFormatter?.string(from: duedateAtDate)
+        } else {
+            duedateAtDateCell?.detailTextLabel?.text = NSLocalizedString("None", tableName: "Localizable", bundle: .main, value: "** Did not find None **", comment: "")
         }
         
         let tagsText: String?
@@ -522,11 +460,57 @@ class TodoItemViewController: UITableViewController, UITextViewDelegate, UINavig
         if data.holdingAnyTags() {
             tagsText = NSLocalizedString("view tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND view tags **", comment: "")
         } else {
-            tagsText = NSLocalizedString("new tag", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND new tag **", comment: "")
+            tagsText = NSLocalizedString("None", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND new tag **", comment: "")
         }
         
-        tagsCell.detailTextLabel?.tintColor = .black
         tagsCell.detailTextLabel?.text = tagsText
     }
     
+}
+
+extension TodoItemViewController: NotesViewControllerUpdaterDelegate {
+    func updateTableView() {
+        self.tableView.reloadData()
+    }
+}
+
+
+extension TodoItemViewController : DeleteButtonTableViewCellDelegate {
+    func processDeleteButtonClick() {
+        showDeleteAction()
+    }
+    
+    func showDeleteAction() {
+        let deleteAlertTitle = NSLocalizedString("Are you sure?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Are you sure? ***", comment: "")
+        let deleteAlertMessage = NSLocalizedString("You're about to delete forever", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND You're about to delete forever ***", comment: "")
+        let deleteAlertConfirmation = NSLocalizedString("Yes, Delete Forever.", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Yes, Delete Forever. ***", comment: "")
+        //
+        //        let action = UIContextualAction(style: .normal, title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: @escaping (Bool) -> Void) in
+        //
+        let defaults = UserDefaults.standard
+        let showDoneAlert = defaults.bool(forKey: "todo.showOnDeleteAlert")
+        //
+        if showDoneAlert {
+            let alertController = UIAlertController(title: deleteAlertTitle, message: deleteAlertMessage, preferredStyle: .actionSheet)
+            let delete = UIAlertAction(title: deleteAlertConfirmation, style: .destructive, handler: { [unowned self] _ in
+                guard let data = self.todoItemSettingsData else { fatalError("could not find TodoItemSettingsData") }
+                guard data.destroy() else { fatalError("could not delete") }
+//                self.dismiss(animated: true, completion: nil)
+                self.closeView()
+            })
+            //
+            let cancelLabel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+            let cancel = UIAlertAction(title: cancelLabel, style: .cancel, handler: nil)
+            //
+            alertController.addAction(delete)
+            alertController.addAction(cancel)
+            
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            guard let data = self.todoItemSettingsData else { fatalError("could not find TodoItemSettingsData") }
+            guard data.destroy() else { fatalError("could not delete") }
+            self.dismiss(animated: true, completion: nil)
+            self.closeView()
+        }
+    }
 }

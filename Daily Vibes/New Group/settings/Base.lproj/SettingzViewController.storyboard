@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,16 +16,9 @@
             <objects>
                 <tableViewController title="SettingsViewController" id="kvH-uq-xI1" customClass="SettingsTableVC" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="TTp-ab-ANZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍁 Made in Toronto 🇨🇦" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PZl-9j-WJa">
-                            <rect key="frame" x="0.0" y="309" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <sections>
                             <tableViewSection id="Sca-Jg-PNa">
                                 <cells>
@@ -48,8 +42,34 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <connections>
                                             <segue destination="Z5n-VJ-MWM" kind="show" id="2QX-o0-UdU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="7AA-et-1JD" imageView="PJ9-bN-e71" style="IBUITableViewCellStyleDefault" id="owR-Cg-mxl">
+                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="owR-Cg-mxl" id="GsZ-Qg-7Xr">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Themes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7AA-et-1JD">
+                                                    <rect key="frame" x="60" y="0.0" width="280" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="themesSettingsImage" id="PJ9-bN-e71">
+                                                    <rect key="frame" x="16" y="7" width="29" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <connections>
+                                            <segue destination="aEU-yy-uCj" kind="show" id="Oek-bE-Djg"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -57,7 +77,7 @@
                             <tableViewSection id="wBz-tm-BBH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ji3-dk-KNh" imageView="sIm-vW-GgJ" style="IBUITableViewCellStyleDefault" id="XsZ-Fm-OEi">
-                                        <rect key="frame" x="0.0" y="115" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XsZ-Fm-OEi" id="jT8-dY-GlQ">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -76,9 +96,13 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <connections>
+                                            <segue destination="RvC-M6-tyI" kind="show" id="Ngp-o7-uih"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ZjZ-qO-SlR" imageView="jbo-2s-Ub0" style="IBUITableViewCellStyleDefault" id="OCo-Ge-Lxp">
-                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OCo-Ge-Lxp" id="PS9-BC-l3G">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -97,9 +121,13 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <connections>
+                                            <segue destination="6Oq-uV-WdC" kind="show" id="DKQ-gZ-QSB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="UEs-iJ-8id" imageView="azU-Wj-Vw8" style="IBUITableViewCellStyleDefault" id="rvy-ut-7ej">
-                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="247" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rvy-ut-7ej" id="n6b-GN-jRN">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -118,34 +146,37 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <connections>
+                                            <segue destination="2DH-Vk-usT" kind="show" id="gU7-Be-568"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="SDx-p7-dix" detailTextLabel="i9r-fR-e43" imageView="tjQ-uI-5Mf" style="IBUITableViewCellStyleValue1" id="1rn-M0-gsZ">
-                                        <rect key="frame" x="0.0" y="247" width="375" height="44"/>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="dSV-I1-3Mn">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xvz-O0-HJx" customClass="ThemableBaseTableViewCell" customModule="Daily_Vibes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="327" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1rn-M0-gsZ" id="R2Y-o8-Cjp">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xvz-O0-HJx" id="IND-Ca-rGH">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SDx-p7-dix">
-                                                    <rect key="frame" x="60" y="12" width="76" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍁 Made in Toronto 🇨🇦" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-9j-WJa">
+                                                    <rect key="frame" x="16" y="11" width="343" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="worldFilledinCircle" id="tjQ-uI-5Mf">
-                                                    <rect key="frame" x="16" y="7" width="29" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="English" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i9r-fR-e43">
-                                                    <rect key="frame" x="284.5" y="12" width="55.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PZl-9j-WJa" secondAttribute="bottom" id="GJ6-7R-eyU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PZl-9j-WJa" secondAttribute="trailing" id="Sd2-ZK-RkW"/>
+                                                <constraint firstItem="PZl-9j-WJa" firstAttribute="leading" secondItem="IND-Ca-rGH" secondAttribute="leadingMargin" id="de5-Eb-5L5"/>
+                                                <constraint firstItem="PZl-9j-WJa" firstAttribute="top" secondItem="IND-Ca-rGH" secondAttribute="topMargin" id="wgi-Lf-k0J"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -160,9 +191,9 @@
                     <connections>
                         <outlet property="aboutCell" destination="XsZ-Fm-OEi" id="Kv9-dw-J0N"/>
                         <outlet property="acknowledgementCell" destination="rvy-ut-7ej" id="2Vg-gb-urK"/>
-                        <outlet property="languageCell" destination="1rn-M0-gsZ" id="rvy-1J-Lgs"/>
                         <outlet property="madeInTorontoLabel" destination="PZl-9j-WJa" id="74i-3v-yQT"/>
                         <outlet property="supportCell" destination="OCo-Ge-Lxp" id="F7m-jL-shd"/>
+                        <outlet property="themesCell" destination="owR-Cg-mxl" id="1oc-5r-nJJ"/>
                         <outlet property="userPreferencesCell" destination="eVO-vC-bX4" id="t83-ge-NWL"/>
                     </connections>
                 </tableViewController>
@@ -170,12 +201,206 @@
             </objects>
             <point key="canvasLocation" x="1817" y="-241"/>
         </scene>
+        <!--About Settings View Controller View Controller-->
+        <scene sceneID="NDZ-ZA-C9f">
+            <objects>
+                <viewController id="RvC-M6-tyI" customClass="AboutSettingsViewControllerViewController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gVX-Pv-mej">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2k-w5-0vL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="X2k-w5-0vL" firstAttribute="leading" secondItem="x6U-I7-1dr" secondAttribute="leading" id="2Py-XC-kbG"/>
+                            <constraint firstItem="x6U-I7-1dr" firstAttribute="bottom" secondItem="X2k-w5-0vL" secondAttribute="bottom" id="7ie-qW-Ncg"/>
+                            <constraint firstItem="x6U-I7-1dr" firstAttribute="trailing" secondItem="X2k-w5-0vL" secondAttribute="trailing" id="eOT-W3-7Bj"/>
+                            <constraint firstItem="X2k-w5-0vL" firstAttribute="top" secondItem="x6U-I7-1dr" secondAttribute="top" id="xBw-Sh-cp2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="x6U-I7-1dr"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="X2k-w5-0vL" id="25P-ni-Vul"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktg-tk-WFx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2902" y="-214"/>
+        </scene>
+        <!--Themes Settings Table View Controller-->
+        <scene sceneID="LGd-xi-T59">
+            <objects>
+                <tableViewController id="aEU-yy-uCj" customClass="ThemesSettingsTableViewController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="28" id="5ya-TC-n4a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="vNK-P9-v4P">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="8Hh-Eq-pK8" style="IBUITableViewCellStyleDefault" id="z0c-B4-GFm" customClass="ThemableBaseTableViewCell" customModule="Daily_Vibes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z0c-B4-GFm" id="YJe-uz-kWs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Default" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Hh-Eq-pK8">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="q3k-WU-1B8" style="IBUITableViewCellStyleDefault" id="nWG-dC-2Fe" customClass="ThemableBaseTableViewCell" customModule="Daily_Vibes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nWG-dC-2Fe" id="pbN-aR-VgG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q3k-WU-1B8">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="YcA-7O-LoF" style="IBUITableViewCellStyleDefault" id="Lbx-gH-5vI" customClass="ThemableBaseTableViewCell" customModule="Daily_Vibes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lbx-gH-5vI" id="kgv-Vb-1qG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Night Blue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YcA-7O-LoF">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="0Dv-5L-QMk" style="IBUITableViewCellStyleDefault" id="Bjp-EM-9NG" customClass="ThemableBaseTableViewCell" customModule="Daily_Vibes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bjp-EM-9NG" id="97O-7Y-Ehd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Dv-5L-QMk">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="aEU-yy-uCj" id="jXq-Q2-9Li"/>
+                            <outlet property="delegate" destination="aEU-yy-uCj" id="6nE-5x-E8U"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rbL-dq-foe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2903" y="-958"/>
+        </scene>
+        <!--Acknowledgement Settings View Controller-->
+        <scene sceneID="uHG-AF-jfl">
+            <objects>
+                <viewController id="2DH-Vk-usT" customClass="AcknowledgementSettingsViewController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MDL-cJ-5ca">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HM6-bG-vmX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HM6-bG-vmX" firstAttribute="top" secondItem="4fs-Jl-Nzc" secondAttribute="top" id="4QO-Wk-J0G"/>
+                            <constraint firstItem="HM6-bG-vmX" firstAttribute="leading" secondItem="4fs-Jl-Nzc" secondAttribute="leading" id="9XV-X0-jKg"/>
+                            <constraint firstItem="4fs-Jl-Nzc" firstAttribute="trailing" secondItem="HM6-bG-vmX" secondAttribute="trailing" id="XCY-uc-Wkf"/>
+                            <constraint firstItem="4fs-Jl-Nzc" firstAttribute="bottom" secondItem="HM6-bG-vmX" secondAttribute="bottom" id="u2q-Tc-bj8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4fs-Jl-Nzc"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="HM6-bG-vmX" id="zpj-XB-Q9U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="do6-xe-b1Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2271" y="774"/>
+        </scene>
+        <!--Support Settings View Controller-->
+        <scene sceneID="DWG-eR-3IX">
+            <objects>
+                <viewController id="6Oq-uV-WdC" customClass="SupportSettingsViewController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eXT-2j-DkD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9A-gH-vlR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZWC-88-9d1" firstAttribute="bottom" secondItem="A9A-gH-vlR" secondAttribute="bottom" id="9HU-el-e3m"/>
+                            <constraint firstItem="ZWC-88-9d1" firstAttribute="trailing" secondItem="A9A-gH-vlR" secondAttribute="trailing" id="SaO-fe-luI"/>
+                            <constraint firstItem="A9A-gH-vlR" firstAttribute="top" secondItem="ZWC-88-9d1" secondAttribute="top" id="hjH-V5-e24"/>
+                            <constraint firstItem="A9A-gH-vlR" firstAttribute="leading" secondItem="ZWC-88-9d1" secondAttribute="leading" id="q5A-ak-9Ge"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZWC-88-9d1"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="A9A-gH-vlR" id="nI8-1a-gaP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vWH-Bl-Jgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3025" y="532"/>
+        </scene>
         <!--Settings User PreferencesTVC-->
         <scene sceneID="VNf-zx-0na">
             <objects>
                 <tableViewController id="Z5n-VJ-MWM" customClass="SettingsUserPreferencesTVC" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="nLg-U6-ocn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -270,16 +495,16 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Xh-im-4Ij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710" y="-241"/>
+            <point key="canvasLocation" x="1817" y="-1041"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Settings Navigation Controller-->
         <scene sceneID="hvr-1z-ktQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uP7-6h-N4I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="gearIcon" id="lng-bf-H6e"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uP7-6h-N4I" customClass="SettingsNavigationController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_gear_dailyvibes" landscapeImage="tabbar_gear_dailyvibes" largeContentSizeImage="tabbar_gear_dailyvibes" id="lng-bf-H6e"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7wP-QN-z1Y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="7wP-QN-z1Y">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -294,11 +519,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gearIcon" width="25" height="25"/>
         <image name="handsFilledinCircle" width="29" height="29"/>
         <image name="helpFilledinCircle" width="29" height="29"/>
         <image name="infoFilledinCircle" width="29" height="29"/>
         <image name="notificationsFilledinCircle" width="29" height="29"/>
-        <image name="worldFilledinCircle" width="29" height="29"/>
+        <image name="tabbar_gear_dailyvibes" width="25" height="25"/>
+        <image name="themesSettingsImage" width="29" height="29"/>
     </resources>
 </document>

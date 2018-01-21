@@ -8,14 +8,21 @@
 
 import UIKit
 import CoreData
+import SwiftTheme
 
-class TodoItemsTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+enum SegmentOption {
+    case inbox
+    case archived
+    case done
+}
+
+class TodoItemsTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
     
-    private enum SegmentOption {
-        case inbox
-        case archived
-        case done
-    }
+    //    private enum SegmentOption {
+    //        case inbox
+    //        case archived
+    //        case done
+    //    }
     
     private enum FilteredOption {
         case none
@@ -31,15 +38,53 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     private var filteredOption = FilteredOption.none
     private var filtrationData = FiltrationData()
     
+    private var streakManager = StreakManager()
+    
     @IBOutlet private weak var segmentController: UISegmentedControl!
     
-    private var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    private var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.store.persistentContainer
     private var fetchedResultsController: NSFetchedResultsController<TodoItem>!
     private var moc: NSManagedObjectContext?
     
+    private var dynamicNavigationBarLabel: String?
+    
+    fileprivate func setNavigationBarStringGeneric() {
+        switch segmentPosition {
+        case .inbox:
+            dynamicNavigationBarLabel = NSLocalizedString("To-do", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND To-do", comment: "")
+        case .done:
+            dynamicNavigationBarLabel = NSLocalizedString("Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done", comment: "")
+        case .archived:
+            dynamicNavigationBarLabel = NSLocalizedString("Archived", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Archived", comment: "")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        switch filteredOption {
+        case .byTag:
+            dynamicNavigationBarLabel = filtrationData.tag?.label ?? ""
+        case .none:
+            setNavigationBarStringGeneric()
+        }
+        
+        self.tableView.theme_backgroundColor = "Global.backgroundColor"
+        self.tableView.theme_separatorColor = "ListViewController.separatorColor"
+        
+        let navigationBarLabel = "Daily Vibes \n \(dynamicNavigationBarLabel ?? String())"
+        setupTitleView(withString: navigationBarLabel)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configLocalization()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(reloadTVC),
+            name: NSNotification.Name(rawValue: ThemeUpdateNotification),
+            object: nil
+        )
         
         initializeFetchedResultsController(with: segmentPosition)
         
@@ -49,17 +94,51 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         hideOrShowTableView()
     }
     
-    private func configLocalization() {
-        setupSegmentControllerLocalization()
+    @objc private func reloadTVC() {
+        self.tableView.reloadData()
+        hideOrShowTableView()
     }
     
-    private func setupSegmentControllerLocalization() {
-        let inboxLabel = NSLocalizedString("Inbox", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Inbox ***", comment: "")
-        let doneLabel = NSLocalizedString("Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
-        let archiveLabel = NSLocalizedString("Archive", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Archive ***", comment: "")
-        segmentController.setTitle(inboxLabel, forSegmentAt: 0)
-        segmentController.setTitle(doneLabel, forSegmentAt: 1)
-        segmentController.setTitle(archiveLabel, forSegmentAt: 2)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        super.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    private func setupTitleView(withString string: String) {
+        //        let topText = NSLocalizedString("key", comment: "")
+        //        let bottomText = NSLocalizedString("key", comment: "")
+        
+        //        let titleParameters = [NSForegroundColorAttributeName : UIColor.<Color>(),
+        //                               NSFontAttributeName : UIFont.<Font>]
+        //        let subtitleParameters = [NSForegroundColorAttributeName : UIColor.<Color>(),
+        //                                  NSFontAttributeName : UIFont.<Font>]
+        
+        //        let title:NSMutableAttributedString = NSMutableAttributedString(string: topText, attributes: titleParameters)
+        //        let subtitle:NSAttributedString = NSAttributedString(string: bottomText, attributes: subtitleParameters)
+        
+        //        title.appendAttributedString(NSAttributedString(string: "\n"))
+        //        title.appendAttributedString(subtitle)
+        
+//        let titleParameters =
+        let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 15)]
+        let _title:NSMutableAttributedString = NSMutableAttributedString(string: string, attributes: attrs)
+        
+//        let title = NSAttributedString(string: string)
+        
+        let size = _title.size()
+        
+        let width = size.width
+        guard let height = navigationController?.navigationBar.frame.size.height else {return}
+        
+        //        let titleLabel = UILabel(frame: CGRectMake(0,0, width, height))
+        let titleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        titleLabel.attributedText = _title
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
+        titleLabel.theme_backgroundColor = "Global.barTintColor"
+        titleLabel.theme_textColor = "Global.textColor"
+        
+        navigationItem.titleView = titleLabel
     }
     
     // MARK: - Table view data source
@@ -84,30 +163,99 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             fatalError("The dequeued cell is not an instance of TodoItemTableViewCell.")
         }
         
+        cell.theme_backgroundColor = "Global.barTintColor"
+        cell.theme_tintColor = "Global.barTextColor"
+        cell.todoItemLabel.theme_textColor = "Global.textColor"
+        cell.todoItemTagsLabel.theme_textColor = "Global.placeholderColor"
+        
         if let todoItem = fetchedResultsController?.object(at: indexPath) {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = DateFormatter.Style.short
             dateFormatter.timeStyle = DateFormatter.Style.short
             if todoItem.completed {
                 cell.todoItemLabel.attributedText = stringStrikeThrough(input: todoItem.todoItemText!)
-                cell.todoItemLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-                cell.emotionsImageView.image = UIImage(named: "checkedCheckbox")
+                cell.emotionsImageView.image = UIImage(named: "checkedcircle_icon_dailyvibes")
                 if let completedDate = todoItem.completedAt {
                     let dateString = dateFormatter.string(from: completedDate)
                     cell.todoItemTagsLabel.text = "Completed \(dateString)"
-                    cell.todoItemTagsLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 }
             } else {
                 cell.todoItemLabel.text = todoItem.todoItemText ?? "No Text"
-                cell.todoItemLabel.textColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
-                cell.emotionsImageView.image = UIImage(named: "uncheckedCheckbox")
-                //                cell.emotionsImageView.image = #imageLiteral(resourceName: "uncheckedFilledinCircle")
+                cell.emotionsImageView.image = UIImage(named: "emptycircle_icon_dailyvibes")
+                
+                // idea from https://www.reddit.com/r/swift/comments/56b758/how_do_i_register_a_tap_on_uiimage_view_which_is/d8hvhs1/
+                
+                if cell.emotionsImageView.gestureRecognizers?.count ?? 0 == 0 {
+                    // if the image currently has no gestureRecognizer
+                    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imgTapped(sender:)))
+                    cell.emotionsImageView.addGestureRecognizer(tapGesture)
+                    cell.emotionsImageView.isUserInteractionEnabled = true
+                }
+                
                 let dateString = dateFormatter.string(from: todoItem.createdAt!)
                 cell.todoItemTagsLabel.text = "Created \(dateString)"
             }
         }
         
         return cell
+    }
+    
+    @objc private func imgTapped(sender: UITapGestureRecognizer) {
+        // change data model blah-blah
+//        print("testing-testing")
+//        https://guides.codepath.com/ios/Using-Gesture-Recognizers
+//        https://stackoverflow.com/a/29360703
+        
+        let touch = sender.location(in: tableView)
+        if let indexPath = tableView.indexPathForRow(at: touch) {
+            // Access the image or the cell at this index path
+            if let _todo = fetchedResultsController?.object(at: indexPath) {
+                doneAction(for: _todo)
+            }
+        }
+    }
+    
+    private func doneAction(for todoItem:TodoItem?) {
+        guard let _todo = todoItem as TodoItem? else { fatalError("we need a todoItem for this doneAction =)") }
+        
+        let doneAlertTitle = NSLocalizedString("Mark this task as done?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Mark this task as done? ***", comment: "")
+        let doneAlertMessage = NSLocalizedString("This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over.", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over. ***", comment: "")
+        let doneAlertConfirmation = NSLocalizedString("Yes, Mark this as Done", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Yes, Mark this as Done ***", comment: "")
+        let doneAlertCancel = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+        
+        let defaults = UserDefaults.standard
+        let showDoneAlert = defaults.bool(forKey: "todo.showOnDoneAlert")
+        
+        if showDoneAlert {
+            let alert = UIAlertController(title: doneAlertTitle, message: doneAlertMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .default , handler: { _ in
+                do {
+                    _todo.markCompleted()
+                    try self.moc!.save()
+                    self.tableView.reloadData()
+                    guard self.streakManager.process(item: _todo) else {
+                        fatalError("StreakManager should not fail")
+                    }
+                } catch {
+                    self.moc!.rollback()
+                    fatalError("Error \(error) in leadingSwipeActionsConfigurationForRowAt")
+                }
+            }))
+            alert.addAction(UIAlertAction(title: doneAlertCancel, style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            do {
+                _todo.markCompleted()
+                try self.moc!.save()
+                self.tableView.reloadData()
+                guard self.streakManager.process(item: _todo) else {
+                    fatalError("StreakManager should not fail")
+                }
+            } catch {
+                self.moc!.rollback()
+                fatalError("Error \(error) in leadingSwipeActionsConfigurationForRowAt")
+            }
+        }
     }
     
     // Override to support conditional editing of the table view.
@@ -145,13 +293,22 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             let _todoItem = fetchedResultsController?.object(at: indexPath)
             
             todoItemDetailViewController.setData(toProcess: _todoItem, inContext: moc)
-        case "ShowSettings":
-            // TODO: REMOVE
-            print("Going to settings")
+        case "TodoTaskItemFilters":
+            if let controller = segue.destination as? TodoTaskItemFiltersViewController {
+                controller.delegate = self
+                controller.selectedSegment = segmentPosition
+                //                controller.popoverPresentationController!.delegate = self
+                //                controller.preferredContentSize = CGSize(width: 320, height: 186)
+            }
         default:
             fatalError("Unexpected segue identifier: \(String(describing: segue.identifier))")
         }
     }
+    
+    //    // forces on iphone to display as popover
+    //    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    //        return .none
+    //    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let sections = fetchedResultsController?.sections, sections.count > 0 {
@@ -265,6 +422,20 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         }
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.tableView.frame.size.width, height: 18))
+        view.theme_backgroundColor = "Global.backgroundColor"
+//        let view = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 18))
+//        let label = UILabel(frame: CGRectMake(10, 5, tableView.frame.size.width, 18))
+        let label = UILabel.init(frame: CGRect.init(x: 10, y: 5, width: self.tableView.frame.size.width, height: 18))
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.theme_textColor = "Global.barTextColor"
+        label.text = self.tableView(tableView, titleForHeaderInSection: section)
+//        label.textAlignment = .center
+        view.addSubview(label)
+        return view
+    }
+    
     override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return fetchedResultsController?.section(forSectionIndexTitle: title, at: index) ?? 0
     }
@@ -293,12 +464,12 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                 
                 if showDoneAlert {
                     let alert = UIAlertController(title: doneAlertTitle, message: doneAlertMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .destructive, handler: { _ in
+                    alert.addAction(UIAlertAction(title: doneAlertConfirmation, style: .default , handler: { _ in
                         do {
                             _todo.markCompleted()
                             try self.moc!.save()
                             self.tableView.reloadData()
-                            guard StreakManager.process(item: _todo) else {
+                            guard self.streakManager.process(item: _todo) else {
                                 fatalError("StreakManager should not fail")
                             }
                         } catch {
@@ -306,7 +477,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                             fatalError("Error \(error) in leadingSwipeActionsConfigurationForRowAt")
                         }
                     }))
-                    alert.addAction(UIAlertAction(title: doneAlertCancel, style: .default, handler: { _ in
+                    alert.addAction(UIAlertAction(title: doneAlertCancel, style: .cancel, handler: { _ in
                         success(true)
                     }))
                     self.present(alert, animated: true, completion: nil)
@@ -315,7 +486,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                         _todo.markCompleted()
                         try self.moc!.save()
                         self.tableView.reloadData()
-                        guard StreakManager.process(item: _todo) else {
+                        guard self.streakManager.process(item: _todo) else {
                             fatalError("StreakManager should not fail")
                         }
                     } catch {
@@ -525,6 +696,13 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         result.addAttribute(NSAttributedStringKey.strikethroughStyle,
                             value: NSUnderlineStyle.styleSingle.rawValue,
                             range: range)
+        
+        if let backgroundColor = ThemeManager.value(for: "Global.barTintColor") as? String,
+            let foregroundColor = ThemeManager.value(for: "Global.textColor") as? String {
+            result.addAttributes([NSAttributedStringKey.backgroundColor: UIColor.from(hex: backgroundColor)], range: range)
+            result.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.from(hex: foregroundColor)], range: range)
+        }
+        
         return result;
     }
     
@@ -566,7 +744,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                 switch segmentPosition {
                 case .inbox:
                     // process inbox data
-                    request.predicate = NSPredicate(format: "isArchived != true AND completed != true AND tagz.label CONTAINS[cd] %@", (filtrationData.tag?.label)!)
+                    request.predicate = NSPredicate(format: "isArchived != true AND completed != true AND tags.label CONTAINS[cd] %@", (filtrationData.tag?.label)!)
                     let createdAt = NSSortDescriptor(key: "createdAt", ascending: false)
                     //                let createdAtYearDayNumber = NSSortDescriptor(key: "createdAtYearDayNumber", ascending: false)
                     //                request.sortDescriptors = [createdAt, createdAtYearDayNumber]
@@ -575,7 +753,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                     fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
                 case .archived:
                     // process archived data
-                    request.predicate = NSPredicate(format: "isArchived = true AND tagz.label CONTAINS[cd] %@", (filtrationData.tag?.label)!)
+                    request.predicate = NSPredicate(format: "isArchived = true AND tags.label CONTAINS[cd] %@", (filtrationData.tag?.label)!)
                     let archivedAt = NSSortDescriptor(key: "archivedAt", ascending: false)
                     //                let archivedAtYearDayNumber = NSSortDescriptor(key: "archivedAtYearDayNumber", ascending: false)
                     request.sortDescriptors = [archivedAt]
@@ -583,7 +761,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
                     fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
                 case .done:
                     //process done data
-                    request.predicate = NSPredicate(format: "isArchived != true AND completed = true AND tagz.label CONTAINS[cd] %@", (filtrationData.tag?.label)!)
+                    request.predicate = NSPredicate(format: "isArchived != true AND completed = true AND tags.label CONTAINS[cd] %@", (filtrationData.tag?.label)!)
                     let completedAt = NSSortDescriptor(key: "completedAt", ascending: false)
                     //                let completedAtYearDayNumber = NSSortDescriptor(key: "completedAtYearDayNumber", ascending: false)
                     request.sortDescriptors = [completedAt]
@@ -618,7 +796,38 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     func setupTodoItemsTVC(using filter: Tag?) {
         filteredOption = .byTag
         filtrationData.tag = filter
-        let navigationBarLabel = filter?.label
-        self.navigationItem.title = navigationBarLabel
+        let _navigationBarLabel = filter?.label ?? "BATMAN"
+        let navigationBarLabel = "Daily Vibes \n \(_navigationBarLabel)"
+        setupTitleView(withString: navigationBarLabel)
+        //        self.navigationItem.title = navigationBarLabel
+    }
+}
+
+extension TodoItemsTableViewController: TodoTaskItemFiltersViewControllerDelegate {
+    func selectedFilterProperties(sender: TodoTaskItemFiltersViewController) {
+        if sender.selectedSegment == .inbox {
+            // handle the all view
+            segmentPosition = .inbox
+            //            segmentController.selectedSegmentIndex = 0
+            initializeFetchedResultsController(with: segmentPosition)
+            self.tableView.reloadData()
+            hideOrShowTableView()
+        }
+        if sender.selectedSegment == .done {
+            //handle done view
+            segmentPosition = .done
+            //            segmentController.selectedSegmentIndex = 1
+            initializeFetchedResultsController(with: segmentPosition)
+            self.tableView.reloadData()
+            hideOrShowTableView()
+        }
+        if sender.selectedSegment == .archived {
+            //handle archived view
+            segmentPosition = .archived
+            //            segmentController.selectedSegmentIndex = 2
+            initializeFetchedResultsController(with: segmentPosition)
+            self.tableView.reloadData()
+            hideOrShowTableView()
+        }
     }
 }

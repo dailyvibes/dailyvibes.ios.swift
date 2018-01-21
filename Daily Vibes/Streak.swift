@@ -6,8 +6,8 @@
 //  Copyright © 2017 Alex Kluew. All rights reserved.
 //
 
-import Foundation
-import UIKit
+//import Foundation
+//import UIKit
 import CoreData
 
 class Streak: NSManagedObject {
