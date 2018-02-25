@@ -30,6 +30,24 @@ class TodoItem: NSManagedObject {
         return sectionIdentifier
     }
     
+    @objc dynamic public var duedateDaySectionIdentifier: String? {
+        let currentCalendar = Calendar.current
+        self.willAccessValue(forKey: "duedateDaySectionIdentifier")
+        var sectionIdentifier = String()
+        
+        if let date = self.duedateAt as Date? {
+            let day = currentCalendar.component(.day, from: date)
+            let month = currentCalendar.component(.month, from: date)
+            let year = currentCalendar.component(.year, from: date)
+            
+            // Construct integer from year, month, day. Convert to string.
+            sectionIdentifier = "\(year * 10000 + month * 100 + day)"
+        }
+        self.didAccessValue(forKey: "duedateDaySectionIdentifier")
+        
+        return sectionIdentifier
+    }
+    
     @objc dynamic public var doneDaySectionIdentifier: String? {
         let currentCalendar = Calendar.current
         self.willAccessValue(forKey: "doneDaySectionIdentifier")

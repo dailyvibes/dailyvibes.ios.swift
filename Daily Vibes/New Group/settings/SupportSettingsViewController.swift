@@ -7,11 +7,18 @@
 //
 
 import UIKit
-import WebKit
+import Down
 
 class SupportSettingsViewController: ThemableViewController {
     
-    @IBOutlet private var webView: WKWebView!
+//    fileprivate let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 16))
+    
+    @IBOutlet fileprivate weak var markdowntextView: UITextView! {
+        didSet {
+            markdowntextView.isEditable = false
+            markdowntextView.delegate = self
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -19,15 +26,32 @@ class SupportSettingsViewController: ThemableViewController {
         let titleString = "Support"
         setupNavigationTitleText(title: titleString)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.largeTitleDisplayMode = .always
         
-        let urlLocation = "https://dailyvibes.ca/support/"
-        let myURL = URL(string: urlLocation)
-        let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
+        guard let downView = try? DownView(frame: self.view.bounds, markdownString: testMarkdownFileContent(), didLoadSuccessfully: nil) else { return }
+        self.view.addSubview(downView)
     }
-
+    
+    public func testMarkdownFileContent() -> String {
+        if let templateURL = Bundle.main.url(forResource: "support", withExtension: "md") {
+            do {
+                return try String(contentsOf: templateURL, encoding: String.Encoding.utf8)
+            } catch {
+                return ""
+            }
+        }
+        return ""
+    }
+}
+extension SupportSettingsViewController: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL,
+                  in characterRange: NSRange) -> Bool {
+        UIApplication.shared.open(URL, options: [:], completionHandler: nil)
+        return true
+    }
+    
 }

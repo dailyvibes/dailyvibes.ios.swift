@@ -17,7 +17,14 @@ class DVProgressViewController: ThemableViewController {
     @IBOutlet private weak var barChartView: BarChartView!
     
     private var store = CoreDataManager.store
-    private var tags = [Tag]()
+//    private var tags = [Tag]()
+    
+    private var dvTagsVM = [DVTagViewModel]() {
+        didSet {
+            self.tagsTableView.reloadData()
+        }
+    }
+    
     private var streaks = [Streak]() {
         didSet {
             if let firstStreak = streaks.first {
@@ -120,6 +127,7 @@ class DVProgressViewController: ThemableViewController {
         xAxis.labelTextColor = barChartLabelColor
         xAxis.drawGridLinesEnabled = false
         xAxis.axisLineColor = barChartLabelColor
+        xAxis.granularity = 86400
         
         let yAxis = barChartView.leftAxis
         yAxis.labelTextColor = barChartLabelColor
@@ -128,7 +136,7 @@ class DVProgressViewController: ThemableViewController {
         yAxis.axisLineColor = barChartLabelColor
 //        yAxis.valueFormatter = IAxisValueFormatter()
 //        yAxis.valueFormatter.minimumFractionDigits = 0
-//        xAxis.granularity = 86400
+//
 //        xAxis.centerAxisLabelsEnabled = true
         
         barChartView.scaleXEnabled = false
@@ -155,26 +163,82 @@ class DVProgressViewController: ThemableViewController {
     private var numEntries: Int = 0
     
     private var performanceDataWLabels = [
-        "Current streak",
-        "Longest streak",
-        "Total completed tasks",
-        "Total tasks",
-        "Days recorded"
+        NSLocalizedString("Current streak", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Current streak **", comment: ""),
+        NSLocalizedString("Longest streak", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Longest streak **", comment: ""),
+        NSLocalizedString("Total completed tasks", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Total completed tasks **", comment: ""),
+        NSLocalizedString("Total tasks", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Total tasks **", comment: ""),
+        NSLocalizedString("Days recorded", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Days recorded **", comment: "")
     ]
     
     private var performanceDataLabels: [String]?
     
+    override func setupNavigationTitleText(title text: String?) {
+            let todaysDate = Date()
+            let calendar = Calendar.current
+            
+            let year = calendar.component(.year, from: todaysDate)
+            let month = calendar.component(.month, from: todaysDate)
+            let day = calendar.component(.day, from: todaysDate)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            
+            let startOfYear = dateFormatter.date(from: "\(year)-01-01")
+            let todayInYear = dateFormatter.date(from: "\(year)-\(month)-\(day)")
+            let endOfYear = dateFormatter.date(from: "\(year)-12-31")
+            
+            let daysInCurrentYear = calendar.dateComponents([.day], from: startOfYear!, to: endOfYear!)
+            let daysLeftInCurrentYear = calendar.dateComponents([.day], from: todayInYear!, to: endOfYear!)
+            
+            let totalDays = daysInCurrentYear.day
+            let daysLeft = daysLeftInCurrentYear.day
+            
+            let yearProgress = Int(100 - ceil(Double(daysLeft!)/Double(totalDays!) * 100))
+            let yearProgressLocalizedString = NSLocalizedString("Year progress", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND year completed **", comment: "")
+            let yearProgressCompletedString = NSLocalizedString("completed", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND completed **", comment: "")
+            let yearProgressString = "\(yearProgressLocalizedString): \(yearProgress)% \(yearProgressCompletedString)"
+            let todaysDateString = dateFormatter.string(from: todaysDate)
+            
+            let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 15)]
+            let _title:NSMutableAttributedString = NSMutableAttributedString(string: todaysDateString, attributes: attrs)
+            
+            let __attrs = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11, weight: .ultraLight)]
+            let __subTitle:NSMutableAttributedString = NSMutableAttributedString(string: "\(yearProgressString)", attributes: __attrs)
+            
+            _title.append(NSAttributedString(string:"\n"))
+            _title.append(__subTitle)
+            
+            let size = _title.size()
+            
+            let width = size.width
+            guard let height = navigationController?.navigationBar.frame.size.height else {return}
+            
+            let titleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            titleLabel.attributedText = _title
+            titleLabel.numberOfLines = 0
+            titleLabel.textAlignment = .center
+            titleLabel.theme_backgroundColor = "Global.barTintColor"
+            titleLabel.theme_textColor = "Global.textColor"
+            
+            navigationItem.titleView = titleLabel
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let titleString = NSLocalizedString("Progress", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND PROGRESS **", comment: "")
+        let titleString = "Progress"
         setupNavigationTitleText(title: titleString)
         
-        store.fetchTags()
+        barChartView.noDataText = NSLocalizedString("No data yet, see what happens when you complete a task", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND No data yet, see what happens when you complete a task", comment: "")
+        
+//        store.fetchTags()
         store.fetchStreaks()
         
-        tags = store.fetchedTags
+//        tags = store.fetchedTags
         streaks = store.fetchedStreaks
+        
+        store.fetchTagsViewModel()
+        dvTagsVM = store.dvTagsVM
         
         if let completedTasks = store.getCompletedTodoItemTasks(ascending: true) {
             if completedTasks.count > 0 {
@@ -229,14 +293,16 @@ class DVProgressViewController: ThemableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMainTableVCFilteredByTag" {
-            guard let mainTVC = segue.destination as? TodoItemsTableViewController else {
-                fatalError("should be a navigation controller")
-            }
+//            guard let mainTVC = segue.destination as? TodoItemsTableViewController else {
+//                fatalError("should be a navigation controller")
+//            }
+            
+            guard let mainTVC = segue.destination as? TodoItemsTableViewController else { fatalError("should be TodoItemsTableViewController") }
             
             if let selectedIndexPath = tagsTableView.indexPathForSelectedRow {
-                if let tag = tags[selectedIndexPath.row] as Tag? {
-                    mainTVC.setupTodoItemsTVC(using: tag)
-                }
+                let tag = dvTagsVM[selectedIndexPath.row]
+                store.filteredTag = tag
+                mainTVC.hidesBottomBarWhenPushed = true
             }
         }
     }
@@ -245,7 +311,7 @@ class DVProgressViewController: ThemableViewController {
 extension DVProgressViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tagsTableView {
-            return tags.count
+            return dvTagsVM.count
         }
         if tableView == performanceTableView {
             if let count = performanceDataLabels?.count {
@@ -265,9 +331,6 @@ extension DVProgressViewController: UITableViewDataSource, UITableViewDelegate {
                 let label = performanceDataWLabels[indexPath.row]
                 cell.textLabel?.text = label
                 
-//                private var numCompletedTask: Int = 0
-//                private var numEntries: Int = 0
-                
                 switch indexPath.row {
                 case 0:
                     cell.detailTextLabel?.text = "\(numDaysInARow)"
@@ -285,32 +348,48 @@ extension DVProgressViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         if tableView == tagsTableView {
+            
+//            let tag = tags[indexPath.row] as Tag
+            let tag = dvTagsVM[indexPath.row]
+//            let totalCount = tag.todos?.count ?? -1
+//            let totalCount = tag.tagged.count
+            
             cell = tableView.dequeueReusableCell(withIdentifier: "DefaultTagsCell") as? ThemableBaseTableViewCell
-            let tag = tags[indexPath.row] as Tag
             cell.textLabel?.text = tag.label
             cell.imageView?.image = #imageLiteral(resourceName: "tagsFilledinCircle")
+            cell.detailTextLabel?.text = ""
             
-            let totalCount = tag.todos?.count ?? -1
-            let remainderCount = tag.todos?.filtered(using: NSPredicate(format:"completed != true")).count ?? -1
-            let completedCount = tag.todos?.filtered(using: NSPredicate(format:"completed = true")).count ?? -1
-            
-            if remainderCount == 0 {
-                cell.detailTextLabel?.text = "100%"
-            } else {
-                let calc = Double(completedCount/totalCount) * 100.0
-                if calc > 0 {
-                    cell.detailTextLabel?.text = "\(calc)%"
-                } else {
-                    cell.detailTextLabel?.text = "\(remainderCount)"
-                }
-            }
+//            if totalCount > 0 {
+//                let remainderTodosVM = tag.tagged.filter { todoItemVM in !todoItemVM.isCompleted }
+//                let completedTodosVM = tag.tagged.filter { todoItemVM in todoItemVM.isCompleted }
+//
+//                let remainderCount = remainderTodosVM.count
+//                let completedCount = completedTodosVM.count
+////                let remainderCount = tag.todos?.filtered(using: NSPredicate(format:"completed != true")).count ?? -1
+////                let completedCount = tag.todos?.filtered(using: NSPredicate(format:"completed = true")).count ?? -1
+//
+//                if remainderCount == 0 {
+//                    cell.detailTextLabel?.text = "100%"
+//                } else {
+//                    let calc = Double(completedCount/totalCount) * 100.0
+//                    if calc > 0 {
+//                        cell.detailTextLabel?.text = "\(calc)%"
+//                    } else {
+//                        cell.detailTextLabel?.text = "\(remainderCount)"
+//                    }
+//                }
+//            } else {
+//                cell.detailTextLabel?.text = "None"
+//            }
             
             cell.accessoryType = .disclosureIndicator
         }
+        
         cell.textLabel?.theme_textColor = "Global.textColor"
         cell.textLabel?.theme_backgroundColor = "Global.barTintColor"
         cell.detailTextLabel?.theme_textColor = "Global.placeholderColor"
         cell.detailTextLabel?.theme_backgroundColor = "Global.barTintColor"
+        
         return cell
     }
     

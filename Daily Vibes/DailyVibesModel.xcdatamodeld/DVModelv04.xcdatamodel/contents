@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DailyVibesList" representedClassName=".DailyVibesList" syncable="YES" codeGenerationType="category">
+        <attribute name="archivedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="duedateAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="emoji" attributeType="String" defaultValueString="📌" syncable="YES"/>
+        <attribute name="isDVDefault" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isFavourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isListVisible" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPublic" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="titleDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="versionId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="versionPrevId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="listItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TodoItem" inverseName="list" inverseEntity="TodoItem" syncable="YES"/>
+    </entity>
+    <entity name="DailyVibesNote" representedClassName=".DailyVibesNote" syncable="YES" codeGenerationType="category">
+        <attribute name="archivedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="completedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isFavourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPublic" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="versionId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="versionPrevId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="todoItemTask" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TodoItem" inverseName="notes" inverseEntity="TodoItem" syncable="YES"/>
+    </entity>
+    <entity name="Streak" representedClassName=".Streak" syncable="YES" codeGenerationType="category">
+        <attribute name="completedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="currentDaysInARow" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isArchived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPublic" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="recordDaysInARow" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tasksCompletedToday" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tasksCompletedTotal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="versionId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="versionPrevId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="next" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Streak" inverseName="prev" inverseEntity="Streak" syncable="YES"/>
+        <relationship name="prev" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Streak" inverseName="next" inverseEntity="Streak" syncable="YES"/>
+        <relationship name="todos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TodoItem" inverseName="streak" inverseEntity="TodoItem" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName=".Tag" syncable="YES" codeGenerationType="category">
+        <attribute name="active" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="colourRepresentation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="emoji" attributeType="String" defaultValueString="⌗" syncable="YES"/>
+        <attribute name="isArchived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPublic" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="label" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="versionId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="versionPrevId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="todos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TodoItem" inverseName="tags" inverseEntity="TodoItem" syncable="YES"/>
+    </entity>
+    <entity name="TodoItem" representedClassName=".TodoItem" syncable="YES" codeGenerationType="category">
+        <attribute name="archivedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completed" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="completedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="completedAtEmotion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="createdAtEmotion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duedateAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isArchived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isFavourite" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isNew" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPublic" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="todoItemText" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="updatedAtEmotion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="versionId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="versionPrevId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyVibesList" inverseName="listItems" inverseEntity="DailyVibesList" syncable="YES"/>
+        <relationship name="notes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyVibesNote" inverseName="todoItemTask" inverseEntity="DailyVibesNote" syncable="YES"/>
+        <relationship name="streak" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Streak" inverseName="todos" inverseEntity="Streak" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="todos" inverseEntity="Tag" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DailyVibesList" positionX="-6048" positionY="-936" width="128" height="315"/>
+        <element name="DailyVibesNote" positionX="-6048" positionY="-936" width="128" height="240"/>
+        <element name="Streak" positionX="-5852" positionY="-1080" width="128" height="300"/>
+        <element name="Tag" positionX="-5922" positionY="-537" width="128" height="255"/>
+        <element name="TodoItem" positionX="-6246" positionY="-864" width="128" height="390"/>
+    </elements>
+</model>

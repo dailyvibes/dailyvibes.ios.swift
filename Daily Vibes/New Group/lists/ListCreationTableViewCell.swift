@@ -17,7 +17,7 @@ class ListCreationTableViewCell: UITableViewCell {
         super.awakeFromNib()
         theme_backgroundColor = "Global.barTintColor"
         
-        listLabeler.placeholder = NSLocalizedString("ex: Groceries, Upcoming project", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND ex: Groceries, Upcoming project **", comment: "")
+        listLabeler.placeholder = NSLocalizedString("Create new (ex: Groceries, Upcoming project) or select one below", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND ex: Groceries, Upcoming project **", comment: "")
         listLabeler.setAttributedPlaceholderFromPlaceholder()
     }
     

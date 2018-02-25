@@ -12,6 +12,8 @@ class DeleteTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var deleteButtonCell: UIButton! {
         didSet {
+            let deleteButtonString = NSLocalizedString("Delete", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Delete **", comment: "")
+            deleteButtonCell.setTitle(deleteButtonString, for: .normal)
             deleteButtonCell.theme_backgroundColor = "Global.barTintColor"
             deleteButtonCell.tintColor = .red
             theme_backgroundColor = "Global.barTintColor"

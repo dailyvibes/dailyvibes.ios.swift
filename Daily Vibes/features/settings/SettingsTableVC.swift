@@ -17,7 +17,7 @@ class SettingsTableVC: ThemableTableViewController {
     @IBOutlet private weak var aboutCell: UITableViewCell!
     @IBOutlet private weak var supportCell: UITableViewCell!
     @IBOutlet private weak var acknowledgementCell: UITableViewCell!
-//         @IBOutlet private weak var languageCell: UITableViewCell!
+    @IBOutlet private weak var madeInTorontoCell: UITableViewCell!
     @IBOutlet private weak var themesCell: UITableViewCell!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +29,7 @@ class SettingsTableVC: ThemableTableViewController {
         supportCell.textLabel?.text = NSLocalizedString("Support", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Support **", comment: "")
         acknowledgementCell.textLabel?.text = NSLocalizedString("Acknowledgement", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Acknowledgement **", comment: "")
         madeInTorontoLabel.text = NSLocalizedString("Made in Toronto", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Made in Toronto **", comment: "")
+        madeInTorontoCell.selectionStyle = UITableViewCellSelectionStyle.none
         
         tableView.theme_backgroundColor = "Global.backgroundColor"
         tableView.theme_separatorColor = "ListViewController.separatorColor"
@@ -47,9 +48,19 @@ class SettingsTableVC: ThemableTableViewController {
         madeInTorontoLabel.theme_textColor = "Global.textColor"
         
         let titleString = "Settings"
-        setupNavigationTitleText(title: titleString)
+        setupNavigationTitleText(title: titleString, subtitle: nil)
+        
+        let starButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "starFilled_icon_daily_vibes"), style: .plain, target: self, action: #selector(handleRateButton))
+        navigationItem.leftBarButtonItem = starButton
     }
-
+    
+    @objc func handleRateButton() {
+        let appstoreLink = "itms-apps://itunes.apple.com/app/id1332324033?action=write-review"
+        if let url = URL.init(string: appstoreLink), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

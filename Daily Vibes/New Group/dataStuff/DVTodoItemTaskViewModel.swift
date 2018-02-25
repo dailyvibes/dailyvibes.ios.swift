@@ -11,25 +11,30 @@ import UIKit
 class DVTodoItemTaskViewModel: NSObject {
     let uuid: UUID
     
-    let versionId: UUID?
-    let versionPrevId: UUID?
-    let version: Int64
+    var versionId: UUID?
+    var versionPrevId: UUID?
+    var version: Int64
     
-    let todoItemText: String
+    var todoItemText: String
     
-    let createdAt: Date
-    let updatedAt: Date
-    let duedateAt: Date?
-    let completedAt: Date?
-    let archivedAt: Date?
+    var createdAt: Date
+    var updatedAt: Date
+    var duedateAt: Date?
+    var completedAt: Date?
+    var archivedAt: Date?
     
-    let isCompleted: Bool
-    let isArchived: Bool
-    let isNew: Bool
-    let isPublic: Bool
-    let isFavourite: Bool
+    var isCompleted: Bool
+    var isArchived: Bool
+    var isNew: Bool
+    var isPublic: Bool
+    var isFavourite: Bool
+    var isRemindable: Bool?
     
-    init(uuid:UUID, versionId:UUID?, versionPrevId: UUID?, version:Int64?, todoItemText:String, createdAt:Date, updatedAt:Date, duedateAt:Date?, completedAt:Date?, archivedAt:Date?, completed:Bool?, isArchived:Bool?, isNew:Bool?, isPublic:Bool?, isFavourite:Bool?) {
+    var tags: [DVTagViewModel]?
+    var list: DVListViewModel?
+    var note: DVNoteViewModel?
+    
+    init(uuid:UUID, versionId:UUID?, versionPrevId: UUID?, version:Int64?, todoItemText:String, createdAt:Date, updatedAt:Date, duedateAt:Date?, completedAt:Date?, archivedAt:Date?, completed:Bool?, isArchived:Bool?, isNew:Bool?, isPublic:Bool?, isFavourite:Bool?, isRemindable: Bool? = false) {
         self.uuid = uuid
         
         self.versionId = versionId
@@ -49,6 +54,22 @@ class DVTodoItemTaskViewModel: NSObject {
         self.isNew = isNew ?? false
         self.isPublic = isPublic ?? false
         self.isFavourite = isFavourite ?? false
+        self.isRemindable = isRemindable ?? false
+    }
+    
+    func tagsContains(tag: DVTagViewModel) -> Bool {
+        var found = false
+        
+        if let hasTags = tags, hasTags.count > 0 {
+            for _tag in hasTags {
+                if _tag.uuid == tag.uuid {
+                    found = true
+                    break
+                }
+            }
+        }
+        
+        return found
     }
 }
 
@@ -70,8 +91,21 @@ extension DVTodoItemTaskViewModel {
                                                      isArchived: todoItem.isArchived,
                                                      isNew: todoItem.isNew,
                                                      isPublic: todoItem.isPublic,
-                                                     isFavourite: todoItem.isFavourite)
+                                                     isFavourite: todoItem.isFavourite,
+                                                     isRemindable: todoItem.isRemindable)
         }
         return converted!
+    }
+    
+    static func makeEmpty() -> DVTodoItemTaskViewModel {
+        let fallbackString = UUID.init(uuidString: "00000000-0000-0000-0000-000000000000")
+        let curDate = Date()
+        let emptyString = String()
+        
+        let result =  DVTodoItemTaskViewModel.init(uuid: fallbackString!, versionId: nil, versionPrevId: nil, version: nil, todoItemText: emptyString, createdAt: curDate, updatedAt: curDate, duedateAt: nil, completedAt: nil, archivedAt: nil, completed: false, isArchived: false, isNew: true, isPublic: false, isFavourite: false, isRemindable: false)
+        
+        result.tags = [DVTagViewModel]()
+
+        return result
     }
 }

@@ -24,7 +24,7 @@ class SettingsUserPreferencesTVC: ThemableTableViewController {
         let navigationLabel = "Notifications"
         let alertLabel = NSLocalizedString("Alert", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Alert **", comment: "")
         
-        setupNavigationTitleText(title: navigationLabel)
+        setupNavigationTitleText(title: navigationLabel, subtitle: nil)
         
         doneAlertLabel?.text = alertLabel
         deleteAlertLabel?.text = alertLabel

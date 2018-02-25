@@ -20,19 +20,19 @@
                     <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bun-n8-J7g">
-                            <rect key="frame" x="57.666666666666657" y="261.66666666666669" width="299.33333333333337" height="192.66666666666669"/>
+                            <rect key="frame" x="0.0" y="257.66666666666669" width="414" height="200.66666666666669"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyState03" translatesAutoresizingMaskIntoConstraints="NO" id="NC5-8v-w5Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="299.33333333333331" height="120"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_icon_dailyvibes" translatesAutoresizingMaskIntoConstraints="NO" id="NC5-8v-w5Y">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your list is currently empty." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQB-Js-uXh">
-                                    <rect key="frame" x="0.0" y="136" width="299.33333333333331" height="20.333333333333343"/>
+                                    <rect key="frame" x="0.0" y="144" width="414" height="20.333333333333343"/>
                                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can add a new to-do to get started" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqR-nh-nNy">
-                                    <rect key="frame" x="0.0" y="172.33333333333331" width="299.33333333333331" height="20.333333333333343"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can add a new to-do to get started" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqR-nh-nNy">
+                                    <rect key="frame" x="0.0" y="180.33333333333331" width="414" height="20.333333333333343"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -42,6 +42,8 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="bun-n8-J7g" firstAttribute="centerY" secondItem="osa-uo-2hR" secondAttribute="centerY" id="85A-4l-FLL"/>
+                        <constraint firstItem="bun-n8-J7g" firstAttribute="leading" secondItem="V9i-lS-vFp" secondAttribute="leading" id="AiT-pQ-mS3"/>
+                        <constraint firstItem="V9i-lS-vFp" firstAttribute="trailing" secondItem="bun-n8-J7g" secondAttribute="trailing" id="T2K-aL-RMj"/>
                         <constraint firstItem="bun-n8-J7g" firstAttribute="centerX" secondItem="osa-uo-2hR" secondAttribute="centerX" id="hfP-Ww-gbd"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="V9i-lS-vFp"/>
@@ -62,6 +64,6 @@
         </view>
     </objects>
     <resources>
-        <image name="emptyState03" width="132" height="120"/>
+        <image name="empty_icon_dailyvibes" width="128" height="128"/>
     </resources>
 </document>

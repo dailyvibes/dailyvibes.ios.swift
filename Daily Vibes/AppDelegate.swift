@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import SwiftTheme
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
@@ -16,8 +17,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     var window: UIWindow?
     
     let store = CoreDataManager.store
+    let notificationDelegate = UYLNotificationDelegate()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        #if DEBUG
+            store.destroyALL(deleteExistingStore: true)
+            
+            if !store.hasDefaultDVList() {
+                store.makeDefaultDVList()
+            }
+            
+            if store.filteredProjectList == nil {
+                let defaultProjectLabel = "Inbox"
+                let defaultProject = store.findDVList(byLabel: defaultProjectLabel)
+                store.filteredProjectList = DVListViewModel.fromCoreData(list: defaultProject)
+            }
+            
+            if let path = Bundle.main.path(forResource: "fakeDataDump-Feb252018", ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
+                    //                let jsonResult = try JSON.init
+
+                    for task in (jsonResult)! {
+                        //                    let taskId = task["id"]
+                        let taskText = task["todoItemText"] as! String
+                        let completedAtString = task["completedAt"] as! String
+                        let taskCompleted = Date.UTCToLocal(___date: completedAtString)
+                        
+//                        let tagsStringAfterSplit = taskText.split(separator: "#")
+//                        let tags = tagsStringAfterSplit.dropFirst()
+                        
+//                        for (_, element) in tags.enumerated() {
+//                            if let tag = store.fetchSpecificTag(byLabel: String(element)) {
+//                                // tags exists
+//                                todo.addToTags(tag)
+//                                tag.addToTodos(todo)
+//                            } else {
+//                                // need to create a tag
+//                                let newTag = store.createTag(withLabel: String(element))
+//                                if let tag = store.fetchSpecificTag(byLabel: newTag.label) {
+//                                    todo.addToTags(tag)
+//                                    tag.addToTodos(todo)
+//                                }
+//                            }
+//                        }
+                        
+                        store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+                    }
+                    
+                    makeTestDataReady()
+                    
+                } catch {
+                    // handle error
+                    fatalError("OOPS")
+                }
+            }
+
+        #endif
         
         let defaults = UserDefaults.standard
         
@@ -36,48 +94,129 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             defaults.synchronize()
         } else {
             defaults.set(Date(), forKey: "LastRun")
-            
             defaults.synchronize()
         }
         
-//        http://d.pr/97Hx8g
-//        if(!NSUserDefaults.standardUserDefaults().boolForKey("firstlaunch1.0")){
-//            //Put any code here and it will be executed only once.
-//            println("Is a first launch")
-//            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstlaunch1.0")
-//            NSUserDefaults.standardUserDefaults().synchronize();
-//        }
+        if !store.hasDefaultDVList() {
+            store.makeDefaultDVList()
+        }
         
-//        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-//        if launchedBefore {
-//        print("Has launched before")
-//        } else {
-//        print("First launch")
-//        UserDefaults.standard.set(true, forKey: "launchedBefore")
-//        }
-//        
+        if store.filteredProjectList == nil {
+            let defaultProjectLabel = "Inbox"
+            let defaultProject = store.findDVList(byLabel: defaultProjectLabel)
+            store.filteredProjectList = DVListViewModel.fromCoreData(list: defaultProject)
+        }
+        
+        setupNotifications()
+        
+        //        http://d.pr/97Hx8g
+        //        if(!NSUserDefaults.standardUserDefaults().boolForKey("firstlaunch1.0")){
+        //            //Put any code here and it will be executed only once.
+        //            println("Is a first launch")
+        //            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstlaunch1.0")
+        //            NSUserDefaults.standardUserDefaults().synchronize();
+        //        }
+        
+        //        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        //        if launchedBefore {
+        //        print("Has launched before")
+        //        } else {
+        //        print("First launch")
+        //        UserDefaults.standard.set(true, forKey: "launchedBefore")
+        //        }
+        //
         // Override point for customization after application launch.
         
-        // -------------------------- TODO REMOVE --------------------------
-//        if let path = Bundle.main.path(forResource: "fakeDataDump-Jan202018", ofType: "json") {
-//            do {
-//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-//                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
-////                let jsonResult = try JSON.init
-//                
-//                for task in (jsonResult)! {
-////                    let taskId = task["id"]
-//                    let taskText = task["todoItemText"] as! String
-//                    let completedAtString = task["completedAt"] as! String
-//                    let taskCompleted = Date.UTCToLocal(___date: completedAtString)
-//                    store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+//        if ProcessInfo.processInfo.arguments.contains("IS_RUNNING_UITEST") {
+//            // insert data from a JSON file into the managed object context
+//            print("IS_RUNNING_UITEST")
+//            store.destroyALL(deleteExistingStore: true)
+//
+//            if let path = Bundle.main.path(forResource: "fakeDataDump-Feb252018", ofType: "json") {
+//                do {
+//                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+//                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
+//                    //                let jsonResult = try JSON.init
+//
+//                    for task in (jsonResult)! {
+//                        //                    let taskId = task["id"]
+//                        let taskText = task["todoItemText"] as! String
+//                        let completedAtString = task["completedAt"] as! String
+//                        let taskCompleted = Date.UTCToLocal(___date: completedAtString)
+//                        store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+//                    }
+//                } catch {
+//                    // handle error
+//                    fatalError("OOPS")
 //                }
-//            } catch {
-//                // handle error
-//                fatalError("OOPS")
 //            }
 //        }
+//            print("in debug mode")
+//            //            store.destroyALL(deleteExistingStore: true)
+//
+//            let url = "https://dl.dropboxusercontent.com/s/u9mb9o016byip4d/FakeDataDump-Feb252018.json"
+//
+//            URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
+//
+//                if let d = data {
+//                    do {
+//                        let jsonResult = try JSONSerialization.jsonObject(with: d, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
+//
+//                        for task in (jsonResult)! {
+//                            let taskText = task["todoItemText"] as! String
+//                            let completedAtString = task["completedAt"] as! String
+//                            let taskCompleted = Date.UTCToLocal(___date: completedAtString)
+//
+//                            self.store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+//                        }
+//                    } catch {
+//                        print("error \(error)")
+//                    }
+//                }
+//                }.resume()
+            
+            //            if let path = Bundle.main.path(forResource: "fakeDataDump-Feb252018", ofType: "json") {
+            //                do {
+            //                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            //                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
+            //                    //                let jsonResult = try JSON.init
+            //
+            //                    for task in (jsonResult)! {
+            //                        //                    let taskId = task["id"]
+            //                        let taskText = task["todoItemText"] as! String
+            //                        let completedAtString = task["completedAt"] as! String
+            //                        let taskCompleted = Date.UTCToLocal(___date: completedAtString)
+            //                        store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+            //                    }
+            //                } catch {
+            //                    // handle error
+            //                    fatalError("OOPS")
+            //                }
+            //            }
+//        #endif
+        
+        //        #if DEBUG
         // -------------------------- TODO REMOVE --------------------------
+        //        if let path = Bundle.main.path(forResource: "fakeDataDump-Feb012018", ofType: "json") {
+        //            do {
+        //                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+        //                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
+        ////                let jsonResult = try JSON.init
+        //
+        //                for task in (jsonResult)! {
+        ////                    let taskId = task["id"]
+        //                    let taskText = task["todoItemText"] as! String
+        //                    let completedAtString = task["completedAt"] as! String
+        //                    let taskCompleted = Date.UTCToLocal(___date: completedAtString)
+        //                    store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+        //                }
+        //            } catch {
+        //                // handle error
+        //                fatalError("OOPS")
+        //            }
+        //        }
+        // -------------------------- TODO REMOVE --------------------------
+        //        #endif
         
         // default: Red.plist
         if let theme = MyThemes(rawValue: defaults.integer(forKey: "themeSelected")) {
@@ -88,7 +227,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         
         // status bar
         
-//        UIApplication.shared.theme_setStatusBarStyle("UIStatusBarStyle", animated: true)
+        //        UIApplication.shared.theme_setStatusBarStyle("UIStatusBarStyle", animated: true)
         
         UIApplication.shared.theme_setStatusBarStyle("UIStatusBarStyle", animated: true)
         
@@ -127,7 +266,92 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         let uiTextField = UITextField.appearance()
         uiTextField.theme_keyboardAppearance = "Global.keyboardStyle"
         
+        //        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+        //
+        //            if shortcutItem.type == "com.yoursite.yourapp.adduser" {
+        //
+        //
+        //                if let tabBarController = window?.rootViewController as? DailyVibesTabBarViewController {
+        //
+        //                    if let newVC = tabBarController.storyboard?.instantiateViewController(withIdentifier: "AddNavigationVC") {
+        //                        tabBarController.present(newVC, animated: true)
+        //                    }
+        //
+        //                }
+        //            }
+        //
+        //        }
+        
+        let icon = UIApplicationShortcutIcon(type: .add)
+        let bundleIdentifier = Bundle.main.bundleIdentifier!
+        let shortcutItemIdentifierQuickAddTodoItemTask = "\(bundleIdentifier).quickAddTodoItemTask"
+        let newTodoLocalizedString = NSLocalizedString("Add a to-do", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Add a to-do **", comment: "")
+        let item = UIApplicationShortcutItem(type: shortcutItemIdentifierQuickAddTodoItemTask, localizedTitle: newTodoLocalizedString, localizedSubtitle: nil, icon: icon, userInfo: nil)
+        UIApplication.shared.shortcutItems = [item]
+        
         return true
+    }
+    
+    func makeTestDataReady() {
+        let _ = self.store.createTag(withLabel: "dailyvibes")
+        let _ = self.store.createTag(withLabel: "February 2018")
+        
+        let groceryList = store.storeDailyVibesList(withTitle: "Groceries", withDescription: "Things to buy")
+        let groceryListDV = DVListViewModel.fromCoreData(list: groceryList)
+        
+        //                    class DVMultipleTodoitemtaskItemsVM: NSObject {
+        //                        var curProject: DVListViewModel?
+        //                        var duedateAt: Date?
+        //                        var rawMultipleTaskText: String?
+        //                        var prevProject: DVListViewModel?
+        //                        var parsedText: [String]?
+        //                        var hasTags: Bool = false
+        //                        var tagListText: [String]?
+        //                        var isRemindable: Bool = false
+        //                    }
+        
+        let rawDataText = [
+            "- buy milk 🥛 #groceries",
+            "- buy bacon 🥓 #groceries",
+            "- buy toast 🍞 #groceries",
+            "- buy avacadoes 🥑 #groceries",
+            "- buy coffee ☕️ #groceries",
+            "- buy oatmeal 🥣 #groceries",
+            "- buy tea 🍵 #groceries"
+        ]
+        
+        for (index, entry) in rawDataText.enumerated() {
+            let multipleData = DVMultipleTodoitemtaskItemsVM()
+            multipleData.curProject = groceryListDV
+            multipleData.prevProject = groceryListDV
+            multipleData.rawMultipleTaskText = entry
+            if index % 2 == 0 {
+                multipleData.isRemindable = true
+            }
+            multipleData.duedateAt = Date().add(days: index)
+            multipleData.parsedText = DVMultipleTodoitemtaskItemsVC.parseMultipleTodos(data: multipleData, todosInput: multipleData.rawMultipleTaskText!)
+            store.processMultipleTodoitemTasks(forProject: groceryListDV, todoItemTasksData: multipleData)
+        }
+    }
+    
+    func application(_ application: UIApplication,
+                     performActionFor shortcutItem: UIApplicationShortcutItem,
+                     completionHandler: @escaping (Bool) -> Void) {
+        let bundleIdentifier = Bundle.main.bundleIdentifier!
+        let shortcutItemIdentifierQuickAddTodoItemTask = "\(bundleIdentifier).quickAddTodoItemTask"
+        
+        if shortcutItem.type == shortcutItemIdentifierQuickAddTodoItemTask {
+            
+            
+            if let tabBarController = window?.rootViewController as? DailyVibesTabBarViewController {
+                
+                if let newVC = tabBarController.storyboard?.instantiateViewController(withIdentifier: "AddNavigationVC") {
+                    tabBarController.present(newVC, animated: true)
+                }
+                
+            }
+        }
+        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -152,6 +376,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         store.saveContext()
+    }
+    
+    func setupNotifications() {
+        let center = UNUserNotificationCenter.current()
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        
+        center.delegate = notificationDelegate
+        
+        center.requestAuthorization(options: options) {
+            (granted, error) in
+            if !granted {
+                print("Something went wrong")
+            }
+        }
     }
     
 }

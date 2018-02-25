@@ -46,12 +46,59 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
         self.tabBar.items?[3].title = NSLocalizedString("Settings", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Settings**", comment: "")
     }
     
+//    var previousController: TodoItemsTableViewController?
+    
+//    @objc func handleListChange() {
+//        let storyboard = UIStoryboard.init(name: "DVMultipleTodoitemtaskItems", bundle: nil)
+//        let tvc = storyboard.instantiateViewController(withIdentifier: "DVMultipleTodoitemtaskItemsController")
+//        navigationController?.pushViewController(tvc, animated: true)
+//    }
+    
     // MARK - Custom TabBarControllerAction
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is DummyViewController {
-            if let newVC = tabBarController.storyboard?.instantiateViewController(withIdentifier: "AddNavigationVC") {
-                tabBarController.present(newVC, animated: true)
-                return false
+            let titleText = NSLocalizedString("Add a to-do", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Add a to-do **", comment: "")
+            let alertController = UIAlertController.init(title: titleText, message: nil, preferredStyle: .actionSheet)
+            
+            let singleText = NSLocalizedString("Single", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Single **", comment: "")
+            
+            let singleCreateAction = UIAlertAction.init(title: singleText, style: .default, handler: { (alertAction) in
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let newVC = storyboard.instantiateViewController(withIdentifier: "AddNavigationVC")
+                self.present(newVC, animated: true, completion: nil)
+            })
+//            singleCreateAction.accessibilityIdentifier = "single_create_action"
+            
+            alertController.addAction(singleCreateAction)
+            
+            let multipleText = NSLocalizedString("Multiple", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Multiple **", comment: "")
+            let multipleCreateAction = UIAlertAction.init(title: multipleText, style: .default, handler: { (alertAction) in
+                let storyboard = UIStoryboard.init(name: "DVMultipleTodoitemtaskItems", bundle: nil)
+                let tvc = storyboard.instantiateViewController(withIdentifier: "DVMultipleTodoitemtaskItemsNC")
+                self.present(tvc, animated: true, completion: nil)
+            })
+//            multipleCreateAction.accessibilityIdentifier = "multiple_create_action"
+            
+            alertController.addAction(multipleCreateAction)
+            
+            let cancelText = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel **", comment: "")
+            alertController.addAction(UIAlertAction.init(title: cancelText, style: .cancel, handler: nil))
+            
+            self.present(alertController, animated: true)
+            
+            return false
+        }
+        
+        if viewController is DVMainNavigationViewController {
+            if viewController == tabBarController.selectedViewController {
+//                print("selected the same DVMainNavigationViewController controller")
+                let nav = viewController as! DVMainNavigationViewController
+                let tableCont = nav.topViewController as! TodoItemsTableViewController
+//                tableCont.tableView.setContentOffset(CGPoint(x: 0.0, y: -tableCont.tableView.contentInset.top), animated: true)
+//                tableCont.tableView.setContentOffset(CGPointZero, animated: true)
+//                tableCont.tableView.scrollRectToVisible(CGRect.init(x: 0, y: 0, width: 1, height: 1), animated: true)
+                tableCont.tableView.setContentOffset(CGPoint.zero, animated: true)
+//                print("should have scrolled to the top")
             }
         }
         

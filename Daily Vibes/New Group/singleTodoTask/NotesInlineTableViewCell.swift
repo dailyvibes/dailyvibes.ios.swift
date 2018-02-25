@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Down
 
 class NotesInlineTableViewCell: UITableViewCell {
     
@@ -26,6 +27,15 @@ class NotesInlineTableViewCell: UITableViewCell {
     
     func setText(text: String?) {
         self.notesDisplayer?.text = text
+    }
+    
+    func setAttributedText(text: String?) {
+        if let inputText = text {
+            let down = Down(markdownString: inputText)
+            let attributedStr = try? down.toAttributedString()
+            
+            self.notesDisplayer?.attributedText = attributedStr
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

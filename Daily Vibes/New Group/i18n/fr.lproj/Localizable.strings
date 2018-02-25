@@ -5,51 +5,120 @@
   Created by Alex Kluew on 2017-12-10.
   Copyright © 2017 Alex Kluew. All rights reserved.
 */
-
-// General Actions
+//General Actions*/
 "Done" = "Terminé";
 "Cancel" = "Annuler";
 "Archive" = "Archiver";
 "Delete" = "Effacer";
+
+/*Default Lists*/
 "Inbox" = "Boîte de réception";
 "Save" = "Sauvegarder";
 
-// Tab labels
+/*Tab labels*/
 "Home" = "Accueil";
 "Add" = "Ajouter";
 "Settings" = "Paramètres";
 "Progress" = "Le progrès";
 
-// Main table Actions
-// Main todo item actions
-"Mark this task as done?" = "Mark this task as done?";
-"This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over." = "This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over.";
-"Yes, Mark this as Done" = "Yes, Mark this as Done";
-"Are you sure?" = "Are you sure?";
-"You're about to delete forever" = "You're about to delete forever";
-"Yes, Delete Forever." = "Yes, Delete Forever.";
+/*Main table Actions
+ Main todo item actions*/
+"Mark this task as done?" = "Marquer cette tâche comme terminée?";
+"This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over." = "Cette action ne peut pas être annulée. Une fois que vous avez terminé une tâche, vous ne pouvez pas l'annuler. Votre option restante serait de supprimer et recommencer.";
+"Yes, Mark this as Done" = "Oui, marquer ceci comme fait";
+"Are you sure?" = "Êtes-vous sûr?";
+"You're about to delete forever" = "Vous êtes sur le point de supprimer pour toujours";
+"Yes, Delete Forever." = "Oui, Supprimer pour toujours.";
+"Details" = "Détails";
+"Tags" = "Mots clés";
+"new tag" = "nouveau tag";
+"view tags" = "voir les tags";
+"How do you feel?" = "Comment vous sentez-vous?";
+"Date" = "Rendez-vous amoureux";
 
-// Todo Item Modification Screen
-"Add a to do" = "Add a to do";
-"Details" = "Details";
-"Tags" = "Tags";
-"new tag" = "new tag";
-"view tags" = "view tags";
-"How do you feel?" = "How do you feel?";
-"What would you like to do?" = "What would you like to do?";
-"Date" = "Date";
+/*Tags Modification Screen*/
+"Create a new tag or use one below" = "Créer un nouveau tag ou en utiliser un ci-dessous";
 
-// Tags Modification Screen
-"Create a new tag or use one below" = "Create a new tag or use one below";
+/*Empty Screen*/
+"Your list is currently empty" = "Votre liste est actuellement vide";
+"You can add a new to-do to get started" = "Vous pouvez ajouter une nouvelle tâche pour commencer";
 
-// Empty Screen
-"Your list is currently empty" = "Your list is currently empty";
-"You can add a new to-do to get started" = "You can add a new to-do to get started";
-
-// Settings
+/*Settings*/
 "About" = "Sur";
 "Support" = "Soutien";
 "Acknowledgement" = "Reconnaissance";
 "Language" = "La langue";
-"Made in Toronto" = "🍁 Fait à Toronto 🇨🇦";
+"Made in Toronto" = "Fait à Toronto";
 "English" = "Anglais";
+
+/*Localizable.strings
+ Daily Vibes
+ 
+ Created by Alex Kluew on 2017-12-10.
+ Copyright © 2017 Alex Kluew. All rights reserved.
+ 
+ General Actions*/
+"To-do" = "Faire";
+"Archived" = "Archivé";
+"Year progress" = "Progression de l'année";
+"completed" = "terminé";
+
+/*Share widget*/
+"Tag" = "Tag";
+"from widget" = "du widget";
+"Today" = "Aujourd'hui";
+"Yesterday" = "Hier";
+
+/*Filter actions*/
+"All" = "Tout";
+"Completed" = "Terminé";
+"Upcoming" = "Prochain";
+"Sort by" = "Trier par";
+"This week" = "Cette semaine";
+"Unsorted" = "Non trié";
+"Change Project" = "Changer de projet";
+
+/*Todo Item Modification Screen*/
+"Add a to-do" = "Ajouter un to-do";
+"Project" = "Le projet";
+"Projects" = "Projets";
+"None" = "Nul";
+"Title" = "Le Titre";
+"Set Due Date" = "Définir la date d'échéance";
+"Set" = "Ensemble";
+"Notes" = "Remarques";
+
+/*DailyVibesList Modification Screen*/
+"Lists" = "Listes";
+"Create new (ex: Groceries, Upcoming project) or select one below" = "Créer un nouveau (ex: épiceries, projet à venir) ou sélectionnez-en un ci-dessous";
+
+/*Progress Screen*/
+"Daily task completion history" = "Historique des tâches quotidiennes";
+
+/*Settings*/
+"Themes" = "Les apparences";
+"Notifications" = "Notifications";
+"Alert" = "Alerte";
+"Done Notifications" = "Notifications terminées";
+"Delete Notifications" = "Supprimer les notifications";
+"Current streak" = "Série actuelle";
+"Longest streak" = "La plus longue série";
+"Total completed tasks" = "Total des tâches terminées";
+"Total tasks" = "Total des tâches";
+"Days recorded" = "Jours enregistrés";
+
+/*Themes*/
+"Default" = "Défaut";
+"Night Blue" = "Nuit bleue";
+"Night" = "Nuit";
+"Orange" = "Orange";
+"Created" = "Créé";
+"Due" = "Dû";
+"No data yet, see what happens when you complete a task" = "Aucune donnée pour le moment, voir ce qui se passe lorsque vous terminez une tâche";
+"Please Rate Daily Vibes" = "S'il vous plaît noter Daily Vibes";
+"Copied to clipboard" = "Copié dans le presse-papier";
+"One new to-do item task per line" = "Une nouvelle tâche d'élément à faire par ligne";
+"You can also include #tags" = "Vous pouvez également inclure #tags";
+"Single" = "Unique";
+"Multiple" = "Multiple";
+"Add Multiple To-do Items" = "Ajouter plusieurs éléments à faire";

@@ -101,8 +101,12 @@
                                             <segue destination="RvC-M6-tyI" kind="show" id="Ngp-o7-uih"/>
                                         </connections>
                                     </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="CtA-X1-H1P">
+                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ZjZ-qO-SlR" imageView="jbo-2s-Ub0" style="IBUITableViewCellStyleDefault" id="OCo-Ge-Lxp">
-                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="239" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OCo-Ge-Lxp" id="PS9-BC-l3G">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -127,7 +131,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="UEs-iJ-8id" imageView="azU-Wj-Vw8" style="IBUITableViewCellStyleDefault" id="rvy-ut-7ej">
-                                        <rect key="frame" x="0.0" y="247" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="283" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rvy-ut-7ej" id="n6b-GN-jRN">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -156,7 +160,7 @@
                             <tableViewSection id="dSV-I1-3Mn">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xvz-O0-HJx" customClass="ThemableBaseTableViewCell" customModule="Daily_Vibes" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="327" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="363" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xvz-O0-HJx" id="IND-Ca-rGH">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -191,6 +195,7 @@
                     <connections>
                         <outlet property="aboutCell" destination="XsZ-Fm-OEi" id="Kv9-dw-J0N"/>
                         <outlet property="acknowledgementCell" destination="rvy-ut-7ej" id="2Vg-gb-urK"/>
+                        <outlet property="madeInTorontoCell" destination="xvz-O0-HJx" id="n2n-Zx-WBH"/>
                         <outlet property="madeInTorontoLabel" destination="PZl-9j-WJa" id="74i-3v-yQT"/>
                         <outlet property="supportCell" destination="OCo-Ge-Lxp" id="F7m-jL-shd"/>
                         <outlet property="themesCell" destination="owR-Cg-mxl" id="1oc-5r-nJJ"/>
@@ -208,28 +213,9 @@
                     <view key="view" contentMode="scaleToFill" id="gVX-Pv-mej">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2k-w5-0vL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="X2k-w5-0vL" firstAttribute="leading" secondItem="x6U-I7-1dr" secondAttribute="leading" id="2Py-XC-kbG"/>
-                            <constraint firstItem="x6U-I7-1dr" firstAttribute="bottom" secondItem="X2k-w5-0vL" secondAttribute="bottom" id="7ie-qW-Ncg"/>
-                            <constraint firstItem="x6U-I7-1dr" firstAttribute="trailing" secondItem="X2k-w5-0vL" secondAttribute="trailing" id="eOT-W3-7Bj"/>
-                            <constraint firstItem="X2k-w5-0vL" firstAttribute="top" secondItem="x6U-I7-1dr" secondAttribute="top" id="xBw-Sh-cp2"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="x6U-I7-1dr"/>
                     </view>
-                    <connections>
-                        <outlet property="webView" destination="X2k-w5-0vL" id="25P-ni-Vul"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktg-tk-WFx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -334,28 +320,9 @@
                     <view key="view" contentMode="scaleToFill" id="MDL-cJ-5ca">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HM6-bG-vmX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="HM6-bG-vmX" firstAttribute="top" secondItem="4fs-Jl-Nzc" secondAttribute="top" id="4QO-Wk-J0G"/>
-                            <constraint firstItem="HM6-bG-vmX" firstAttribute="leading" secondItem="4fs-Jl-Nzc" secondAttribute="leading" id="9XV-X0-jKg"/>
-                            <constraint firstItem="4fs-Jl-Nzc" firstAttribute="trailing" secondItem="HM6-bG-vmX" secondAttribute="trailing" id="XCY-uc-Wkf"/>
-                            <constraint firstItem="4fs-Jl-Nzc" firstAttribute="bottom" secondItem="HM6-bG-vmX" secondAttribute="bottom" id="u2q-Tc-bj8"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4fs-Jl-Nzc"/>
                     </view>
-                    <connections>
-                        <outlet property="webView" destination="HM6-bG-vmX" id="zpj-XB-Q9U"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="do6-xe-b1Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -368,28 +335,9 @@
                     <view key="view" contentMode="scaleToFill" id="eXT-2j-DkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9A-gH-vlR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ZWC-88-9d1" firstAttribute="bottom" secondItem="A9A-gH-vlR" secondAttribute="bottom" id="9HU-el-e3m"/>
-                            <constraint firstItem="ZWC-88-9d1" firstAttribute="trailing" secondItem="A9A-gH-vlR" secondAttribute="trailing" id="SaO-fe-luI"/>
-                            <constraint firstItem="A9A-gH-vlR" firstAttribute="top" secondItem="ZWC-88-9d1" secondAttribute="top" id="hjH-V5-e24"/>
-                            <constraint firstItem="A9A-gH-vlR" firstAttribute="leading" secondItem="ZWC-88-9d1" secondAttribute="leading" id="q5A-ak-9Ge"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZWC-88-9d1"/>
                     </view>
-                    <connections>
-                        <outlet property="webView" destination="A9A-gH-vlR" id="nI8-1a-gaP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vWH-Bl-Jgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

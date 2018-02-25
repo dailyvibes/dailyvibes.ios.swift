@@ -12,10 +12,10 @@ import SwiftTheme
 class ThemesSettingsTableViewController: ThemableTableViewController {
     
     private let themes = [
-        "Default",
-        "Night Blue",
-        "Night",
-        "Orange"
+        NSLocalizedString("Default", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Default", comment: ""),
+        NSLocalizedString("Night Blue", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Default", comment: ""),
+        NSLocalizedString("Night", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Default", comment: ""),
+        NSLocalizedString("Orange", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Default", comment: "")
     ]
     
     private var selectedEnumTheme = MyThemes.current {
@@ -30,7 +30,7 @@ class ThemesSettingsTableViewController: ThemableTableViewController {
         super.viewWillAppear(animated)
         
         let titleString = "Themes"
-        setupNavigationTitleText(title: titleString)
+        setupNavigationTitleText(title: titleString, subtitle: nil)
         
         syncThemePreferences()
         

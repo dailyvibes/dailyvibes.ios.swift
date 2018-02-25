@@ -1,0 +1,6 @@
+framework module Pods_Daily_Vibes {
+  umbrella header "Pods-Daily Vibes-umbrella.h"
+
+  export *
+  module * { export * }
+}

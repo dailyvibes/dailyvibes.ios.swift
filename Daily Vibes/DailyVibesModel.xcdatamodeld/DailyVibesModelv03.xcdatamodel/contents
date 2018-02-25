@@ -7,6 +7,7 @@
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="duedateAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="emoji" attributeType="String" defaultValueString="📌" syncable="YES"/>
+        <attribute name="isDefault" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isFavourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isListVisible" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isPublic" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
@@ -95,10 +96,10 @@
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="todos" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DailyVibesList" positionX="-6048" positionY="-936" width="128" height="300"/>
+        <element name="DailyVibesList" positionX="-6048" positionY="-936" width="128" height="315"/>
+        <element name="DailyVibesNote" positionX="-6048" positionY="-936" width="128" height="240"/>
         <element name="Streak" positionX="-5852" positionY="-1080" width="128" height="300"/>
         <element name="Tag" positionX="-5922" positionY="-537" width="128" height="255"/>
         <element name="TodoItem" positionX="-6246" positionY="-864" width="128" height="390"/>
-        <element name="DailyVibesNote" positionX="-6048" positionY="-936" width="128" height="240"/>
     </elements>
 </model>

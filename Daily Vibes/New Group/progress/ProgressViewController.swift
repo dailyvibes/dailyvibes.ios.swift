@@ -257,13 +257,13 @@ class ProgressViewController: ThemableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMainTableVCFilteredByTag" {
-            guard let mainTVC = segue.destination as? TodoItemsTableViewController else {
+            guard let _ = segue.destination as? TodoItemsTableViewController else {
                 fatalError("should be a navigation controller")
             }
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                if let tag = tagsFetchedResultsController.object(at: selectedIndexPath) as Tag? {
-                    mainTVC.setupTodoItemsTVC(using: tag)
+                if let _ = tagsFetchedResultsController.object(at: selectedIndexPath) as Tag? {
+//                    mainTVC.setupTodoItemsTVC(using: tag)
                 }
             }
         }

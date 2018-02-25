@@ -1,0 +1,125 @@
+/*
+  Localizable.strings
+  Daily Vibes
+
+  Created by Alex Kluew on 2017-12-10.
+  Copyright © 2017 Alex Kluew. All rights reserved.
+*/
+//General Actions*/
+"Done" = "Fertig";
+"Cancel" = "Abbrechen";
+"Archive" = "Archiv";
+"Delete" = "Löschen";
+
+/*Default Lists*/
+"Inbox" = "Posteingang";
+"Save" = "Speichern";
+
+/*Tab labels*/
+"Home" = "Startseite";
+"Add" = "Hinzufügen";
+"Settings" = "Einstellungen";
+"Progress" = "Fortschritt";
+
+/*Main table Actions
+ Main todo item actions*/
+"Mark this task as done?" = "Diese Aufgabe als fertig markieren?";
+"This action cannot be undone. Once you complete a task, you cannot undo it. Your remaining option would be to delete and start over." = "Diese Aktion kann nicht rückgängig gemacht werden. Wenn Du eine Aufgabe fertigstellst, kannst Du das nicht rückgängig machen. Die verbleibende Option ist diesen Eintrag zu löschen und neu anzufangen.";
+"Yes, Mark this as Done" = "Ja, als erledigt markieren";
+"Are you sure?" = "Bist Du sicher?";
+"You're about to delete forever" = "Du bist dabei das unwiderruflich zu löschen";
+"Yes, Delete Forever." = "Ja, unwiderruflich löschen";
+"Details" = "Details";
+"Tags" = "Schlagwort";
+"new tag" = "Neues Schlagwort";
+"view tags" = "Schlagwörter ansehen";
+"How do you feel?" = "Wie fühlst Du dich?";
+"Date" = "Datum";
+
+/*Tags Modification Screen*/
+"Create a new tag or use one below" = "Erstelle ein neues Schlagwort oder wähle eines unten";
+
+/*Empty Screen*/
+"Your list is currently empty" = "Deine Liste ist momentan leer";
+"You can add a new to-do to get started" = "Du kannst eine neue Aufgabe hinzufügen um anzufangen";
+
+/*Settings*/
+"About" = "Über uns";
+"Support" = "Support";
+"Acknowledgement" = "Danksagung";
+"Language" = "Sprache";
+"Made in Toronto" = "Hergestellt in Toronto";
+"English" = "Englisch";
+
+/*Localizable.strings
+ Daily Vibes
+ 
+ Created by Alex Kluew on 2017-12-10.
+ Copyright © 2017 Alex Kluew. All rights reserved.
+ 
+ General Actions*/
+"To-do" = "Aufgabe";
+"Archived" = "Archiviert";
+"Year progress" = "Jahresfortschritt";
+"completed" = "fertiggestellt";
+
+/*Share widget*/
+"Tag" = "Schlagwort";
+"from widget" = "Von Widget";
+"Today" = "Heute";
+"Yesterday" = "Gestern";
+
+/*Filter actions*/
+"All" = "Alle";
+"Completed" = "Fertiggestellt";
+"Upcoming" = "Bevorstehend";
+"Sort by" = "Sortieren nach";
+"This week" = "Diese Woche";
+"Unsorted" = "Unsortiert";
+"Change Project" = "Projekt wechseln";
+
+/*Todo Item Modification Screen*/
+"Add a to-do" = "Aufgabe hinzufügen";
+"Project" = "Projekt";
+"Projects" = "Projekte";
+"None" = "Keine";
+"Title" = "Titel";
+"Set Due Date" = "Setze Fälligkeit";
+"Set" = "Setze";
+"Notes" = "Notizen";
+
+/*DailyVibesList Modification Screen*/
+"Lists" = "Listen";
+"Create new (ex: Groceries, Upcoming project) or select one below" = "Neu anlegen (z.B. Einkaufen, Bevorstehendes Projekt) oder unten auswählen";
+
+/*Progress Screen*/
+"Daily task completion history" = "Übersicht der Aufgabenerledigung";
+
+/*Settings*/
+"Themes" = "Themes";
+"Notifications" = "Benachrichtigungen";
+"Alert" = "Benachrichtigen";
+"Done Notifications" = "Benachrichtigungen 'Fertiggestellt'";
+"Delete Notifications" = "Benachrichtungen 'Löschen'";
+"Current streak" = "Momentaner Lauf";
+"Longest streak" = "Längster Lauf";
+"Total completed tasks" = "Insgesamt fertiggestellte Aufgaben";
+"Total tasks" = "Gesamtanzahl an Aufgaben";
+"Days recorded" = "Tage aufgenommen";
+
+/*Themes*/
+"Default" = "Standard";
+"Night Blue" = "Nachtblau";
+"Night" = "Nacht";
+"Orange" = "Orange";
+"Created" = "Erstellt";
+"Due" = "Fertigstellungdatum";
+"No data yet, see what happens when you complete a task" = "Keine Daten bis jetzt. Komme wieder wenn Du eine Aufgabe fertiggestellt hast.";
+"Please Rate Daily Vibes" = "Bitte bewerte Daily Vibes";
+"Copied to clipboard" = "In die Zwischenablage kopiert";
+"One new to-do item task per line" = "Eine neue aufgabenaufgabe pro zeile";
+"You can also include #tags" = "Sie können auch #tags einfügen";
+"Single" = "Ein";
+"Multiple" = "Multipel";
+"Add Multiple To-do Items" = "Fügen sie mehrere aufgaben hinzu";
+

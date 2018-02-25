@@ -1,0 +1,45 @@
+
+/* Class = "UILabel"; text = "Day"; ObjectID = "0Dv-5L-QMk"; */
+"0Dv-5L-QMk.text" = "Day";
+
+/* Class = "UILabel"; text = "Themes"; ObjectID = "7AA-et-1JD"; */
+"7AA-et-1JD.text" = "Themes";
+
+/* Class = "UILabel"; text = "Default"; ObjectID = "8Hh-Eq-pK8"; */
+"8Hh-Eq-pK8.text" = "Default";
+
+/* Class = "UITableViewSection"; headerTitle = "DELETE NOTIFICATIONS"; ObjectID = "9tg-C7-aFv"; */
+"9tg-C7-aFv.headerTitle" = "DELETE NOTIFICATIONS";
+
+/* Class = "UILabel"; text = "🍁 Made in Toronto 🇨🇦"; ObjectID = "PZl-9j-WJa"; */
+"PZl-9j-WJa.text" = "🍁 Made in Toronto 🇨🇦";
+
+/* Class = "UILabel"; text = "Acknowledgement"; ObjectID = "UEs-iJ-8id"; */
+"UEs-iJ-8id.text" = "Acknowledgement";
+
+/* Class = "UILabel"; text = "Notifications and Sounds"; ObjectID = "WZo-ea-8Ta"; */
+"WZo-ea-8Ta.text" = "Notifications and Sounds";
+
+/* Class = "UILabel"; text = "Night Blue"; ObjectID = "YcA-7O-LoF"; */
+"YcA-7O-LoF.text" = "Night Blue";
+
+/* Class = "UILabel"; text = "Support"; ObjectID = "ZjZ-qO-SlR"; */
+"ZjZ-qO-SlR.text" = "Support";
+
+/* Class = "UILabel"; text = "Alert"; ObjectID = "e4C-8O-cwr"; */
+"e4C-8O-cwr.text" = "Alert";
+
+/* Class = "UITableViewSection"; headerTitle = "DONE NOTIFICATIONS"; ObjectID = "fqL-5E-0rj"; */
+"fqL-5E-0rj.headerTitle" = "DONE NOTIFICATIONS";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "ji3-dk-KNh"; */
+"ji3-dk-KNh.text" = "About";
+
+/* Class = "UITableViewController"; title = "SettingsViewController"; ObjectID = "kvH-uq-xI1"; */
+"kvH-uq-xI1.title" = "SettingsViewController";
+
+/* Class = "UILabel"; text = "Night"; ObjectID = "q3k-WU-1B8"; */
+"q3k-WU-1B8.text" = "Night";
+
+/* Class = "UILabel"; text = "Alert"; ObjectID = "y3h-UZ-5oz"; */
+"y3h-UZ-5oz.text" = "Alert";

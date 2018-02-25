@@ -17,13 +17,52 @@ class ShareViewController: SLComposeServiceViewController {
     private var textString: String?
     
     private let store = CoreDataManager.store
-    private var tags = [Tag]()
-    private var tag = Tag()
+//    private var tags = [Tag]()
+//    private var tag = Tag()
+    
+    private var defaultTag: DVTagViewModel?
+    private var defaultList: DVListViewModel?
+    
+    private var dvTagsVM = [DVTagViewModel]() {
+        didSet {
+            let defaultString = NSLocalizedString("from widget", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND from widget **", comment: "")
+            
+            for dvTagVm in dvTagsVM {
+                if defaultString == dvTagVm.label {
+                    defaultTag = dvTagVm
+                }
+            }
+            
+            if defaultTag == nil {
+                defaultTag = store.createTag(withLabel: defaultString)
+            }
+        }
+    }
+    
+    
+    private var dvListsVM = [DVListViewModel]() {
+        didSet {
+            let defaultString = NSLocalizedString("Unsorted", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Unsorted **", comment: "")
+            
+            for dvListVM in dvListsVM {
+                if let listTitle = dvListVM.title {
+                    if listTitle == defaultString {
+                        defaultList = dvListVM
+                    }
+                }
+            }
+        }
+    }
     
     override func loadView() {
         super.loadView()
-        loadData()
         
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "launch_icon_dailyvibes"))
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
+        navigationController?.navigationBar.topItem?.titleView = imageView
+        
+        loadData()
         parseData()
     }
     
@@ -50,10 +89,10 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     private func loadData() {
-        store.fetchTags()
-        tags = store.fetchedTags
-        let defaultShareSetting = "unsorted"
-        tag = store.fetchSpecificTag(byLabel: defaultShareSetting) ?? store.storeTag(withLabel: defaultShareSetting)
+        store.fetchTagsViewModel()
+        store.fetchListsViewModel()
+        dvTagsVM = store.dvTagsVM
+        dvListsVM = store.dvListsVM
     }
     
     override func isContentValid() -> Bool {
@@ -69,13 +108,27 @@ class ShareViewController: SLComposeServiceViewController {
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
         guard let text = textView.text else { return }
-        let dueDate = Date().endTime()
         
+        store.findOrCreateTodoitemTaskDeepNested(withUUID: nil)
         
-        if let string = urlString {
-            store.storeTodoItemTaskTag(withTitle: "\(text) - \(string)", forDueDate: dueDate, for: tag)
-        } else {
-            store.storeTodoItemTaskTag(withTitle: text, forDueDate: dueDate, for: tag)
+        if let todoItemTaskViewModel = store.editingDVTodotaskItem {
+            todoItemTaskViewModel.list = defaultList
+            
+            if let defaultTag = defaultTag {
+                todoItemTaskViewModel.tags?.append(defaultTag)
+            }
+            
+            if let string = urlString {
+                let newNote = DVNoteViewModel.makeEmpty()
+                
+                todoItemTaskViewModel.todoItemText = text
+                newNote.content = string
+                todoItemTaskViewModel.note = newNote
+            } else {
+                todoItemTaskViewModel.todoItemText = text
+            }
+            
+            store.saveEditingDVTodotaskItem()
         }
         
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
@@ -84,11 +137,16 @@ class ShareViewController: SLComposeServiceViewController {
     
     override func configurationItems() -> [Any]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        let item = SLComposeSheetConfigurationItem.init()
-        item?.title = "Tag"
-        item?.value = tag.label
+        let tagItem = SLComposeSheetConfigurationItem.init()
+        let projectItem = SLComposeSheetConfigurationItem.init()
         
-        return [item!]
+        tagItem?.title = NSLocalizedString("Tag", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Tag **", comment: "")
+        tagItem?.value = defaultTag?.label
+        
+        projectItem?.title = NSLocalizedString("Project", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Project **", comment: "")
+        projectItem?.value = defaultList?.title
+        
+        return [tagItem!, projectItem!]
     }
     
 }
