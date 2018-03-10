@@ -11,7 +11,7 @@ import GrowingTextView
 
 class DVMultipleTodoitemtaskItemsInputTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var multipleTodoitemTextView: GrowingTextView! {
+    @IBOutlet weak var multipleTodoitemTextView: RegeributedTextView! {
         didSet {
 //            multipleTodoitemTextView.maxLength = 140
 //            multipleTodoitemTextView.trimWhiteSpaceWhenEndEditing = false
@@ -22,14 +22,16 @@ class DVMultipleTodoitemtaskItemsInputTableViewCell: UITableViewCell {
 //            multipleTodoitemTextView.backgroundColor = UIColor.white
 //            multipleTodoitemTextView.layer.cornerRadius = 4.0
             
+            multipleTodoitemTextView.addAttribute("#[a-zA-Z0-9]+", attribute: .textColor(.blue), values: ["Type": "HashTag"])
+            
             multipleTodoitemTextView.layer.cornerRadius = 4.0
-            multipleTodoitemTextView.placeHolder = """
-            - Please enter
-            - Multiple tasks
-            - One new to-do item task per line
-            - You can also include #tags
-            """
-            multipleTodoitemTextView.font = UIFont.systemFont(ofSize: 15)
+//            multipleTodoitemTextView.placeHolder = """
+//            - Please enter
+//            - Multiple tasks
+//            - One new to-do item task per line
+//            - You can also include #tags
+//            """
+            multipleTodoitemTextView.font = UIFont.systemFont(ofSize: 17)
 //            multipleTodoitemTextView.minHeight = 60
 //            multipleTodoitemTextView.maxHeight = 150
             

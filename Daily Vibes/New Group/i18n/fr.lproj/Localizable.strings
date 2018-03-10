@@ -122,3 +122,12 @@
 "Single" = "Unique";
 "Multiple" = "Multiple";
 "Add Multiple To-do Items" = "Ajouter plusieurs éléments à faire";
+"Remind me" = "Rappelle moi";
+"Reminder" = "Rappel";
+"Please enable Notifications to use this feature" = "Veuillez activer les notifications pour utiliser cette fonctionnalité";
+"Go to Settings" = "Aller aux paramètres";
+"Export" = "Exporter";
+"How would you like to export your data?" = "Comment souhaitez-vous exporter vos données?";
+"Export to Text" = "Exporter vers le texte";
+"Export to Email" = "Exporter vers Email";
+"Tomorrow" = "Demain";

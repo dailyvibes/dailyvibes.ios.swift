@@ -57,7 +57,7 @@ class TodoItemSettingsData {
     
     private let taskPlaceholderText = NSLocalizedString("What would you like to do?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND What would you like to do? **", comment: "")
     
-    private let data: DVTodoItemTaskViewModel?
+    private var data: DVTodoItemTaskViewModel?
     
     init(forViewModel todoItemTask: DVTodoItemTaskViewModel?) {
         if let _existingTask = todoItemTask as DVTodoItemTaskViewModel? {

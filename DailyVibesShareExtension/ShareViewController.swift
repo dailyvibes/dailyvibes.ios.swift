@@ -111,21 +111,21 @@ class ShareViewController: SLComposeServiceViewController {
         
         store.findOrCreateTodoitemTaskDeepNested(withUUID: nil)
         
-        if let todoItemTaskViewModel = store.editingDVTodotaskItem {
-            todoItemTaskViewModel.list = defaultList
+        if store.editingDVTodotaskItem != nil {
+            store.editingDVTodotaskItem?.list = defaultList
             
             if let defaultTag = defaultTag {
-                todoItemTaskViewModel.tags?.append(defaultTag)
+                store.editingDVTodotaskItem?.tags?.append(defaultTag)
             }
             
             if let string = urlString {
-                let newNote = DVNoteViewModel.makeEmpty()
+                var newNote = DVNoteViewModel.makeEmpty()
                 
-                todoItemTaskViewModel.todoItemText = text
+                store.editingDVTodotaskItem?.todoItemText = text
                 newNote.content = string
-                todoItemTaskViewModel.note = newNote
+                store.editingDVTodotaskItem?.note = newNote
             } else {
-                todoItemTaskViewModel.todoItemText = text
+                store.editingDVTodotaskItem?.todoItemText = text
             }
             
             store.saveEditingDVTodotaskItem()

@@ -75,6 +75,11 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
         })
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        store.editingDVTodotaskItem = editingTodotaskItem
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -141,7 +146,22 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
                 let list = _defaultProjectList[indexPathRow]
                 
                 cell.textLabel?.text = list.title
+//                cell.detailTextLabel?.text = "\(list.listItemCountTotal)"
                 cell.detailTextLabel?.text = ""
+                
+//                var lbl : UILabel = UILabel(frame: CGRectMake(225, 5, 20, 20))
+//                var lbl: UILabel = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: 20, height: 20))
+//                lbl.layer.borderColor = UIColor.white.cgColor
+//                lbl.layer.borderWidth = 2
+//                lbl.layer.cornerRadius = lbl.bounds.size.height/2
+//                lbl.textAlignment = NSTextAlignment.center
+//                lbl.layer.masksToBounds = true
+//                lbl.font = UIFont.systemFont(ofSize: 13)
+//                lbl.textColor = UIColor.white
+//                lbl.backgroundColor = UIColor.red
+//                lbl.text = "1"
+//                
+//                cell.addSubview(lbl)
                 
                 if let existingList = editingTodotaskItem?.list {
                     if list.uuid == existingList.uuid {
@@ -169,6 +189,7 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
                 let list = _defaultProjectList[indexPathRow]
                 
                 cell.textLabel?.text = list.title
+//                cell.detailTextLabel?.text = "\(list.listItemCountTotal)"
                 cell.detailTextLabel?.text = ""
                 
                 if let existingList = editingTodotaskItem?.list {

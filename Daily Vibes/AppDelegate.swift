@@ -21,61 +21,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        #if DEBUG
-            store.destroyALL(deleteExistingStore: true)
-            
-            if !store.hasDefaultDVList() {
-                store.makeDefaultDVList()
-            }
-            
-            if store.filteredProjectList == nil {
-                let defaultProjectLabel = "Inbox"
-                let defaultProject = store.findDVList(byLabel: defaultProjectLabel)
-                store.filteredProjectList = DVListViewModel.fromCoreData(list: defaultProject)
-            }
-            
-            if let path = Bundle.main.path(forResource: "fakeDataDump-Feb252018", ofType: "json") {
-                do {
-                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
-                    //                let jsonResult = try JSON.init
-
-                    for task in (jsonResult)! {
-                        //                    let taskId = task["id"]
-                        let taskText = task["todoItemText"] as! String
-                        let completedAtString = task["completedAt"] as! String
-                        let taskCompleted = Date.UTCToLocal(___date: completedAtString)
-                        
-//                        let tagsStringAfterSplit = taskText.split(separator: "#")
-//                        let tags = tagsStringAfterSplit.dropFirst()
-                        
-//                        for (_, element) in tags.enumerated() {
-//                            if let tag = store.fetchSpecificTag(byLabel: String(element)) {
-//                                // tags exists
-//                                todo.addToTags(tag)
-//                                tag.addToTodos(todo)
-//                            } else {
-//                                // need to create a tag
-//                                let newTag = store.createTag(withLabel: String(element))
-//                                if let tag = store.fetchSpecificTag(byLabel: newTag.label) {
-//                                    todo.addToTags(tag)
-//                                    tag.addToTodos(todo)
-//                                }
-//                            }
-//                        }
-                        
-                        store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
-                    }
-                    
-                    makeTestDataReady()
-                    
-                } catch {
-                    // handle error
-                    fatalError("OOPS")
-                }
-            }
-
-        #endif
+//        #if DEBUG
+//            store.destroyALL(deleteExistingStore: true)
+//            
+//            if !store.hasDefaultDVList() {
+//                store.makeDefaultDVList()
+//            }
+//            
+//            if store.filteredProjectList == nil {
+//                let defaultProjectLabel = "Inbox"
+//                let defaultProject = store.findDVList(byLabel: defaultProjectLabel)
+//                store.filteredProjectList = DVListViewModel.fromCoreData(list: defaultProject)
+//            }
+//            
+//            if let path = Bundle.main.path(forResource: "fakeDataDump-MAR042018", ofType: "json") {
+//                do {
+//                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+//                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
+//                    //                let jsonResult = try JSON.init
+//
+//                    for task in (jsonResult)! {
+//                        //                    let taskId = task["id"]
+//                        let taskText = task["todoItemText"] as! String
+//                        let completedAtString = task["completedAt"] as! String
+//                        let taskCompleted = Date.UTCToLocal(___date: completedAtString)
+//                        
+////                        let tagsStringAfterSplit = taskText.split(separator: "#")
+////                        let tags = tagsStringAfterSplit.dropFirst()
+//                        
+////                        for (_, element) in tags.enumerated() {
+////                            if let tag = store.fetchSpecificTag(byLabel: String(element)) {
+////                                // tags exists
+////                                todo.addToTags(tag)
+////                                tag.addToTodos(todo)
+////                            } else {
+////                                // need to create a tag
+////                                let newTag = store.createTag(withLabel: String(element))
+////                                if let tag = store.fetchSpecificTag(byLabel: newTag.label) {
+////                                    todo.addToTags(tag)
+////                                    tag.addToTodos(todo)
+////                                }
+////                            }
+////                        }
+//                        
+//                        store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+//                    }
+//                    
+//                    makeTestDataReady()
+//                    
+//                } catch {
+//                    // handle error
+//                    fatalError("OOPS")
+//                }
+//            }
+//
+//        #endif
         
         let defaults = UserDefaults.standard
         
@@ -294,21 +294,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func makeTestDataReady() {
         let _ = self.store.createTag(withLabel: "dailyvibes")
-        let _ = self.store.createTag(withLabel: "February 2018")
+        let _ = self.store.createTag(withLabel: "March 2018")
         
-        let groceryList = store.storeDailyVibesList(withTitle: "Groceries", withDescription: "Things to buy")
+        let groceryList: DailyVibesList = store.storeDailyVibesList(withTitle: "Groceries", withDescription: "Things to buy")
         let groceryListDV = DVListViewModel.fromCoreData(list: groceryList)
-        
-        //                    class DVMultipleTodoitemtaskItemsVM: NSObject {
-        //                        var curProject: DVListViewModel?
-        //                        var duedateAt: Date?
-        //                        var rawMultipleTaskText: String?
-        //                        var prevProject: DVListViewModel?
-        //                        var parsedText: [String]?
-        //                        var hasTags: Bool = false
-        //                        var tagListText: [String]?
-        //                        var isRemindable: Bool = false
-        //                    }
         
         let rawDataText = [
             "- buy milk 🥛 #groceries",
@@ -321,7 +310,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         ]
         
         for (index, entry) in rawDataText.enumerated() {
-            let multipleData = DVMultipleTodoitemtaskItemsVM()
+            let multipleData: DVMultipleTodoitemtaskItemsVM = DVMultipleTodoitemtaskItemsVM()
             multipleData.curProject = groceryListDV
             multipleData.prevProject = groceryListDV
             multipleData.rawMultipleTaskText = entry
@@ -330,6 +319,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
             multipleData.duedateAt = Date().add(days: index)
             multipleData.parsedText = DVMultipleTodoitemtaskItemsVC.parseMultipleTodos(data: multipleData, todosInput: multipleData.rawMultipleTaskText!)
+            
+            
+            if let hasParsedText = multipleData.parsedText, hasParsedText.count > 0 {
+                for item in hasParsedText {
+                    let temp: DVMultipleTodoitemtaskItemVM  = DVMultipleTodoitemtaskItemVM()
+                    temp.text = item
+                    if multipleData.cookedData == nil {
+                        multipleData.cookedData = [DVMultipleTodoitemtaskItemVM]()
+                        
+                    }
+                    temp.dueDate = Date().add(days: index)
+                    multipleData.cookedData?.append(temp)
+                }
+            }
+            
             store.processMultipleTodoitemTasks(forProject: groceryListDV, todoItemTasksData: multipleData)
         }
     }

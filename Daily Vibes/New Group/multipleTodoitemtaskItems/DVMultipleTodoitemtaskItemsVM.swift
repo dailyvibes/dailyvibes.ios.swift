@@ -15,6 +15,17 @@ class DVMultipleTodoitemtaskItemsVM: NSObject {
     var prevProject: DVListViewModel?
     var parsedText: [String]?
     var hasTags: Bool = false
+    var hasCustomDuedates: Date?
+    var parsedDuedates: [Date]?
     var tagListText: [String]?
+    var isRemindable: Bool = false
+    var cookedData: [DVMultipleTodoitemtaskItemVM]?
+}
+
+class DVMultipleTodoitemtaskItemVM: NSObject {
+    var text: String?
+    var tags: [String]?
+    var dueDate: Date?
+    var dueDateText: String?
     var isRemindable: Bool = false
 }

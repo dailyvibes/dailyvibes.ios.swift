@@ -16,7 +16,7 @@ class DVUITests: XCTestCase {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchArguments.append("IS_RUNNING_UITEST")
-//        setupSnapshot(app)
+        setupSnapshot(app)
         app.launch()
     }
     
@@ -33,6 +33,7 @@ class DVUITests: XCTestCase {
         let firstButton = tabBar.buttons.element(boundBy: 0)
         let secondButton = tabBar.buttons.element(boundBy: 1)
         let thirdButton = tabBar.buttons.element(boundBy: 2)
+        let fourthButton = tabBar.buttons.element(boundBy: 3)
 
         thirdButton.tap()
         snapshot("1DailyProgress")
@@ -42,22 +43,16 @@ class DVUITests: XCTestCase {
         
         snapshot("2MultiEntry")
         
-        let newTodo = NSLocalizedString("Add a to-do", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Add a to-do", comment: "")
-        let cancelLbl = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel", comment: "")
-        
-        let newToDoSheet = app.sheets[newTodo]
-        newToDoSheet.buttons[cancelLbl].tap()
-//        snapshot("2MultiEntry")
-        
-//        let newToDoSheet = app.sheets["New To-do"]
-//        newToDoSheet.buttons["Cancel"].tap()
-//
-        let button = app.navigationBars["Daily Vibes"].children(matching: .button).element
+        app.tap()
+        let button = app.buttons["main_more_filter_btn"]
+        XCTAssert(button.exists)
         button.tap()
         snapshot("3FilterProjects")
 //
         let dailyVibesTodotaskitemfiltersviewNavigationBar = app.navigationBars["Daily_Vibes.TodoTaskItemFiltersView"]
         let listBaritemIconDailyvibesButton = dailyVibesTodotaskitemfiltersviewNavigationBar.buttons["list baritem icon dailyvibes"]
+        XCTAssert(dailyVibesTodotaskitemfiltersviewNavigationBar.exists)
+        XCTAssert(listBaritemIconDailyvibesButton.exists)
         listBaritemIconDailyvibesButton.tap()
         snapshot("4GroupByProjects")
 //
@@ -65,55 +60,40 @@ class DVUITests: XCTestCase {
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Today"]/*[[".cells.staticTexts[\"Today\"]",".staticTexts[\"Today\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 //
         let dailyVibesButton = dailyVibesTodotaskitemfiltersviewNavigationBar.buttons["Daily Vibes"]
+        XCTAssert(dailyVibesButton.exists)
         dailyVibesButton.tap()
-        button.tap()
-//
         snapshot("5SmartTodayView")
 //
         button.tap()
         listBaritemIconDailyvibesButton.tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["This week"]/*[[".cells.staticTexts[\"This week\"]",".staticTexts[\"This week\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         dailyVibesButton.tap()
-        button.tap()
         snapshot("6SmartThisWeekView")
         
         button.tap()
         listBaritemIconDailyvibesButton.tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Groceries"]/*[[".cells.staticTexts[\"Groceries\"]",".staticTexts[\"Groceries\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         dailyVibesButton.tap()
-        button.tap()
         snapshot("7CustomProjects")
 //
 //
-//        listBaritemIconDailyvibesButton.tap()
-//        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Inbox"]/*[[".cells.staticTexts[\"Inbox\"]",".staticTexts[\"Inbox\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        dailyVibesButton.tap()
-//        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["copy/pasted twitter banner to fb banner #dailyvibes"]/*[[".cells.staticTexts[\"copy\/pasted twitter banner to fb banner #dailyvibes\"]",".staticTexts[\"copy\/pasted twitter banner to fb banner #dailyvibes\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeRight()
-//        /// snapshot("7QuickSwipeActions")
+        button.tap()
+        listBaritemIconDailyvibesButton.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Inbox"]/*[[".cells.staticTexts[\"Inbox\"]",".staticTexts[\"Inbox\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        dailyVibesButton.tap()
+//        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["copy/pasted twitter banner to fb banner #dailyvibes"]/*[[".cells.staticTexts[\"copy\/pasted twitter banner to fb banner #dailyvibes\"]",".staticTexts[\"copy\/pasted twitter banner to fb banner #dailyvibes\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+        let firstCell = app.cells.element(boundBy: 0)
+        XCTAssert(firstCell.exists)
         
-//        let app = XCUIApplication()
-//        app.navigationBars["Daily Vibes"].children(matching: .button).element.tap()
-//        app.navigationBars["Daily_Vibes.TodoTaskItemFiltersView"].buttons["Daily Vibes"].tap()
+//        app.cells.element(boundBy: 0).swipeLeft()
+//        snapshot("8QuickSwipeActions")
 //
-//        let addButton = app.tabBars.buttons["Add"]
-//        addButton.tap()
-//        app.sheets["New To-do"].buttons["Single"].tap()
-//
-//        let textView = app.tables.children(matching: .cell).element(boundBy: 0).children(matching: .textView).element
-//        textView.tap()
-//        textView.typeText("Buy Milk 🥛")
-//        textView.typeText("\n")
-//        let app = XCUIApplication()
+        firstCell.tap()
+        snapshot("8DetailView")
         
-//        let app = XCUIApplication()
-//        app.navigationBars["Daily Vibes"].children(matching: .button).element.tap()
-//        app.navigationBars["Change Project"].tap()
-//        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Groceries"]/*[[".cells.staticTexts[\"Groceries\"]",".staticTexts[\"Groceries\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        snapshot("8AnyProject")
-        
-        
-//        app.navigationBars["Daily_Vibes.TodoTaskItemFiltersView"].buttons["Daily Vibes"].tap()
-//        app.tabBars.buttons["Progress"].tap()
-        
+        app.buttons["details_cancel_btn"].tap()
+        fourthButton.tap()
+        app.buttons["settings_export_btn"].tap()
+        snapshot("9ExportView")
     }
 }

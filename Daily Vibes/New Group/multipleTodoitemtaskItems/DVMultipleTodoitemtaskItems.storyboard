@@ -18,18 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PPS-MS-cEp">
-                                <rect key="frame" x="8" y="0.0" width="359" height="230"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="interactive" text="What is happening?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l3t-PX-p5D" customClass="RegeributedTextView" customModule="Daily_Vibes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="32" width="375" height="36.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="230" id="5Cz-Pz-ecp"/>
-                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PPS-MS-cEp">
+                                <rect key="frame" x="0.0" y="76.5" width="375" height="526.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="defaultBasicCell" textLabel="1FP-oY-WeA" detailTextLabel="RKM-g7-Uf1" style="IBUITableViewCellStyleValue1" id="VmR-AG-1J8">
-                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VmR-AG-1J8" id="Ree-jX-93H">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1FP-oY-WeA">
@@ -40,7 +43,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RKM-g7-Uf1">
-                                                    <rect key="frame" x="300" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -51,32 +54,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="G2L-g0-xOJ" customClass="GrowingTextView" customModule="GrowingTextView">
-                                <rect key="frame" x="8" y="258" width="359" height="33"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="PPS-MS-cEp" firstAttribute="leading" secondItem="NFS-o0-KxN" secondAttribute="leading" constant="8" id="4rk-Br-EGP"/>
-                            <constraint firstItem="G2L-g0-xOJ" firstAttribute="leading" secondItem="NFS-o0-KxN" secondAttribute="leading" constant="8" id="7VK-Dq-Zrg"/>
-                            <constraint firstItem="PPS-MS-cEp" firstAttribute="trailing" secondItem="NFS-o0-KxN" secondAttribute="trailing" constant="-8" id="WUd-5j-oPN"/>
-                            <constraint firstItem="G2L-g0-xOJ" firstAttribute="top" secondItem="PPS-MS-cEp" secondAttribute="bottom" constant="28" id="cqF-Fz-JDT"/>
-                            <constraint firstItem="G2L-g0-xOJ" firstAttribute="trailing" secondItem="NFS-o0-KxN" secondAttribute="trailing" constant="-8" id="kcY-gK-8dE"/>
-                            <constraint firstItem="PPS-MS-cEp" firstAttribute="top" secondItem="ZZj-2y-y7a" secondAttribute="top" id="xdf-Uh-qx0"/>
+                            <constraint firstItem="NFS-o0-KxN" firstAttribute="bottom" secondItem="PPS-MS-cEp" secondAttribute="bottom" id="66P-mv-0ED"/>
+                            <constraint firstItem="l3t-PX-p5D" firstAttribute="leading" secondItem="NFS-o0-KxN" secondAttribute="leading" id="85j-eI-MsI"/>
+                            <constraint firstItem="l3t-PX-p5D" firstAttribute="top" secondItem="NFS-o0-KxN" secondAttribute="top" constant="32" id="N52-U0-tbS"/>
+                            <constraint firstItem="PPS-MS-cEp" firstAttribute="leading" secondItem="NFS-o0-KxN" secondAttribute="leading" id="OzI-uk-v1c"/>
+                            <constraint firstItem="PPS-MS-cEp" firstAttribute="trailing" secondItem="NFS-o0-KxN" secondAttribute="trailing" id="Rfq-jO-4K5"/>
+                            <constraint firstItem="NFS-o0-KxN" firstAttribute="trailing" secondItem="l3t-PX-p5D" secondAttribute="trailing" id="dTL-q1-Dd5"/>
+                            <constraint firstItem="PPS-MS-cEp" firstAttribute="top" secondItem="l3t-PX-p5D" secondAttribute="bottom" constant="8" id="fwR-EZ-Uzr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NFS-o0-KxN"/>
                     </view>
                     <navigationItem key="navigationItem" id="ydq-Rq-q92"/>
                     <connections>
-                        <outlet property="tableHeight" destination="5Cz-Pz-ecp" id="vix-Ag-s36"/>
+                        <outlet property="oldTexview" destination="G2L-g0-xOJ" id="eni-Hh-jL0"/>
                         <outlet property="tableView" destination="PPS-MS-cEp" id="ieG-Y1-oJW"/>
-                        <outlet property="textView" destination="G2L-g0-xOJ" id="eni-Hh-jL0"/>
+                        <outlet property="textView" destination="l3t-PX-p5D" id="BY8-n9-DMf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4J-D2-6P7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="G2L-g0-xOJ" customClass="RegeributedTextView" customModule="Daily_Vibes" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </objects>
             <point key="canvasLocation" x="1224.8" y="-1531.4842578710645"/>
         </scene>

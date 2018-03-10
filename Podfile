@@ -6,6 +6,11 @@ target 'Daily Vibes' do
   use_frameworks!
 
   # Pods for Daily Vibes
+  pod 'Notepad', :path => '/Users/getaclue/dev/DailyVibes.iOS/Notepad/'
+  pod 'SwiftyChrono', :path => '/Users/getaclue/dev/DailyVibes.iOS/SwiftyChrono'
+  pod 'Disk', '~> 0.3.3'
+  pod 'DeckTransition', '~> 2.0'
+  
   pod 'Charts'
   pod 'SwiftTheme'
   #pod 'EFMarkdown' - potential candidate Feb 2018

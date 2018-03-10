@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
-            timestampString = "541278201.866944"
+            timestampString = "542259592.120156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
-            landmarkName = "updateDailyVibesNote(withId:withTitle:withContent:)"
+            startingLineNumber = "612"
+            endingLineNumber = "612"
+            landmarkName = "defaultDVListLabels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
-            timestampString = "541278201.867153"
+            timestampString = "542259592.1202199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
-            landmarkName = "updateDailyVibesNote(withId:withTitle:withContent:)"
+            startingLineNumber = "609"
+            endingLineNumber = "609"
+            landmarkName = "hasDefaultDVList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/singleTodoTask/TodoItemSettingsData.swift"
-            timestampString = "538776909.507126"
+            timestampString = "541615643.833745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "349"
@@ -216,12 +216,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
-            timestampString = "541278201.867402"
+            timestampString = "542259592.120304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "683"
-            endingLineNumber = "683"
-            landmarkName = "saveEditingDVTodotaskItem()"
+            startingLineNumber = "871"
+            endingLineNumber = "871"
+            landmarkName = "processMultipleTodoitemTasks(forProject:todoItemTasksData:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -232,11 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/tags/TagsTableViewController.swift"
-            timestampString = "538949424.190852"
+            timestampString = "542171150.9532501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -248,11 +248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/tags/TagsTableViewController.swift"
-            timestampString = "538949424.1908931"
+            timestampString = "542171150.95337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -264,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/tags/TagsTableViewController.swift"
-            timestampString = "538949424.190943"
+            timestampString = "542171150.953475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -296,7 +296,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/listsV2/DVListTableViewController.swift"
-            timestampString = "540590520.40728"
+            timestampString = "541389230.9758461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -312,7 +312,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/listsV2/DVListTableViewController.swift"
-            timestampString = "540590520.408605"
+            timestampString = "541389230.975917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -360,7 +360,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/listsV2/DVListTableViewController.swift"
-            timestampString = "540590520.408893"
+            timestampString = "541389230.975979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -408,7 +408,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/listsV2/DVListTableViewController.swift"
-            timestampString = "540590520.409022"
+            timestampString = "541389230.97604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -424,7 +424,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/listsV2/DVListTableViewController.swift"
-            timestampString = "540590520.40909"
+            timestampString = "541389230.976099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -440,7 +440,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/listsV2/DVListTableViewController.swift"
-            timestampString = "540590520.409151"
+            timestampString = "541389230.976158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
@@ -456,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/mainTodoList/TodoItemsTableViewController.swift"
-            timestampString = "541134356.4138269"
+            timestampString = "542340095.43462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "614"
-            endingLineNumber = "614"
+            startingLineNumber = "678"
+            endingLineNumber = "678"
             landmarkName = "tableView(_:trailingSwipeActionsConfigurationForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -472,11 +472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/mainTodoList/TodoItemsTableViewController.swift"
-            timestampString = "541134356.413967"
+            timestampString = "542340095.435191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "612"
-            endingLineNumber = "612"
+            startingLineNumber = "676"
+            endingLineNumber = "676"
             landmarkName = "tableView(_:trailingSwipeActionsConfigurationForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -488,12 +488,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
-            timestampString = "541278201.867872"
+            timestampString = "542259592.1206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "findDVList(byLabel:)"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
+            landmarkName = "findTodoItemTaskVM(withUUID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -504,11 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/mainTodoList/TodoItemsTableViewController.swift"
-            timestampString = "541134356.414044"
+            timestampString = "542340095.435485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "615"
-            endingLineNumber = "615"
+            startingLineNumber = "679"
+            endingLineNumber = "679"
             landmarkName = "tableView(_:trailingSwipeActionsConfigurationForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -536,12 +536,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
-            timestampString = "541278201.868117"
+            timestampString = "542259592.120671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "991"
-            endingLineNumber = "991"
-            landmarkName = "filterDvTodoItemTaskDataByList()"
+            startingLineNumber = "1280"
+            endingLineNumber = "1280"
+            landmarkName = "findOrCreateTodoitemTaskDeepNested(withUUID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -552,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/mainTodoList/TodoItemsTableViewController.swift"
-            timestampString = "541134356.414126"
+            timestampString = "542340095.435779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -568,7 +568,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/multipleTodoitemtaskItems/DVMultipleTodoitemtaskItemsTVC.swift"
-            timestampString = "541083484.227365"
+            timestampString = "542329820.470686"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -584,7 +584,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/multipleTodoitemtaskItems/DVMultipleTodoitemtaskItemsTVC.swift"
-            timestampString = "541083484.227411"
+            timestampString = "542329820.4707479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "226"
@@ -600,12 +600,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
-            timestampString = "541278201.8683161"
+            timestampString = "542259592.120749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "551"
-            endingLineNumber = "551"
-            landmarkName = "processMultipleTodoitemTasks(forProject:todoItemTasksData:)"
+            startingLineNumber = "763"
+            endingLineNumber = "763"
+            landmarkName = "updateDailyVibesNote(withId:withTitle:withContent:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -616,12 +616,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
-            timestampString = "541278201.86844"
+            timestampString = "542259592.120792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "540"
-            endingLineNumber = "540"
-            landmarkName = "processMultipleTodoitemTasks(forProject:todoItemTasksData:)"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
+            landmarkName = "updateDailyVibesNote(withId:withTitle:withContent:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -632,11 +632,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/multipleTodoitemtaskItems/DVMultipleTodoitemtaskItemsVC.swift"
-            timestampString = "541286631.944171"
+            timestampString = "542340095.436129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "handleSaveButton()"
             landmarkType = "7">
          </BreakpointContent>
@@ -648,12 +648,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daily Vibes/New Group/multipleTodoitemtaskItems/DVMultipleTodoitemtaskItemsVC.swift"
-            timestampString = "541286631.944309"
+            timestampString = "542340095.436205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "handleSaveButton()"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "parseMultipleTodos(data:todosInput:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -695,13 +695,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
-            timestampString = "541278201.868597"
+            filePath = "Daily VibesUITests/Daily_VibesUITests.swift"
+            timestampString = "541210939.973407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "557"
-            endingLineNumber = "557"
-            landmarkName = "processMultipleTodoitemTasks(forProject:todoItemTasksData:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "testTakeScreenshots()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -711,13 +711,365 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Daily VibesUITests/Daily_VibesUITests.swift"
-            timestampString = "541210939.973407"
+            filePath = "Daily Vibes/New Group/DVResizableATSTextView/RegeributedTextView.swift"
+            timestampString = "542335784.820044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "testTakeScreenshots()"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "tappedAttributedText(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/DVResizableATSTextView/RegeributedTextView.swift"
+            timestampString = "542335784.820172"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "tappedAttributedText(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/multipleTodoitemtaskItems/DVMultipleTodoitemtaskItemsVC.swift"
+            timestampString = "542340095.436301"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "parseMultipleTodos(data:todosInput:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/dataStuff/DVListViewModel.swift"
+            timestampString = "541883882.032434"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DailyVibesShareExtension.DVListViewModel.encode(to: Swift.Encoder) throws -&gt; ()"
+                  moduleName = "DailyVibesShareExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/getaclue/dev/DailyVibes.iOS/DV_fastlane_EXPERIMENTS/Daily%20Vibes/New%20Group/dataStuff/DVListViewModel.swift"
+                  timestampString = "541703962.500823"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "3808">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (DailyVibesShareExtension.DVTodoItemTaskViewModel) throws -&gt; () in DailyVibesShareExtension.DVListViewModel.encode(to: Swift.Encoder) throws -&gt; ()"
+                  moduleName = "DailyVibesShareExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/getaclue/dev/DailyVibes.iOS/DV_fastlane_EXPERIMENTS/Daily%20Vibes/New%20Group/dataStuff/DVListViewModel.swift"
+                  timestampString = "541703962.504142"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "872">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/dataStuff/DVTagViewModel.swift"
+            timestampString = "541615643.8352211"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "encode(to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/dataStuff/DVTagViewModel.swift"
+            timestampString = "541615643.835294"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "encode(to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Daily_Vibes.DVTagViewModel.encode(to: Swift.Encoder) throws -&gt; ()"
+                  moduleName = "Daily Vibes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/getaclue/dev/DailyVibes.iOS/DV_fastlane_EXPERIMENTS/Daily%20Vibes/New%20Group/dataStuff/DVTagViewModel.swift"
+                  timestampString = "541556655.2868119"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "2035">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Daily_Vibes.DVTodoItemTaskViewModel) throws -&gt; () in Daily_Vibes.DVTagViewModel.encode(to: Swift.Encoder) throws -&gt; ()"
+                  moduleName = "Daily Vibes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/getaclue/dev/DailyVibes.iOS/DV_fastlane_EXPERIMENTS/Daily%20Vibes/New%20Group/dataStuff/DVTagViewModel.swift"
+                  timestampString = "541556655.290211"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "29">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
+            timestampString = "542259592.12095"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "995"
+            endingLineNumber = "995"
+            landmarkName = "saveEditingDVTodotaskItem()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
+            timestampString = "542259592.120997"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1096"
+            endingLineNumber = "1096"
+            landmarkName = "saveEditingDVTodotaskItem()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DailyVibesShareExtension/ShareViewController.swift"
+            timestampString = "541704459.926459"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "didSelectPost()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DailyVibesShareExtension/ShareViewController.swift"
+            timestampString = "541704459.926719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "didSelectPost()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/singleTodoTask/TodoItemViewController.swift"
+            timestampString = "542335784.8208441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "setData(withViewModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/singleTodoTask/TodoItemViewController.swift"
+            timestampString = "542335784.820955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "448"
+            endingLineNumber = "448"
+            landmarkName = "hasAccess(isRemindable:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/dataStuff/CoreDataManager.swift"
+            timestampString = "542259592.121636"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "673"
+            endingLineNumber = "673"
+            landmarkName = "storeDailyVibesNote(withTitle:withText:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/mainTodoList/TodoItemsTableViewController.swift"
+            timestampString = "542340095.436488"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
+            landmarkName = "tableView(_:titleForHeaderInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/tabs/DailyVibesTabBarViewController.swift"
+            timestampString = "542340095.4367189"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "tabBarController(_:shouldSelect:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/singleTodoTask/TodoItemViewController.swift"
+            timestampString = "542335784.8210779"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daily Vibes/New Group/singleTodoTask/TodoItemViewController.swift"
+            timestampString = "542335784.8211451"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../SwiftyChrono/Sources/Parsers/ES/ESSlashDateFormatParser.swift"
+            timestampString = "542251016.606807"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "extract(text:ref:match:opt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../SwiftyChrono/Sources/Parsers/Parser.swift"
+            timestampString = "542326432.99779"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "execute(text:ref:opt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

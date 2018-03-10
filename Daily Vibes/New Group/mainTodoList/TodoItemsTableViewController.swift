@@ -62,11 +62,51 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewWillAppear")
         
         self.tableView.theme_backgroundColor = "Global.backgroundColor"
         self.tableView.theme_separatorColor = "ListViewController.separatorColor"
         
         setupDataAndNavBar()
+    }
+    
+    @objc func handleShowSimpleView() {
+        self.tabBarController?.setTabBarVisible(visible: true, animated: true)
+    }
+    
+    @objc func handleHideSimpleView() {
+        self.tabBarController?.setTabBarVisible(visible: false, animated: true)
+//        self.tabBarController?.tabBar.isHidden = !(self.tabBarController?.tabBar.isHidden)!
+//
+//        let frame = self.tabBarController?.tabBar.frame
+//        let height = frame?.size.height
+//
+//        if let isHidden = self.tabBarController?.tabBar.isHidden, isHidden {
+////            self.view.frame.origin.y += height!
+//////            self.tableView.frame.offsetBy(dx: 0, dy: height!)
+////            self.tableView.frame = CGRect.init(x: self.tableView.frame.minX, y: self.tableView.frame.minY, width: self.tableView.frame.width, height: self.tableView.frame.height + height!)
+//            tabBarController?.tabBar.isHidden = true
+//            edgesForExtendedLayout = UIRectEdge.bottom
+//            extendedLayoutIncludesOpaqueBars = true
+//            self.view.setNeedsDisplay()
+//            self.view.layoutIfNeeded()
+//        } else {
+//            tabBarController?.tabBar.isHidden = false
+//            edgesForExtendedLayout = UIRectEdge.bottom
+//            extendedLayoutIncludesOpaqueBars = false
+//            self.view.setNeedsDisplay()
+//            self.view.layoutIfNeeded()
+////            self.view.frame.origin.y -= height!
+//////            self.tableView.frame.offsetBy(dx: 0, dy: -height!)
+////            self.tableView.frame = CGRect.init(x: self.tableView.frame.minX, y: self.tableView.frame.minY, width: self.tableView.frame.width, height: self.tableView.frame.height - height!)
+//        }
+////        if tabBarIsVisible() {
+////            self.tabBarController?.tabBar.isHidden = false
+//////            setTabBarVisible(visible: false, animated: true)
+////        } else {
+////            self.tabBarController?.tabBar.isHidden = true
+//////            setTabBarVisible(visible: true, animated: true)
+////        }
     }
     
     override func viewDidLoad() {
@@ -101,30 +141,30 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
 //            let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 22)]
 //            let _title:NSMutableAttributedString = NSMutableAttributedString(string: titleString, attributes: attrs)
             
-            if let subtitleString = _subtitleString {
-                let uppercasedSubtitleString = subtitleString.uppercased()
-                let __subAttrs = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11, weight: .ultraLight)]
-                let __subTitle:NSMutableAttributedString = NSMutableAttributedString(string: uppercasedSubtitleString, attributes: __subAttrs)
-                
-//                _title.append(NSAttributedString(string:"\n"))
-//                _title.append(__subTitle)
-                
-//                let size = _title.size()
-                
-                let size = __subTitle.size()
-                let width = size.width
-                guard let height = navigationController?.navigationBar.frame.size.height else {return}
-                
-                let titleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
-//                titleLabel.attributedText = _title
-                titleLabel.attributedText = __subTitle
-                titleLabel.numberOfLines = 0
-                titleLabel.textAlignment = .center
-                titleLabel.theme_backgroundColor = "Global.barTintColor"
-                titleLabel.theme_textColor = "Global.textColor"
-                
-                navigationItem.titleView = titleLabel
-            }
+//            if let subtitleString = _subtitleString {
+//                let uppercasedSubtitleString = subtitleString.uppercased()
+//                let __subAttrs = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11, weight: .ultraLight)]
+//                let __subTitle:NSMutableAttributedString = NSMutableAttributedString(string: uppercasedSubtitleString, attributes: __subAttrs)
+//
+////                _title.append(NSAttributedString(string:"\n"))
+////                _title.append(__subTitle)
+//
+////                let size = _title.size()
+//
+//                let size = __subTitle.size()
+//                let width = size.width
+//                guard let height = navigationController?.navigationBar.frame.size.height else {return}
+//
+//                let titleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
+////                titleLabel.attributedText = _title
+//                titleLabel.attributedText = __subTitle
+//                titleLabel.numberOfLines = 0
+//                titleLabel.textAlignment = .center
+//                titleLabel.theme_backgroundColor = "Global.barTintColor"
+//                titleLabel.theme_textColor = "Global.textColor"
+//
+//                navigationItem.titleView = titleLabel
+//            }
             
 //            let size = _title.size()
 //
@@ -140,14 +180,31 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             
 //            navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: <#T##String?#>, style: .default, target: self, action: <#T##Selector?#>)
             
-            let label = UILabel(frame: .zero)
             let __attrs = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
-//            let __attrs = [NSAttributedStringKey.font : UIFont.init(name: "AvenirNextCondensed-Heavy", size: 20)!]
-            let __title:NSMutableAttributedString = NSMutableAttributedString(string: titleString, attributes: __attrs)
+//            let __attrs = [NSAttributedStringKey.font : UIFont.init(name: "AvenirNextCondensed-Regular", size: 20)!]
+            let __title:NSMutableAttributedString = NSMutableAttributedString(string: titleString.uppercased(), attributes: __attrs)
+            
+            if let subtitleString = _subtitleString {
+                __title.append(NSAttributedString(string:"\n"))
+                let uppercasedSubtitleString = subtitleString.uppercased()
+                let __subAttrs = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11, weight: .ultraLight)]
+                let __subTitle:NSMutableAttributedString = NSMutableAttributedString(string: uppercasedSubtitleString, attributes: __subAttrs)
+                __title.append(__subTitle)
+            }
+            
+            let size = __title.size()
+            let width = size.width
+            guard let height = navigationController?.navigationBar.frame.size.height else {return}
+            let label = UILabel.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
             label.attributedText = __title
             label.textAlignment = .center
+            label.numberOfLines = 2
             label.theme_textColor = "Global.textColor"
-            navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+//            let customTitleLabel = UIBarButtonItem.init(customView: label)
+//            let hideTabbarToggle = UIBarButtonItem.init(title: "H", style: .plain, target: self, action: #selector(handleHideSimpleView))
+//            let hideShowTabbarToggle = UIBarButtonItem.init(title: "S", style: .plain, target: self, action: #selector(handleShowSimpleView))
+//            navigationItem.leftBarButtonItems = [customTitleLabel]
+            navigationItem.titleView = label
             
 //            navigationController?.navigationBar.prefersLargeTitles = true
 //            navigationController?.navigationBar.topItem?.title = titleString
@@ -498,35 +555,44 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     //    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if taskItemsAll.count > 0 {
-            //            return taskItemsAll[section].sectionIdentifier
-            let sectionID = taskItemsAll[section]
-            let completedCount = sectionID.completedObjects.count
-            let allCount = sectionID.allObjects.count
-            
-            let progress = Int(ceil((Double(completedCount)/Double(allCount)) * 100))
-            let sectionString = sectionHeaderHelper(forDateString: sectionID.sectionIdentifier)!
-            
-            return "\(sectionString) [\(progress)%]"
+        let thisWeekIdentifier = NSLocalizedString("This week", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND This week **", comment: "")
+        
+        if let hasProject = store.filteredProjectList, let projectTitle = hasProject.title, projectTitle == thisWeekIdentifier {
+            if taskItemsAll.count > 0 {
+                //            return taskItemsAll[section].sectionIdentifier
+                let sectionID = taskItemsAll[section]
+                let completedCount = sectionID.completedObjects.count
+                let allCount = sectionID.allObjects.count
+                
+                let progress = Int(ceil((Double(completedCount)/Double(allCount)) * 100))
+                let sectionString = sectionHeaderHelper(forDateString: sectionID.sectionIdentifier)!
+                
+                return "\(sectionString) [\(progress)%]"
+            } else {
+                return nil
+            }
         } else {
             return nil
         }
     }
-    
+
     private func sectionHeaderHelper(forDateString _date: String) -> String? {
         let dateFormatter = DateFormatter()
         //        dateFormatter.dateFormat = "EEE d yyyy"
         dateFormatter.dateFormat = "yyyyMMdd"
-        
+
         let date = dateFormatter.date(from: _date)!
-        
+
         let todayString = NSLocalizedString("Today", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Today ***", comment: "")
         let yesterdayString = NSLocalizedString("Yesterday", tableName: "Localizable", bundle: .main, value: "*** NOT FOUND YESTERDAY ***", comment: "")
-        
+        let tomorrowString = NSLocalizedString("Tomorrow", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Tomorrow **", comment: "")
+
         if Calendar.current.isDateInToday(date) {
             return todayString
         } else if (Calendar.current.isDateInYesterday(date)) {
             return yesterdayString
+        } else if (Calendar.current.isDateInTomorrow(date)) {
+            return tomorrowString
         } else {
             if _date.isEmpty {
                 return ""
@@ -542,7 +608,8 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         let label = UILabel.init(frame: CGRect.init(x: 10, y: 5, width: self.tableView.frame.size.width, height: 18))
         label.font = UIFont.systemFont(ofSize: 14)
         label.theme_textColor = "Global.barTextColor"
-        label.text = self.tableView(tableView, titleForHeaderInSection: section)
+        label.text = self.tableView(tableView, titleForHeaderInSection: section)?.uppercased()
+        label.textAlignment = .center
         view.addSubview(label)
         return view
     }

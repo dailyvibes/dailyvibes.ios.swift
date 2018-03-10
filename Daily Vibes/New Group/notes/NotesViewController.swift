@@ -8,6 +8,7 @@
 //import Foundation
 //import CoreData
 import UIKit
+import Notepad
 
 class NotesViewController: UIViewController, UITextViewDelegate {
     
@@ -16,16 +17,30 @@ class NotesViewController: UIViewController, UITextViewDelegate {
     
     var delegate: NotesViewControllerUpdaterDelegate?
     
-    @IBOutlet private weak var markdownTextEditor: ThemableBaseTextView!
+//    @IBOutlet private weak var markdownTextEditor: Notepad!
     private var noteTitle: String?
     private var noteText: String?
     private var todoItemSettingsData: TodoItemSettingsData?
     
+//    private weak var markdownTextEditor: Notepad!
+//    private weak var notepad: Notepad!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         editingTodoitemTask = store.editingDVTodotaskItem
-        noteText = editingTodoitemTask?.note?.content ?? ""
-        markdownTextEditor.setAttributed(text: noteText!)
+//        noteText = editingTodoitemTask?.note?.content ?? ""
+//        markdownTextEditor.setAttributed(text: noteText!)
+        let notepad = Notepad(frame: view.bounds, themeFile: "one-dark")
+        
+        if let note = editingTodoitemTask?.note, let contentText = note.content {
+            notepad.text = contentText
+        }
+        
+        notepad.textContainerInset = UIEdgeInsetsMake(40, 20, 40, 20)
+        notepad.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        notepad.becomeFirstResponder()
+        notepad.delegate = self
+        self.view.addSubview(notepad)
     }
 
     override func viewDidLoad() {
@@ -33,9 +48,6 @@ class NotesViewController: UIViewController, UITextViewDelegate {
         
         let shareButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleShareButton))
         navigationItem.rightBarButtonItem = shareButton
-        
-        self.markdownTextEditor.becomeFirstResponder()
-        self.markdownTextEditor.delegate = self
     }
     
     @objc func handleShareButton() {
@@ -60,35 +72,31 @@ class NotesViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - UITextViewDelegate
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView == markdownTextEditor {
-            if !textView.isFirstResponder {
-                textView.becomeFirstResponder()
-            }
+        if !textView.isFirstResponder {
+            textView.becomeFirstResponder()
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView == markdownTextEditor {
-            if let note = editingTodoitemTask?.note {
-                note.content = textView.text
-            } else {
-                let newNote = DVNoteViewModel.makeEmpty()
-                newNote.content = textView.text
-                editingTodoitemTask?.note = newNote
-            }
-            
-            delegate?.updateTableView()
-            
-            if textView.text.trimmingCharacters(in: .whitespaces).isEmpty {
-                textView.text = ""
-                textView.theme_tintColor = "Global.textColor"
-                textView.theme_textColor = "Global.textColor"
-            }
-            
-            if textView.isFirstResponder {
-                textView.resignFirstResponder()
-                self.navigationController?.popViewController(animated: true)
-            }
+        if var note = editingTodoitemTask?.note {
+            note.content = textView.text
+        } else {
+            var newNote = DVNoteViewModel.makeEmpty()
+            newNote.content = textView.text
+            editingTodoitemTask?.note = newNote
+        }
+        
+        delegate?.updateTableView()
+        
+        if textView.text.trimmingCharacters(in: .whitespaces).isEmpty {
+            textView.text = ""
+            textView.theme_tintColor = "Global.textColor"
+            textView.theme_textColor = "Global.textColor"
+        }
+        
+        if textView.isFirstResponder {
+            textView.resignFirstResponder()
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

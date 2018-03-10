@@ -122,4 +122,12 @@
 "Single" = "Ein";
 "Multiple" = "Multipel";
 "Add Multiple To-do Items" = "Fügen sie mehrere aufgaben hinzu";
-
+"Remind me" = "Erinnere mich";
+"Reminder" = "Erinnerung";
+"Please enable Notifications to use this feature" = "Aktivieren Sie Benachrichtigungen, um diese Funktion zu verwenden";
+"Go to Settings" = "Gehe zu den Einstellungen";
+"Export" = "Export";
+"How would you like to export your data?" = "Wie möchten Sie Ihre Daten exportieren?";
+"Export to Text" = "In Text exportieren";
+"Export to Email" = "In E-Mail exportieren";
+"Tomorrow" = "Morgen";

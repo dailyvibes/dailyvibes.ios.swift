@@ -55,6 +55,11 @@ class TagsTableViewController: ThemableTableViewController, UITextFieldDelegate,
         tableView.theme_separatorColor = "ListViewController.separatorColor"
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        store.editingDVTodotaskItem = editingTodotaskItem
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

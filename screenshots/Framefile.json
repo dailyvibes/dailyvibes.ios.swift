@@ -1,28 +1,119 @@
 {
   // "device_frame_version": "latest",
   "default": {
-    "background": "./background.png",
+    "background": "./background.jpg",
     "padding": 50,
     "show_complete_frame": false,
     "stack_title" : true,
     "title_below_image": false,
     "keyword": {
-      "color": "#d21559"
+      "color": "#111111"
     },
       "title": {
-      "color": "#545454"
+      "color": "#444444"
     }
   },
 
   "data": [
     {
-      "filter": "Details",
+      "filter": "Launch",
       "keyword": {
-        "color": "#d21559"
+        "color": "#111111"
       },
       "title": {
-        "color": "#545454"
-      }
+        "color": "#444444"
+      },
+      "title_below_image": false
+    },
+    {
+      "filter": "DailyProgress",
+      "keyword": {
+        "color": "#111111"
+      },
+      "title": {
+        "color": "#444444"
+      },
+      "title_below_image": false
+    },
+    {
+      "filter": "MultiEntry",
+      "keyword": {
+        "color": "#111111"
+      },
+      "title": {
+        "color": "#444444"
+      },
+      "title_below_image": true
+    },
+    {
+      "filter": "FilterProjects",
+      "keyword": {
+        "color": "#111111"
+      },
+      "title": {
+        "color": "#444444"
+      },
+      "title_below_image": false
+    },
+    {
+      "filter": "GroupByProjects",
+      "keyword": {
+        "color": "#111111"
+      },
+      "title": {
+        "color": "#444444"
+      },
+      "title_below_image": false
+    },
+    {
+      "filter": "SmartTodayView",
+      "keyword": {
+        "color": "#111111"
+      },
+      "title": {
+        "color": "#444444"
+      },
+      "title_below_image": false
+    },
+    {
+      "filter": "SmartThisWeekView",
+      "keyword": {
+        "color": "#111111"
+      },
+      "title": {
+        "color": "#444444"
+      },
+      "title_below_image": false
+    },
+    {
+      "filter": "CustomProjects",
+      "keyword": {
+        "color": "#111111"
+      },
+      "title": {
+        "color": "#444444"
+      },
+      "title_below_image": false
+    },
+    {
+      "filter": "DetailView",
+      "keyword": {
+        "color": "#111111"
+      },
+      "title": {
+        "color": "#444444"
+      },
+      "title_below_image": false
+    },
+    {
+      "filter": "ExportView",
+      "keyword": {
+        "color": "#111111"
+      },
+      "title": {
+        "color": "#444444"
+      },
+      "title_below_image": true
     }
   ]
 }

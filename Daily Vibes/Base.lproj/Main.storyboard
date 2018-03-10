@@ -65,6 +65,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Daily Vibes" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="NEe-C8-mgy">
                         <barButtonItem key="rightBarButtonItem" image="more_icon_dailyvibes" landscapeImage="more_icon_dailyvibes" largeContentSizeImage="more_icon_dailyvibes" id="Cww-FG-c2L">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="main_more_filter_btn"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="bHr-ku-ldV" kind="show" identifier="TodoTaskItemFilters" id="70H-dv-Kj4"/>
                             </connections>
@@ -385,11 +388,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="6s7-yJ-Qf6" userLabel="addATodoNavigationBarLabel">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cKO-kg-k3S">
-                            <connections>
-                                <action selector="cancel:" destination="pEL-D5-MQR" id="TEM-Bz-Pn9"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Vha-G1-kL2">
                             <connections>
                                 <segue destination="Zx0-hs-XXq" kind="unwind" identifier="saveButtonSegue" unwindAction="unwindToTodoItemsListWithSender:" id="yrN-gn-jUt"/>
@@ -422,27 +420,9 @@
                     <view key="view" contentMode="scaleToFill" id="e9Q-cV-P3k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-L5-Ycx" customClass="ThemableBaseTextView" customModule="Daily_Vibes" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="WHL-uy-mhV" firstAttribute="bottom" secondItem="QeT-L5-Ycx" secondAttribute="bottom" id="67W-mo-n90"/>
-                            <constraint firstItem="QeT-L5-Ycx" firstAttribute="top" secondItem="WHL-uy-mhV" secondAttribute="top" id="9Gn-mo-O84"/>
-                            <constraint firstItem="QeT-L5-Ycx" firstAttribute="leading" secondItem="WHL-uy-mhV" secondAttribute="leading" id="NAS-CL-FJe"/>
-                            <constraint firstItem="WHL-uy-mhV" firstAttribute="trailing" secondItem="QeT-L5-Ycx" secondAttribute="trailing" id="V1h-bK-2C6"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WHL-uy-mhV"/>
                     </view>
-                    <connections>
-                        <outlet property="markdownTextEditor" destination="QeT-L5-Ycx" id="WfS-lo-lZx"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehb-1S-8qP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -700,6 +680,6 @@
         <image name="tabbar_add_dailyvibes" width="23" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HLg-cc-mL0"/>
+        <segue reference="B8d-ke-Hzr"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -42,6 +42,7 @@
 "Yesterday" = "Yesterday";
 "Created" = "Created";
 "Completed" = "Completed";
+"Tomorrow" = "Tomorrow";
 
 // Filter actions
 "All" = "All";
@@ -123,3 +124,7 @@
 "Alert" = "Alert";
 "Done Notifications" = "Done Notifications";
 "Delete Notifications" = "Delete Notifications";
+"Export" = "Export";
+"How would you like to export your data?" = "How would you like to export your data?";
+"Export to Text" = "Export to Text";
+"Export to Email" = "Export to Email";

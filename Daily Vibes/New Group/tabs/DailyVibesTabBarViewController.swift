@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DeckTransition
 
 class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
@@ -75,6 +76,12 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
             let multipleCreateAction = UIAlertAction.init(title: multipleText, style: .default, handler: { (alertAction) in
                 let storyboard = UIStoryboard.init(name: "DVMultipleTodoitemtaskItems", bundle: nil)
                 let tvc = storyboard.instantiateViewController(withIdentifier: "DVMultipleTodoitemtaskItemsNC")
+                
+                let transitionDelegate = DeckTransitioningDelegate(isSwipeToDismissEnabled: false)
+                tvc.transitioningDelegate = transitionDelegate
+                tvc.modalPresentationStyle = .custom
+                UIApplication.shared.statusBarStyle = .lightContent
+                
                 self.present(tvc, animated: true, completion: nil)
             })
 //            multipleCreateAction.accessibilityIdentifier = "multiple_create_action"
@@ -83,6 +90,19 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
             
             let cancelText = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel **", comment: "")
             alertController.addAction(UIAlertAction.init(title: cancelText, style: .cancel, handler: nil))
+            
+            alertController.popoverPresentationController?.sourceView = view
+            alertController.popoverPresentationController?.sourceRect = tabBar.frame
+            
+//            if let popOver = alertController.popoverPresentationController {
+////                popOver.sourceView = tabBarController.selectedIndex
+//                let index = tabBarController.selectedIndex
+//                if let barButtonItemsArray = tabBarController.toolbarItems {
+//                    let barButtonItem = barButtonItemsArray[index]
+//                    popOver.barButtonItem = barButtonItem
+//                }
+////                let barButtonItem = tabBarController.toolbarItems[index]
+//            }
             
             self.present(alertController, animated: true)
             
@@ -93,7 +113,9 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
             if viewController == tabBarController.selectedViewController {
 //                print("selected the same DVMainNavigationViewController controller")
                 let nav = viewController as! DVMainNavigationViewController
-                let tableCont = nav.topViewController as! TodoItemsTableViewController
+                guard let tableCont = nav.topViewController as? TodoItemsTableViewController else {
+                    return true
+                }
 //                tableCont.tableView.setContentOffset(CGPoint(x: 0.0, y: -tableCont.tableView.contentInset.top), animated: true)
 //                tableCont.tableView.setContentOffset(CGPointZero, animated: true)
 //                tableCont.tableView.scrollRectToVisible(CGRect.init(x: 0, y: 0, width: 1, height: 1), animated: true)
@@ -139,4 +161,94 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
 //        menuButton.frame.origin.y = self.view.bounds.height - menuButton.frame.height - self.view.safeAreaInsets.bottom
 //    }
 
+}
+
+//extension UITabBarController {
+//    func setTabBarVisible(visible:Bool, duration: TimeInterval, animated:Bool) {
+//        if (tabBarIsVisible() == visible) { return }
+//        let frame = self.tabBar.frame
+//        let height = frame.size.height
+//        let offsetY = (visible ? -height : height)
+//
+//        // animation
+//        UIViewPropertyAnimator(duration: duration, curve: .linear) {
+//            self.tabBar.frame.offsetBy(dx:0, dy:offsetY)
+//            self.view.frame = CGRect(x:0,y:0,width: self.view.frame.width, height: self.view.frame.height + offsetY)
+//            self.view.setNeedsDisplay()
+//            self.view.layoutIfNeeded()
+//            }.startAnimation()
+//    }
+//
+//    func tabBarIsVisible() ->Bool {
+////        return self.tabBar.frame.origin.y < UIScreen.main.bounds.height
+//        return self.tabBar.frame.origin.y < view.bounds.height
+//    }
+//}
+
+
+extension UITabBarController {
+    
+    private struct AssociatedKeys {
+        // Declare a global var to produce a unique address as the assoc object handle
+        static var orgFrameView:     UInt8 = 0
+        static var movedFrameView:   UInt8 = 1
+    }
+    
+    var orgFrameView:CGRect? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.orgFrameView) as? CGRect }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.orgFrameView, newValue, .OBJC_ASSOCIATION_COPY) }
+    }
+    
+    var movedFrameView:CGRect? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.movedFrameView) as? CGRect }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.movedFrameView, newValue, .OBJC_ASSOCIATION_COPY) }
+    }
+    
+    override open func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if let movedFrameView = movedFrameView {
+            view.frame = movedFrameView
+        }
+    }
+    
+    func setTabBarVisible(visible:Bool, animated:Bool) {
+        //since iOS11 we have to set the background colour to the bar color it seams the navbar seams to get smaller during animation; this visually hides the top empty space...
+        view.backgroundColor =  self.tabBar.barTintColor
+        // bail if the current state matches the desired state
+        if (tabBarIsVisible() == visible) { return }
+        
+        //we should show it
+        if visible {
+            tabBar.isHidden = false
+            UIView.animate(withDuration: animated ? 0.3 : 0.0) {
+                //restore form or frames
+                self.view.frame = self.orgFrameView!
+                //errase the stored locations so that...
+                self.orgFrameView = nil
+                self.movedFrameView = nil
+                //...the layoutIfNeeded() does not move them again!
+                self.view.layoutIfNeeded()
+            }
+        }
+            //we should hide it
+        else {
+            //safe org positions
+            orgFrameView   = view.frame
+            // get a frame calculation ready
+            let offsetY = self.tabBar.frame.size.height
+            movedFrameView = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height + offsetY)
+            //animate
+            UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
+                self.view.frame = self.movedFrameView!
+                self.view.layoutIfNeeded()
+            }) {
+                (_) in
+                self.tabBar.isHidden = true
+            }
+        }
+    }
+    
+    func tabBarIsVisible() ->Bool {
+        return orgFrameView == nil
+    }
 }

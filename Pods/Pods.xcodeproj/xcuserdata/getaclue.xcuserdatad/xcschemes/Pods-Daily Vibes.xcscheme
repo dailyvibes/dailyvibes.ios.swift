@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9F1C6F33540A9282C84968F27C2A99FB"
+               BlueprintIdentifier = "47AEF4413E15FC2B9FAB26866AF4204A"
                BuildableName = "Pods_Daily_Vibes.framework"
                BlueprintName = "Pods-Daily Vibes"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9F1C6F33540A9282C84968F27C2A99FB"
+            BlueprintIdentifier = "47AEF4413E15FC2B9FAB26866AF4204A"
             BuildableName = "Pods_Daily_Vibes.framework"
             BlueprintName = "Pods-Daily Vibes"
             ReferencedContainer = "container:Pods.xcodeproj">

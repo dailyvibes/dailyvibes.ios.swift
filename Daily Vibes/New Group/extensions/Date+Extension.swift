@@ -133,7 +133,8 @@ extension Date {
     
     var sectionIdentifier: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MMM-dd"
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
         return dateFormatter.string(from: self)
     }
 }

@@ -10,10 +10,12 @@ import UIKit
 import GrowingTextView
 import SwiftTheme
 import UserNotifications
+import SwiftyChrono
 
 class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     
-    @IBOutlet weak var textView: GrowingTextView!
+    @IBOutlet weak var oldTexview: RegeributedTextView!
+    @IBOutlet weak var textView: RegeributedTextView!
     @IBOutlet weak var tableView: UITableView!
     
     private let store = CoreDataManager.store
@@ -23,11 +25,8 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     
     private var remindMeSwitch: UISwitch!
     private var inputToolbar: UIView!
-    //    private var textView: GrowingTextView!
     private var textViewBottomConstraint: NSLayoutConstraint!
-    
-    //    private var tableViewController: DVMultipleTodoitemtaskItemsTVC!
-    //    private var tableView: UITableView!
+    private let chrono = Chrono()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,13 +38,17 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
             data.curProject = store.filteredProjectList
         }
         
+        if data.cookedData == nil {
+            data.cookedData = [DVMultipleTodoitemtaskItemVM]()
+        }
+        
         tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationTitleText(title: "Add Multiple To-do Items")
+//        setupNavigationTitleText(title: "Add Multiple To-do Items")
         
         let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancelButton))
         let saveButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(handleSaveButton))
@@ -67,26 +70,17 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
         //        textView.layer.cornerRadius = 4.0
         
         let firstInputText = NSLocalizedString("One new to-do item task per line", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND One new to-do item task per line **", comment: "")
-        let secondInputText = NSLocalizedString("You can also include #tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND You can also include #tags **", comment: "")
+//        let secondInputText = NSLocalizedString("You can also include #tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND You can also include #tags **", comment: "")
         
-        textView.placeHolder = """
-        - \(firstInputText)
-        - \(secondInputText)
-        """
-        textView.font = UIFont.systemFont(ofSize: 15)
-        textView.minHeight = 60
-        textView.maxHeight = 250
-        
-        //        cell.theme_backgroundColor = "Global.barTintColor"
-        //        cell.textLabel?.theme_textColor = "Global.textColor"
-        //        cell.detailTextLabel?.theme_textColor = "Global.placeholderColor"
+        let joinedPlaceHolderString = "- \(firstInputText)"
+
+        textView.text = joinedPlaceHolderString
         
         textView.theme_backgroundColor = "Global.barTintColor"
         textView.theme_textColor = "Global.textColor"
-        if let placeholderColor = ThemeManager.value(for: "Global.placeholderColor") as? String {
-            textView.placeHolderColor = UIColor.from(hex: placeholderColor)
-        }
-        
+        textView.textContainerInset = UIEdgeInsetsMake(16, 16, 16, 16)
+        textView.addAttribute(.hashTag, attribute: .bold)
+
         textView.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
@@ -100,6 +94,8 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         super.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.theme_setStatusBarStyle("UIStatusBarStyle", animated: true)
         self.view.endEditing(true)
     }
     
@@ -138,6 +134,29 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
         
         data.parsedText = DVMultipleTodoitemtaskItemsVC.parseMultipleTodos(data: data, todosInput: data.rawMultipleTaskText!)
         
+        if let hasParsedText = data.parsedText, hasParsedText.count > 0 {
+            for item in hasParsedText {
+                let temp = DVMultipleTodoitemtaskItemVM.init()
+                temp.isRemindable = true
+                temp.text = item
+                
+                if let parsedDate = chrono.parseDate(text: item) {
+                    temp.dueDate = parsedDate
+                }
+                
+                data.cookedData?.append(temp)
+//                print("data.cookedData.count = \(data.cookedData?.count)")
+                
+//                if var establishedCookedData = data.cookedData {
+//                    establishedCookedData.append(temp)
+//                } else {
+//                    fatalError("y u crash")
+//                }
+//                let tempParsedDate = chrono.parseDate(text: item)
+//                print(tempParsedDate)
+            }
+        }
+        
         store.processMultipleTodoitemTasks(forProject: project!, todoItemTasksData: data)
         
         //        let rawmultipletakitemtodoText = textView.text ?? ""
@@ -158,17 +177,16 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
         
         if firstPass.count == 1 {
             let result = firstPass[0].trimmingCharacters(in: ["-"]).trimmingCharacters(in: [" "])
+            let words = result.components(separatedBy: " ")
+            let tags = words.filter { $0.hasPrefix("#") }
             
             if !hasTags {
-                let splitData = result.split(separator: "#")
-                hasTags = !splitData.isEmpty
-                data.hasTags = !splitData.isEmpty
+                hasTags = !tags.isEmpty
+                data.hasTags = !tags.isEmpty
             }
             
             if hasTags {
-                let __data = result.split(separator: "#")
-                let _data = __data.dropFirst()
-                let tagsStringText = _data.joined(separator: " ")
+                let tagsStringText = tags.joined(separator: " ")
                 data.tagListText = [tagsStringText]
             }
             
@@ -176,11 +194,12 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
         } else {
             for (_,item) in firstPass.enumerated() {
                 let result = item.trimmingCharacters(in: ["-"]).trimmingCharacters(in: [" "])
-                let splitData = result.split(separator: "#")
+                let words = result.components(separatedBy: " ")
+                let tags = words.filter { $0.hasPrefix("#") }
                 
                 if !hasTags {
-                    hasTags = !splitData.isEmpty
-                    data.hasTags = !splitData.isEmpty
+                    hasTags = !tags.isEmpty
+                    data.hasTags = !tags.isEmpty
                 }
                 
                 secondPass.append(result)
@@ -220,25 +239,25 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     
 }
 
-extension DVMultipleTodoitemtaskItemsVC: GrowingTextViewDelegate {
-    
-    // *** Call layoutIfNeeded on superview for animation when changing height ***
-    
-    //    func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {
-    //        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveLinear], animations: { () -> Void in
-    //            self.view.layoutIfNeeded()
-    //        }, completion: nil)
-    //    }
-    func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {
-        UIView.setAnimationsEnabled(false)
-        let caret = tableView.convert(textView.caretRect(for: textView.selectedTextRange!.start), from: textView)
-        let keyboardTopBorder = textView.bounds.size.height - tableView.frame.width
-        if caret.origin.y > keyboardTopBorder && textView.isFirstResponder {
-            tableView.scrollRectToVisible(caret, animated: true)
-        }
-        UIView.setAnimationsEnabled(true)
-    }
-}
+//extension DVMultipleTodoitemtaskItemsVC: GrowingTextViewDelegate {
+//
+//    // *** Call layoutIfNeeded on superview for animation when changing height ***
+//
+//    //    func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {
+//    //        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveLinear], animations: { () -> Void in
+//    //            self.view.layoutIfNeeded()
+//    //        }, completion: nil)
+//    //    }
+//    func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {
+//        UIView.setAnimationsEnabled(false)
+//        let caret = tableView.convert(textView.caretRect(for: textView.selectedTextRange!.start), from: textView)
+//        let keyboardTopBorder = textView.bounds.size.height - tableView.frame.width
+//        if caret.origin.y > keyboardTopBorder && textView.isFirstResponder {
+//            tableView.scrollRectToVisible(caret, animated: true)
+//        }
+//        UIView.setAnimationsEnabled(true)
+//    }
+//}
 
 extension DVMultipleTodoitemtaskItemsVC: UITableViewDelegate, UITableViewDataSource {
     
@@ -329,7 +348,7 @@ extension DVMultipleTodoitemtaskItemsVC: UITableViewDelegate, UITableViewDataSou
             
             cell.selectionStyle = .none
             
-            cell = tableView.dequeueReusableCell(withIdentifier: "defaultBasicCell", for: indexPath)
+//            cell = tableView.dequeueReusableCell(withIdentifier: "defaultBasicCell", for: indexPath)
             
             cell.theme_backgroundColor = "Global.barTintColor"
             cell.textLabel?.theme_textColor = "Global.textColor"
@@ -441,4 +460,29 @@ extension DVMultipleTodoitemtaskItemsVC: UIGestureRecognizerDelegate {
         //
         return true
     }
+}
+
+extension DVMultipleTodoitemtaskItemsVC: RegeributedTextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let _textView = textView as! RegeributedTextView
+        
+        if let barTextColor = ThemeManager.value(for: "Global.barTextColor") as? String {
+            _textView.addAttribute("#[a-zA-Z0-9]+", attribute: .textColor(UIColor.from(hex: barTextColor)), values: ["URL": "https://google.com"])
+        }
+        
+        return true
+    }
+    
+    func regeributedTextView(_ textView: RegeributedTextView, didSelect text: String, values: [String : Any]) {
+        print("Selected word: \(text)")
+        //        selectedLabel.text = text
+        
+        // You can get the emmbeded url from values
+//        if let url = values["URL"] as? String {
+//            // e.g.
+//            // UIApplication.shared.openURL(URL(string: url)!)
+//        }
+    }
+    
 }

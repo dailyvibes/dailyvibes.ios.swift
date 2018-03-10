@@ -5,7 +5,6 @@
   Created by Alex Kluew on 2017-12-10.
   Copyright © 2017 Alex Kluew. All rights reserved.
 */
-
 "Done" = "Готово";
 "Cancel" = "Отмена";
 "Archive" = "Архив";
@@ -126,4 +125,12 @@
 "Single" = "Один";
 "Multiple" = "Больше одного";
 "Add Multiple To-do Items" = "Добавление нескольких заданий";
-
+"Remind me" = "Напомни меня";
+"Reminder" = "Напоминание";
+"Please enable Notifications to use this feature" = "Включите Уведомления, чтобы использовать эту функцию.";
+"Go to Settings" = "Перейдите в Настройки";
+"Export" = "Экспортировать";
+"How would you like to export your data?" = "Как вы хотите экспортировать свои данные?";
+"Export to Text" = "Экспорт в текст";
+"Export to Email" = "Экспорт в Эл. адрес";
+"Tomorrow" = "Завтра";
