@@ -602,7 +602,7 @@
         <!--List Table View Controller-->
         <scene sceneID="oCu-xD-Gkn">
             <objects>
-                <tableViewController id="5m9-pE-Ia0" customClass="ListTableViewController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5m9-pE-Ia0" customClass="ListTableViewController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="1" id="HqW-4t-J5J">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

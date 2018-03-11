@@ -187,14 +187,14 @@ class SettingsTableVC: ThemableTableViewController {
         let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel **", comment: "")
         let cancelAction = UIAlertAction.init(title: cancelString, style: .cancel, handler: nil)
         
-        let exportToJson = UIAlertAction.init(title: "Export to JSON", style: .default) { (_) in
-            self.handleExportToDisk()
-        }
+//        let exportToJson = UIAlertAction.init(title: "Export to JSON", style: .default) { (_) in
+//            self.handleExportToDisk()
+//        }
         
         actionController.addAction(cancelAction)
         actionController.addAction(exportToText)
         actionController.addAction(exportToEmail)
-        actionController.addAction(exportToJson)
+//        actionController.addAction(exportToJson)
         
         if let popOver = actionController.popoverPresentationController {
 //            popOver.sourceView = self.view

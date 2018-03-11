@@ -101,6 +101,10 @@ UIPickerViewDelegate {
             let _title = "Details"
             let actionButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleActionButton))
             
+            if let curProject = todoItemTaskViewModel?.list {
+                self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: curProject)
+            }
+            
             navigationItem.rightBarButtonItems = [saveTodoitemButton, actionButton]
             
             setupNavigationTitleText(title: _title, subtitle: nil)
@@ -174,6 +178,7 @@ UIPickerViewDelegate {
     fileprivate func closeView() {
         store.editingDVTodotaskItem = nil
         todoItemTaskViewModel = nil
+        self.store.editingDVTodotaskItemListPlaceholder = nil
         
         let isPresentingInADDMode = presentingViewController is DailyVibesTabBarViewController
         
@@ -197,6 +202,7 @@ UIPickerViewDelegate {
         let saveButtonSegueIdentifier = "saveButtonSegue"
         
         if segue.identifier == saveButtonSegueIdentifier {
+            // LOOK AT TODO
             store.editingDVTodotaskItem = todoItemTaskViewModel
             store.saveEditingDVTodotaskItem()
         }
@@ -219,7 +225,7 @@ UIPickerViewDelegate {
             
             let emptyString = NSLocalizedString("Title", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND TITLE STRING **", comment: "")
             
-            if textView.text == emptyString {
+            if textView.placeholder == emptyString {
                 if todoItemTaskViewModel?.todoItemText == emptyString {
                     textView.text = ""
                 } else {
@@ -386,7 +392,7 @@ UIPickerViewDelegate {
         if cell == listsCell {
             cell.textLabel?.text = NSLocalizedString("Project", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Project **", comment: "")
             
-            let listLabel = todoItemTaskViewModel?.list?.title ?? ""
+            let listLabel = store.editingDVTodotaskItemListPlaceholder?.title ?? ""
             let isEmpty = listLabel.trimmingCharacters(in: .whitespaces).isEmpty
             
             if isEmpty {

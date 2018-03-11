@@ -58,53 +58,15 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
     // MARK - Custom TabBarControllerAction
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is DummyViewController {
-            let titleText = NSLocalizedString("Add a to-do", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Add a to-do **", comment: "")
-            let alertController = UIAlertController.init(title: titleText, message: nil, preferredStyle: .actionSheet)
+            let storyboard = UIStoryboard.init(name: "DVMultipleTodoitemtaskItems", bundle: nil)
+            let tvc = storyboard.instantiateViewController(withIdentifier: "DVMultipleTodoitemtaskItemsNC")
             
-            let singleText = NSLocalizedString("Single", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Single **", comment: "")
+            let transitionDelegate = DeckTransitioningDelegate(isSwipeToDismissEnabled: false)
+            tvc.transitioningDelegate = transitionDelegate
+            tvc.modalPresentationStyle = .custom
+            UIApplication.shared.statusBarStyle = .lightContent
             
-            let singleCreateAction = UIAlertAction.init(title: singleText, style: .default, handler: { (alertAction) in
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let newVC = storyboard.instantiateViewController(withIdentifier: "AddNavigationVC")
-                self.present(newVC, animated: true, completion: nil)
-            })
-//            singleCreateAction.accessibilityIdentifier = "single_create_action"
-            
-            alertController.addAction(singleCreateAction)
-            
-            let multipleText = NSLocalizedString("Multiple", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Multiple **", comment: "")
-            let multipleCreateAction = UIAlertAction.init(title: multipleText, style: .default, handler: { (alertAction) in
-                let storyboard = UIStoryboard.init(name: "DVMultipleTodoitemtaskItems", bundle: nil)
-                let tvc = storyboard.instantiateViewController(withIdentifier: "DVMultipleTodoitemtaskItemsNC")
-                
-                let transitionDelegate = DeckTransitioningDelegate(isSwipeToDismissEnabled: false)
-                tvc.transitioningDelegate = transitionDelegate
-                tvc.modalPresentationStyle = .custom
-                UIApplication.shared.statusBarStyle = .lightContent
-                
-                self.present(tvc, animated: true, completion: nil)
-            })
-//            multipleCreateAction.accessibilityIdentifier = "multiple_create_action"
-            
-            alertController.addAction(multipleCreateAction)
-            
-            let cancelText = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel **", comment: "")
-            alertController.addAction(UIAlertAction.init(title: cancelText, style: .cancel, handler: nil))
-            
-            alertController.popoverPresentationController?.sourceView = view
-            alertController.popoverPresentationController?.sourceRect = tabBar.frame
-            
-//            if let popOver = alertController.popoverPresentationController {
-////                popOver.sourceView = tabBarController.selectedIndex
-//                let index = tabBarController.selectedIndex
-//                if let barButtonItemsArray = tabBarController.toolbarItems {
-//                    let barButtonItem = barButtonItemsArray[index]
-//                    popOver.barButtonItem = barButtonItem
-//                }
-////                let barButtonItem = tabBarController.toolbarItems[index]
-//            }
-            
-            self.present(alertController, animated: true)
+            self.present(tvc, animated: true, completion: nil)
             
             return false
         }

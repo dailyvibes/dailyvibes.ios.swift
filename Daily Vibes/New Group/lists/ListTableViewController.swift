@@ -163,8 +163,10 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
 //                
 //                cell.addSubview(lbl)
                 
-                if let existingList = editingTodotaskItem?.list {
-                    if list.uuid == existingList.uuid {
+//                TODO THIS WAS EDITED
+                
+                if store.editingDVTodotaskItemListPlaceholder != nil {
+                    if list.uuid == store.editingDVTodotaskItemListPlaceholder?.uuid {
                         cell.accessoryType = .checkmark
                     } else {
                         cell.accessoryType = .none
@@ -172,6 +174,16 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
                 } else {
                     cell.accessoryType = .none
                 }
+                
+//                if let existingList = editingTodotaskItem?.list {
+//                    if list.uuid == existingList.uuid {
+//                        cell.accessoryType = .checkmark
+//                    } else {
+//                        cell.accessoryType = .none
+//                    }
+//                } else {
+//                    cell.accessoryType = .none
+//                }
                 
                 cell.theme_backgroundColor = "Global.barTintColor"
                 cell.textLabel?.theme_textColor = "Global.textColor"
@@ -192,8 +204,10 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
 //                cell.detailTextLabel?.text = "\(list.listItemCountTotal)"
                 cell.detailTextLabel?.text = ""
                 
-                if let existingList = editingTodotaskItem?.list {
-                    if list.uuid == existingList.uuid {
+                // TODO REMOVE
+                
+                if store.editingDVTodotaskItemListPlaceholder != nil {
+                    if list.uuid == store.editingDVTodotaskItemListPlaceholder?.uuid {
                         cell.accessoryType = .checkmark
                     } else {
                         cell.accessoryType = .none
@@ -201,6 +215,16 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
                 } else {
                     cell.accessoryType = .none
                 }
+                
+//                if let existingList = editingTodotaskItem?.list {
+//                    if list.uuid == existingList.uuid {
+//                        cell.accessoryType = .checkmark
+//                    } else {
+//                        cell.accessoryType = .none
+//                    }
+//                } else {
+//                    cell.accessoryType = .none
+//                }
                 
                 cell.theme_backgroundColor = "Global.barTintColor"
                 cell.textLabel?.theme_textColor = "Global.textColor"
@@ -226,9 +250,13 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
                     
                     if list.uuid != existingList.uuid {
                         editingTodotaskItem?.list = DVListViewModel.copyWithoutListItems(list: list)
+//                        self.store.editingDVTodotaskItem?.list = DVListViewModel.copyWithoutListItems(list: list)
+                        self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: list)
                     }
                 } else {
                     editingTodotaskItem?.list = DVListViewModel.copyWithoutListItems(list: list)
+//                    self.store.editingDVTodotaskItem?.list = DVListViewModel.copyWithoutListItems(list: list)
+                    self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: list)
                 }
             }
             
@@ -243,9 +271,13 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
                     
                     if list.uuid != existingList.uuid {
                         editingTodotaskItem?.list = DVListViewModel.copyWithoutListItems(list: list)
+                        self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: list)
+//                        self.store.editingDVTodotaskItem?.list = DVListViewModel.copyWithoutListItems(list: list)
                     }
                 } else {
+//                    TODO
                     editingTodotaskItem?.list = DVListViewModel.copyWithoutListItems(list: list)
+                    self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: list)
                 }
             }
             
@@ -302,6 +334,7 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
                 if let existingList = editingTodotaskItem?.list {
                     if list.uuid == existingList.uuid {
                         editingTodotaskItem?.list = nil
+                        self.store.editingDVTodotaskItemListPlaceholder = nil
                         self.tableView.reloadData()
                     }
                 }
@@ -326,6 +359,7 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
             store.fetchListsViewModel()
             listVM = store.dvListsVM
             editingTodotaskItem?.list = DVListViewModel.copyWithoutListItems(list: list)
+            self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: list)
             
             clearTextfield(at: textField)
         }

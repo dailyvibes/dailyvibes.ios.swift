@@ -15,6 +15,7 @@
 		D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */; };
 		D9028EAB1FAE1BAD002D64E3 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */; };
 		D9028EAD1FAE22E1002D64E3 /* TodoItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */; };
+		D907539220538AA6002F9A8D /* TextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907539120538AA6002F9A8D /* TextViewPlaceholder.swift */; };
 		D90DED201FEC269B007E7DAE /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4396D1FDEE53B0056E655 /* StreakManager.swift */; };
 		D90DED211FEC26A6007E7DAE /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4396D1FDEE53B0056E655 /* StreakManager.swift */; };
 		D90DED251FEC29DB007E7DAE /* StreaksManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90DED241FEC29DB007E7DAE /* StreaksManagerTest.swift */; };
@@ -39,7 +40,7 @@
 		D957461920038F8C000038AE /* SupportSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461820038F8C000038AE /* SupportSettingsViewController.swift */; };
 		D957461D2003966B000038AE /* AcknowledgementSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461C2003966B000038AE /* AcknowledgementSettingsViewController.swift */; };
 		D957461F20039892000038AE /* AboutSettingsViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461E20039892000038AE /* AboutSettingsViewControllerViewController.swift */; };
-		D9598A631FBDE20C000854ED /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */; };
 		D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */; };
 		D9694C34200845B400B49CE4 /* DailyVibesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9694C33200845B400B49CE4 /* DailyVibesList.swift */; };
@@ -173,7 +174,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D9598A631FBDE20C000854ED /* BuildFile in Embed Frameworks */,
+				D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +207,7 @@
 		D9028EA81FAE0CFE002D64E3 /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
 		D9028EAA1FAE1BAD002D64E3 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		D9028EAC1FAE22E1002D64E3 /* TodoItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsTableViewController.swift; sourceTree = "<group>"; };
+		D907539120538AA6002F9A8D /* TextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholder.swift; sourceTree = "<group>"; };
 		D90DED241FEC29DB007E7DAE /* StreaksManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreaksManagerTest.swift; sourceTree = "<group>"; };
 		D9156E282010DC2300E7F04E /* ThemableBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableBaseTableViewCell.swift; sourceTree = "<group>"; };
 		D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserPreferencesTVC.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				D9B9F5342044BB0400020608 /* StringExt.swift */,
 				D9B9F5362044BB2B00020608 /* UnderlineStyle.swift */,
 				D9B9F5382044BDED00020608 /* StringRange.swift */,
+				D907539120538AA6002F9A8D /* TextViewPlaceholder.swift */,
 			);
 			path = DVResizableATSTextView;
 			sourceTree = "<group>";
@@ -762,6 +765,8 @@
 				D9598A641FBDE20D000854ED /* Embed Frameworks */,
 				480AFBB1EBFDF9C6807D7D0F /* [CP] Embed Pods Frameworks */,
 				B5588125FDFA5DE11DA5A3BF /* [CP] Copy Pods Resources */,
+				D907539020538099002F9A8D /* Run Script - BuildVersion.sh */,
+				D907538E20537FC4002F9A8D /* Run Script - VersionNumberIncrement.sh */,
 			);
 			buildRules = (
 			);
@@ -816,6 +821,8 @@
 				D9F3DC5B20028A2500F8A586 /* Sources */,
 				D9F3DC5C20028A2500F8A586 /* Frameworks */,
 				D9F3DC5D20028A2500F8A586 /* Resources */,
+				D9480F002054E978003DA7D2 /* Run Script - BuildVersion.sh */,
+				D9480F012054E99B003DA7D2 /* Run Script - VersionNumberIncrement.sh */,
 			);
 			buildRules = (
 			);
@@ -1012,6 +1019,62 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D907538E20537FC4002F9A8D /* Run Script - VersionNumberIncrement.sh */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - VersionNumberIncrement.sh";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "VERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nNEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\nNEWSUBVERSION=$(($NEWSUBVERSION + 1))\nNEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $NEWVERSIONSTRING\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		D907539020538099002F9A8D /* Run Script - BuildVersion.sh */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - BuildVersion.sh";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		D9480F002054E978003DA7D2 /* Run Script - BuildVersion.sh */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - BuildVersion.sh";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		D9480F012054E99B003DA7D2 /* Run Script - VersionNumberIncrement.sh */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - VersionNumberIncrement.sh";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "VERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nNEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\nNEWSUBVERSION=$(($NEWSUBVERSION + 1))\nNEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $NEWVERSIONSTRING\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1082,6 +1145,7 @@
 				D9CF98E120402C9F006FEB98 /* UYLNotificationDelegate.swift in Sources */,
 				D972A5D3204528B3003F1F37 /* String+Extension.swift in Sources */,
 				D9B9F5352044BB0400020608 /* StringExt.swift in Sources */,
+				D907539220538AA6002F9A8D /* TextViewPlaceholder.swift in Sources */,
 				D9B9F5372044BB2B00020608 /* UnderlineStyle.swift in Sources */,
 				D9B2686220121E250057D5AA /* ThemableBaseTextView.swift in Sources */,
 				D9028EA91FAE0CFE002D64E3 /* TodoItemTableViewCell.swift in Sources */,

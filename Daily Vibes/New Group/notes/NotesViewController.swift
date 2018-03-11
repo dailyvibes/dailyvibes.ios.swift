@@ -17,32 +17,57 @@ class NotesViewController: UIViewController, UITextViewDelegate {
     
     var delegate: NotesViewControllerUpdaterDelegate?
     
-//    @IBOutlet private weak var markdownTextEditor: Notepad!
+    //    @IBOutlet private weak var markdownTextEditor: Notepad!
     private var noteTitle: String?
     private var noteText: String?
     private var todoItemSettingsData: TodoItemSettingsData?
     
-//    private weak var markdownTextEditor: Notepad!
-//    private weak var notepad: Notepad!
+    private weak var textViewToolbar: UIToolbar!
+//    private weak var textView: Notepad!
+    //    private weak var notepad: Notepad!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        editingTodoitemTask = store.editingDVTodotaskItem
-//        noteText = editingTodoitemTask?.note?.content ?? ""
-//        markdownTextEditor.setAttributed(text: noteText!)
-        let notepad = Notepad(frame: view.bounds, themeFile: "one-dark")
+        //        editingTodoitemTask = store.editingDVTodotaskItem
+        let textView = Notepad(frame: view.bounds, themeFile: "one-dark")
         
-        if let note = editingTodoitemTask?.note, let contentText = note.content {
-            notepad.text = contentText
+        if let _ = store.editingDVTodotaskItem?.note {
+            noteText = store.editingDVTodotaskItem?.note?.content ?? ""
+            textView.text = noteText
         }
         
-        notepad.textContainerInset = UIEdgeInsetsMake(40, 20, 40, 20)
-        notepad.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        notepad.becomeFirstResponder()
-        notepad.delegate = self
-        self.view.addSubview(notepad)
+        let numberToolbar = UIToolbar.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 50))
+        numberToolbar.theme_barStyle = "Global.toolbarStyle"
+        numberToolbar.theme_tintColor = "Global.barTextColor"
+        
+        numberToolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(image: #imageLiteral(resourceName: "dv_uitoolbar_chevron_down_icon"), style: .plain, target: self, action: #selector(hideToolbarHandler))
+        ]
+        
+        numberToolbar.sizeToFit()
+        textViewToolbar = numberToolbar
+        textView.inputAccessoryView = textViewToolbar
+        
+        textView.textContainerInset = UIEdgeInsetsMake(40, 20, 40, 20)
+        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        textView.becomeFirstResponder()
+        textView.delegate = self
+        
+        self.view.addSubview(textView)
     }
-
+    
+    @objc private func hideToolbarHandler() {
+        //        if var note = self.store.editingDVTodotaskItem?.note {
+        //            note.content = self.noteText
+        //        } else {
+        //            var newNote = DVNoteViewModel.makeEmpty()
+        //            newNote.content = self.noteText
+        //            self.store.editingDVTodotaskItem?.note = newNote
+        //        }
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,8 +76,9 @@ class NotesViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func handleShareButton() {
-        let noteText = editingTodoitemTask?.note?.content ?? ""
-//        let todoitemtaskText = editingTodoitemTask?.todoItemText ?? ""
+        //        let noteText = editingTodoitemTask?.note?.content ?? ""
+        let noteText = self.noteText ?? ""
+        //        let todoitemtaskText = editingTodoitemTask?.todoItemText ?? ""
         
         let pasteBoardText = "\(noteText)"
         
@@ -65,9 +91,9 @@ class NotesViewController: UIViewController, UITextViewDelegate {
     }
     
     func setup(title noteTitle:String, textContent note:String, for data: TodoItemSettingsData) {
-//        self.noteTitle = noteTitle
-//        self.noteText = note
-//        self.todoItemSettingsData = data
+        //        self.noteTitle = noteTitle
+        //        self.noteText = note
+        //        self.todoItemSettingsData = data
     }
     
     // MARK: - UITextViewDelegate
@@ -77,13 +103,18 @@ class NotesViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        self.noteText = textView.text
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
-        if var note = editingTodoitemTask?.note {
-            note.content = textView.text
+        if self.store.editingDVTodotaskItem?.note != nil {
+            self.store.editingDVTodotaskItem?.note?.content = textView.text
         } else {
             var newNote = DVNoteViewModel.makeEmpty()
             newNote.content = textView.text
-            editingTodoitemTask?.note = newNote
+            self.store.editingDVTodotaskItem?.note = newNote
+            //            editingTodoitemTask?.note = newNote
         }
         
         delegate?.updateTableView()

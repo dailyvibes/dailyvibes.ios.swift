@@ -97,10 +97,12 @@ final class CoreDataManager {
     //        return sectionIdentifier
     //    }
     
-    var editingDVTodotaskItem: DVTodoItemTaskViewModel?
     var dvfilter: DVSectionVMStatus = .all
     var filteredTag: DVTagViewModel?
     var filteredProjectList: DVListViewModel?
+    
+    var editingDVTodotaskItem: DVTodoItemTaskViewModel?
+    var editingDVTodotaskItemListPlaceholder: DVListViewModel?
     
     func storeCustomCompletedTodoItemTask(title: String, createdAt: Date?, updatedAt: Date?, duedateAt: Date?, archivedAt: Date?, completedAt: Date) {
         let todoItemTask = TodoItem(context: context)
@@ -255,26 +257,26 @@ final class CoreDataManager {
                 // syncVersion
                 // syncVersionPrev
                 
-                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-                    if let error = error {
-                        print("error: \(error)")
-                        return
-                    }
-                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                        print ("server error")
-                        return
-                    }
-                    
-                    if let mimeType = response.mimeType,
-                        mimeType == "application/json",
-                        let data = data,
-                        let dataString = String(data: data, encoding: .utf8) {
-                        print("data: \(dataString)")
-                    } else {
-                        print("nope")
-                    }
-                })
-                task.resume()
+//                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//                    if let error = error {
+//                        print("error: \(error)")
+//                        return
+//                    }
+//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                        print ("server error")
+//                        return
+//                    }
+//
+//                    if let mimeType = response.mimeType,
+//                        mimeType == "application/json",
+//                        let data = data,
+//                        let dataString = String(data: data, encoding: .utf8) {
+//                        print("data: \(dataString)")
+//                    } else {
+//                        print("nope")
+//                    }
+//                })
+//                task.resume()
             }
             
             // TODO - workaround
@@ -388,26 +390,26 @@ final class CoreDataManager {
                 // syncVersion
                 // syncVersionPrev
                 
-                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-                    if let error = error {
-                        print("error: \(error)")
-                        return
-                    }
-                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                        print ("server error")
-                        return
-                    }
-                    
-                    if let mimeType = response.mimeType,
-                        mimeType == "application/json",
-                        let data = data,
-                        let dataString = String(data: data, encoding: .utf8) {
-                        print("data: \(dataString)")
-                    } else {
-                        print("nope")
-                    }
-                })
-                task.resume()
+//                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//                    if let error = error {
+//                        print("error: \(error)")
+//                        return
+//                    }
+//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                        print ("server error")
+//                        return
+//                    }
+//
+//                    if let mimeType = response.mimeType,
+//                        mimeType == "application/json",
+//                        let data = data,
+//                        let dataString = String(data: data, encoding: .utf8) {
+//                        print("data: \(dataString)")
+//                    } else {
+//                        print("nope")
+//                    }
+//                })
+//                task.resume()
             }
             
             // TODO - workaround
@@ -451,26 +453,26 @@ final class CoreDataManager {
                 // syncVersion
                 // syncVersionPrev
                 
-                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-                    if let error = error {
-                        print("error: \(error)")
-                        return
-                    }
-                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                        print ("server error")
-                        return
-                    }
-                    
-                    if let mimeType = response.mimeType,
-                        mimeType == "application/json",
-                        let data = data,
-                        let dataString = String(data: data, encoding: .utf8) {
-                        print("data: \(dataString)")
-                    } else {
-                        print("nope")
-                    }
-                })
-                task.resume()
+//                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//                    if let error = error {
+//                        print("error: \(error)")
+//                        return
+//                    }
+//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                        print ("server error")
+//                        return
+//                    }
+//
+//                    if let mimeType = response.mimeType,
+//                        mimeType == "application/json",
+//                        let data = data,
+//                        let dataString = String(data: data, encoding: .utf8) {
+//                        print("data: \(dataString)")
+//                    } else {
+//                        print("nope")
+//                    }
+//                })
+//                task.resume()
             }
             
             // TODO - workaround
@@ -539,34 +541,34 @@ final class CoreDataManager {
             
             if let convertedStr = jsonString {
                 print(convertedStr)
-                let urlString = "http://localhost:1337/tag"
-                let url = URL(string: urlString)!
-                var request = URLRequest(url: url)
-                request.httpMethod = "POST"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                
-                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
-                    
-                    if let error = error {
-                        print("error: \(error)")
-                        return
-                    }
-                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                        print ("server error")
-                        return
-                    }
-                    
-                    if let mimeType = response.mimeType,
-                        mimeType == "application/json",
-                        let data = data,
-                        let dataString = String(data: data, encoding: .utf8) {
-                        print("data: \(dataString)")
-                    } else {
-                        print("nope")
-                    }
-                    
-                }
-                task.resume()
+//                let urlString = "http://localhost:1337/tag"
+//                let url = URL(string: urlString)!
+//                var request = URLRequest(url: url)
+//                request.httpMethod = "POST"
+//                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+//
+//                    if let error = error {
+//                        print("error: \(error)")
+//                        return
+//                    }
+//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                        print ("server error")
+//                        return
+//                    }
+//
+//                    if let mimeType = response.mimeType,
+//                        mimeType == "application/json",
+//                        let data = data,
+//                        let dataString = String(data: data, encoding: .utf8) {
+//                        print("data: \(dataString)")
+//                    } else {
+//                        print("nope")
+//                    }
+//
+//                }
+//                task.resume()
             }
         } catch {
             let nserror = error as NSError
@@ -678,37 +680,37 @@ final class CoreDataManager {
             let jsonData = try jsonEncoder.encode(result)
             let jsonString = String(data: jsonData, encoding: .utf8)
             
-            if let convertedStr = jsonString {
-                print(convertedStr)
-                let urlString = "http://localhost:1337/note"
-                let url = URL(string: urlString)!
-                var request = URLRequest(url: url)
-                request.httpMethod = "POST"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                
-                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
-                    
-                    if let error = error {
-                        print("error: \(error)")
-                        return
-                    }
-                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                        print ("server error")
-                        return
-                    }
-                    
-                    if let mimeType = response.mimeType,
-                        mimeType == "application/json",
-                        let data = data,
-                        let dataString = String(data: data, encoding: .utf8) {
-                        print("data: \(dataString)")
-                    } else {
-                        print("nope")
-                    }
-                    
-                }
-                task.resume()
-            }
+//            if let convertedStr = jsonString {
+//                print(convertedStr)
+//                let urlString = "http://localhost:1337/note"
+//                let url = URL(string: urlString)!
+//                var request = URLRequest(url: url)
+//                request.httpMethod = "POST"
+//                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+//
+//                    if let error = error {
+//                        print("error: \(error)")
+//                        return
+//                    }
+//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                        print ("server error")
+//                        return
+//                    }
+//
+//                    if let mimeType = response.mimeType,
+//                        mimeType == "application/json",
+//                        let data = data,
+//                        let dataString = String(data: data, encoding: .utf8) {
+//                        print("data: \(dataString)")
+//                    } else {
+//                        print("nope")
+//                    }
+//
+//                }
+//                task.resume()
+//            }
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -747,36 +749,36 @@ final class CoreDataManager {
             let jsonData = try jsonEncoder.encode(result)
 //            let jsonString = String(data: jsonData, encoding: .utf8)
             
-            if let identifier = result?.uuid {
-                let urlString = "http://localhost:1337/note/\(identifier)"
-                let url = URL(string: urlString)!
-                var request = URLRequest(url: url)
-                request.httpMethod = "PUT"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                
-                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
-                    
-                    if let error = error {
-                        print("error: \(error)")
-                        return
-                    }
-                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                        print ("server error")
-                        return
-                    }
-                    
-                    if let mimeType = response.mimeType,
-                        mimeType == "application/json",
-                        let data = data,
-                        let dataString = String(data: data, encoding: .utf8) {
-                        print("data: \(dataString)")
-                    } else {
-                        print("nope")
-                    }
-                    
-                }
-                task.resume()
-            }
+//            if let identifier = result?.uuid {
+//                let urlString = "http://localhost:1337/note/\(identifier)"
+//                let url = URL(string: urlString)!
+//                var request = URLRequest(url: url)
+//                request.httpMethod = "PUT"
+//                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+//
+//                    if let error = error {
+//                        print("error: \(error)")
+//                        return
+//                    }
+//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                        print ("server error")
+//                        return
+//                    }
+//
+//                    if let mimeType = response.mimeType,
+//                        mimeType == "application/json",
+//                        let data = data,
+//                        let dataString = String(data: data, encoding: .utf8) {
+//                        print("data: \(dataString)")
+//                    } else {
+//                        print("nope")
+//                    }
+//
+//                }
+//                task.resume()
+//            }
             
         } catch {
             // apparently we did not find it... that is okay just make a new note then
@@ -890,7 +892,8 @@ final class CoreDataManager {
                             }
                         }
                         
-                        let list = try findList(withUUID: todoItemTasksData.curProject?.uuid)
+//                        let list = try findList(withUUID: todoItemTasksData.curProject?.uuid)
+                        let list = try findList(withUUID: self.editingDVTodotaskItemListPlaceholder?.uuid)
                         todo.list = list
                         list.addToListItems(todo)
                         try! context.save()
@@ -1019,7 +1022,7 @@ final class CoreDataManager {
                         }
                     }
                     
-                    if let hasList = editingDVTodotaskItem?.list {
+                    if let hasList = self.editingDVTodotaskItemListPlaceholder {
                         let list = try findList(withUUID: hasList.uuid)
                         todo.list = list
                         list.addToListItems(todo)
@@ -1112,7 +1115,7 @@ final class CoreDataManager {
                         }
                     }
                     
-                    if let hasList = editingDVTodotaskItem?.list {
+                    if let hasList = self.editingDVTodotaskItemListPlaceholder {
                         let list = try findList(withUUID: hasList.uuid)
                         todo.list = list
                         list.addToListItems(todo)
@@ -1232,6 +1235,7 @@ final class CoreDataManager {
                 }
                 
                 editingDVTodotaskItem = nil
+                editingDVTodotaskItemListPlaceholder = nil
                 
                 // TODO - workaround
                 self.dvTodoItemTaskData = getGroupedTodoItemTasks(ascending: false)!

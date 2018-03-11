@@ -30,6 +30,8 @@
 	</dict>
 	<key>Global</key>
 	<dict>
+		<key>toolbarStyle</key>
+		<string>default</string>
 		<key>keyboardStyle</key>
 		<string>light</string>
 		<key>placeholderColor</key>

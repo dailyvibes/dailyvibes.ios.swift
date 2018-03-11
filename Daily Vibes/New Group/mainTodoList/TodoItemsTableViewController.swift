@@ -26,6 +26,41 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         }
     }
     
+    lazy var dvRefreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.theme_tintColor = "Global.barTintColor"
+        
+        return refreshControl
+    }()
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+//        do {
+////            let jsonEncoder = JSONEncoder()
+////            jsonEncoder.outputFormatting = .prettyPrinted
+////            jsonEncoder.dateEncodingStrategy = .iso8601
+////            store.filteredDvTodoItemTaskData
+////            let jsonData = try jsonEncoder.encode(store.filteredDvTodoItemTaskData)
+////            taskItemsAll = store.filteredDvTodoItemTaskData
+//            
+////            let jsonString = String(data: jsonData, encoding: .utf8)
+//            
+////            print(jsonString)
+////            refreshControl.endRefreshing()
+//        } catch {
+//            
+//        }
+        print("refresh")
+//        let newHotel = Hotels(name: "Montage Laguna Beach", place:
+//            "California south")
+//        hotels.append(newHotel)
+//
+//        hotels.sort() { $0.name < $0.place }
+//
+//        self.tableView.reloadData()
+    }
+    
     private var streakManager = StreakManager()
     private var dynamicNavigationBarLabel: String?
     
@@ -57,12 +92,13 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             setupTitleView(withTitle: store.filteredProjectList?.title, withSubtitle: filterString)
         }
         
+//        self.tableView.addSubview(self.dvRefreshControl)
+        
         hideOrShowTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
         
         self.tableView.theme_backgroundColor = "Global.backgroundColor"
         self.tableView.theme_separatorColor = "ListViewController.separatorColor"
@@ -112,8 +148,10 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTVC), name: NSNotification.Name(rawValue: ThemeUpdateNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTVC), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(reloadTVC), name: NSNotification.Name(rawValue: ThemeUpdateNotification), object: nil)
+        nc.addObserver(self, selector: #selector(reloadTVC), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        nc.addObserver(self, selector: #selector(reloadTVC), name: Notification.Name("handleSaveButton-DVMultipleTodoitemtaskItemsVC"), object: nil)
         
         tableView.tableFooterView = UIView.init()
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
@@ -124,7 +162,7 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     @objc private func reloadTVC() {
-       setupDataAndNavBar()
+        setupDataAndNavBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

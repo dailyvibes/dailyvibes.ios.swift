@@ -16,6 +16,7 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     
     @IBOutlet weak var oldTexview: RegeributedTextView!
     @IBOutlet weak var textView: RegeributedTextView!
+    private weak var textViewToolbar: UIToolbar!
     @IBOutlet weak var tableView: UITableView!
     
     private let store = CoreDataManager.store
@@ -28,21 +29,36 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     private var textViewBottomConstraint: NSLayoutConstraint!
     private let chrono = Chrono()
     
+    private let wasTextViewCleared = false
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if data.curProject == nil {
-            data.curProject = store.filteredProjectList
-            data.prevProject = store.filteredProjectList
-        } else {
-            data.curProject = store.filteredProjectList
+        if store.editingDVTodotaskItemListPlaceholder == nil {
+            store.editingDVTodotaskItemListPlaceholder = store.filteredProjectList
         }
+        
+//        if data.curProject == nil {
+//            data.curProject = store.filteredProjectList
+//            store.editingDVTodotaskItemListPlaceholder = store.filteredProjectList
+//            data.prevProject = store.filteredProjectList
+//        } else {
+//            data.curProject = store.filteredProjectList
+//            store.editingDVTodotaskItemListPlaceholder = store.filteredProjectList
+//        }
         
         if data.cookedData == nil {
             data.cookedData = [DVMultipleTodoitemtaskItemVM]()
         }
         
         tableView.reloadData()
+        
+        if !textView.isFirstResponder {
+            textView.becomeFirstResponder()
+            DispatchQueue.main.async {
+                self.textView.selectedRange = NSMakeRange(0, 0);
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -70,11 +86,39 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
         //        textView.layer.cornerRadius = 4.0
         
         let firstInputText = NSLocalizedString("One new to-do item task per line", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND One new to-do item task per line **", comment: "")
+        let tagText = NSLocalizedString("Tag", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Tag **", comment: "").lowercased()
 //        let secondInputText = NSLocalizedString("You can also include #tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND You can also include #tags **", comment: "")
         
-        let joinedPlaceHolderString = "- \(firstInputText)"
+        let joinedPlaceHolderString = "\(firstInputText) #\(tagText)"
 
-        textView.text = joinedPlaceHolderString
+//        textView.text = ""
+        textView.placeholder = joinedPlaceHolderString
+        
+//        if let backgroundColor = ThemeManager.value(for: "Global.barTintColor") as? String,
+//            let foregroundColor = ThemeManager.value(for: "Global.placeholderColor") as? String {
+//            if let uiTextFieldStringAttributes = [
+//                NSAttributedStringKey.backgroundColor: UIColor.from(hex: backgroundColor),
+//                NSAttributedStringKey.foregroundColor: UIColor.from(hex: foregroundColor)
+//                ] as? [NSAttributedStringKey : UIColor] {
+//                textView.attributedText = NSAttributedString(string:joinedPlaceHolderString, attributes: uiTextFieldStringAttributes)
+//            }
+//        }
+        
+//        let numberToolbar = UIToolbar(frame: CGRect(0, 0, self.view.frame.size.width, 50))
+        let numberToolbar = UIToolbar.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 50))
+//        numberToolbar.barStyle = .default
+//        numberToolbar.theme_backgroundColor = "Global.backgroundColor"
+        numberToolbar.theme_barStyle = "Global.toolbarStyle"
+        numberToolbar.theme_tintColor = "Global.barTextColor"
+        
+        numberToolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(image: #imageLiteral(resourceName: "dv_uitoolbar_chevron_down_icon"), style: .plain, target: self, action: #selector(hideToolbarHandler))
+        ]
+        
+        numberToolbar.sizeToFit()
+        textViewToolbar = numberToolbar
+        textView.inputAccessoryView = textViewToolbar
         
         textView.theme_backgroundColor = "Global.barTintColor"
         textView.theme_textColor = "Global.textColor"
@@ -94,8 +138,12 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         super.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//        UIApplication.shared.statusBarStyle = .lightContent
+        
         UIApplication.shared.theme_setStatusBarStyle("UIStatusBarStyle", animated: true)
+        if textView.isFirstResponder {
+            textView.resignFirstResponder()
+        }
+        
         self.view.endEditing(true)
     }
     
@@ -114,7 +162,28 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
         }
     }
     
-    @objc private func tapGestureHandler() {
+    @objc private func datepickerHandler() {
+        let datePicker = DatePickerDialog()
+        
+        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
+        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+        
+        datePicker.show(setDueDateTitle,
+                        doneButtonTitle: setString,
+                        cancelButtonTitle: cancelString,
+                        defaultDate: Date().endTime()) { [unowned self] (date) in
+                            if let dt = date {
+                                self.data.duedateAt = dt
+                                self.tableView.reloadData()
+                            }
+        }
+    }
+    
+    @objc private func hideToolbarHandler() {
+        if textView.isFirstResponder {
+            textView.resignFirstResponder()
+        }
         self.view.endEditing(true)
     }
     
@@ -127,7 +196,8 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     }
     
     @objc func handleSaveButton() {
-        let project = data.curProject
+//        let project = data.curProject
+        let project = store.editingDVTodotaskItemListPlaceholder
         //        let projectText = project?.title ?? ""
         
         data.rawMultipleTaskText = textView.text
@@ -158,6 +228,9 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
         }
         
         store.processMultipleTodoitemTasks(forProject: project!, todoItemTasksData: data)
+        
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("handleSaveButton-DVMultipleTodoitemtaskItemsVC"), object: nil)
         
         //        let rawmultipletakitemtodoText = textView.text ?? ""
         
@@ -211,6 +284,8 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     
     fileprivate func closeView() {
         let isPresentingInADDMode = presentingViewController is DailyVibesTabBarViewController
+        
+        store.editingDVTodotaskItemListPlaceholder = nil
         
         if isPresentingInADDMode {
             dismiss(animated: true, completion: nil)
@@ -311,7 +386,7 @@ extension DVMultipleTodoitemtaskItemsVC: UITableViewDelegate, UITableViewDataSou
             let projectLabelText = NSLocalizedString("Project", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Project **", comment: "")
             
             cell.textLabel?.text = projectLabelText
-            cell.detailTextLabel?.text = data.curProject?.title
+            cell.detailTextLabel?.text = store.editingDVTodotaskItemListPlaceholder?.title
             
             cell.accessoryType = .disclosureIndicator
         }
@@ -441,8 +516,9 @@ extension DVMultipleTodoitemtaskItemsVC: UITableViewDelegate, UITableViewDataSou
         let section = indexPath.section
         
         if section == 0 {
-            let storyboard = UIStoryboard.init(name: "DVProjectListStoryboard", bundle: nil)
-            let tvc = storyboard.instantiateViewController(withIdentifier: "DVListTableViewController")
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            let tvc = storyboard.instantiateViewController(withIdentifier: "DVListTableViewController")
+            let tvc = storyboard.instantiateViewController(withIdentifier: "ListTableViewController")
             navigationController?.pushViewController(tvc, animated: true)
         }
         
@@ -464,11 +540,19 @@ extension DVMultipleTodoitemtaskItemsVC: UIGestureRecognizerDelegate {
 
 extension DVMultipleTodoitemtaskItemsVC: RegeributedTextViewDelegate {
     
+    public func textViewDidChange(_ textView: UITextView) {
+        if let placeholderLbl = textView.viewWithTag(50) as? UILabel {
+            placeholderLbl.isHidden = textView.text.count > 0
+        }
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let _textView = textView as! RegeributedTextView
-        
+
         if let barTextColor = ThemeManager.value(for: "Global.barTextColor") as? String {
-            _textView.addAttribute("#[a-zA-Z0-9]+", attribute: .textColor(UIColor.from(hex: barTextColor)), values: ["URL": "https://google.com"])
+            _textView.addAttribute(.hashTag, attribute: .textColor(UIColor.from(hex: barTextColor)))
+        } else {
+            _textView.addAttribute(.hashTag, attribute: .bold)
         }
         
         return true

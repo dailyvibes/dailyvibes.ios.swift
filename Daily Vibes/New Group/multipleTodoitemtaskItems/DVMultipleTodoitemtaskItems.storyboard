@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="interactive" text="What is happening?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l3t-PX-p5D" customClass="RegeributedTextView" customModule="Daily_Vibes" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="32" width="375" height="36.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l3t-PX-p5D" customClass="RegeributedTextView" customModule="Daily_Vibes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="36.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PPS-MS-cEp">
-                                <rect key="frame" x="0.0" y="76.5" width="375" height="526.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="558.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="defaultBasicCell" textLabel="1FP-oY-WeA" detailTextLabel="RKM-g7-Uf1" style="IBUITableViewCellStyleValue1" id="VmR-AG-1J8">
@@ -59,7 +59,7 @@
                         <constraints>
                             <constraint firstItem="NFS-o0-KxN" firstAttribute="bottom" secondItem="PPS-MS-cEp" secondAttribute="bottom" id="66P-mv-0ED"/>
                             <constraint firstItem="l3t-PX-p5D" firstAttribute="leading" secondItem="NFS-o0-KxN" secondAttribute="leading" id="85j-eI-MsI"/>
-                            <constraint firstItem="l3t-PX-p5D" firstAttribute="top" secondItem="NFS-o0-KxN" secondAttribute="top" constant="32" id="N52-U0-tbS"/>
+                            <constraint firstItem="l3t-PX-p5D" firstAttribute="top" secondItem="NFS-o0-KxN" secondAttribute="top" id="N52-U0-tbS"/>
                             <constraint firstItem="PPS-MS-cEp" firstAttribute="leading" secondItem="NFS-o0-KxN" secondAttribute="leading" id="OzI-uk-v1c"/>
                             <constraint firstItem="PPS-MS-cEp" firstAttribute="trailing" secondItem="NFS-o0-KxN" secondAttribute="trailing" id="Rfq-jO-4K5"/>
                             <constraint firstItem="NFS-o0-KxN" firstAttribute="trailing" secondItem="l3t-PX-p5D" secondAttribute="trailing" id="dTL-q1-Dd5"/>

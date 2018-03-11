@@ -15,6 +15,7 @@ class NotesInlineTableViewCell: UITableViewCell {
         didSet {
             notesDisplayer.theme_backgroundColor = "Global.barTintColor"
             notesDisplayer.theme_textColor = "Global.textColor"
+            notesDisplayer.theme_tintColor = "Global.textColor"
             notesDisplayer.sizeToFit()
         }
     }
@@ -33,6 +34,16 @@ class NotesInlineTableViewCell: UITableViewCell {
         if let inputText = text {
             let down = Down(markdownString: inputText)
             let attributedStr = try? down.toAttributedString()
+            
+//            if let backgroundColor = ThemeManager.value(for: "Global.barTintColor") as? String,
+//                let foregroundColor = ThemeManager.value(for: "Global.placeholderColor") as? String {
+//                if let uiTextFieldStringAttributes = [
+//                    NSAttributedStringKey.backgroundColor: UIColor.from(hex: backgroundColor),
+//                    NSAttributedStringKey.foregroundColor: UIColor.from(hex: foregroundColor)
+//                    ] as? [NSAttributedStringKey : UIColor] {
+//                    self.notesDisplayer?.attributedText = NSAttributedString(string:joinedPlaceHolderString, attributes: uiTextFieldStringAttributes)
+//                }
+//            }
             
             self.notesDisplayer?.attributedText = attributedStr
         }
