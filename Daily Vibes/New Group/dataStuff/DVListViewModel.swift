@@ -37,6 +37,12 @@ struct DVListViewModel: Codable {
     var listItemCountCompleted: Int = 0
     var listItemCountTotal: Int = 0
     
+    // WARNING: API
+    var synced: Bool? = false
+    var syncedID: String?
+    var syncedBeganAt: Date?
+    var syncedFinishedAt: Date?
+    
     init(uuid: UUID, createdAt: Date, updatedAt: Date, duedateAt: Date?, completedAt: Date?, archivedAt: Date?, title: String?, titleDescription: String?, emoji: String?, color: String?, isDVDefault: Bool?, listItemCountCompleted: Int? = 0, listItemCountTotal: Int? = 0) {
         self.uuid = uuid
         
@@ -78,64 +84,76 @@ struct DVListViewModel: Codable {
         case listItems
         case listItemCountCompleted
         case listItemCountTotal
+        case syncedID = "_id"
+        case syncedBeganAt
+        case syncedFinishedAt
     }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: DVListViewModelCodingKeys.self)
-        
-        self.uuid = try values.decode(UUID.self, forKey: .uuid)
-        self.version = try values.decode(Int.self, forKey: .version)
-        self.versionId = try values.decode(UUID.self, forKey: .versionId)
-        self.versionPrevId = try values.decode(UUID.self, forKey: .versionPrevId)
-        self.createdAt = try values.decode(Date.self, forKey: .createdAt)
-        self.updatedAt = try values.decode(Date.self, forKey: .updatedAt)
-        self.duedateAt = try values.decode(Date.self, forKey: .duedateAt)
-        self.completedAt = try values.decode(Date.self, forKey: .completedAt)
-        self.archivedAt = try values.decode(Date.self, forKey: .archivedAt)
-        self.title = try values.decode(String.self, forKey: .title)
-        self.titleDescription = try values.decode(String.self, forKey: .titleDescription)
-        self.emoji = try values.decode(String.self, forKey: .emoji)
-        self.color = try values.decode(String.self, forKey: .color)
-        self.isFavourite = try values.decode(Bool.self, forKey: .isFavourite)
-        self.isListVisible = try values.decode(Bool.self, forKey: .isListVisible)
-        self.isPublic = try values.decode(Bool.self, forKey: .isPublic)
-        self.isDVDefault = try values.decode(Bool.self, forKey: .isDVDefault)
-        self.listItems = try values.decode([DVTodoItemTaskViewModel].self, forKey: .listItems)
-        self.listItemCountCompleted = try values.decode(Int.self, forKey: .listItemCountCompleted)
-        self.listItemCountTotal = try values.decode(Int.self, forKey: .listItemCountTotal)
-    }
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: DVListViewModelCodingKeys.self)
+//
+//        self.uuid = try values.decode(UUID.self, forKey: .uuid)
+//        self.version = try values.decode(Int.self, forKey: .version)
+//        self.versionId = try values.decode(UUID.self, forKey: .versionId)
+//        self.versionPrevId = try values.decode(UUID.self, forKey: .versionPrevId)
+//        self.createdAt = try values.decode(Date.self, forKey: .createdAt)
+//        self.updatedAt = try values.decode(Date.self, forKey: .updatedAt)
+//        self.duedateAt = try values.decode(Date.self, forKey: .duedateAt)
+//        self.completedAt = try values.decode(Date.self, forKey: .completedAt)
+//        self.archivedAt = try values.decode(Date.self, forKey: .archivedAt)
+//        self.title = try values.decode(String.self, forKey: .title)
+//        self.titleDescription = try values.decode(String.self, forKey: .titleDescription)
+//        self.emoji = try values.decode(String.self, forKey: .emoji)
+//        self.color = try values.decode(String.self, forKey: .color)
+//        self.isFavourite = try values.decode(Bool.self, forKey: .isFavourite)
+//        self.isListVisible = try values.decode(Bool.self, forKey: .isListVisible)
+//        self.isPublic = try values.decode(Bool.self, forKey: .isPublic)
+//        self.isDVDefault = try values.decode(Bool.self, forKey: .isDVDefault)
+//        self.listItems = try values.decode([DVTodoItemTaskViewModel].self, forKey: .listItems)
+//        self.listItemCountCompleted = try values.decode(Int.self, forKey: .listItemCountCompleted)
+//        self.listItemCountTotal = try values.decode(Int.self, forKey: .listItemCountTotal)
+//
+//        self.syncedID = try values.decode(String.self, forKey: .syncedID)
+//        self.syncedBeganAt = try values.decodeIfPresent(Date.self, forKey: .syncedBeganAt)
+//        self.syncedFinishedAt = try values.decodeIfPresent(Date.self, forKey: .syncedFinishedAt)
+//    }
     
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: DVListViewModelCodingKeys.self)
-        
-        try container.encode(uuid, forKey: .uuid)
-        try container.encode(version, forKey: .version)
-        try container.encode(versionId, forKey: .versionId)
-        try container.encode(versionPrevId, forKey: .versionPrevId)
-        try container.encode(createdAt, forKey: .createdAt)
-        try container.encode(updatedAt, forKey: .updatedAt)
-        try container.encode(duedateAt, forKey: .duedateAt)
-        try container.encode(completedAt, forKey: .completedAt)
-        try container.encode(archivedAt, forKey: .archivedAt)
-        try container.encode(title, forKey: .title)
-        try container.encode(titleDescription, forKey: .titleDescription)
-        try container.encode(emoji, forKey: .emoji)
-        try container.encode(color, forKey: .color)
-        try container.encode(isFavourite, forKey: .isFavourite)
-        try container.encode(isListVisible, forKey: .isListVisible)
-        try container.encode(isPublic, forKey: .isPublic)
-        try container.encode(isDVDefault, forKey: .isDVDefault)
-        
-        var listArray = container.nestedUnkeyedContainer(forKey: .listItems)
-        
-        try listItems?.forEach {
-            try listArray.encode($0)
-        }
-        
-//        try container.encode(listItems, forKey: .listItems)
-        try container.encode(listItemCountCompleted, forKey: .listItemCountCompleted)
-        try container.encode(listItemCountTotal, forKey: .listItemCountTotal)
-    }
+//    public func encode(to encoder: Encoder) throws {
+//        var container = encoder.container(keyedBy: DVListViewModelCodingKeys.self)
+//        
+//        try container.encode(uuid, forKey: .uuid)
+//        try container.encode(version, forKey: .version)
+//        try container.encode(versionId, forKey: .versionId)
+//        try container.encode(versionPrevId, forKey: .versionPrevId)
+//        try container.encode(createdAt, forKey: .createdAt)
+//        try container.encode(updatedAt, forKey: .updatedAt)
+//        try container.encode(duedateAt, forKey: .duedateAt)
+//        try container.encode(completedAt, forKey: .completedAt)
+//        try container.encode(archivedAt, forKey: .archivedAt)
+//        try container.encode(title, forKey: .title)
+//        try container.encode(titleDescription, forKey: .titleDescription)
+//        try container.encode(emoji, forKey: .emoji)
+//        try container.encode(color, forKey: .color)
+//        try container.encode(isFavourite, forKey: .isFavourite)
+//        try container.encode(isListVisible, forKey: .isListVisible)
+//        try container.encode(isPublic, forKey: .isPublic)
+//        try container.encode(isDVDefault, forKey: .isDVDefault)
+//        
+//        var listArray = container.nestedUnkeyedContainer(forKey: .listItems)
+//        
+//        try listItems?.forEach {
+////            try listArray.encode($0)
+//            try listArray.encode($0.uuid)
+//        }
+//        
+////        try container.encode(listItems, forKey: .listItems)
+//        try container.encode(listItemCountCompleted, forKey: .listItemCountCompleted)
+//        try container.encode(listItemCountTotal, forKey: .listItemCountTotal)
+//        
+//        try container.encodeIfPresent(syncedID, forKey: .syncedID)
+//        try container.encodeIfPresent(syncedBeganAt, forKey: .syncedBeganAt)
+//        try container.encodeIfPresent(syncedFinishedAt, forKey: .syncedFinishedAt)
+//    }
 }
 
 extension DVListViewModel {
@@ -158,6 +176,21 @@ extension DVListViewModel {
         
         list.managedObjectContext?.performAndWait {
             converted = DVListViewModel.init(uuid: list.uuid!, createdAt: list.createdAt!, updatedAt: list.updatedAt!, duedateAt: list.duedateAt, completedAt: list.completedAt, archivedAt: list.archivedAt, title: list.title, titleDescription: list.titleDescription, emoji: list.emoji, color: list.color, isDVDefault: list.isDVDefault)
+            converted?.synced = list.synced
+            converted?.syncedID = list.syncedID
+            converted?.syncedBeganAt = list.syncedBeganAt
+            converted?.syncedFinishedAt = list.syncedFinishedAt
+//            if let projects = list.listItems?.allObjects, projects.count > 0 {
+//                var data = [DVTodoItemTaskViewModel]()
+//                
+//                for project in projects {
+////                    converted?.listItems?.append(DVTodoItemTaskViewModel.fromCoreData(todoItem: project as! TodoItem))
+//                    let todoitemtask = project as! TodoItem
+//                    data.append(DVTodoItemTaskViewModel.fromCoreData(todoItem: todoitemtask))
+//                }
+//                
+//                converted?.listItems = data
+//            }
         }
         
         return converted!

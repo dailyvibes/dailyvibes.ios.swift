@@ -311,6 +311,7 @@
 		D9BE3F512023641700C7787E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		D9BE3F522023641700C7787E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9C608EA201757040064F1F9 /* DVMainTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVMainTVC.swift; sourceTree = "<group>"; };
+		D9C73AC520558F2500D30570 /* DVModelv07.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DVModelv07.xcdatamodel; sourceTree = "<group>"; };
 		D9CB36422034B752005004B3 /* about.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = about.md; sourceTree = "<group>"; };
 		D9CB36442034B757005004B3 /* acknowledgement.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = acknowledgement.md; sourceTree = "<group>"; };
 		D9CB36462034B75C005004B3 /* support.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = support.md; sourceTree = "<group>"; };
@@ -1630,6 +1631,7 @@
 		D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9C73AC520558F2500D30570 /* DVModelv07.xcdatamodel */,
 				D9B9F53A2044C79E00020608 /* DVModelv06.xcdatamodel */,
 				D9CF98DE20402789006FEB98 /* DVModelv05.xcdatamodel */,
 				D9AA9DF3201E04DC00E22AF7 /* DVModelv04.xcdatamodel */,
@@ -1637,7 +1639,7 @@
 				D96114692006FB4900BFE753 /* DailyVibesModelv02.xcdatamodel */,
 				D9E2CDC41FB41A110084EB12 /* Model.xcdatamodel */,
 			);
-			currentVersion = D9B9F53A2044C79E00020608 /* DVModelv06.xcdatamodel */;
+			currentVersion = D9C73AC520558F2500D30570 /* DVModelv07.xcdatamodel */;
 			path = DailyVibesModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

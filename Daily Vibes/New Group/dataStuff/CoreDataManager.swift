@@ -79,24 +79,6 @@ final class CoreDataManager {
         }
     }
     
-    //    @objc dynamic public var duedateDaySectionIdentifier: String? {
-    //        let currentCalendar = Calendar.current
-    //        self.willAccessValue(forKey: "duedateDaySectionIdentifier")
-    //        var sectionIdentifier = String()
-    //
-    //        if let date = self.duedateAt as Date? {
-    //            let day = currentCalendar.component(.day, from: date)
-    //            let month = currentCalendar.component(.month, from: date)
-    //            let year = currentCalendar.component(.year, from: date)
-    //
-    //            // Construct integer from year, month, day. Convert to string.
-    //            sectionIdentifier = "\(year * 10000 + month * 100 + day)"
-    //        }
-    //        self.didAccessValue(forKey: "duedateDaySectionIdentifier")
-    //
-    //        return sectionIdentifier
-    //    }
-    
     var dvfilter: DVSectionVMStatus = .all
     var filteredTag: DVTagViewModel?
     var filteredProjectList: DVListViewModel?
@@ -210,6 +192,15 @@ final class CoreDataManager {
             taskToArchive.setValue(curDate, forKey: "archivedAt")
             try! context.save()
             
+            do {
+                let result = DVTodoItemTaskViewModel.fromCoreData(todoItem: taskToArchive)
+                result.dvPostSync(for: taskToArchive)
+                try self.context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            
             // TODO - workaround
             self.dvTodoItemTaskData = getGroupedTodoItemTasks(ascending: false)!
             
@@ -229,6 +220,15 @@ final class CoreDataManager {
             taskToArchive.setValue(curDate, forKey: "completedAt")
             try! context.save()
             
+            do {
+                let result = DVTodoItemTaskViewModel.fromCoreData(todoItem: taskToArchive)
+                result.dvPostSync(for: taskToArchive)
+                try self.context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            
             // TODO - workaround
             self.dvTodoItemTaskData = getGroupedTodoItemTasks(ascending: false)!
             
@@ -241,42 +241,26 @@ final class CoreDataManager {
     func destroyTodoItemTask(withUUID uuid:UUID?) -> Bool {
         do {
             let todo = try findTodoItemTask(withUUID: uuid!)
+            let dvRemoteSyncID = todo.syncedID
             
             context.delete(todo)
             saveContext()
             
-            if let identifier = uuid {
-                let urlString = "http://localhost:1337/todoitemtask/\(identifier)"
-                let url = URL(string: urlString)!
-                var request = URLRequest(url: url)
-                request.httpMethod = "DELETE"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                
-                // NEED A SYNC ID
-                // lastSyncedAt
-                // syncVersion
-                // syncVersionPrev
-                
-//                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-//                    if let error = error {
-//                        print("error: \(error)")
-//                        return
-//                    }
-//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                        print ("server error")
-//                        return
-//                    }
-//
-//                    if let mimeType = response.mimeType,
-//                        mimeType == "application/json",
-//                        let data = data,
-//                        let dataString = String(data: data, encoding: .utf8) {
-//                        print("data: \(dataString)")
-//                    } else {
-//                        print("nope")
-//                    }
-//                })
-//                task.resume()
+            let center = UNUserNotificationCenter.current()
+            center.getPendingNotificationRequests(completionHandler: { (requests) in
+                for request in requests {
+                    if let _uuid = uuid {
+                        let identifier = "UYLLocalNotification-\(_uuid)"
+                        if request.identifier.contains(identifier) {
+                            print("removed notification: \(identifier)")
+                            center.removePendingNotificationRequests(withIdentifiers: [identifier])
+                        }
+                    }
+                }
+            })
+            
+            if let identifier = dvRemoteSyncID {
+                DVTodoItemTaskViewModel.dvDeleteSync(for: identifier)
             }
             
             // TODO - workaround
@@ -390,26 +374,26 @@ final class CoreDataManager {
                 // syncVersion
                 // syncVersionPrev
                 
-//                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-//                    if let error = error {
-//                        print("error: \(error)")
-//                        return
-//                    }
-//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                        print ("server error")
-//                        return
-//                    }
-//
-//                    if let mimeType = response.mimeType,
-//                        mimeType == "application/json",
-//                        let data = data,
-//                        let dataString = String(data: data, encoding: .utf8) {
-//                        print("data: \(dataString)")
-//                    } else {
-//                        print("nope")
-//                    }
-//                })
-//                task.resume()
+                //                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                //                    if let error = error {
+                //                        print("error: \(error)")
+                //                        return
+                //                    }
+                //                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                //                        print ("server error")
+                //                        return
+                //                    }
+                //
+                //                    if let mimeType = response.mimeType,
+                //                        mimeType == "application/json",
+                //                        let data = data,
+                //                        let dataString = String(data: data, encoding: .utf8) {
+                //                        print("data: \(dataString)")
+                //                    } else {
+                //                        print("nope")
+                //                    }
+                //                })
+                //                task.resume()
             }
             
             // TODO - workaround
@@ -441,39 +425,39 @@ final class CoreDataManager {
             context.delete(tag)
             saveContext()
             
-            if let identifier = uuid {
-                let urlString = "http://localhost:1337/tag/\(identifier)"
-                let url = URL(string: urlString)!
-                var request = URLRequest(url: url)
-                request.httpMethod = "DELETE"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                
-                // NEED A SYNC ID
-                // lastSyncedAt
-                // syncVersion
-                // syncVersionPrev
-                
-//                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-//                    if let error = error {
-//                        print("error: \(error)")
-//                        return
-//                    }
-//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                        print ("server error")
-//                        return
-//                    }
+//            if let identifier = uuid {
+//                let urlString = "http://localhost:1337/tag/\(identifier)"
+//                let url = URL(string: urlString)!
+//                var request = URLRequest(url: url)
+//                request.httpMethod = "DELETE"
+//                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 //
-//                    if let mimeType = response.mimeType,
-//                        mimeType == "application/json",
-//                        let data = data,
-//                        let dataString = String(data: data, encoding: .utf8) {
-//                        print("data: \(dataString)")
-//                    } else {
-//                        print("nope")
-//                    }
-//                })
-//                task.resume()
-            }
+//                // NEED A SYNC ID
+//                // lastSyncedAt
+//                // syncVersion
+//                // syncVersionPrev
+//
+//                //                let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//                //                    if let error = error {
+//                //                        print("error: \(error)")
+//                //                        return
+//                //                    }
+//                //                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                //                        print ("server error")
+//                //                        return
+//                //                    }
+//                //
+//                //                    if let mimeType = response.mimeType,
+//                //                        mimeType == "application/json",
+//                //                        let data = data,
+//                //                        let dataString = String(data: data, encoding: .utf8) {
+//                //                        print("data: \(dataString)")
+//                //                    } else {
+//                //                        print("nope")
+//                //                    }
+//                //                })
+//                //                task.resume()
+//            }
             
             // TODO - workaround
             self.dvTodoItemTaskData = getGroupedTodoItemTasks(ascending: false)!
@@ -526,54 +510,79 @@ final class CoreDataManager {
     func createTag(withLabel title: String) -> DVTagViewModel {
         let tag = storeTag(withLabel: title)
         
-        // TODO - workaround
-        self.dvTodoItemTaskData = getGroupedTodoItemTasks(ascending: false)!
-        fetchTagsViewModel()
-        
         let result = DVTagViewModel.fromCoreData(tag: tag)
         
         do {
             let jsonEncoder = JSONEncoder()
-            jsonEncoder.outputFormatting = .prettyPrinted
             jsonEncoder.dateEncodingStrategy = .iso8601
+            
             let jsonData = try jsonEncoder.encode(result)
             let jsonString = String(data: jsonData, encoding: .utf8)
             
             if let convertedStr = jsonString {
                 print(convertedStr)
-//                let urlString = "http://localhost:1337/tag"
-//                let url = URL(string: urlString)!
-//                var request = URLRequest(url: url)
-//                request.httpMethod = "POST"
-//                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
-//
-//                    if let error = error {
-//                        print("error: \(error)")
-//                        return
-//                    }
-//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                        print ("server error")
-//                        return
-//                    }
-//
-//                    if let mimeType = response.mimeType,
-//                        mimeType == "application/json",
-//                        let data = data,
-//                        let dataString = String(data: data, encoding: .utf8) {
-//                        print("data: \(dataString)")
-//                    } else {
-//                        print("nope")
-//                    }
-//
-//                }
-//                task.resume()
+                let urlString = "http://localhost:8000/tags"
+                let url = URL(string: urlString)!
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                //                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                //                UIAp   laura code boop bopp beep code laura laura
+                
+                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+                    
+                    if let error = error {
+                        print("error: \(error)")
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                        print ("server error")
+                        return
+                    }
+                    
+                    if let mimeType = response.mimeType,
+                        mimeType == "application/json",
+                        let data = data,
+                        let dataString = String(data: data, encoding: .utf8) {
+                        
+                        do {
+                            let decoder = JSONDecoder()
+                            decoder.dateDecodingStrategy = .iso8601
+                            
+                            print("data: \(dataString)")
+                            
+                            let todoitemtaskServerdata = try decoder.decode(DVTagViewModel.self, from: data)
+                            
+                            tag.syncedID = todoitemtaskServerdata.syncedID
+                            tag.synced = true
+                            tag.syncedFinishedAt = Date()
+                            
+                            try! self.context.save()
+                        } catch let error as NSError {
+                            fatalError("""
+                                Domain: \(error.domain)
+                                Code: \(error.code)
+                                Description: \(error.localizedDescription)
+                                Failure Reason: \(error.localizedFailureReason ?? "")
+                                Suggestions: \(error.localizedRecoverySuggestion ?? "")
+                                """)
+                        }
+                    } else {
+                        print("nope")
+                    }
+                    
+                }
+                task.resume()
             }
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+        
+        // TODO - workaround
+        self.dvTodoItemTaskData = getGroupedTodoItemTasks(ascending: false)!
+        fetchTagsViewModel()
         
         return result
     }
@@ -651,7 +660,74 @@ final class CoreDataManager {
     
     func createProject(withTitle title: String, withDescription titleDescription: String?) -> DVListViewModel {
         let newProject = storeDailyVibesList(withTitle: title, withDescription: titleDescription)
-        return DVListViewModel.fromCoreData(list: newProject)
+        
+        let result = DVListViewModel.fromCoreData(list: newProject)
+        
+        do {
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.dateEncodingStrategy = .iso8601
+            
+            let jsonData = try jsonEncoder.encode(result)
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            
+            if let convertedStr = jsonString {
+                let urlString = "http://localhost:8000/projects"
+                let url = URL(string: urlString)!
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+                    
+                    if let error = error {
+                        print("error: \(error)")
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                        print ("server error")
+                        return
+                    }
+                    
+                    if let mimeType = response.mimeType,
+                        mimeType == "application/json",
+                        let data = data,
+                        let dataString = String(data: data, encoding: .utf8) {
+                        
+                        do {
+                            let decoder = JSONDecoder()
+                            decoder.dateDecodingStrategy = .iso8601
+                            
+                            print("data: \(dataString)")
+                            
+                            let todoitemtaskServerdata = try decoder.decode(DVListViewModel.self, from: data)
+                            
+                            newProject.syncedID = todoitemtaskServerdata.syncedID
+                            newProject.synced = true
+                            newProject.syncedFinishedAt = Date()
+                            
+                            try! self.context.save()
+                        } catch let error as NSError {
+                            fatalError("""
+                                Domain: \(error.domain)
+                                Code: \(error.code)
+                                Description: \(error.localizedDescription)
+                                Failure Reason: \(error.localizedFailureReason ?? "")
+                                Suggestions: \(error.localizedRecoverySuggestion ?? "")
+                                """)
+                        }
+                    } else {
+                        print("nope")
+                    }
+                    
+                }
+                task.resume()
+            }
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        
+        return result
     }
     
     func storeDailyVibesNote(withTitle title:String?, withText content:String?) -> DVNoteViewModel {
@@ -670,51 +746,77 @@ final class CoreDataManager {
         saveContext()
         
         // TODO - workaround
-        self.dvTodoItemTaskData = getGroupedTodoItemTasks(ascending: false)!
         let result = DVNoteViewModel.fromCoreData(note: newNote)
         
         do {
             let jsonEncoder = JSONEncoder()
-            jsonEncoder.outputFormatting = .prettyPrinted
             jsonEncoder.dateEncodingStrategy = .iso8601
+            
             let jsonData = try jsonEncoder.encode(result)
             let jsonString = String(data: jsonData, encoding: .utf8)
             
-//            if let convertedStr = jsonString {
-//                print(convertedStr)
-//                let urlString = "http://localhost:1337/note"
-//                let url = URL(string: urlString)!
-//                var request = URLRequest(url: url)
-//                request.httpMethod = "POST"
-//                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
-//
-//                    if let error = error {
-//                        print("error: \(error)")
-//                        return
-//                    }
-//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                        print ("server error")
-//                        return
-//                    }
-//
-//                    if let mimeType = response.mimeType,
-//                        mimeType == "application/json",
-//                        let data = data,
-//                        let dataString = String(data: data, encoding: .utf8) {
-//                        print("data: \(dataString)")
-//                    } else {
-//                        print("nope")
-//                    }
-//
-//                }
-//                task.resume()
-//            }
+            if let convertedStr = jsonString {
+                print(convertedStr)
+                let urlString = "http://localhost:8000/notes"
+                let url = URL(string: urlString)!
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                //                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                //                UIAp   laura code boop bopp beep code laura laura
+                
+                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+                    
+                    if let error = error {
+                        print("error: \(error)")
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                        print ("server error")
+                        return
+                    }
+                    
+                    if let mimeType = response.mimeType,
+                        mimeType == "application/json",
+                        let data = data,
+                        let dataString = String(data: data, encoding: .utf8) {
+                        
+                        do {
+                            let decoder = JSONDecoder()
+                            decoder.dateDecodingStrategy = .iso8601
+                            
+                            print("data: \(dataString)")
+                            
+                            let todoitemtaskServerdata = try decoder.decode(DVNoteViewModel.self, from: data)
+                            
+                            newNote.syncedID = todoitemtaskServerdata.syncedID
+                            newNote.synced = true
+                            newNote.syncedFinishedAt = Date()
+                            
+                            try! self.context.save()
+                        } catch let error as NSError {
+                            fatalError("""
+                                Domain: \(error.domain)
+                                Code: \(error.code)
+                                Description: \(error.localizedDescription)
+                                Failure Reason: \(error.localizedFailureReason ?? "")
+                                Suggestions: \(error.localizedRecoverySuggestion ?? "")
+                                """)
+                        }
+                    } else {
+                        print("nope")
+                    }
+                    
+                }
+                task.resume()
+            }
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+        
+        self.dvTodoItemTaskData = getGroupedTodoItemTasks(ascending: false)!
         
         return result
     }
@@ -743,42 +845,42 @@ final class CoreDataManager {
             
             result = DVNoteViewModel.fromCoreData(note: note!)
             
-            let jsonEncoder = JSONEncoder()
-            jsonEncoder.outputFormatting = .prettyPrinted
-            jsonEncoder.dateEncodingStrategy = .iso8601
-            let jsonData = try jsonEncoder.encode(result)
-//            let jsonString = String(data: jsonData, encoding: .utf8)
+//            let jsonEncoder = JSONEncoder()
+//            jsonEncoder.outputFormatting = .prettyPrinted
+//            jsonEncoder.dateEncodingStrategy = .iso8601
+//            let jsonData = try jsonEncoder.encode(result)
+            //            let jsonString = String(data: jsonData, encoding: .utf8)
             
-//            if let identifier = result?.uuid {
-//                let urlString = "http://localhost:1337/note/\(identifier)"
-//                let url = URL(string: urlString)!
-//                var request = URLRequest(url: url)
-//                request.httpMethod = "PUT"
-//                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
-//
-//                    if let error = error {
-//                        print("error: \(error)")
-//                        return
-//                    }
-//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                        print ("server error")
-//                        return
-//                    }
-//
-//                    if let mimeType = response.mimeType,
-//                        mimeType == "application/json",
-//                        let data = data,
-//                        let dataString = String(data: data, encoding: .utf8) {
-//                        print("data: \(dataString)")
-//                    } else {
-//                        print("nope")
-//                    }
-//
-//                }
-//                task.resume()
-//            }
+            //            if let identifier = result?.uuid {
+            //                let urlString = "http://localhost:1337/note/\(identifier)"
+            //                let url = URL(string: urlString)!
+            //                var request = URLRequest(url: url)
+            //                request.httpMethod = "PUT"
+            //                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            //
+            //                let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+            //
+            //                    if let error = error {
+            //                        print("error: \(error)")
+            //                        return
+            //                    }
+            //                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+            //                        print ("server error")
+            //                        return
+            //                    }
+            //
+            //                    if let mimeType = response.mimeType,
+            //                        mimeType == "application/json",
+            //                        let data = data,
+            //                        let dataString = String(data: data, encoding: .utf8) {
+            //                        print("data: \(dataString)")
+            //                    } else {
+            //                        print("nope")
+            //                    }
+            //
+            //                }
+            //                task.resume()
+            //            }
             
         } catch {
             // apparently we did not find it... that is okay just make a new note then
@@ -793,7 +895,6 @@ final class CoreDataManager {
     
     func getTodoItemTasks(ascending: Bool = false, itemDateSort: ItemDateSort = .createdAt) -> [DVTodoItemTaskViewModel]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TodoItem")
-        
         let customItemDateSort = NSSortDescriptor(key: itemDateSort.description, ascending: ascending)
         
         fetchRequest.sortDescriptors = [customItemDateSort]
@@ -807,14 +908,9 @@ final class CoreDataManager {
     }
     
     func matches(for regex: String, in text: String) -> [String] {
-        
         do {
             let regex = try NSRegularExpression(pattern: regex)
-            let results = regex.matches(in: text,
-                                        range: NSRange(text.startIndex..., in: text))
-            //            return results.map {
-            //                String(text[Range($0.range, in: text)!])
-            //            }
+            let results = regex.matches(in: text, range: NSRange(text.startIndex..., in: text))
             return results.flatMap {
                 Range($0.range, in: text).map { String(text[$0]) }
             }
@@ -832,22 +928,17 @@ final class CoreDataManager {
                 for dataItem in cookedData {
                     if let text = dataItem.text {
                         let words = text.components(separatedBy: " ")
-                        
-                        let tags = words.filter { (word) -> Bool in
-                            word.hasPrefix("#")
-                        }
-                        
+                        let tags = words.filter { word in word.hasPrefix("#") }
                         let todo = TodoItem(context: context)
+                        
                         todo.id = UUID.init()
                         todo.todoItemText = text
-                        
                         todo.isNew = false
                         todo.createdAt = curDate
                         todo.updatedAt = curDate
                         
                         if let parsedDueDate = dataItem.dueDate {
                             todo.duedateAt = parsedDueDate
-                            
                             todo.isRemindable = dataItem.isRemindable
                             
                             let content = UNMutableNotificationContent()
@@ -856,19 +947,14 @@ final class CoreDataManager {
                             content.sound = UNNotificationSound.default()
                             
                             let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: parsedDueDate)
-                            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
-                                                                        repeats: false)
+                            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
                             
                             if let uuid = todo.id {
                                 let identifier = "UYLLocalNotification-\(uuid)"
                                 let center = UNUserNotificationCenter.current()
-                                let request = UNNotificationRequest(identifier: identifier,
-                                                                    content: content, trigger: trigger)
+                                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
                                 center.add(request, withCompletionHandler: { (error) in
-                                    if error != nil {
-                                        // Something went wrong
-                                        print("We had an error in processMultipleTodoitemTasks")
-                                    }
+                                    if error != nil { print("We had an error in processMultipleTodoitemTasks") }
                                 })
                             }
                         }
@@ -892,13 +978,20 @@ final class CoreDataManager {
                             }
                         }
                         
-//                        let list = try findList(withUUID: todoItemTasksData.curProject?.uuid)
                         let list = try findList(withUUID: self.editingDVTodotaskItemListPlaceholder?.uuid)
                         todo.list = list
                         list.addToListItems(todo)
                         try! context.save()
+                        
+                        do {
+                            let result = DVTodoItemTaskViewModel.fromCoreData(todoItem: todo)
+                            result.dvPostSync(for: todo)
+                            try self.context.save()
+                        } catch {
+                            let nserror = error as NSError
+                            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                        }
                     }
-                    //                    let tags = text.regex
                 }
             }
             
@@ -997,10 +1090,12 @@ final class CoreDataManager {
         if editingDVTodotaskItem != nil {
             do {
                 let placeholderUUIDString = UUID.init(uuidString: "00000000-0000-0000-0000-000000000000")
+                let _todo: TodoItem?
                 
                 if let editingTodoTask = editingDVTodotaskItem, editingTodoTask.isNew {
                     // process a new todo
                     let todo = TodoItem(context: context)
+                    _todo = todo
                     todo.id = UUID.init()
                     todo.todoItemText = editingDVTodotaskItem?.todoItemText
                     
@@ -1090,6 +1185,7 @@ final class CoreDataManager {
                     // process an existing todo
                     
                     let todo = try findTodoItemTask(withUUID: editingDVTodotaskItem?.uuid)
+                    _todo = todo
                     let curDate = Date()
                     
                     todo.todoItemText = editingDVTodotaskItem?.todoItemText
@@ -1183,55 +1279,14 @@ final class CoreDataManager {
                 
                 saveContext()
                 
-                if let isNew = editingDVTodotaskItem?.isNew, isNew {
-                    print("new task")
-                    //                    if let bodyText = editingDVTodotaskItem?.todoItemText {
-                    //                        let tokenId = "54b305fa3b48ba3d36a12fb5"
-                    //                        let urlString = "https://wip.chat/graphql"
-                    //
-                    ////                        let bodyText = "create a #dailyvibes"
-                    //                        let createQuery = "mutation ($todo: TodoInput!) {\n  createTodo(input: $todo) {\n    id\n    body\n    created_at\n    completed_at\n    product {\n      hashtag\n      url\n      id\n      __typename\n    }\n    __typename\n  }\n}\n"
-                    //                        let syncData = WIPSyncData(variables: WIPTodoItemSyncData(todo: WIPTodoItem(body: bodyText)),
-                    //                                                   query: createQuery)
-                    //
-                    //                        let encoder = JSONEncoder()
-                    //                        //encoder.outputFormatting = .prettyPrinted
-                    //
-                    //                        guard let uploadData = try? encoder.encode(syncData) else {
-                    //                            fatalError("OOPS")
-                    //                        }
-                    //
-                    //
-                    //                        let url = URL(string: urlString)!
-                    //                        var request = URLRequest(url: url)
-                    //                        request.httpMethod = "POST"
-                    //                        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    //                        request.setValue("Bearer \(tokenId)", forHTTPHeaderField: "Authorization")
-                    //
-                    //
-                    //                        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
-                    //
-                    //                            if let error = error {
-                    //                                print("error: \(error)")
-                    //                                return
-                    //                            }
-                    //                            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                    //                                print ("server error")
-                    //                                return
-                    //                            }
-                    //
-                    //                            if let mimeType = response.mimeType,
-                    //                                mimeType == "application/json",
-                    //                                let data = data,
-                    //                                let dataString = String(data: data, encoding: .utf8) {
-                    //                                print("data: \(dataString)")
-                    //                            } else {
-                    //                                print("nope")
-                    //                            }
-                    //
-                    //                        }
-                    //                        task.resume()
-                    //                    }
+                do {
+                    guard let todo = _todo else { fatalError() }
+                    let result = DVTodoItemTaskViewModel.fromCoreData(todoItem: todo)
+                    result.dvPostSync(for: todo)
+                    try self.context.save()
+                } catch {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                 }
                 
                 editingDVTodotaskItem = nil
@@ -1568,9 +1623,7 @@ final class CoreDataManager {
     
     func getCompletedTodoItemTasks(ascending: Bool = false) -> [DVTodoItemTaskViewModel]? {
         let all = getTodoItemTasks(ascending: ascending)
-        let result = all?.filter { todoItem in
-            return todoItem.isCompleted == true
-        }
+        let result = all?.filter { todoItem in todoItem.isCompleted == true }
         return result
     }
     

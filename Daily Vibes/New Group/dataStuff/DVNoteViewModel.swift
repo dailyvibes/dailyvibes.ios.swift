@@ -23,6 +23,12 @@ struct DVNoteViewModel: Codable {
     var isFavourite: Bool = false
     var dvTodoItemTaskViewModelUUID: UUID?
     
+    // WARNING: API
+    var synced: Bool? = false
+    var syncedID: String?
+    var syncedBeganAt: Date?
+    var syncedFinishedAt: Date?
+    
     init(uuid: UUID, title: String?, content: String?, createdAt: Date, updatedAt: Date, completedAt: Date?, archivedAt: Date?, dvTodoItemTaskViewModelUUID: UUID?) {
         self.uuid = uuid
         self.title = title
@@ -49,39 +55,49 @@ struct DVNoteViewModel: Codable {
         case isPublic
         case isFavourite
         case dvTodoItemTaskViewModelUUID
+        case syncedID = "_id"
+        case syncedBeganAt
+        case syncedFinishedAt
     }
     
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.uuid = try values.decode(UUID.self, forKey: .uuid)
-        self.title = try values.decode(String.self, forKey: .title)
-        self.content = try values.decode(String.self, forKey: .content)
-        self.createdAt = try values.decode(Date.self, forKey: .createdAt)
-        self.updatedAt = try values.decode(Date.self, forKey: .updatedAt)
-        self.completedAt = try values.decode(Date.self, forKey: .completedAt)
-        self.archivedAt = try values.decode(Date.self, forKey: .archivedAt)
-        self.completedAt = try values.decode(Date.self, forKey: .completedAt)
-        self.archivedAt = try values.decode(Date.self, forKey: .archivedAt)
-        self.isPublic = try values.decode(Bool.self, forKey: .isPublic)
-        self.isFavourite = try values.decode(Bool.self, forKey: .isFavourite)
-        self.dvTodoItemTaskViewModelUUID = try values.decodeIfPresent(UUID.self, forKey: .dvTodoItemTaskViewModelUUID)
-    }
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(uuid, forKey: .uuid)
-        try container.encode(title, forKey: .title)
-        try container.encode(content, forKey: .content)
-        try container.encode(version, forKey: .version)
-        try container.encode(createdAt, forKey: .createdAt)
-        try container.encode(updatedAt, forKey: .updatedAt)
-        try container.encode(completedAt, forKey: .completedAt)
-        try container.encode(archivedAt, forKey: .archivedAt)
-        try container.encode(isPublic, forKey: .isPublic)
-        try container.encode(isFavourite, forKey: .isFavourite)
-        try container.encode(dvTodoItemTaskViewModelUUID, forKey: .dvTodoItemTaskViewModelUUID)
-    }
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//
+//        self.uuid = try values.decode(UUID.self, forKey: .uuid)
+//        self.title = try values.decode(String.self, forKey: .title)
+//        self.content = try values.decode(String.self, forKey: .content)
+//        self.createdAt = try values.decode(Date.self, forKey: .createdAt)
+//        self.updatedAt = try values.decode(Date.self, forKey: .updatedAt)
+//        self.completedAt = try values.decode(Date.self, forKey: .completedAt)
+//        self.archivedAt = try values.decode(Date.self, forKey: .archivedAt)
+//        self.completedAt = try values.decode(Date.self, forKey: .completedAt)
+//        self.archivedAt = try values.decode(Date.self, forKey: .archivedAt)
+//        self.isPublic = try values.decode(Bool.self, forKey: .isPublic)
+//        self.isFavourite = try values.decode(Bool.self, forKey: .isFavourite)
+//        self.dvTodoItemTaskViewModelUUID = try values.decodeIfPresent(UUID.self, forKey: .dvTodoItemTaskViewModelUUID)
+//
+//        self.syncedID = try values.decodeIfPresent(String.self, forKey: .syncedID)
+//        self.syncedBeganAt = try values.decodeIfPresent(Date.self, forKey: .syncedBeganAt)
+//        self.syncedFinishedAt = try values.decodeIfPresent(Date.self, forKey: .syncedFinishedAt)
+//    }
+//    public func encode(to encoder: Encoder) throws {
+//        var container = encoder.container(keyedBy: CodingKeys.self)
+//        
+//        try container.encode(uuid, forKey: .uuid)
+//        try container.encode(title, forKey: .title)
+//        try container.encode(content, forKey: .content)
+//        try container.encode(version, forKey: .version)
+//        try container.encode(createdAt, forKey: .createdAt)
+//        try container.encode(updatedAt, forKey: .updatedAt)
+//        try container.encode(completedAt, forKey: .completedAt)
+//        try container.encode(archivedAt, forKey: .archivedAt)
+//        try container.encode(isPublic, forKey: .isPublic)
+//        try container.encode(isFavourite, forKey: .isFavourite)
+//        try container.encode(dvTodoItemTaskViewModelUUID, forKey: .dvTodoItemTaskViewModelUUID)
+//        try container.encodeIfPresent(syncedID, forKey: .syncedID)
+//        try container.encodeIfPresent(syncedBeganAt, forKey: .syncedBeganAt)
+//        try container.encodeIfPresent(syncedFinishedAt, forKey: .syncedFinishedAt)
+//    }
 }
 
 extension DVNoteViewModel {
@@ -90,6 +106,13 @@ extension DVNoteViewModel {
         note.managedObjectContext?.performAndWait {
             converted = DVNoteViewModel.init(uuid: note.uuid!, title: note.title, content: note.content, createdAt: note.createdAt!, updatedAt: note.updatedAt!, completedAt: note.completedAt, archivedAt: note.archivedAt, dvTodoItemTaskViewModelUUID: nil)
         }
+        if let hasTodoitemtask = note.todoItemTask {
+            converted?.dvTodoItemTaskViewModelUUID = hasTodoitemtask.id
+        }
+        converted?.synced = note.synced
+        converted?.syncedID = note.syncedID
+        converted?.syncedBeganAt = note.syncedBeganAt
+        converted?.syncedFinishedAt = note.syncedFinishedAt
         return converted!
     }
     
