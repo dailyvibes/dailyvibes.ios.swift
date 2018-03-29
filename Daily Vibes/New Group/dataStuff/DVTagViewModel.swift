@@ -29,6 +29,7 @@ struct DVTagViewModel: Codable {
     var syncedID: String?
     var syncedBeganAt: Date?
     var syncedFinishedAt: Date?
+    var syncedDeviceID: String?
     
     init(uuid: UUID, label:String, createdAt:Date, updatedAt: Date) {
         self.uuid = uuid
@@ -56,6 +57,7 @@ struct DVTagViewModel: Codable {
         case syncedID = "_id"
         case syncedBeganAt
         case syncedFinishedAt
+        case syncedDeviceID
     }
     
 //    enum TaggedCodingKeys: String, CodingKey {
@@ -168,10 +170,12 @@ extension DVTagViewModel {
         var converted: DVTagViewModel?
         tag.managedObjectContext?.performAndWait {
             converted = DVTagViewModel(uuid: tag.uuid!, label: tag.label!, createdAt: tag.createdAt!, updatedAt: tag.updatedAt!)
+            
             converted?.synced = tag.synced
             converted?.syncedID = tag.syncedID
             converted?.syncedBeganAt = tag.syncedBeganAt
             converted?.syncedFinishedAt = tag.syncedFinishedAt
+            converted?.syncedDeviceID = tag.syncedDeviceID ?? UIDevice.current.identifierForVendor?.uuidString
         }
 //        if let todos = tag.todos?.allObjects, todos.count > 0 {
 //            for todoitemtask in todos {
@@ -184,6 +188,121 @@ extension DVTagViewModel {
 
 extension DVTagViewModel {
     static func copyWithoutTagged(tag: DVTagViewModel) -> DVTagViewModel {
-        return DVTagViewModel.init(uuid: tag.uuid, label: tag.label, createdAt: tag.createdAt, updatedAt: tag.updatedAt)
+        var result = DVTagViewModel.init(uuid: tag.uuid, label: tag.label, createdAt: tag.createdAt, updatedAt: tag.updatedAt)
+        
+        result.syncedID = tag.syncedID
+        result.synced = tag.synced
+        result.syncedBeganAt = tag.syncedBeganAt
+        result.syncedFinishedAt = tag.syncedFinishedAt
+        result.syncedDeviceID = tag.syncedDeviceID
+        
+        return result
     }
 }
+
+//// MARK: - API
+//extension DVTagViewModel {
+//    fileprivate func dvPostSyncCreateFunc(_ tag:Tag) {
+//        guard syncedDeviceID != nil else { fatalError() }
+//        let urlString = "\(DVConstants.DVTagApi.baseURL)"
+//        
+//        do {
+//            let jsonEncoder = JSONEncoder()
+//            jsonEncoder.dateEncodingStrategy = .iso8601
+//            
+//            let jsonData = try jsonEncoder.encode(self)
+//            let url = URL(string: urlString)!
+//            var request = URLRequest(url: url)
+//            
+//            request.httpMethod = "POST"
+//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//            
+//            let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+//                if let error = error {
+//                    print("error: \(error)")
+//                    return
+//                }
+//                
+//                guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                    print ("server error")
+//                    return
+//                }
+//                
+//                if let mimeType = response.mimeType, mimeType == "application/json", let data = data {
+//                    do {
+//                        let decoder = JSONDecoder()
+//                        decoder.dateDecodingStrategy = .iso8601
+//                        
+//                        let tagServerdata = try decoder.decode(DVTagViewModel.self, from: data)
+//                        
+//                        tag.syncedID = tagServerdata.syncedID
+//                        tag.synced = true
+//                        tag.syncedFinishedAt = Date()
+//                        tag.syncedDeviceID = tagServerdata.syncedDeviceID
+//                        
+//                    } catch let error as NSError {
+//                        fatalError("""
+//                            Domain: \(error.domain)
+//                            Code: \(error.code)
+//                            Description: \(error.localizedDescription)
+//                            Failure Reason: \(error.localizedFailureReason ?? "")
+//                            Suggestions: \(error.localizedRecoverySuggestion ?? "")
+//                            """)
+//                    }
+//                }
+//            }
+//            task.resume()
+//        } catch {
+//            let nserror = error as NSError
+//            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//        }
+//    }
+//    
+//    fileprivate func dvPostSyncPutFunc(_ tag:Tag) {
+//        fatalError("not implemented yet")
+//    }
+//    
+//    func dvPostSync(for tag:Tag) {
+//        let defaults = UserDefaults.standard
+//        if defaults.bool(forKey: "canDVSync") && defaults.bool(forKey: "isDVSyncON") {
+//            if syncedID == nil {
+//                // new item, so make a post
+//                dvPostSyncCreateFunc(tag)
+//            } else {
+//                // old item so make a put
+//                dvPostSyncPutFunc(tag)
+//            }
+//        }
+//    }
+//    
+//    static func dvDeleteSync(for id:String) {
+//        if id.isEmpty { return }
+//        
+//        let defaults = UserDefaults.standard
+//        if defaults.bool(forKey: "canDVSync") && defaults.bool(forKey: "isDVSyncON") {
+//            let urlString = "\(DVConstants.DVTagApi.baseURL)/\(id)"
+//            let url = URL(string: urlString)!
+//            var request = URLRequest(url: url)
+//            
+//            request.httpMethod = "DELETE"
+//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//            
+//            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//                if let error = error {
+//                    print("error: \(error)")
+//                    return
+//                }
+//                guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                    print ("server error")
+//                    return
+//                }
+//                
+//                if let mimeType = response.mimeType, mimeType == "application/json", let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                    print("DELETED! data: \(dataString)")
+//                }
+//            })
+//            task.resume()
+//        }
+//    }
+//}
+

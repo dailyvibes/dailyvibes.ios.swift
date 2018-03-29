@@ -22,6 +22,8 @@
 		D911E0BA2002A17800B739C8 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63C11FC151AF002E4F99 /* Streak.swift */; };
 		D911E0BB2002A1A200B739C8 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */; };
 		D9156E292010DC2300E7F04E /* ThemableBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9156E282010DC2300E7F04E /* ThemableBaseTableViewCell.swift */; };
+		D918B2A72059D04600BD896F /* DVConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D918B2A62059D04600BD896F /* DVConstants.swift */; };
+		D918B2A82059D04600BD896F /* DVConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D918B2A62059D04600BD896F /* DVConstants.swift */; };
 		D91A32421FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */; };
 		D91B56A2204378F500963DB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D99D44131FDD65CA007323FA /* Localizable.strings */; };
 		D9235A811FEC1FBB00386A5F /* DailyVibesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */; };
@@ -54,7 +56,6 @@
 		D98793BE1FFBE2BD0083AAC2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */; };
 		D98AEF27201D07310090CA7A /* DVSectionVMStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98AEF26201D07310090CA7A /* DVSectionVMStatus.swift */; };
 		D98AEF28201D07500090CA7A /* DVSectionVMStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98AEF26201D07310090CA7A /* DVSectionVMStatus.swift */; };
-		D992016A204F9D8800038935 /* WIPSyncData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9920169204F9D8800038935 /* WIPSyncData.swift */; };
 		D99286F620114CB600C9D1FE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99286F520114CB600C9D1FE /* UIColor+Extension.swift */; };
 		D994BA282016260500523957 /* DVCoreSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D994BA272016260500523957 /* DVCoreSectionViewModel.swift */; };
 		D994BA29201627B500523957 /* DVCoreSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D994BA272016260500523957 /* DVCoreSectionViewModel.swift */; };
@@ -127,6 +128,7 @@
 		D9E2CDC51FB41A110084EB12 /* DailyVibesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */; };
 		D9E2EEF02001B88E00858F22 /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E2EEEF2001B88E00858F22 /* SettingsNavigationController.swift */; };
 		D9E2EEF32001B92600858F22 /* Night.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9E2EEF22001B92600858F22 /* Night.plist */; };
+		D9E8ED9720619A4200BD4CE7 /* fakeDataDump-MAR202018.json in Resources */ = {isa = PBXBuildFile; fileRef = D9E8ED9620619A4200BD4CE7 /* fakeDataDump-MAR202018.json */; };
 		D9EA4F9C201F4E52008A627A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D99D44131FDD65CA007323FA /* Localizable.strings */; };
 		D9F0C94A200D5DCA0048BB1D /* ThemableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0C949200D5DCA0048BB1D /* ThemableTableViewController.swift */; };
 		D9F0C94C200D85D60048BB1D /* ThemableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0C94B200D85D60048BB1D /* ThemableViewController.swift */; };
@@ -210,6 +212,7 @@
 		D907539120538AA6002F9A8D /* TextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholder.swift; sourceTree = "<group>"; };
 		D90DED241FEC29DB007E7DAE /* StreaksManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreaksManagerTest.swift; sourceTree = "<group>"; };
 		D9156E282010DC2300E7F04E /* ThemableBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableBaseTableViewCell.swift; sourceTree = "<group>"; };
+		D918B2A62059D04600BD896F /* DVConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVConstants.swift; sourceTree = "<group>"; };
 		D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserPreferencesTVC.swift; sourceTree = "<group>"; };
 		D92A63BF1FC15146002E4F99 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D92A63C11FC151AF002E4F99 /* Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
@@ -237,7 +240,6 @@
 		D97853C3200073A700665B2E /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		D98AEF26201D07310090CA7A /* DVSectionVMStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSectionVMStatus.swift; sourceTree = "<group>"; };
-		D9920169204F9D8800038935 /* WIPSyncData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIPSyncData.swift; sourceTree = "<group>"; };
 		D99286F520114CB600C9D1FE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D994BA272016260500523957 /* DVCoreSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVCoreSectionViewModel.swift; sourceTree = "<group>"; };
 		D994BA2A201645A200523957 /* DVNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVNoteViewModel.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 		D9E2EEEF2001B88E00858F22 /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
 		D9E2EEF22001B92600858F22 /* Night.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Night.plist; sourceTree = "<group>"; };
 		D9E3FE7D1FB9292900785E4B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D9E8ED9620619A4200BD4CE7 /* fakeDataDump-MAR202018.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "fakeDataDump-MAR202018.json"; path = "../../../../../../Documents/dailyvibes.ca/_FakeData/fakeDataDump-MAR202018.json"; sourceTree = "<group>"; };
 		D9F0C949200D5DCA0048BB1D /* ThemableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableTableViewController.swift; sourceTree = "<group>"; };
 		D9F0C94B200D85D60048BB1D /* ThemableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableViewController.swift; sourceTree = "<group>"; };
 		D9F0C94D200D8D4B0048BB1D /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
@@ -453,6 +456,14 @@
 			path = streaks;
 			sourceTree = "<group>";
 		};
+		D918B2A52059D02F00BD896F /* DVSync */ = {
+			isa = PBXGroup;
+			children = (
+				D918B2A62059D04600BD896F /* DVConstants.swift */,
+			);
+			path = DVSync;
+			sourceTree = "<group>";
+		};
 		D92652052034B23600D74F0E /* markdown */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,14 +511,6 @@
 				D972A5D2204528B3003F1F37 /* String+Extension.swift */,
 			);
 			path = extensions;
-			sourceTree = "<group>";
-		};
-		D9920168204F9D7000038935 /* sync */ = {
-			isa = PBXGroup;
-			children = (
-				D9920169204F9D8800038935 /* WIPSyncData.swift */,
-			);
-			path = sync;
 			sourceTree = "<group>";
 		};
 		D99D43FC1FDD5812007323FA /* progress */ = {
@@ -658,6 +661,7 @@
 		D9DC3A1B2002B5BD00D1DCC3 /* dataStuff */ = {
 			isa = PBXGroup;
 			children = (
+				D9E8ED9620619A4200BD4CE7 /* fakeDataDump-MAR202018.json */,
 				D9DC3A1C2002B5DA00D1DCC3 /* CoreDataManager.swift */,
 				D994BA272016260500523957 /* DVCoreSectionViewModel.swift */,
 				D93A90222012940A00228515 /* DVTodoItemTaskViewModel.swift */,
@@ -699,7 +703,7 @@
 		D9EADD6C1FD9EB620040F918 /* features */ = {
 			isa = PBXGroup;
 			children = (
-				D9920168204F9D7000038935 /* sync */,
+				D918B2A52059D02F00BD896F /* DVSync */,
 				D9B9F5232044B9FD00020608 /* DVResizableATSTextView */,
 				D9CF98DF20402C82006FEB98 /* notifications */,
 				D9728582203786960075AEBC /* multipleTodoitemtaskItems */,
@@ -906,6 +910,7 @@
 			files = (
 				D99D44081FDD652A007323FA /* LaunchScreen.storyboard in Resources */,
 				D9F3DC7120029CFF00F8A586 /* MainInterface.storyboard in Resources */,
+				D9E8ED9720619A4200BD4CE7 /* fakeDataDump-MAR202018.json in Resources */,
 				D99D44141FDD66EB007323FA /* LoadingTableViewEmptyView.xib in Resources */,
 				D9AA9DF8201E7EF000E22AF7 /* DVProjectListStoryboard.storyboard in Resources */,
 				D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */,
@@ -968,6 +973,8 @@
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Notepad/Notepad.framework",
+				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSpinner/SwiftSpinner.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyChrono/SwiftyChrono.framework",
 			);
@@ -979,6 +986,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Notepad.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSpinner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyChrono.framework",
 			);
@@ -1093,7 +1102,6 @@
 				D9AA5DB22001C97000CAE847 /* SegmentedUIToolBar.swift in Sources */,
 				D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */,
 				D9B9F5392044BDED00020608 /* StringRange.swift in Sources */,
-				D992016A204F9D8800038935 /* WIPSyncData.swift in Sources */,
 				D98AEF27201D07310090CA7A /* DVSectionVMStatus.swift in Sources */,
 				D91A32421FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift in Sources */,
 				D994BA282016260500523957 /* DVCoreSectionViewModel.swift in Sources */,
@@ -1105,6 +1113,7 @@
 				D98793BD1FFBDCEA0083AAC2 /* Date+Extension.swift in Sources */,
 				D9B9F52D2044BAB000020608 /* RegeributedTextViewProtocol.swift in Sources */,
 				D92A63C01FC15146002E4F99 /* Tag.swift in Sources */,
+				D918B2A72059D04600BD896F /* DVConstants.swift in Sources */,
 				D9AA9DF5201E50A600E22AF7 /* DVmainTVSettingsLauncher.swift in Sources */,
 				D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */,
 				D9B9F52F2044BAC500020608 /* RegexStringConvertible.swift in Sources */,
@@ -1196,6 +1205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D93A902420129C2900228515 /* DVTodoItemTaskViewModel.swift in Sources */,
+				D918B2A82059D04600BD896F /* DVConstants.swift in Sources */,
 				D9F3DC7220029D1F00F8A586 /* Tag.swift in Sources */,
 				D9F3DC6220028A2500F8A586 /* ShareViewController.swift in Sources */,
 				D9F3DC7320029D2300F8A586 /* TodoItem.swift in Sources */,

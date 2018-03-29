@@ -15,6 +15,7 @@
         <attribute name="listItemCountTotal" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="synced" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="syncedBeganAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="syncedDeviceID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="syncedFinishedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="syncedID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
@@ -35,6 +36,7 @@
         <attribute name="isPublic" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="synced" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="syncedBeganAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="syncedDeviceID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="syncedFinishedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="syncedID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -75,6 +77,7 @@
         <attribute name="label" attributeType="String" syncable="YES"/>
         <attribute name="synced" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="syncedBeganAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="syncedDeviceID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="syncedFinishedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="syncedID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -101,6 +104,7 @@
         <attribute name="isRemindable" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="synced" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="syncedBeganAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="syncedDeviceID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="syncedFinishedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="syncedID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="todoItemText" attributeType="String" syncable="YES"/>
@@ -115,10 +119,10 @@
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="todos" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DailyVibesList" positionX="-6048" positionY="-936" width="128" height="405"/>
-        <element name="DailyVibesNote" positionX="-6048" positionY="-936" width="128" height="300"/>
+        <element name="DailyVibesList" positionX="-6048" positionY="-936" width="128" height="420"/>
+        <element name="DailyVibesNote" positionX="-6048" positionY="-936" width="128" height="315"/>
         <element name="Streak" positionX="-5852" positionY="-1080" width="128" height="300"/>
-        <element name="Tag" positionX="-5922" positionY="-537" width="128" height="315"/>
-        <element name="TodoItem" positionX="-6246" positionY="-864" width="128" height="465"/>
+        <element name="Tag" positionX="-5922" positionY="-537" width="128" height="330"/>
+        <element name="TodoItem" positionX="-6246" positionY="-864" width="128" height="480"/>
     </elements>
 </model>

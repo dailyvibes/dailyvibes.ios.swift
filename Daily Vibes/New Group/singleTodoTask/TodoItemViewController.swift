@@ -13,23 +13,24 @@ import UIKit
 import CoreData
 import UserNotifications
 import SwiftyChrono
+import SwiftSpinner
 
-class TodoItemViewController: ThemableTableViewController,
+class TodoItemViewController:
+    ThemableTableViewController,
     UITextViewDelegate,
     UINavigationControllerDelegate,
     UIPickerViewDataSource,
-UIPickerViewDelegate {
+    UIPickerViewDelegate {
     // MARK: Properties
-//    private var todoItem: TodoItem?
+//    private var todoItemTaskViewModel: DVTodoItemTaskViewModel? {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
+//    }
     
-//    private var todoItemSettingsData: TodoItemSettingsData?
-    private var todoItemTaskViewModel: DVTodoItemTaskViewModel? {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
+    private var todoItemTaskViewModel: DVTodoItemTaskViewModel?
     private var store = CoreDataManager.store
     private var chrono = Chrono()
     
@@ -89,34 +90,54 @@ UIPickerViewDelegate {
         
         todoItemTaskViewModel = store.editingDVTodotaskItem
         
-        if todoItemTaskViewModel == nil {
-            // new
-            store.findOrCreateTodoitemTaskDeepNested(withUUID: nil)
-            todoItemTaskViewModel = store.editingDVTodotaskItem
-            todoItemTaskViewModel?.todoItemText = NSLocalizedString("Title", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND TITLE STRING **", comment: "")
-            let _title = "Add a to-do"
-            setupNavigationTitleText(title: _title, subtitle: nil)
-        } else {
-            // existing
-            let _title = "Details"
-            let actionButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleActionButton))
-            
-            if let curProject = todoItemTaskViewModel?.list {
-                self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: curProject)
-            }
-            
-            navigationItem.rightBarButtonItems = [saveTodoitemButton, actionButton]
-            
-            setupNavigationTitleText(title: _title, subtitle: nil)
+        let _title = "Details"
+        let actionButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleActionButton))
+        //            let actionButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "more_icon_dailyvibes"), style: .plain, target: self, action: #selector(handleActionButton))
+        
+        if let curProject = todoItemTaskViewModel?.list {
+            self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: curProject)
         }
         
-//        let cancelText = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel **", comment: "")
-        let cancelBn = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        navigationItem.rightBarButtonItems = [saveTodoitemButton, actionButton]
+        
+        setupNavigationTitleText(title: _title, subtitle: nil)
+        
+        self.tableView.reloadData()
+        
+//        if todoItemTaskViewModel == nil {
+//            // new
+//
+//            print("new task")
+//
+//            store.findOrCreateTodoitemTaskDeepNested(withUUID: nil)
+//            todoItemTaskViewModel = store.editingDVTodotaskItem
+//            todoItemTaskViewModel?.todoItemText = NSLocalizedString("Title", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND TITLE STRING **", comment: "")
+//            let _title = "Add a to-do"
+//            setupNavigationTitleText(title: _title, subtitle: nil)
+//        } else {
+//            // existing
+//            print("existing task")
+//
+//            let _title = "Details"
+//            let actionButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleActionButton))
+////            let actionButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "more_icon_dailyvibes"), style: .plain, target: self, action: #selector(handleActionButton))
+//
+//            if let curProject = todoItemTaskViewModel?.list {
+//                self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: curProject)
+//            }
+//
+//            navigationItem.rightBarButtonItems = [saveTodoitemButton, actionButton]
+//
+//            setupNavigationTitleText(title: _title, subtitle: nil)
+//        }
+        
+        //        let cancelText = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel **", comment: "")
+        let cancelBn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         cancelBn.accessibilityIdentifier = "details_cancel_btn"
         navigationItem.leftBarButtonItems = [cancelBn]
         
         tagsCell.textLabel?.text = NSLocalizedString("Tags", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Tags **", comment: "")
-
+        
         setupTheming()
         updateSaveButtonState()
         refreshNotesInlineCell()
@@ -158,41 +179,34 @@ UIPickerViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        store.editingDVTodotaskItem = todoItemTaskViewModel
         super.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        store.editingDVTodotaskItem = todoItemTaskViewModel
         if todoItemTextView.isFirstResponder {
             todoItemTextView.resignFirstResponder()
         }
+        self.view.endEditing(true)
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        super.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//        if todoItemTextView.isFirstResponder {
-//            todoItemTextView.resignFirstResponder()
-//        }
-//        self.view.endEditing(true)
-//    }
     
     // MARK: Navigation
     fileprivate func closeView() {
-        store.editingDVTodotaskItem = nil
-        todoItemTaskViewModel = nil
+        self.store.editingDVTodotaskItem = nil
+        self.todoItemTaskViewModel = nil
         self.store.editingDVTodotaskItemListPlaceholder = nil
         
-        let isPresentingInADDMode = presentingViewController is DailyVibesTabBarViewController
-        
-        if isPresentingInADDMode {
-            dismiss(animated: true, completion: nil)
-        } else if let owningNavigationController = navigationController {
-            owningNavigationController.popViewController(animated: true)
-        } else {
-            fatalError("The TodoItemViewController is not inside a navigation controller.")
-        }
+//        DispatchQueue.main.async {
+            let isPresentingInADDMode = self.presentingViewController is DailyVibesTabBarViewController
+            
+            if isPresentingInADDMode {
+                self.dismiss(animated: true, completion: nil)
+            } else if let owningNavigationController = self.navigationController {
+                owningNavigationController.popViewController(animated: true)
+            } else {
+                fatalError("The TodoItemViewController is not inside a navigation controller.")
+            }
+//        }
     }
     
     @objc func cancel(_ sender: UIBarButtonItem) {
-//        store.editingDVTodotaskItem = nil
         closeView()
     }
     
@@ -203,8 +217,14 @@ UIPickerViewDelegate {
         
         if segue.identifier == saveButtonSegueIdentifier {
             // LOOK AT TODO
+//            let startTime = CACurrentMediaTime()
             store.editingDVTodotaskItem = todoItemTaskViewModel
-            store.saveEditingDVTodotaskItem()
+//            let midTime = CACurrentMediaTime()
+//            print("MidTime - \(midTime - startTime)")
+            self.store.saveEditingDVTodotaskItem()
+//            let endTime = CACurrentMediaTime()
+//            print("Time - \(endTime - startTime)")
+//            print("MidTime to EndTime - \(endTime - midTime)")
         }
     }
     
@@ -240,11 +260,6 @@ UIPickerViewDelegate {
         }
     }
     
-//    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-//        print("calling should end editing")
-//        return false
-//    }
-    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView == todoItemTextView {
             todoItemTaskViewModel?.todoItemText = textView.text
@@ -255,7 +270,6 @@ UIPickerViewDelegate {
                 let dueDateCellindexPath = IndexPath.init(row: 0, section: 1)
                 let reminderCellindexPath = IndexPath.init(row: 1, section: 1)
                 todoItemTaskViewModel?.duedateAt = parsedDueDate
-//                self.tableView.reloadData()
                 self.tableView.beginUpdates()
                 self.tableView.reloadRows(at: [dueDateCellindexPath, reminderCellindexPath], with: .none)
                 self.tableView.endUpdates()
@@ -263,7 +277,7 @@ UIPickerViewDelegate {
             
             if textView.text.trimmingCharacters(in: .whitespaces).isEmpty {
                 textView.text = NSLocalizedString("Title", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND TITLE STRING **", comment: "")
-                textView.textColor = UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)
+//                textView.textColor = UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)
                 textView.theme_tintColor = "Global.textColor"
                 textView.theme_textColor = "Global.textColor"
             }
@@ -284,32 +298,12 @@ UIPickerViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
-//            let parsedDueDate = chrono.parseDate(text: textView.text)
-//
-//            if parsedDueDate != nil {
-//                let dueDateIndexPath = IndexPath.init(row: 0, section: 1)
-//                todoItemTaskViewModel?.duedateAt = parsedDueDate
-//                self.tableView.reloadRows(at: [dueDateIndexPath], with: .automatic)
-//            }
-//
-//            if todoItemTaskViewModel?.duedateAt == nil {
-
-//            }
-//
-//            for parsedDueDate in parsedDueDates {
-//                if todoItemTaskViewModel?.duedateAt == nil {
-//                    todoItemTaskViewModel?.duedateAt = parsedDueDate.ref
-//
-//                } else {
-//                    continue
-//                }
-//            }
             if textView.isFirstResponder {
                 textView.resignFirstResponder()
             }
             updateSaveButtonState()
         }
-        return true;
+        return true
     }
     
     var runningText: String = ""
@@ -439,11 +433,6 @@ UIPickerViewDelegate {
     }
     
     private func hasAccess(isRemindable:Bool) {
-        if isRemindable {
-            
-        } else {
-            
-        }
         let center = UNUserNotificationCenter.current()
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         
@@ -495,7 +484,7 @@ UIPickerViewDelegate {
                                 self.tableView.beginUpdates()
                                 self.duedateAtDateCell.detailTextLabel?.text = self.dateFormatter?.string(from: dt)
                                 self.tableView.endUpdates()
-//                                self.tableView.reloadData()
+                                //                                self.tableView.reloadData()
                             }
         }
     }
@@ -556,10 +545,10 @@ extension TodoItemViewController : DeleteButtonTableViewCellDelegate {
         let deleteAlertTitle = NSLocalizedString("Are you sure?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Are you sure? ***", comment: "")
         let deleteAlertMessage = NSLocalizedString("You're about to delete forever", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND You're about to delete forever ***", comment: "")
         let deleteAlertConfirmation = NSLocalizedString("Yes, Delete Forever.", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Yes, Delete Forever. ***", comment: "")
-
+        
         let defaults = UserDefaults.standard
         let showDoneAlert = defaults.bool(forKey: "todo.showOnDeleteAlert")
-
+        
         if showDoneAlert {
             let alertController = UIAlertController(title: deleteAlertTitle, message: deleteAlertMessage, preferredStyle: .actionSheet)
             let delete = UIAlertAction(title: deleteAlertConfirmation, style: .destructive, handler: { [unowned self] _ in

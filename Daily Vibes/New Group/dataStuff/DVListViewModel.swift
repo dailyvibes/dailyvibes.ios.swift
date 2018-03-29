@@ -42,6 +42,7 @@ struct DVListViewModel: Codable {
     var syncedID: String?
     var syncedBeganAt: Date?
     var syncedFinishedAt: Date?
+    var syncedDeviceID: String?
     
     init(uuid: UUID, createdAt: Date, updatedAt: Date, duedateAt: Date?, completedAt: Date?, archivedAt: Date?, title: String?, titleDescription: String?, emoji: String?, color: String?, isDVDefault: Bool?, listItemCountCompleted: Int? = 0, listItemCountTotal: Int? = 0) {
         self.uuid = uuid
@@ -87,6 +88,7 @@ struct DVListViewModel: Codable {
         case syncedID = "_id"
         case syncedBeganAt
         case syncedFinishedAt
+        case syncedDeviceID
     }
 
 //    init(from decoder: Decoder) throws {
@@ -176,10 +178,12 @@ extension DVListViewModel {
         
         list.managedObjectContext?.performAndWait {
             converted = DVListViewModel.init(uuid: list.uuid!, createdAt: list.createdAt!, updatedAt: list.updatedAt!, duedateAt: list.duedateAt, completedAt: list.completedAt, archivedAt: list.archivedAt, title: list.title, titleDescription: list.titleDescription, emoji: list.emoji, color: list.color, isDVDefault: list.isDVDefault)
+            
             converted?.synced = list.synced
             converted?.syncedID = list.syncedID
             converted?.syncedBeganAt = list.syncedBeganAt
             converted?.syncedFinishedAt = list.syncedFinishedAt
+            converted?.syncedDeviceID = list.syncedDeviceID ?? UIDevice.current.identifierForVendor?.uuidString
 //            if let projects = list.listItems?.allObjects, projects.count > 0 {
 //                var data = [DVTodoItemTaskViewModel]()
 //                
@@ -206,6 +210,7 @@ extension DVListViewModel {
     
     static func copyWithoutListItems(list: DVListViewModel) -> DVListViewModel {
         var result = makeEmpty()
+        
         result.uuid = list.uuid
         result.title = list.title
         result.titleDescription = list.titleDescription
@@ -215,6 +220,12 @@ extension DVListViewModel {
         result.isPublic = list.isPublic
         result.isListVisible = list.isListVisible
         result.isDVDefault = list.isDVDefault
+        
+        result.syncedID = list.syncedID
+        result.synced = list.synced
+        result.syncedBeganAt = list.syncedBeganAt
+        result.syncedFinishedAt = list.syncedFinishedAt
+        result.syncedDeviceID = list.syncedDeviceID
         
 //        if let listItems = list.listItems, listItems.count > 0 {
 //            let completedOnly = listItems.filter { listeItem in listeItem.isCompleted == true }
@@ -228,3 +239,110 @@ extension DVListViewModel {
         return result
     }
 }
+
+//// MARK: - API
+//extension DVListViewModel {
+//    fileprivate func dvPostSyncCreateFunc(_ project:DailyVibesList) {
+//        guard syncedDeviceID != nil else { fatalError() }
+//        let urlString = "\(DVConstants.DVProjectApi.baseURL)/projects"
+//
+//        do {
+//            let jsonEncoder = JSONEncoder()
+//            jsonEncoder.dateEncodingStrategy = .iso8601
+//
+//            let jsonData = try jsonEncoder.encode(self)
+//            let url = URL(string: urlString)!
+//            var request = URLRequest(url: url)
+//
+//            request.httpMethod = "POST"
+//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//            let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+//                if let error = error {
+//                    print("error: \(error)")
+//                    return
+//                }
+//
+//                guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                    print ("server error")
+//                    return
+//                }
+//
+//                if let mimeType = response.mimeType, mimeType == "application/json", let data = data {
+//                    do {
+//                        let decoder = JSONDecoder()
+//                        decoder.dateDecodingStrategy = .iso8601
+//
+//                        let projectServerdata = try decoder.decode(DVListViewModel.self, from: data)
+//
+//                        project.syncedID = projectServerdata.syncedID
+//                        project.synced = true
+//                        project.syncedFinishedAt = Date()
+//                        project.syncedDeviceID = projectServerdata.syncedDeviceID
+//
+//                    } catch let error as NSError {
+//                        fatalError("""
+//                            Domain: \(error.domain)
+//                            Code: \(error.code)
+//                            Description: \(error.localizedDescription)
+//                            Failure Reason: \(error.localizedFailureReason ?? "")
+//                            Suggestions: \(error.localizedRecoverySuggestion ?? "")
+//                            """)
+//                    }
+//                }
+//            }
+//            task.resume()
+//        } catch {
+//            let nserror = error as NSError
+//            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//        }
+//    }
+//
+//    fileprivate func dvPostSyncPutFunc(_ project:DailyVibesList) {
+//        fatalError("not implemented yet")
+//    }
+//
+//    func dvPostSync(for project: DailyVibesList) {
+//        let defaults = UserDefaults.standard
+//        if defaults.bool(forKey: "canDVSync") && defaults.bool(forKey: "isDVSyncON") {
+//            if syncedID == nil {
+//                // new item, so make a post
+//                dvPostSyncCreateFunc(project)
+//            } else {
+//                // old item so make a put
+//                dvPostSyncPutFunc(project)
+//            }
+//        }
+//    }
+//
+//    static func dvDeleteSync(for id:String) {
+//        if id.isEmpty { return }
+//
+//        let defaults = UserDefaults.standard
+//        if defaults.bool(forKey: "canDVSync") && defaults.bool(forKey: "isDVSyncON") {
+//            let urlString = "\(DVConstants.DVProjectApi.baseURL)/\(id)"
+//            let url = URL(string: urlString)!
+//            var request = URLRequest(url: url)
+//
+//            request.httpMethod = "DELETE"
+//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//                if let error = error {
+//                    print("error: \(error)")
+//                    return
+//                }
+//                guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                    print ("server error")
+//                    return
+//                }
+//
+//                if let mimeType = response.mimeType, mimeType == "application/json", let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                    print("DELETED! data: \(dataString)")
+//                }
+//            })
+//            task.resume()
+//        }
+//    }
+//}
+

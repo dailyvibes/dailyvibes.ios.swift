@@ -22,8 +22,7 @@
       },
       "title": {
         "color": "#444444"
-      },
-      "title_below_image": false
+      }
     },
     {
       "filter": "DailyProgress",
@@ -32,8 +31,7 @@
       },
       "title": {
         "color": "#444444"
-      },
-      "title_below_image": false
+      }
     },
     {
       "filter": "MultiEntry",
@@ -42,8 +40,7 @@
       },
       "title": {
         "color": "#444444"
-      },
-      "title_below_image": true
+      }
     },
     {
       "filter": "FilterProjects",
@@ -52,8 +49,7 @@
       },
       "title": {
         "color": "#444444"
-      },
-      "title_below_image": false
+      }
     },
     {
       "filter": "GroupByProjects",
@@ -62,8 +58,7 @@
       },
       "title": {
         "color": "#444444"
-      },
-      "title_below_image": false
+      }
     },
     {
       "filter": "SmartTodayView",
@@ -72,8 +67,7 @@
       },
       "title": {
         "color": "#444444"
-      },
-      "title_below_image": false
+      }
     },
     {
       "filter": "SmartThisWeekView",
@@ -82,8 +76,7 @@
       },
       "title": {
         "color": "#444444"
-      },
-      "title_below_image": false
+      }
     },
     {
       "filter": "CustomProjects",
@@ -92,8 +85,7 @@
       },
       "title": {
         "color": "#444444"
-      },
-      "title_below_image": false
+      }
     },
     {
       "filter": "DetailView",
@@ -102,8 +94,7 @@
       },
       "title": {
         "color": "#444444"
-      },
-      "title_below_image": false
+      }
     },
     {
       "filter": "ExportView",

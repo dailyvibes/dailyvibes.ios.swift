@@ -28,6 +28,7 @@ struct DVNoteViewModel: Codable {
     var syncedID: String?
     var syncedBeganAt: Date?
     var syncedFinishedAt: Date?
+    var syncedDeviceID: String?
     
     init(uuid: UUID, title: String?, content: String?, createdAt: Date, updatedAt: Date, completedAt: Date?, archivedAt: Date?, dvTodoItemTaskViewModelUUID: UUID?) {
         self.uuid = uuid
@@ -58,6 +59,7 @@ struct DVNoteViewModel: Codable {
         case syncedID = "_id"
         case syncedBeganAt
         case syncedFinishedAt
+        case syncedDeviceID
     }
     
 //    init(from decoder: Decoder) throws {
@@ -113,6 +115,7 @@ extension DVNoteViewModel {
         converted?.syncedID = note.syncedID
         converted?.syncedBeganAt = note.syncedBeganAt
         converted?.syncedFinishedAt = note.syncedFinishedAt
+        converted?.syncedDeviceID = note.syncedDeviceID ?? UIDevice.current.identifierForVendor?.uuidString
         return converted!
     }
     
@@ -124,3 +127,108 @@ extension DVNoteViewModel {
         return DVNoteViewModel.init(uuid: fallbackString!, title: emptyString, content: emptyString, createdAt: curDate, updatedAt: curDate, completedAt: nil, archivedAt: nil, dvTodoItemTaskViewModelUUID: nil)
     }
 }
+//
+//extension DVNoteViewModel {
+//    fileprivate func dvPostSyncCreateFunc(_ project:DailyVibesNote) {
+//        guard syncedDeviceID != nil else { fatalError() }
+//        
+//        let urlString = "\(DVConstants.DVNoteApi.baseURL)"
+//        
+//        do {
+//            let jsonEncoder = JSONEncoder()
+//            jsonEncoder.dateEncodingStrategy = .iso8601
+//            
+//            let jsonData = try jsonEncoder.encode(self)
+//            let url = URL(string: urlString)!
+//            var request = URLRequest(url: url)
+//            
+//            request.httpMethod = "POST"
+//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//            
+//            let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+//                if let error = error {
+//                    print("error: \(error)")
+//                    return
+//                }
+//                
+//                guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                    print ("server error")
+//                    return
+//                }
+//                
+//                if let mimeType = response.mimeType, mimeType == "application/json", let data = data {
+//                    do {
+//                        let decoder = JSONDecoder()
+//                        decoder.dateDecodingStrategy = .iso8601
+//                        
+//                        let tagServerdata = try decoder.decode(DVNoteViewModel.self, from: data)
+//                        
+//                        project.syncedID = tagServerdata.syncedID
+//                        project.synced = true
+//                        project.syncedFinishedAt = Date()
+//                    } catch let error as NSError {
+//                        fatalError("""
+//                            Domain: \(error.domain)
+//                            Code: \(error.code)
+//                            Description: \(error.localizedDescription)
+//                            Failure Reason: \(error.localizedFailureReason ?? "")
+//                            Suggestions: \(error.localizedRecoverySuggestion ?? "")
+//                            """)
+//                    }
+//                }
+//            }
+//            task.resume()
+//        } catch {
+//            let nserror = error as NSError
+//            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//        }
+//    }
+//    
+//    fileprivate func dvPostSyncPutFunc(_ note:DailyVibesNote) {
+//        fatalError("not implemented yet")
+//    }
+//    
+//    func dvPostSync(for note: DailyVibesNote) {
+//        let defaults = UserDefaults.standard
+//        if defaults.bool(forKey: "canDVSync") && defaults.bool(forKey: "isDVSyncON") {
+//            if syncedID == nil {
+//                // new item, so make a post
+//                dvPostSyncCreateFunc(note)
+//            } else {
+//                // old item so make a put
+//                dvPostSyncPutFunc(note)
+//            }
+//        }
+//    }
+//    
+//    static func dvDeleteSync(for id:String) {
+//        if id.isEmpty { return }
+//        
+//        let defaults = UserDefaults.standard
+//        if defaults.bool(forKey: "canDVSync") && defaults.bool(forKey: "isDVSyncON") {
+//            let urlString = "\(DVConstants.DVNoteApi.baseURL)/\(id)"
+//            let url = URL(string: urlString)!
+//            var request = URLRequest(url: url)
+//            
+//            request.httpMethod = "DELETE"
+//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//            
+//            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//                if let error = error {
+//                    print("error: \(error)")
+//                    return
+//                }
+//                guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                    print ("server error")
+//                    return
+//                }
+//                
+//                if let mimeType = response.mimeType, mimeType == "application/json", let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                    print("DELETED! data: \(dataString)")
+//                }
+//            })
+//            task.resume()
+//        }
+//    }
+//}
+

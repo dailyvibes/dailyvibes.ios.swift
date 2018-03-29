@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import SwiftTheme
 import UserNotifications
+//import SimulatorStatusMagic
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
@@ -21,61 +23,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        #if DEBUG
-//            store.destroyALL(deleteExistingStore: true)
-//            
-//            if !store.hasDefaultDVList() {
-//                store.makeDefaultDVList()
-//            }
-//            
-//            if store.filteredProjectList == nil {
-//                let defaultProjectLabel = "Inbox"
-//                let defaultProject = store.findDVList(byLabel: defaultProjectLabel)
-//                store.filteredProjectList = DVListViewModel.fromCoreData(list: defaultProject)
-//            }
-//            
-//            if let path = Bundle.main.path(forResource: "fakeDataDump-MAR042018", ofType: "json") {
-//                do {
-//                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-//                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
-//                    //                let jsonResult = try JSON.init
-//
-//                    for task in (jsonResult)! {
-//                        //                    let taskId = task["id"]
-//                        let taskText = task["todoItemText"] as! String
-//                        let completedAtString = task["completedAt"] as! String
-//                        let taskCompleted = Date.UTCToLocal(___date: completedAtString)
-//                        
-////                        let tagsStringAfterSplit = taskText.split(separator: "#")
-////                        let tags = tagsStringAfterSplit.dropFirst()
-//                        
-////                        for (_, element) in tags.enumerated() {
-////                            if let tag = store.fetchSpecificTag(byLabel: String(element)) {
-////                                // tags exists
-////                                todo.addToTags(tag)
-////                                tag.addToTodos(todo)
-////                            } else {
-////                                // need to create a tag
-////                                let newTag = store.createTag(withLabel: String(element))
-////                                if let tag = store.fetchSpecificTag(byLabel: newTag.label) {
-////                                    todo.addToTags(tag)
-////                                    tag.addToTodos(todo)
-////                                }
-////                            }
-////                        }
-//                        
-//                        store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
-//                    }
-//                    
-//                    makeTestDataReady()
-//                    
-//                } catch {
-//                    // handle error
-//                    fatalError("OOPS")
-//                }
-//            }
-//
-//        #endif
+        if UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") {
+//            SDStatusBarManager.sharedInstance().enableOverrides()
+            
+            store.destroyALL(deleteExistingStore: true)
+            
+            if !store.hasDefaultDVList() {
+                store.makeDefaultDVList()
+                
+                if store.filteredProjectList == nil {
+                    let defaultProjectLabel = "Inbox"
+                    let defaultProject = store.findDVList(byLabel: defaultProjectLabel)
+                    store.filteredProjectList = DVListViewModel.fromCoreData(list: defaultProject)
+                }
+            }
+            
+            let fakeDataFilePath = "fakeDataDump-MAR202018"
+            if let path = Bundle.main.path(forResource: fakeDataFilePath, ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
+
+                    for task in (jsonResult)! {
+                        let taskText = task["todoItemText"] as! String
+                        let completedAtString = task["completedAt"] as! String
+                        let taskCompleted = Date.UTCToLocal(___date: completedAtString)
+
+                        store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+                    }
+
+                    makeTestDataReady()
+
+                } catch {
+                    // handle error
+                    fatalError("OOPS")
+                }
+            }
+        }
         
         let defaults = UserDefaults.standard
         
@@ -95,6 +79,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         } else {
             defaults.set(Date(), forKey: "LastRun")
             defaults.synchronize()
+        }
+        
+        if !defaults.bool(forKey: "isInitCanDVSyncSet") {
+            defaults.set(false, forKey: "canDVSync")
+            defaults.set(false, forKey: "isDVSyncON")
+            defaults.set(true, forKey: "isInitCanDVSyncSet")
         }
         
         if !store.hasDefaultDVList() {
@@ -266,22 +256,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         let uiTextField = UITextField.appearance()
         uiTextField.theme_keyboardAppearance = "Global.keyboardStyle"
         
-        //        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-        //
-        //            if shortcutItem.type == "com.yoursite.yourapp.adduser" {
-        //
-        //
-        //                if let tabBarController = window?.rootViewController as? DailyVibesTabBarViewController {
-        //
-        //                    if let newVC = tabBarController.storyboard?.instantiateViewController(withIdentifier: "AddNavigationVC") {
-        //                        tabBarController.present(newVC, animated: true)
-        //                    }
-        //
-        //                }
-        //            }
-        //
-        //        }
-        
         let icon = UIApplicationShortcutIcon(type: .add)
         let bundleIdentifier = Bundle.main.bundleIdentifier!
         let shortcutItemIdentifierQuickAddTodoItemTask = "\(bundleIdentifier).quickAddTodoItemTask"
@@ -334,7 +308,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                 }
             }
             
+            store.editingDVTodotaskItemListPlaceholder = groceryListDV
             store.processMultipleTodoitemTasks(forProject: groceryListDV, todoItemTasksData: multipleData)
+            store.editingDVTodotaskItemListPlaceholder = nil
         }
     }
     

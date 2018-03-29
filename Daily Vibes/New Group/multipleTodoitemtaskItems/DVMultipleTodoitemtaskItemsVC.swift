@@ -67,6 +67,7 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
 //        setupNavigationTitleText(title: "Add Multiple To-do Items")
         
         let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancelButton))
+        cancelButton.accessibilityIdentifier = "multi_entry_cancel_btn"
         let saveButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(handleSaveButton))
         
         self.navigationItem.leftBarButtonItem = cancelButton
@@ -113,7 +114,7 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
         
         numberToolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(image: #imageLiteral(resourceName: "dv_uitoolbar_chevron_down_icon"), style: .plain, target: self, action: #selector(hideToolbarHandler))
+            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideToolbarHandler))
         ]
         
         numberToolbar.sizeToFit()

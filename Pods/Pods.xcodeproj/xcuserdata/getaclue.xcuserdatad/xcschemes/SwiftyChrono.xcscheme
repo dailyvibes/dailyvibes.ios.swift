@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '23766894D5C48D62D3C14A3E992AAE18'
+               BlueprintIdentifier = 'C09D8B796DB12215943BE7ED444CB929'
                BlueprintName = 'SwiftyChrono'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'SwiftyChrono.framework'>
