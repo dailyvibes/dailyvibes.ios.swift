@@ -31,23 +31,23 @@
 #   "iPad Pro (12.9-inch) (2nd generation)"
 # ])
 
-# devices([
-#   "iPhone 5s",
-#   "iPhone 6",
-#   "iPhone 6 Plus",
-#   "iPhone 6s",
-#   "iPhone 6s Plus",
-#   "iPhone 7",
-#   "iPhone 7 Plus",
-#   "iPhone 8",
-#   "iPhone 8 Plus",
-#   "iPhone X",
-#   "iPhone SE"
-# ])
-
 devices([
-  "iPad Pro (12.9-inch) (2nd generation)"
+  # "iPhone 5s",
+  # "iPhone 6",
+  # "iPhone 6 Plus",
+  # "iPhone 6s",
+  # "iPhone 6s Plus",
+  # "iPhone 7",
+  # "iPhone 7 Plus",
+  # "iPhone 8",
+  # "iPhone 8 Plus",
+  "iPhone X",
+  # "iPhone SE"
 ])
+
+# devices([
+#   "iPad Pro (12.9-inch) (2nd generation)"
+# ])
 
 # languages([
 #   "en-US",
@@ -61,11 +61,11 @@ devices([
 # ])
 
 languages([
-  "en-US",
-  "de-DE",
-  "ru-RU",
-  "es-ES",
-  "fr-FR"
+  "en-US"
+  # "de-DE",
+  # "ru-RU",
+  # "es-ES",
+  # "fr-FR"
 ])
 
 # The name of the scheme which contains the UI Tests
