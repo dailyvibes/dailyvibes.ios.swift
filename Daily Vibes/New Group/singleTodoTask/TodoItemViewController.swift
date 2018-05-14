@@ -13,7 +13,7 @@ import UIKit
 import CoreData
 import UserNotifications
 import SwiftyChrono
-import SwiftSpinner
+//import SwiftSpinner
 
 class TodoItemViewController:
     ThemableTableViewController,

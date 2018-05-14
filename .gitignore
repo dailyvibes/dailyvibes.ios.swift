@@ -4,3 +4,4 @@ screenshots/es-ES/*.png
 screenshots/fr-FR/*.png
 screenshots/ru-RU/*.png
 screenshots/screenshots.html
+*.orig
