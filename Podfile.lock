@@ -8,7 +8,6 @@ PODS:
   - GrowingTextView (0.5.4)
   - Notepad (0.2.4)
   - SimulatorStatusMagic (2.1)
-  - SwiftSpinner (1.5.0)
   - SwiftTheme (0.4.0)
   - SwiftyChrono (1.0.2)
 
@@ -20,7 +19,6 @@ DEPENDENCIES:
   - GrowingTextView (~> 0.5)
   - Notepad (from `/Users/getaclue/dev/DailyVibes.iOS/Notepad/`)
   - SimulatorStatusMagic
-  - SwiftSpinner
   - SwiftTheme
   - SwiftyChrono (from `/Users/getaclue/dev/DailyVibes.iOS/SwiftyChrono`)
 
@@ -38,10 +36,9 @@ SPEC CHECKSUMS:
   GrowingTextView: 0615429affef558cbbb610aa6f9baf19b027fdbe
   Notepad: ac7bcace29c8020691946fe1f4cace8d390859eb
   SimulatorStatusMagic: 481558caf2b9ccb2ceba2cc193728d4db3dcac07
-  SwiftSpinner: 4c058c7a1d6b444dd2e1d70988ead40783097133
   SwiftTheme: 548eff28a606d0975e04b2e708b879d7eea660f6
   SwiftyChrono: 6ec5ffaaee8a14b147efec5af91a3c0e8e3c1bcc
 
-PODFILE CHECKSUM: d780ff2889743602e1175037cf7891da7f0883d5
+PODFILE CHECKSUM: 4b303a8ffbccd24593a0437c2c3711ac5f7be418
 
 COCOAPODS: 1.3.1
