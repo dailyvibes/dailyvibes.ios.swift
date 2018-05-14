@@ -40,3 +40,5 @@ post_install do |installer|
         `#{plist_buddy} -c "Add UIRequiredDeviceCapabilities:0 string arm64" "#{plist}"`
     end
 end
+
+ENV['COCOAPODS_DISABLE_STATS'] = 'true'

@@ -81,15 +81,6 @@ scheme("DVUITests")
 # Where should the resulting screenshots be stored?
 output_directory("./screenshots")
 
-# xargs arent passing... maybe we need to reinstall
-# reinstall_app true
-# stop if there is an error
-stop_after_first_error true
-# clean up old stuff... what's the point... I am updating
-clear_previous_screenshots true
-# flag used to call various stuff in the code using if SCREENSHOTS
-# xcargs("--xcargs GCC_PREPROCESSOR_DEFINITIONS='SCREENSHOTS'")
-
 # remove the '#' to clear all previously generated screenshots before creating new ones
 clear_previous_screenshots true
 
