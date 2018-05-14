@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DCDBD1EF49552884FFBADFAE81374831'
-               BlueprintName = 'Notepad'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Notepad.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DCDBD1EF49552884FFBADFAE81374831"
+               BlueprintName = "Notepad"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "Notepad.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

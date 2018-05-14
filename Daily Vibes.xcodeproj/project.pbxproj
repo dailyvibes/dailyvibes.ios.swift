@@ -128,7 +128,6 @@
 		D9E2CDC51FB41A110084EB12 /* DailyVibesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */; };
 		D9E2EEF02001B88E00858F22 /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E2EEEF2001B88E00858F22 /* SettingsNavigationController.swift */; };
 		D9E2EEF32001B92600858F22 /* Night.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9E2EEF22001B92600858F22 /* Night.plist */; };
-		D9E8ED9720619A4200BD4CE7 /* fakeDataDump-MAR202018.json in Resources */ = {isa = PBXBuildFile; fileRef = D9E8ED9620619A4200BD4CE7 /* fakeDataDump-MAR202018.json */; };
 		D9EA4F9C201F4E52008A627A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D99D44131FDD65CA007323FA /* Localizable.strings */; };
 		D9F0C94A200D5DCA0048BB1D /* ThemableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0C949200D5DCA0048BB1D /* ThemableTableViewController.swift */; };
 		D9F0C94C200D85D60048BB1D /* ThemableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0C94B200D85D60048BB1D /* ThemableViewController.swift */; };
@@ -332,7 +331,6 @@
 		D9E2EEEF2001B88E00858F22 /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
 		D9E2EEF22001B92600858F22 /* Night.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Night.plist; sourceTree = "<group>"; };
 		D9E3FE7D1FB9292900785E4B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		D9E8ED9620619A4200BD4CE7 /* fakeDataDump-MAR202018.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "fakeDataDump-MAR202018.json"; path = "../../../../../../Documents/dailyvibes.ca/_FakeData/fakeDataDump-MAR202018.json"; sourceTree = "<group>"; };
 		D9F0C949200D5DCA0048BB1D /* ThemableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableTableViewController.swift; sourceTree = "<group>"; };
 		D9F0C94B200D85D60048BB1D /* ThemableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableViewController.swift; sourceTree = "<group>"; };
 		D9F0C94D200D8D4B0048BB1D /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
@@ -661,7 +659,6 @@
 		D9DC3A1B2002B5BD00D1DCC3 /* dataStuff */ = {
 			isa = PBXGroup;
 			children = (
-				D9E8ED9620619A4200BD4CE7 /* fakeDataDump-MAR202018.json */,
 				D9DC3A1C2002B5DA00D1DCC3 /* CoreDataManager.swift */,
 				D994BA272016260500523957 /* DVCoreSectionViewModel.swift */,
 				D93A90222012940A00228515 /* DVTodoItemTaskViewModel.swift */,
@@ -910,7 +907,6 @@
 			files = (
 				D99D44081FDD652A007323FA /* LaunchScreen.storyboard in Resources */,
 				D9F3DC7120029CFF00F8A586 /* MainInterface.storyboard in Resources */,
-				D9E8ED9720619A4200BD4CE7 /* fakeDataDump-MAR202018.json in Resources */,
 				D99D44141FDD66EB007323FA /* LoadingTableViewEmptyView.xib in Resources */,
 				D9AA9DF8201E7EF000E22AF7 /* DVProjectListStoryboard.storyboard in Resources */,
 				D9028E901FAD4D6A002D64E3 /* Assets.xcassets in Resources */,
@@ -1443,7 +1439,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};

@@ -23,43 +23,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        if UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") {
+//        if UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") {
 //            SDStatusBarManager.sharedInstance().enableOverrides()
-            
-            store.destroyALL(deleteExistingStore: true)
-            
-            if !store.hasDefaultDVList() {
-                store.makeDefaultDVList()
-                
-                if store.filteredProjectList == nil {
-                    let defaultProjectLabel = "Inbox"
-                    let defaultProject = store.findDVList(byLabel: defaultProjectLabel)
-                    store.filteredProjectList = DVListViewModel.fromCoreData(list: defaultProject)
-                }
-            }
-            
-            let fakeDataFilePath = "fakeDataDump-MAR202018"
-            if let path = Bundle.main.path(forResource: fakeDataFilePath, ofType: "json") {
-                do {
-                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
-
-                    for task in (jsonResult)! {
-                        let taskText = task["todoItemText"] as! String
-                        let completedAtString = task["completedAt"] as! String
-                        let taskCompleted = Date.UTCToLocal(___date: completedAtString)
-
-                        store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
-                    }
-
-                    makeTestDataReady()
-
-                } catch {
-                    // handle error
-                    fatalError("OOPS")
-                }
-            }
-        }
+//            
+//            store.destroyALL(deleteExistingStore: true)
+//            
+//            if !store.hasDefaultDVList() {
+//                store.makeDefaultDVList()
+//                
+//                if store.filteredProjectList == nil {
+//                    let defaultProjectLabel = "Inbox"
+//                    let defaultProject = store.findDVList(byLabel: defaultProjectLabel)
+//                    store.filteredProjectList = DVListViewModel.fromCoreData(list: defaultProject)
+//                }
+//            }
+//            
+//            let fakeDataFilePath = "fakeDataDump-apr052018"
+//            if let path = Bundle.main.path(forResource: fakeDataFilePath, ofType: "json") {
+//                do {
+//                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+//                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [Dictionary<String,AnyObject>]
+//
+//                    for task in (jsonResult)! {
+//                        let taskText = task["todoItemText"] as! String
+//                        let completedAtString = task["completedAt"] as! String
+//                        let taskCompleted = Date.UTCToLocal(___date: completedAtString)
+//
+//                        store.storeCustomCompletedTodoItemTask(title: taskText, createdAt: nil, updatedAt: nil, duedateAt: nil, archivedAt: nil, completedAt: taskCompleted)
+//                    }
+//
+//                    makeTestDataReady()
+//
+//                } catch {
+//                    // handle error
+//                    fatalError("OOPS")
+//                }
+//            }
+//        }
         
         let defaults = UserDefaults.standard
         
