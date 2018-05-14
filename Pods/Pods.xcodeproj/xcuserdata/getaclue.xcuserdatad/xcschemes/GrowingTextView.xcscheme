@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'ACEF46F3B8A411DED7BF5C736506D068'
-               BlueprintName = 'GrowingTextView'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'GrowingTextView.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ACEF46F3B8A411DED7BF5C736506D068"
+               BlueprintName = "GrowingTextView"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "GrowingTextView.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

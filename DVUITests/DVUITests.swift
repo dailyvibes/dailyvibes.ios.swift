@@ -43,7 +43,9 @@ class DVUITests: XCTestCase {
         
         snapshot("2MultiEntry")
         
-        app.tap()
+//        app.tap()
+        app.buttons["multi_entry_cancel_btn"].tap()
+        
         let button = app.buttons["main_more_filter_btn"]
         XCTAssert(button.exists)
         button.tap()

@@ -19,6 +19,8 @@ target 'Daily Vibes' do
 #  pod 'Haring' # is the updated MarkdownKit
   pod 'Down'
   pod 'GrowingTextView', '~> 0.5'
+  pod 'SimulatorStatusMagic', :configurations => ['Debug']
+  # pod 'SwiftSpinner' # while i figure out why the delay is there
   # pod 'MarkdownTextView' - not in cocoapods Feb 2018
   # pod 'Notepad' - not updated for Swift 4 Feb 2018
   # pod 'Eureka'

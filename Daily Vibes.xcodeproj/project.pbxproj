@@ -22,6 +22,8 @@
 		D911E0BA2002A17800B739C8 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A63C11FC151AF002E4F99 /* Streak.swift */; };
 		D911E0BB2002A1A200B739C8 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */; };
 		D9156E292010DC2300E7F04E /* ThemableBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9156E282010DC2300E7F04E /* ThemableBaseTableViewCell.swift */; };
+		D918B2A72059D04600BD896F /* DVConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D918B2A62059D04600BD896F /* DVConstants.swift */; };
+		D918B2A82059D04600BD896F /* DVConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D918B2A62059D04600BD896F /* DVConstants.swift */; };
 		D91A32421FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */; };
 		D91B56A2204378F500963DB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D99D44131FDD65CA007323FA /* Localizable.strings */; };
 		D9235A811FEC1FBB00386A5F /* DailyVibesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */; };
@@ -40,7 +42,7 @@
 		D957461920038F8C000038AE /* SupportSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461820038F8C000038AE /* SupportSettingsViewController.swift */; };
 		D957461D2003966B000038AE /* AcknowledgementSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461C2003966B000038AE /* AcknowledgementSettingsViewController.swift */; };
 		D957461F20039892000038AE /* AboutSettingsViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461E20039892000038AE /* AboutSettingsViewControllerViewController.swift */; };
-		D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9598A631FBDE20C000854ED /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */; };
 		D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */; };
 		D9694C34200845B400B49CE4 /* DailyVibesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9694C33200845B400B49CE4 /* DailyVibesList.swift */; };
@@ -54,7 +56,6 @@
 		D98793BE1FFBE2BD0083AAC2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */; };
 		D98AEF27201D07310090CA7A /* DVSectionVMStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98AEF26201D07310090CA7A /* DVSectionVMStatus.swift */; };
 		D98AEF28201D07500090CA7A /* DVSectionVMStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98AEF26201D07310090CA7A /* DVSectionVMStatus.swift */; };
-		D992016A204F9D8800038935 /* WIPSyncData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9920169204F9D8800038935 /* WIPSyncData.swift */; };
 		D99286F620114CB600C9D1FE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99286F520114CB600C9D1FE /* UIColor+Extension.swift */; };
 		D994BA282016260500523957 /* DVCoreSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D994BA272016260500523957 /* DVCoreSectionViewModel.swift */; };
 		D994BA29201627B500523957 /* DVCoreSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D994BA272016260500523957 /* DVCoreSectionViewModel.swift */; };
@@ -174,7 +175,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */,
+				D9598A631FBDE20C000854ED /* BuildFile in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +211,7 @@
 		D907539120538AA6002F9A8D /* TextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholder.swift; sourceTree = "<group>"; };
 		D90DED241FEC29DB007E7DAE /* StreaksManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreaksManagerTest.swift; sourceTree = "<group>"; };
 		D9156E282010DC2300E7F04E /* ThemableBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableBaseTableViewCell.swift; sourceTree = "<group>"; };
+		D918B2A62059D04600BD896F /* DVConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVConstants.swift; sourceTree = "<group>"; };
 		D91A32411FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserPreferencesTVC.swift; sourceTree = "<group>"; };
 		D92A63BF1FC15146002E4F99 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D92A63C11FC151AF002E4F99 /* Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
@@ -237,7 +239,6 @@
 		D97853C3200073A700665B2E /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		D98AEF26201D07310090CA7A /* DVSectionVMStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSectionVMStatus.swift; sourceTree = "<group>"; };
-		D9920169204F9D8800038935 /* WIPSyncData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIPSyncData.swift; sourceTree = "<group>"; };
 		D99286F520114CB600C9D1FE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D994BA272016260500523957 /* DVCoreSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVCoreSectionViewModel.swift; sourceTree = "<group>"; };
 		D994BA2A201645A200523957 /* DVNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVNoteViewModel.swift; sourceTree = "<group>"; };
@@ -311,6 +312,7 @@
 		D9BE3F512023641700C7787E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		D9BE3F522023641700C7787E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9C608EA201757040064F1F9 /* DVMainTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVMainTVC.swift; sourceTree = "<group>"; };
+		D9C73AC520558F2500D30570 /* DVModelv07.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DVModelv07.xcdatamodel; sourceTree = "<group>"; };
 		D9CB36422034B752005004B3 /* about.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = about.md; sourceTree = "<group>"; };
 		D9CB36442034B757005004B3 /* acknowledgement.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = acknowledgement.md; sourceTree = "<group>"; };
 		D9CB36462034B75C005004B3 /* support.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = support.md; sourceTree = "<group>"; };
@@ -452,6 +454,14 @@
 			path = streaks;
 			sourceTree = "<group>";
 		};
+		D918B2A52059D02F00BD896F /* DVSync */ = {
+			isa = PBXGroup;
+			children = (
+				D918B2A62059D04600BD896F /* DVConstants.swift */,
+			);
+			path = DVSync;
+			sourceTree = "<group>";
+		};
 		D92652052034B23600D74F0E /* markdown */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,14 +509,6 @@
 				D972A5D2204528B3003F1F37 /* String+Extension.swift */,
 			);
 			path = extensions;
-			sourceTree = "<group>";
-		};
-		D9920168204F9D7000038935 /* sync */ = {
-			isa = PBXGroup;
-			children = (
-				D9920169204F9D8800038935 /* WIPSyncData.swift */,
-			);
-			path = sync;
 			sourceTree = "<group>";
 		};
 		D99D43FC1FDD5812007323FA /* progress */ = {
@@ -698,7 +700,7 @@
 		D9EADD6C1FD9EB620040F918 /* features */ = {
 			isa = PBXGroup;
 			children = (
-				D9920168204F9D7000038935 /* sync */,
+				D918B2A52059D02F00BD896F /* DVSync */,
 				D9B9F5232044B9FD00020608 /* DVResizableATSTextView */,
 				D9CF98DF20402C82006FEB98 /* notifications */,
 				D9728582203786960075AEBC /* multipleTodoitemtaskItems */,
@@ -967,6 +969,7 @@
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Notepad/Notepad.framework",
+				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyChrono/SwiftyChrono.framework",
 			);
@@ -978,6 +981,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Notepad.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyChrono.framework",
 			);
@@ -1092,7 +1096,6 @@
 				D9AA5DB22001C97000CAE847 /* SegmentedUIToolBar.swift in Sources */,
 				D9028E8B1FAD4D6A002D64E3 /* TodoItemViewController.swift in Sources */,
 				D9B9F5392044BDED00020608 /* StringRange.swift in Sources */,
-				D992016A204F9D8800038935 /* WIPSyncData.swift in Sources */,
 				D98AEF27201D07310090CA7A /* DVSectionVMStatus.swift in Sources */,
 				D91A32421FE9FE6D0015CF50 /* SettingsUserPreferencesTVC.swift in Sources */,
 				D994BA282016260500523957 /* DVCoreSectionViewModel.swift in Sources */,
@@ -1104,6 +1107,7 @@
 				D98793BD1FFBDCEA0083AAC2 /* Date+Extension.swift in Sources */,
 				D9B9F52D2044BAB000020608 /* RegeributedTextViewProtocol.swift in Sources */,
 				D92A63C01FC15146002E4F99 /* Tag.swift in Sources */,
+				D918B2A72059D04600BD896F /* DVConstants.swift in Sources */,
 				D9AA9DF5201E50A600E22AF7 /* DVmainTVSettingsLauncher.swift in Sources */,
 				D9ADB4C41FC102BC0024D419 /* NewTodoItemTableViewCell.swift in Sources */,
 				D9B9F52F2044BAC500020608 /* RegexStringConvertible.swift in Sources */,
@@ -1195,6 +1199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D93A902420129C2900228515 /* DVTodoItemTaskViewModel.swift in Sources */,
+				D918B2A82059D04600BD896F /* DVConstants.swift in Sources */,
 				D9F3DC7220029D1F00F8A586 /* Tag.swift in Sources */,
 				D9F3DC6220028A2500F8A586 /* ShareViewController.swift in Sources */,
 				D9F3DC7320029D2300F8A586 /* TodoItem.swift in Sources */,
@@ -1432,7 +1437,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1630,6 +1634,7 @@
 		D9E2CDC31FB41A110084EB12 /* DailyVibesModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9C73AC520558F2500D30570 /* DVModelv07.xcdatamodel */,
 				D9B9F53A2044C79E00020608 /* DVModelv06.xcdatamodel */,
 				D9CF98DE20402789006FEB98 /* DVModelv05.xcdatamodel */,
 				D9AA9DF3201E04DC00E22AF7 /* DVModelv04.xcdatamodel */,
@@ -1637,7 +1642,7 @@
 				D96114692006FB4900BFE753 /* DailyVibesModelv02.xcdatamodel */,
 				D9E2CDC41FB41A110084EB12 /* Model.xcdatamodel */,
 			);
-			currentVersion = D9B9F53A2044C79E00020608 /* DVModelv06.xcdatamodel */;
+			currentVersion = D9C73AC520558F2500D30570 /* DVModelv07.xcdatamodel */;
 			path = DailyVibesModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

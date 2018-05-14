@@ -154,6 +154,8 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         nc.addObserver(self, selector: #selector(reloadTVC), name: Notification.Name("handleSaveButton-DVMultipleTodoitemtaskItemsVC"), object: nil)
         
         tableView.tableFooterView = UIView.init()
+//        tableView.contentInset = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
+        
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
     }
     

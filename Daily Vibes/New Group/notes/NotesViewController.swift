@@ -42,7 +42,7 @@ class NotesViewController: UIViewController, UITextViewDelegate {
         
         numberToolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(image: #imageLiteral(resourceName: "dv_uitoolbar_chevron_down_icon"), style: .plain, target: self, action: #selector(hideToolbarHandler))
+            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideToolbarHandler))
         ]
         
         numberToolbar.sizeToFit()

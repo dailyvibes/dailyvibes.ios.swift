@@ -40,8 +40,8 @@ struct DVCoreSectionViewModel: Codable {
         case _sectionCount
         case position
         case allObjects
-        case completedObjects
-        case upcomingObjects
+//        case completedObjects
+//        case upcomingObjects
     }
     
     init(from decoder: Decoder) throws {
@@ -54,8 +54,10 @@ struct DVCoreSectionViewModel: Codable {
         self._sectionCount = try values.decode(Int.self, forKey: ._sectionCount)
         self.position = try values.decodeIfPresent(IndexPath.self, forKey: .position)
         self.allObjects = try values.decode([DVTodoItemTaskViewModel].self, forKey: .allObjects)
-        self.completedObjects = try values.decode([DVTodoItemTaskViewModel].self, forKey: .completedObjects)
-        self.upcomingObjects = try values.decode([DVTodoItemTaskViewModel].self, forKey: .upcomingObjects)
+//        self.completedObjects = try values.decode([DVTodoItemTaskViewModel].self, forKey: .completedObjects)
+//        self.upcomingObjects = try values.decode([DVTodoItemTaskViewModel].self, forKey: .upcomingObjects)
+        self.completedObjects = allObjects.filter { todoItemTask in todoItemTask.isCompleted }
+        self.upcomingObjects = allObjects.filter { todoItemTask in !todoItemTask.isCompleted }
     }
     
     func encode(to encoder: Encoder) throws {
@@ -68,20 +70,20 @@ struct DVCoreSectionViewModel: Codable {
         try container.encode(position, forKey: .position)
         
         var allObjectsArray = container.nestedUnkeyedContainer(forKey: .allObjects)
-        var completedObjectsArray = container.nestedUnkeyedContainer(forKey: .completedObjects)
-        var upcomingObjectsArray = container.nestedUnkeyedContainer(forKey: .upcomingObjects)
+//        var completedObjectsArray = container.nestedUnkeyedContainer(forKey: .completedObjects)
+//        var upcomingObjectsArray = container.nestedUnkeyedContainer(forKey: .upcomingObjects)
         
         try allObjects.forEach {
             try allObjectsArray.encode($0)
         }
         
-        try completedObjects.forEach {
-            try completedObjectsArray.encode($0)
-        }
-        
-        try upcomingObjects.forEach {
-            try upcomingObjectsArray.encode($0)
-        }
+//        try completedObjects.forEach {
+//            try completedObjectsArray.encode($0)
+//        }
+//        
+//        try upcomingObjects.forEach {
+//            try upcomingObjectsArray.encode($0)
+//        }
         
 //        try container.encode(allObjects, forKey: .allObjects)
 //        try container.encode(completedObjects, forKey: .completedObjects)

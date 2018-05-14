@@ -132,11 +132,11 @@ class SettingsTableVC: ThemableTableViewController {
             jsonEncoder.outputFormatting = .prettyPrinted
             jsonEncoder.dateEncodingStrategy = .iso8601
             let jsonData = try jsonEncoder.encode(store.filteredDvTodoItemTaskData)
-            let jsonString = String(data: jsonData, encoding: .utf8)
+//            let jsonString = String(data: jsonData, encoding: .utf8)
             
-            if let convertedStr = jsonString {
-                print(convertedStr)
-            }
+//            if let convertedStr = jsonString {
+//                print(convertedStr)
+//            }
             //            func getCompletedTodoItemTasks(ascending: Bool = false) -> [DVTodoItemTaskViewModel]? {
             //                let all = getTodoItemTasks(ascending: ascending)
             //                let result = all?.filter { todoItem in
@@ -153,20 +153,20 @@ class SettingsTableVC: ThemableTableViewController {
             
             // increment backup number
             
-//            do {
-//                let timeNow = Date()
-//                let timeNowString = timeNow.timeIntervalSince1970
-//                let fileName = "Archives/dv-archive-\(timeNowString).json"
-//                try Disk.save(jsonData, to: .documents, as: fileName)
-//            } catch let error as NSError {
-//                fatalError("""
-//                    Domain: \(error.domain)
-//                    Code: \(error.code)
-//                    Description: \(error.localizedDescription)
-//                    Failure Reason: \(error.localizedFailureReason ?? "")
-//                    Suggestions: \(error.localizedRecoverySuggestion ?? "")
-//                    """)
-//            }
+            do {
+                let timeNow = Date()
+                let timeNowString = timeNow.timeIntervalSince1970
+                let fileName = "Archives/dv-archive-\(timeNowString).json"
+                try Disk.save(jsonData, to: .documents, as: fileName)
+            } catch let error as NSError {
+                fatalError("""
+                    Domain: \(error.domain)
+                    Code: \(error.code)
+                    Description: \(error.localizedDescription)
+                    Failure Reason: \(error.localizedFailureReason ?? "")
+                    Suggestions: \(error.localizedRecoverySuggestion ?? "")
+                    """)
+            }
         } catch {
             fatalError("handleExport failed")
         }
@@ -190,11 +190,11 @@ class SettingsTableVC: ThemableTableViewController {
 //        let exportToJson = UIAlertAction.init(title: "Export to JSON", style: .default) { (_) in
 //            self.handleExportToDisk()
 //        }
+//        actionController.addAction(exportToJson)
         
         actionController.addAction(cancelAction)
         actionController.addAction(exportToText)
         actionController.addAction(exportToEmail)
-//        actionController.addAction(exportToJson)
         
         if let popOver = actionController.popoverPresentationController {
 //            popOver.sourceView = self.view
