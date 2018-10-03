@@ -50,7 +50,7 @@ class SettingsUserPreferencesTVC: ThemableTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView.init()
+        tableView.tableFooterView = UIView.init(frame: .init())
     }
 
     override func didReceiveMemoryWarning() {

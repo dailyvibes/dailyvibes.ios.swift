@@ -35,7 +35,7 @@ class DVListTableViewController: ThemableTableViewController {
             return listVM.isDVDefault == false
         })
         
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView.init(frame: .init())
         
         setupNavigationTitleText(title: "Change Project", subtitle: nil)
         

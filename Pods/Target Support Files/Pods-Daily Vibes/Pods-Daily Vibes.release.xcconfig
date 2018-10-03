@@ -1,11 +1,11 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Charts" "$PODS_CONFIGURATION_BUILD_DIR/DeckTransition" "$PODS_CONFIGURATION_BUILD_DIR/Disk" "$PODS_CONFIGURATION_BUILD_DIR/Down" "$PODS_CONFIGURATION_BUILD_DIR/GrowingTextView" "$PODS_CONFIGURATION_BUILD_DIR/Notepad" "$PODS_CONFIGURATION_BUILD_DIR/SwiftTheme" "$PODS_CONFIGURATION_BUILD_DIR/SwiftyChrono"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Charts" "${PODS_CONFIGURATION_BUILD_DIR}/DeckTransition" "${PODS_CONFIGURATION_BUILD_DIR}/Disk" "${PODS_CONFIGURATION_BUILD_DIR}/Down" "${PODS_CONFIGURATION_BUILD_DIR}/GrowingTextView" "${PODS_CONFIGURATION_BUILD_DIR}/Notepad" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftTheme" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyChrono"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Charts/Charts.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/DeckTransition/DeckTransition.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Disk/Disk.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Down/Down.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/GrowingTextView/GrowingTextView.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Notepad/Notepad.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SwiftTheme/SwiftTheme.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SwiftyChrono/SwiftyChrono.framework/Headers"
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Charts/Charts.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/DeckTransition/DeckTransition.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Disk/Disk.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Down/Down.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/GrowingTextView/GrowingTextView.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Notepad/Notepad.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SwiftTheme/SwiftTheme.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyChrono/SwiftyChrono.framework/Headers"
 OTHER_LDFLAGS = $(inherited) -framework "Charts" -framework "DeckTransition" -framework "Disk" -framework "Down" -framework "GrowingTextView" -framework "Notepad" -framework "SwiftTheme" -framework "SwiftyChrono"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
-PODS_BUILD_DIR = $BUILD_DIR
-PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods

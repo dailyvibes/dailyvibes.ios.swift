@@ -25,7 +25,7 @@ extension String {
     func matched(by regex: String) -> [Range<String.Index>] {
         let result = try? NSRegularExpression(pattern: regex, options: [])
             .matches(in: self, options: [], range: NSRange(location: 0, length: self.count))
-            .flatMap{ $0.range(at: 0).range(for: self) }
+            .compactMap{ $0.range(at: 0).range(for: self) }
         return result ?? []
     }
 }

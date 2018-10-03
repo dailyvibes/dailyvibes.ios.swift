@@ -152,8 +152,8 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
         nc.addObserver(self, selector: #selector(reloadTVC), name: NSNotification.Name(rawValue: ThemeUpdateNotification), object: nil)
         nc.addObserver(self, selector: #selector(reloadTVC), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
         nc.addObserver(self, selector: #selector(reloadTVC), name: Notification.Name("handleSaveButton-DVMultipleTodoitemtaskItemsVC"), object: nil)
-        
-        tableView.tableFooterView = UIView.init()
+        //        TODO: figure out how to remove tableFooterView
+//        tableView.tableFooterView = UIView.init(coder: .init())
 //        tableView.contentInset = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
         
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
@@ -583,6 +583,10 @@ class TodoItemsTableViewController: UITableViewController, NSFetchedResultsContr
             if let _ = segue.destination as? TodoTaskItemFiltersViewController {
                 //                controller.popoverPresentationController!.delegate = self
                 //                controller.preferredContentSize = CGSize(width: 320, height: 186)
+            }
+        case "DVLocalNotifications":
+            if let nav = segue.destination as? UINavigationController, let _ = nav.topViewController as? DVLNTableViewController {
+                //                            print("going to DVLocalNotifications")
             }
         default:
             fatalError("Unexpected segue identifier: \(String(describing: segue.identifier))")

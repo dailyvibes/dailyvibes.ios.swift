@@ -18,7 +18,7 @@ struct StringExtension {
 //            return results.map {
 //                String(text[Range($0.range, in: text)!])
 //            }
-            return results.flatMap {
+            return results.compactMap {
                 Range($0.range, in: text).map { String(text[$0]) }
             }
         } catch let error {

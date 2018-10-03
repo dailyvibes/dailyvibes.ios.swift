@@ -236,7 +236,8 @@ class ProgressViewController: ThemableViewController {
             try tagsFetchedResultsController.performFetch()
             tableView.theme_backgroundColor = "Global.backgroundColor"
             tableView.theme_separatorColor = "ListViewController.separatorColor"
-            tableView.tableFooterView = UIView()
+            //            TODO: FIGURE OUT TABLEFOOTVIEW
+//            tableView.tableFooterView = UIView()
         } catch {
             let fetchError = error as NSError
             print("Unable to Perform Fetch Request")

@@ -37,16 +37,7 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
         if store.editingDVTodotaskItemListPlaceholder == nil {
             store.editingDVTodotaskItemListPlaceholder = store.filteredProjectList
         }
-        
-//        if data.curProject == nil {
-//            data.curProject = store.filteredProjectList
-//            store.editingDVTodotaskItemListPlaceholder = store.filteredProjectList
-//            data.prevProject = store.filteredProjectList
-//        } else {
-//            data.curProject = store.filteredProjectList
-//            store.editingDVTodotaskItemListPlaceholder = store.filteredProjectList
-//        }
-        
+
         if data.cookedData == nil {
             data.cookedData = [DVMultipleTodoitemtaskItemVM]()
         }
@@ -63,19 +54,18 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        setupNavigationTitleText(title: "Add Multiple To-do Items")
-        
+
         let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancelButton))
         cancelButton.accessibilityIdentifier = "multi_entry_cancel_btn"
         let saveButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(handleSaveButton))
-        
+
         self.navigationItem.leftBarButtonItem = cancelButton
         self.navigationItem.rightBarButtonItem = saveButton
         
         self.view.theme_backgroundColor = "Global.backgroundColor"
-        
-        tableView.tableFooterView = UIView()
+
+        // TODO: FIGURE OUT TABLEFOOTERVIEW
+//        tableView.tableFooterView = UIView()
         
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 44.0;
@@ -164,21 +154,21 @@ class DVMultipleTodoitemtaskItemsVC: ThemableViewController {
     }
     
     @objc private func datepickerHandler() {
-        let datePicker = DatePickerDialog()
-        
-        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
-        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
-        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
-        
-        datePicker.show(setDueDateTitle,
-                        doneButtonTitle: setString,
-                        cancelButtonTitle: cancelString,
-                        defaultDate: Date().endTime()) { [unowned self] (date) in
-                            if let dt = date {
-                                self.data.duedateAt = dt
-                                self.tableView.reloadData()
-                            }
-        }
+//        let datePicker = DatePickerDialog()
+//
+//        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
+//        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+//        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+//
+//        datePicker.show(setDueDateTitle,
+//                        doneButtonTitle: setString,
+//                        cancelButtonTitle: cancelString,
+//                        defaultDate: Date().endTime()) { [unowned self] (date) in
+//                            if let dt = date {
+//                                self.data.duedateAt = dt
+//                                self.tableView.reloadData()
+//                            }
+//        }
     }
     
     @objc private func hideToolbarHandler() {
@@ -373,7 +363,8 @@ extension DVMultipleTodoitemtaskItemsVC: UITableViewDelegate, UITableViewDataSou
         
         //        let cell: = tableView.dequeueReusableCell(withIdentifier: "defaultBasicCell", for: indexPath)
         
-        var cell = UITableViewCell()
+//        var cell = UITableViewCell()
+        var cell = UITableViewCell.init(style: .default, reuseIdentifier: "")
         let section = indexPath.section
         
         if section == 0 {
@@ -496,21 +487,21 @@ extension DVMultipleTodoitemtaskItemsVC: UITableViewDelegate, UITableViewDataSou
     
     // MARK: - DatePicker
     func datePickerTappedForDuedateAtDateCell() {
-        let datePicker = DatePickerDialog()
-        
-        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
-        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
-        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
-        
-        datePicker.show(setDueDateTitle,
-                        doneButtonTitle: setString,
-                        cancelButtonTitle: cancelString,
-                        defaultDate: Date().endTime()) { [unowned self] (date) in
-                            if let dt = date {
-                                self.data.duedateAt = dt
-                                self.tableView.reloadData()
-                            }
-        }
+//        let datePicker = DatePickerDialog()
+//        
+//        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
+//        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+//        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+//        
+//        datePicker.show(setDueDateTitle,
+//                        doneButtonTitle: setString,
+//                        cancelButtonTitle: cancelString,
+//                        defaultDate: Date().endTime()) { [unowned self] (date) in
+//                            if let dt = date {
+//                                self.data.duedateAt = dt
+//                                self.tableView.reloadData()
+//                            }
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

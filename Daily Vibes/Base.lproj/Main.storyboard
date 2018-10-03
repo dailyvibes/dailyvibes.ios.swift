@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZV9-I2-7pZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZV9-I2-7pZ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--DVLocalNotifications-->
+        <scene sceneID="UHc-zg-bxj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DVLocalNotifications" referencedIdentifier="DVLocalNotifications" id="hEn-Mu-ZAg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1E-iJ-oLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1173" y="-447"/>
+        </scene>
         <!--Daily Vibes-->
         <scene sceneID="cRI-dk-0WD">
             <objects>
@@ -64,19 +73,55 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Daily Vibes" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="NEe-C8-mgy">
-                        <barButtonItem key="rightBarButtonItem" image="more_icon_dailyvibes" landscapeImage="more_icon_dailyvibes" largeContentSizeImage="more_icon_dailyvibes" id="Cww-FG-c2L">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="main_more_filter_btn"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <segue destination="bHr-ku-ldV" kind="show" identifier="TodoTaskItemFilters" id="70H-dv-Kj4"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="more_icon_dailyvibes" landscapeImage="more_icon_dailyvibes" largeContentSizeImage="more_icon_dailyvibes" id="Cww-FG-c2L">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="main_more_filter_btn"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="bHr-ku-ldV" kind="show" identifier="TodoTaskItemFilters" id="70H-dv-Kj4"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="dv_bell_notifications" id="DlG-5K-idS">
+                                <connections>
+                                    <segue destination="hEn-Mu-ZAg" kind="show" identifier="DVLocalNotifications" id="jZF-zc-Kap"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPI-yR-qtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1572" y="90.404797601199405"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="jbU-JU-gYS">
+            <objects>
+                <tableViewController storyboardIdentifier="UITableViewController-KzK-hn-yRb" id="KzK-hn-yRb" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Av5-jp-Ch7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="k9h-7k-vSo">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k9h-7k-vSo" id="jkq-2k-aMC">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KzK-hn-yRb" id="nhC-KY-iBO"/>
+                            <outlet property="delegate" destination="KzK-hn-yRb" id="zLd-h8-sxd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="BuX-t3-gZf"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AvR-e9-Efm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1939" y="-793"/>
         </scene>
         <!--Todo Task Item Filters View Controller-->
         <scene sceneID="eHY-qJ-EiA">
@@ -673,6 +718,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="dv_bell_notifications" width="29" height="29"/>
         <image name="emptycircle_icon_dailyvibes" width="29" height="29"/>
         <image name="home_icon_dailyvibes" width="29" height="29"/>
         <image name="more_icon_dailyvibes" width="29" height="29"/>

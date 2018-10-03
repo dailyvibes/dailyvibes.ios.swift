@@ -35,6 +35,9 @@
 		D93A90232012940A00228515 /* DVTodoItemTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A90222012940A00228515 /* DVTodoItemTaskViewModel.swift */; };
 		D93A902420129C2900228515 /* DVTodoItemTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A90222012940A00228515 /* DVTodoItemTaskViewModel.swift */; };
 		D94108222042494A00BCBCE9 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94108212042494A00BCBCE9 /* SnapshotHelper.swift */; };
+		D945B16420AE75E700F9C62F /* (null) in Resources */ = {isa = PBXBuildFile; };
+		D945B16520AE75E700F9C62F /* (null) in Resources */ = {isa = PBXBuildFile; };
+		D945B16620AE75E700F9C62F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D94EEE1D2039F42300F12A9D /* DVMultipleTodoitemtaskItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94EEE1C2039F42300F12A9D /* DVMultipleTodoitemtaskItemsVC.swift */; };
 		D94EEE1F203A234100F12A9D /* DVMultipleTodoitemtaskItemsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94EEE1E203A234100F12A9D /* DVMultipleTodoitemtaskItemsVM.swift */; };
 		D94FDAA1200984310065AB29 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94FDAA0200984310065AB29 /* ListTableViewController.swift */; };
@@ -42,7 +45,7 @@
 		D957461920038F8C000038AE /* SupportSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461820038F8C000038AE /* SupportSettingsViewController.swift */; };
 		D957461D2003966B000038AE /* AcknowledgementSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461C2003966B000038AE /* AcknowledgementSettingsViewController.swift */; };
 		D957461F20039892000038AE /* AboutSettingsViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957461E20039892000038AE /* AboutSettingsViewControllerViewController.swift */; };
-		D9598A631FBDE20C000854ED /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D95E61941FC3E8FA00FC2B02 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61931FC3E8FA00FC2B02 /* TagsTableViewController.swift */; };
 		D95E61961FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E61951FC3F26E00FC2B02 /* TagsCreationTableViewCell.swift */; };
 		D9694C34200845B400B49CE4 /* DailyVibesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9694C33200845B400B49CE4 /* DailyVibesList.swift */; };
@@ -51,6 +54,7 @@
 		D9728584203786E50075AEBC /* DVMultipleTodoitemtaskItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9728583203786E50075AEBC /* DVMultipleTodoitemtaskItems.storyboard */; };
 		D9728586203788B30075AEBC /* DVMultipleTodoitemtaskItemsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9728585203788B30075AEBC /* DVMultipleTodoitemtaskItemsTVC.swift */; };
 		D972A5D3204528B3003F1F37 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D972A5D2204528B3003F1F37 /* String+Extension.swift */; };
+		D9778678216510B700D3896B /* DVLocalNotifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9778677216510B600D3896B /* DVLocalNotifications.storyboard */; };
 		D97853C4200073A700665B2E /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97853C3200073A700665B2E /* DatePickerDialog.swift */; };
 		D98793BD1FFBDCEA0083AAC2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */; };
 		D98793BE1FFBE2BD0083AAC2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */; };
@@ -116,10 +120,11 @@
 		D9CB36432034B752005004B3 /* about.md in Resources */ = {isa = PBXBuildFile; fileRef = D9CB36422034B752005004B3 /* about.md */; };
 		D9CB36452034B757005004B3 /* acknowledgement.md in Resources */ = {isa = PBXBuildFile; fileRef = D9CB36442034B757005004B3 /* acknowledgement.md */; };
 		D9CB36472034B75C005004B3 /* support.md in Resources */ = {isa = PBXBuildFile; fileRef = D9CB36462034B75C005004B3 /* support.md */; };
+		D9CBBFD320B3A43700DB0E74 /* DVLNTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CBBFD220B3A43700DB0E74 /* DVLNTableViewController.swift */; };
+		D9CBBFD420B3A43700DB0E74 /* DVLNTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CBBFD220B3A43700DB0E74 /* DVLNTableViewController.swift */; };
 		D9CF98E120402C9F006FEB98 /* UYLNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF98E020402C9F006FEB98 /* UYLNotificationDelegate.swift */; };
 		D9D0D6DA200C3DF700F1BC5F /* NotesInlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0D6D9200C3DF700F1BC5F /* NotesInlineTableViewCell.swift */; };
 		D9D7079120423B3E005D8A16 /* DVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7079020423B3E005D8A16 /* DVUITests.swift */; };
-		D9DC2D8120114EA6001B2014 /* ThemableBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC2D8020114EA6001B2014 /* ThemableBaseTextField.swift */; };
 		D9DC3A1D2002B5DA00D1DCC3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC3A1C2002B5DA00D1DCC3 /* CoreDataManager.swift */; };
 		D9DC3A1E2002B8AA00D1DCC3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC3A1C2002B5DA00D1DCC3 /* CoreDataManager.swift */; };
 		D9DC3A1F2002CBA300D1DCC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9028E8F1FAD4D6A002D64E3 /* Assets.xcassets */; };
@@ -175,7 +180,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D9598A631FBDE20C000854ED /* BuildFile in Embed Frameworks */,
+				D9598A631FBDE20C000854ED /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +241,7 @@
 		D9728583203786E50075AEBC /* DVMultipleTodoitemtaskItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DVMultipleTodoitemtaskItems.storyboard; sourceTree = "<group>"; };
 		D9728585203788B30075AEBC /* DVMultipleTodoitemtaskItemsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVMultipleTodoitemtaskItemsTVC.swift; sourceTree = "<group>"; };
 		D972A5D2204528B3003F1F37 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		D9778677216510B600D3896B /* DVLocalNotifications.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DVLocalNotifications.storyboard; sourceTree = "<group>"; };
 		D97853C3200073A700665B2E /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		D98793BC1FFBDCEA0083AAC2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		D98AEF26201D07310090CA7A /* DVSectionVMStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSectionVMStatus.swift; sourceTree = "<group>"; };
@@ -316,6 +322,7 @@
 		D9CB36422034B752005004B3 /* about.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = about.md; sourceTree = "<group>"; };
 		D9CB36442034B757005004B3 /* acknowledgement.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = acknowledgement.md; sourceTree = "<group>"; };
 		D9CB36462034B75C005004B3 /* support.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = support.md; sourceTree = "<group>"; };
+		D9CBBFD220B3A43700DB0E74 /* DVLNTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVLNTableViewController.swift; sourceTree = "<group>"; };
 		D9CF98DE20402789006FEB98 /* DVModelv05.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DVModelv05.xcdatamodel; sourceTree = "<group>"; };
 		D9CF98E020402C9F006FEB98 /* UYLNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UYLNotificationDelegate.swift; sourceTree = "<group>"; };
 		D9D0D6D9200C3DF700F1BC5F /* NotesInlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesInlineTableViewCell.swift; sourceTree = "<group>"; };
@@ -323,7 +330,6 @@
 		D9D7078E20423B3E005D8A16 /* DVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D7079020423B3E005D8A16 /* DVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVUITests.swift; sourceTree = "<group>"; };
 		D9D7079220423B3E005D8A16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9DC2D8020114EA6001B2014 /* ThemableBaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableBaseTextField.swift; sourceTree = "<group>"; };
 		D9DC3A1C2002B5DA00D1DCC3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D9E0F2CF1FDC56FE0072D3B8 /* DailyVibesTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVibesTabBarViewController.swift; sourceTree = "<group>"; };
 		D9E0F2D11FDC64230072D3B8 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
@@ -634,6 +640,8 @@
 			isa = PBXGroup;
 			children = (
 				D9CF98E020402C9F006FEB98 /* UYLNotificationDelegate.swift */,
+				D9778677216510B600D3896B /* DVLocalNotifications.storyboard */,
+				D9CBBFD220B3A43700DB0E74 /* DVLNTableViewController.swift */,
 			);
 			path = notifications;
 			sourceTree = "<group>";
@@ -682,7 +690,6 @@
 				D9F0C949200D5DCA0048BB1D /* ThemableTableViewController.swift */,
 				D9F0C94B200D85D60048BB1D /* ThemableViewController.swift */,
 				D9156E282010DC2300E7F04E /* ThemableBaseTableViewCell.swift */,
-				D9DC2D8020114EA6001B2014 /* ThemableBaseTextField.swift */,
 				D9B2686120121E250057D5AA /* ThemableBaseTextView.swift */,
 			);
 			path = themes;
@@ -766,7 +773,6 @@
 				D9E3FE8C1FB9292900785E4B /* Embed App Extensions */,
 				D9598A641FBDE20D000854ED /* Embed Frameworks */,
 				480AFBB1EBFDF9C6807D7D0F /* [CP] Embed Pods Frameworks */,
-				B5588125FDFA5DE11DA5A3BF /* [CP] Copy Pods Resources */,
 				D907539020538099002F9A8D /* Run Script - BuildVersion.sh */,
 				D907538E20537FC4002F9A8D /* Run Script - VersionNumberIncrement.sh */,
 			);
@@ -914,12 +920,14 @@
 				D9CB36472034B75C005004B3 /* support.md in Resources */,
 				D9AA5DB82001CE9600CAE847 /* NightBlue.plist in Resources */,
 				D9728584203786E50075AEBC /* DVMultipleTodoitemtaskItems.storyboard in Resources */,
+				D945B16420AE75E700F9C62F /* (null) in Resources */,
 				D9AA5DB52001CC9F00CAE847 /* LightOrange.plist in Resources */,
 				D9CB36432034B752005004B3 /* about.md in Resources */,
 				D9AE6A551FE3760500A28656 /* Progress.storyboard in Resources */,
 				D9CB36452034B757005004B3 /* acknowledgement.md in Resources */,
 				D9028E8E1FAD4D6A002D64E3 /* Main.storyboard in Resources */,
 				D99D440B1FDD6545007323FA /* SettingzViewController.storyboard in Resources */,
+				D9778678216510B700D3896B /* DVLocalNotifications.storyboard in Resources */,
 				D9E2EEF32001B92600858F22 /* Night.plist in Resources */,
 				D9AA5DC12001E83E00CAE847 /* Default.plist in Resources */,
 			);
@@ -930,6 +938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9AA5DB92001CE9600CAE847 /* NightBlue.plist in Resources */,
+				D945B16520AE75E700F9C62F /* (null) in Resources */,
 				D9AA5DC22001E83E00CAE847 /* Default.plist in Resources */,
 				D9AA5DB62001CC9F00CAE847 /* LightOrange.plist in Resources */,
 			);
@@ -940,6 +949,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91B56A2204378F500963DB2 /* Localizable.strings in Resources */,
+				D945B16620AE75E700F9C62F /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,21 +1016,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B5588125FDFA5DE11DA5A3BF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily Vibes/Pods-Daily Vibes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D907538E20537FC4002F9A8D /* Run Script - VersionNumberIncrement.sh */ = {
@@ -1113,10 +1108,10 @@
 				D9B9F52F2044BAC500020608 /* RegexStringConvertible.swift in Sources */,
 				D94FDAA1200984310065AB29 /* ListTableViewController.swift in Sources */,
 				D9B37A332013695600EF3314 /* DateValueFormatter.swift in Sources */,
-				D9DC2D8120114EA6001B2014 /* ThemableBaseTextField.swift in Sources */,
 				D94FDAA5200984580065AB29 /* ListCreationTableViewCell.swift in Sources */,
 				D9FD88C21FCA78690055674A /* TodoItemSettingsData.swift in Sources */,
 				D9B9F5272044BA5B00020608 /* NSRangeExt.swift in Sources */,
+				D9CBBFD320B3A43700DB0E74 /* DVLNTableViewController.swift in Sources */,
 				D957461D2003966B000038AE /* AcknowledgementSettingsViewController.swift in Sources */,
 				D9FA2D93200B2F68003A35A0 /* UITextViewFixed.swift in Sources */,
 				D9A278CB200A98F70084D882 /* DailyVibesNote.swift in Sources */,
@@ -1191,6 +1186,7 @@
 			files = (
 				D9D7079120423B3E005D8A16 /* DVUITests.swift in Sources */,
 				D94108222042494A00BCBCE9 /* SnapshotHelper.swift in Sources */,
+				D9CBBFD420B3A43700DB0E74 /* DVLNTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1379,7 +1375,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1433,7 +1429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
@@ -1552,7 +1548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E9FSS8PG2;
 				INFOPLIST_FILE = DailyVibesShareExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "sugarplumoriginals.Daily-Vibes.DailyVibesShareExtension";
@@ -1570,7 +1566,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E9FSS8PG2;
 				INFOPLIST_FILE = DailyVibesShareExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sugarplumoriginals.Daily-Vibes.DailyVibesShareExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-@IBDesignable
-class DesignableView: UIView {
-}
-
-@IBDesignable
-class DesignableButton: UIButton {
-}
-
-@IBDesignable
-class DesignableLabel: UILabel {
-}
+//@IBDesignable
+//class DesignableView: UIView {
+//}
+//
+//@IBDesignable
+//class DesignableButton: UIButton {
+//}
+//
+//@IBDesignable
+//class DesignableLabel: UILabel {
+//}
 
 extension UIView {
     

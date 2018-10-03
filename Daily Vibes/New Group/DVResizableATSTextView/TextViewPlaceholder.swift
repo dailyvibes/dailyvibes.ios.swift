@@ -59,7 +59,7 @@ extension UITextView : UITextViewDelegate {
     }
     
     private func addPlaceholder(_ placeholderText: String) {
-        let placeholderLbl = UILabel()
+        let placeholderLbl = UILabel(frame: .zero)
         
         placeholderLbl.text = placeholderText
         placeholderLbl.sizeToFit()

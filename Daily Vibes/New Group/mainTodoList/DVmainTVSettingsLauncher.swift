@@ -24,7 +24,7 @@ class DVmainTVSettingsLauncher: NSObject {
     
     let store = CoreDataManager.store
     
-    let blackView = UIView()
+    let blackView = UIView.init(frame: .zero)
     private var myArray = [[SettingsData]]()
     
     private var myTableView: UITableView = {

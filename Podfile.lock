@@ -13,20 +13,30 @@ PODS:
 
 DEPENDENCIES:
   - Charts
-  - DeckTransition (~> 2.0)
-  - Disk (~> 0.3.3)
+  - DeckTransition
+  - Disk
   - Down
-  - GrowingTextView (~> 0.5)
+  - GrowingTextView
   - Notepad (from `/Users/getaclue/dev/DailyVibes.iOS/Notepad/`)
   - SimulatorStatusMagic
   - SwiftTheme
   - SwiftyChrono (from `/Users/getaclue/dev/DailyVibes.iOS/SwiftyChrono`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Charts
+    - DeckTransition
+    - Disk
+    - Down
+    - GrowingTextView
+    - SimulatorStatusMagic
+    - SwiftTheme
+
 EXTERNAL SOURCES:
   Notepad:
-    :path: /Users/getaclue/dev/DailyVibes.iOS/Notepad/
+    :path: "/Users/getaclue/dev/DailyVibes.iOS/Notepad/"
   SwiftyChrono:
-    :path: /Users/getaclue/dev/DailyVibes.iOS/SwiftyChrono
+    :path: "/Users/getaclue/dev/DailyVibes.iOS/SwiftyChrono"
 
 SPEC CHECKSUMS:
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
@@ -34,11 +44,11 @@ SPEC CHECKSUMS:
   Disk: d1f55cd61f6ca20f368232d0c6e37e3c3dfcb63e
   Down: 92efba7c95a8efdb84b7114e365db4a37f3df76e
   GrowingTextView: 0615429affef558cbbb610aa6f9baf19b027fdbe
-  Notepad: ac7bcace29c8020691946fe1f4cace8d390859eb
+  Notepad: d9789be919e73aaaeb17806c629526decae2ae84
   SimulatorStatusMagic: 481558caf2b9ccb2ceba2cc193728d4db3dcac07
   SwiftTheme: 548eff28a606d0975e04b2e708b879d7eea660f6
-  SwiftyChrono: 6ec5ffaaee8a14b147efec5af91a3c0e8e3c1bcc
+  SwiftyChrono: ce872ee580ebbc5bc6efa7deb72cdcf7cfe0a78d
 
-PODFILE CHECKSUM: c3cdf54a33a6f7c46057a4b780e21e5c1d19b0e5
+PODFILE CHECKSUM: d9ff28884231d9d38702585ae2d8f88a09af9846
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

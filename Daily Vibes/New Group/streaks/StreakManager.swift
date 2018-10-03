@@ -66,7 +66,7 @@ class StreakManager {
 //        versionPrevId = nil;
 //        })
 
-        guard let todoItem = _todoItem as TodoItem! else { fatalError("to-do item should be set") }
+        guard let todoItem = _todoItem else { fatalError("not unwrapped") }
         guard todoItem.completed else { fatalError("to-do should be completed") }
         
         let streaks = fetchAll()
@@ -221,7 +221,7 @@ class StreakManager {
 //    }
     
     func processNeibouringStreak(neighbour streak:Streak, for date: Date, isConsecutive consecutive: Bool = false) -> Streak? {
-        guard let ctx = persistentContainer.viewContext as NSManagedObjectContext! else { fatalError("failure in processNewStreak") }
+        let ctx = persistentContainer.viewContext as NSManagedObjectContext
         
         let newStreak = Streak(context: ctx)
         
@@ -254,7 +254,8 @@ class StreakManager {
     fileprivate func createAndSaveBrandNewStreak(_ todoItem: TodoItem) -> Bool {
         guard todoItem.completed else { fatalError("should be a completed to-do") }
         guard let _ = createNewStreak(from: todoItem) else { fatalError("should have created a new streak using the to-do") }
-        guard let ctx = persistentContainer.viewContext as NSManagedObjectContext! else { fatalError("need to have a context") }
+        let ctx = persistentContainer.viewContext as NSManagedObjectContext
+        
         do {
             try ctx.save()
             return true
@@ -266,7 +267,7 @@ class StreakManager {
     }
     
     private func createNewStreak(from todoItem:TodoItem) -> Streak? {
-        guard let ctx = persistentContainer.viewContext as NSManagedObjectContext! else { fatalError("failed in createNewStreak") }
+        let ctx = persistentContainer.viewContext as NSManagedObjectContext
         guard let streak = NSEntityDescription.insertNewObject(forEntityName: "Streak", into: ctx) as? Streak else { return nil }
         
         let _one = Int64(1)

@@ -83,7 +83,7 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView.init(coder: .init())
     }
     
     override func didReceiveMemoryWarning() {
@@ -134,7 +134,7 @@ class ListTableViewController: ThemableTableViewController, UITextFieldDelegate 
         
         if section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: createCell, for: indexPath) as! ListCreationTableViewCell
-            cell.listLabeler.delegate = self
+//            cell.listLabeler.delegate = self
             return cell
         }
         

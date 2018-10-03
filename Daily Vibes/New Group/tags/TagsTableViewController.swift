@@ -62,8 +62,8 @@ class TagsTableViewController: ThemableTableViewController, UITextFieldDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.tableFooterView = UIView()
+        //        TODO: figure out how to instantiate tableFooterView
+//        tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,7 +88,7 @@ class TagsTableViewController: ThemableTableViewController, UITextFieldDelegate,
         
         if tagCreator.isLocated(at: indexPath) {
             let cell = tableView.dequeueReusableCell(withIdentifier: createCell, for: indexPath) as! TagsCreationTableViewCell
-            cell.tagLabeler.delegate = self
+//            cell.tagLabeler.delegate = self
             return cell
         } else {
             // display

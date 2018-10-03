@@ -47,7 +47,7 @@ class ThemesSettingsTableViewController: ThemableTableViewController {
         
         tableView.register(ThemableBaseTableViewCell.self, forCellReuseIdentifier: "DefaultCell")
 
-        tableView.tableFooterView = UIView.init()
+        tableView.tableFooterView = UIView.init(coder: .init())
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

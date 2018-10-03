@@ -37,6 +37,10 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        
+        var preferredStatusBarStyle : UIStatusBarStyle {
+            return .lightContent
+        }
 //        setupMiddleButton()
     }
     
@@ -64,7 +68,7 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
             let transitionDelegate = DeckTransitioningDelegate(isSwipeToDismissEnabled: false)
             tvc.transitioningDelegate = transitionDelegate
             tvc.modalPresentationStyle = .custom
-            UIApplication.shared.statusBarStyle = .lightContent
+//            UIApplication.shared.statusBarStyle = .lightContent
             
             self.present(tvc, animated: true, completion: nil)
             

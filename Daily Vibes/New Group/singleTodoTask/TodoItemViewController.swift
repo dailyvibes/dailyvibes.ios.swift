@@ -469,24 +469,24 @@ class TodoItemViewController:
     
     // MARK: - Datepickertapped
     func datePickerTappedForDuedateAtDateCell() {
-        let datePicker = DatePickerDialog()
-        
-        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
-        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
-        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
-        
-        datePicker.show(setDueDateTitle,
-                        doneButtonTitle: setString,
-                        cancelButtonTitle: cancelString,
-                        defaultDate: Date().endTime()) { [unowned self] (date) in
-                            if let dt = date {
-                                self.todoItemTaskViewModel?.duedateAt = dt
-                                self.tableView.beginUpdates()
-                                self.duedateAtDateCell.detailTextLabel?.text = self.dateFormatter?.string(from: dt)
-                                self.tableView.endUpdates()
-                                //                                self.tableView.reloadData()
-                            }
-        }
+//        let datePicker = DatePickerDialog()
+//        
+//        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
+//        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+//        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+//        
+//        datePicker.show(setDueDateTitle,
+//                        doneButtonTitle: setString,
+//                        cancelButtonTitle: cancelString,
+//                        defaultDate: Date().endTime()) { [unowned self] (date) in
+//                            if let dt = date {
+//                                self.todoItemTaskViewModel?.duedateAt = dt
+//                                self.tableView.beginUpdates()
+//                                self.duedateAtDateCell.detailTextLabel?.text = self.dateFormatter?.string(from: dt)
+//                                self.tableView.endUpdates()
+//                                //                                self.tableView.reloadData()
+//                            }
+//        }
     }
     
     // MARK: Private Methods

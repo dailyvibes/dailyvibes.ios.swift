@@ -181,7 +181,7 @@ final class CoreDataManager {
         let fetchRequest = NSFetchRequest<TodoItem>(entityName: "TodoItem")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "id == %@", uuid! as CVarArg)
-        todo = try context.fetch(fetchRequest).first as TodoItem!
+        todo = try context.fetch(fetchRequest).first
         
         return todo!
     }
@@ -300,7 +300,7 @@ final class CoreDataManager {
         let fetchRequest = NSFetchRequest<DailyVibesNote>(entityName: "DailyVibesNote")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate.init(format: "uuid == %@", uuid! as CVarArg)
-        note = try context.fetch(fetchRequest).first as DailyVibesNote!
+        note = try context.fetch(fetchRequest).first
         
         return note!
     }
@@ -313,7 +313,7 @@ final class CoreDataManager {
             
             fetchRequest.fetchLimit = 1
             fetchRequest.predicate = NSPredicate(format: "uuid == %@", _uuid as CVarArg)
-            list = try context.fetch(fetchRequest).first as DailyVibesList!
+            list = try context.fetch(fetchRequest).first
             
             return list!
         }
@@ -329,7 +329,7 @@ final class CoreDataManager {
             let fetchRequest = NSFetchRequest<DailyVibesList>(entityName: "DailyVibesList")
             fetchRequest.fetchLimit = 1
             fetchRequest.predicate = NSPredicate(format: "title == %@", titleText as CVarArg)
-            list = try context.fetch(fetchRequest).first as DailyVibesList!
+            list = try context.fetch(fetchRequest).first
         } catch {
             list = nil
         }
@@ -407,7 +407,7 @@ final class CoreDataManager {
         let fetchRequest = NSFetchRequest<Tag>(entityName: "Tag")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate.init(format: "uuid == %@", uuid! as CVarArg)
-        tag = try context.fetch(fetchRequest).first as Tag!
+        tag = try context.fetch(fetchRequest).first
         
         return tag!
     }
@@ -665,7 +665,7 @@ final class CoreDataManager {
         
         do {
             guard let tasks = try context.fetch(fetchRequest) as? [TodoItem] else { return nil }
-            return tasks.flatMap { DVTodoItemTaskViewModel.fromCoreData(todoItem: $0) }
+            return tasks.compactMap { DVTodoItemTaskViewModel.fromCoreData(todoItem: $0) }
         } catch {
             return nil
         }
@@ -675,7 +675,7 @@ final class CoreDataManager {
         do {
             let regex = try NSRegularExpression(pattern: regex)
             let results = regex.matches(in: text, range: NSRange(text.startIndex..., in: text))
-            return results.flatMap {
+            return results.compactMap {
                 Range($0.range, in: text).map { String(text[$0]) }
             }
         } catch let error {
@@ -859,13 +859,13 @@ final class CoreDataManager {
         if editingDVTodotaskItem != nil {
             do {
                 let placeholderUUIDString = UUID.init(uuidString: "00000000-0000-0000-0000-000000000000")
-                let _todo: TodoItem?
+//                let _todo: TodoItem?
                 let curDate = Date()
                 
                 if let editingTodoTask = editingDVTodotaskItem, editingTodoTask.isNew {
                     // a new todo
                     let todo = TodoItem(context: context)
-                    _todo = todo
+//                    _todo = todo
                     todo.id = UUID.init()
                     todo.todoItemText = editingDVTodotaskItem?.todoItemText
                     
@@ -963,7 +963,7 @@ final class CoreDataManager {
                     // an existing todo
                     
                     let todo = try findTodoItemTask(withUUID: editingDVTodotaskItem?.uuid)
-                    _todo = todo
+//                    _todo = todo
                     let curDate = Date()
                     
                     todo.todoItemText = editingDVTodotaskItem?.todoItemText
@@ -1095,7 +1095,7 @@ final class CoreDataManager {
         
         let defaultList = DVListViewModel.fromCoreData(list: findDVList(byLabel: defaultListString))
         
-        if let uuid = _uuid as UUID! {
+        if let uuid = _uuid {
             do {
                 let foundTodo = try findTodoItemTask(withUUID: uuid)
                 var foundTodoVM = DVTodoItemTaskViewModel.fromCoreData(todoItem: foundTodo)
@@ -1375,12 +1375,12 @@ final class CoreDataManager {
             sections.forEach({ (sectionInfo) in
                 var dvModel = DVCoreSectionViewModel.init(sectionIdentifier: sectionInfo.name, sectionCount: sectionInfo.numberOfObjects, indexTitle: sectionInfo.indexTitle)
                 if let tasks = sectionInfo.objects as? [TodoItem] {
-                    let transformedTasks = tasks.flatMap { (todoItemTask) -> DVTodoItemTaskViewModel in
+                    let transformedTasks = tasks.compactMap { (todoItemTask) -> DVTodoItemTaskViewModel in
                         var transformedDVTodoItemTask = DVTodoItemTaskViewModel.fromCoreData(todoItem: todoItemTask)
                         
                         if let numTags = todoItemTask.tags?.count, numTags > 0 {
                             if let tags = todoItemTask.tags?.allObjects as? [Tag] {
-                                let transformedDVTagsForTodoItemTask = tags.flatMap({ (tag) -> DVTagViewModel? in
+                                let transformedDVTagsForTodoItemTask = tags.compactMap({ (tag) -> DVTagViewModel? in
                                     var transformedDVTag = DVTagViewModel.fromCoreData(tag: tag)
                                     transformedDVTag.tagged.append(DVTodoItemTaskViewModel.fromCoreData(todoItem: todoItemTask))
                                     //                                    transformedDVTodoItemTask.tags?.append(transformedDVTag)
@@ -1455,7 +1455,7 @@ final class CoreDataManager {
         let createdAt = NSSortDescriptor(key: "createdAt", ascending: false)
         fetchRequest.sortDescriptors = [createdAt]
         let result = try! context.fetch(fetchRequest) as! [Tag]
-        self.dvTagsVM = result.flatMap({ (tag) -> DVTagViewModel? in
+        self.dvTagsVM = result.compactMap({ (tag) -> DVTagViewModel? in
             return DVTagViewModel.fromCoreData(tag: tag)
         })
     }
@@ -1465,7 +1465,7 @@ final class CoreDataManager {
         let createdAt = NSSortDescriptor(key: "createdAt", ascending: false)
         fetchRequest.sortDescriptors = [createdAt]
         let result = try! context.fetch(fetchRequest) as! [DailyVibesList]
-        self.dvListsVM = result.flatMap({ (list) -> DVListViewModel? in
+        self.dvListsVM = result.compactMap({ (list) -> DVListViewModel? in
             return DVListViewModel.fromCoreData(list: list)
         })
     }
