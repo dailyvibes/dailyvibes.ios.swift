@@ -6,6 +6,9 @@
 //  Copyright © 2018 Alex Kluew. All rights reserved.
 //
 
+// TODO: NOTE Jan-10-2019
+// the maximum title for iphone xs max is = g1f2f3f4f5f8f9f0f1f2f3
+
 import UIKit
 
 struct DVListViewModel: Codable {
@@ -184,6 +187,23 @@ extension DVListViewModel {
             converted?.syncedBeganAt = list.syncedBeganAt
             converted?.syncedFinishedAt = list.syncedFinishedAt
             converted?.syncedDeviceID = list.syncedDeviceID ?? UIDevice.current.identifierForVendor?.uuidString
+            
+//            converted.
+//            var listItems: [DVTodoItemTaskViewModel]?
+//
+//            var listItemCountCompleted: Int = 0
+//            var listItemCountTotal: Int = 0
+            
+//            if let items = list.listItems?.allObjects as? [DVTodoItemTaskViewModel], items.count > 0 {
+//                print("count: \(items.count)")
+//            } else {
+//                print("no items")
+//            }
+            
+//            if list.listItemCountTotal > 0 {
+//                print("total, \(list.listItemCountTotal), completed, \(list.listItemCountCompleted), list, \(list.title ?? "")")
+//            }
+            
 //            if let projects = list.listItems?.allObjects, projects.count > 0 {
 //                var data = [DVTodoItemTaskViewModel]()
 //                

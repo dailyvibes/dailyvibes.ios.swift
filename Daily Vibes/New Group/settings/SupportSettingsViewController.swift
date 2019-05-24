@@ -11,17 +11,10 @@ import Down
 
 class SupportSettingsViewController: ThemableViewController {
     
-//    fileprivate let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 16))
-    
-    @IBOutlet fileprivate weak var markdowntextView: UITextView! {
-        didSet {
-            markdowntextView.isEditable = false
-            markdowntextView.delegate = self
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
         let titleString = "Support"
         setupNavigationTitleText(title: titleString)
@@ -29,10 +22,29 @@ class SupportSettingsViewController: ThemableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.largeTitleDisplayMode = .always
         
-        guard let downView = try? DownView(frame: self.view.bounds, markdownString: testMarkdownFileContent(), didLoadSuccessfully: nil) else { return }
-        self.view.addSubview(downView)
+        let textView = UITextView(frame: self.view.bounds)
+        
+        let down = Down(markdownString: testMarkdownFileContent())
+        
+        guard let html = try? down.toHTML() else {
+            fatalError("oops")
+        }
+        
+        let defaultStylesheet = "* {font-family: '-apple-system', 'HelveticaNeue'; font-size:\(UIFont.buttonFontSize) } code, pre { font-family: Menlo }"
+        
+        let htmlString = "<style>" + defaultStylesheet + "</style>" + html
+        guard let htmlData = NSString(string: htmlString).data(using: String.Encoding.unicode.rawValue) else { fatalError("htmlData conversion failed") }
+        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
+            NSAttributedString.DocumentType.html]
+        let attributedString = try? NSAttributedString(data: htmlData, options: options, documentAttributes: nil)
+        
+        textView.attributedText = attributedString
+        textView.textContainerInset = UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 20)
+        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        textView.isEditable = false
+        
+        self.view.addSubview(textView)
     }
     
     public func testMarkdownFileContent() -> String {

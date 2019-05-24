@@ -46,10 +46,11 @@
 # ])
 
 devices([
-  "iPhone SE",
-  "iPhone 8",
+  "iPhone XS Max",
+  "iPhone XS",
   "iPhone 8 Plus",
-  "iPhone X"
+  "iPhone 8"
+  # "iPad Pro (12.9-inch) (3rd generation)"
 ])
 
 # devices([

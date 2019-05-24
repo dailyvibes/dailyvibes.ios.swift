@@ -16,6 +16,11 @@ class ThemableBaseTableViewCell: UITableViewCell {
         
         theme_backgroundColor = "Global.barTintColor"
         theme_tintColor = "Global.barTextColor"
+        
+        let customSelectedView = UIView(frame: .zero)
+        customSelectedView.theme_backgroundColor = "Global.selectionBackgroundColor"
+        
+        selectedBackgroundView = customSelectedView
     }
 
 }

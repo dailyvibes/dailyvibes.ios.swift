@@ -1,110 +1,152 @@
 {
-  // "device_frame_version": "latest",
+  "device_frame_version": "latest",
   "default": {
-    "background": "./background.jpg",
+    "background": "./backgroundgradient002.png",
     "padding": 50,
-    "show_complete_frame": false,
-    "stack_title" : true,
+    "show_complete_frame": true,
+    "stack_title": true,
     "title_below_image": false,
     "keyword": {
-      "color": "#111111"
+      "color": "#FFFFFF"
     },
-      "title": {
-      "color": "#444444"
+    "title": {
+      "color": "#FFFFFF"
     }
   },
-
   "data": [
     {
       "filter": "Launch",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
-      }
+        "color": "#FFFFFF"
+      },
+      "show_complete_frame": true
     },
     {
       "filter": "DailyProgress",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
+        "color": "#FFFFFF"
       }
     },
     {
       "filter": "MultiEntry",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
+        "color": "#FFFFFF"
       }
     },
     {
       "filter": "FilterProjects",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
-      }
+        "color": "#FFFFFF"
+      },
+      "title_below_image": true
     },
     {
       "filter": "GroupByProjects",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
+        "color": "#FFFFFF"
       }
     },
     {
       "filter": "SmartTodayView",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
+        "color": "#FFFFFF"
       }
     },
     {
       "filter": "SmartThisWeekView",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
+        "color": "#FFFFFF"
       }
     },
     {
       "filter": "CustomProjects",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
+        "color": "#FFFFFF"
       }
     },
     {
       "filter": "DetailView",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
+        "color": "#FFFFFF"
       }
     },
     {
       "filter": "ExportView",
       "keyword": {
-        "color": "#111111"
+        "color": "#FFFFFF"
       },
       "title": {
-        "color": "#444444"
+        "color": "#FFFFFF"
       },
       "title_below_image": true
+    },
+    {
+      "filter": "DailyVibes",
+      "keyword": {
+        "color": "#FFFFFF"
+      },
+      "title": {
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "filter": "MindfulVibes",
+      "keyword": {
+        "color": "#FFFFFF"
+      },
+      "title": {
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "filter": "OrganizeIdeas",
+      "keyword": {
+        "color": "#FFFFFF"
+      },
+      "title": {
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "filter": "Themes",
+      "keyword": { "color": "#FFFFFF" },
+      "title": { "color": "#FFFFFF" }
+    },
+    {
+      "filter": "Markdown",
+      "keyword": {
+        "color": "#FFFFFF"
+      },
+      "title": {
+        "color": "#FFFFFF"
+      }
     }
   ]
 }

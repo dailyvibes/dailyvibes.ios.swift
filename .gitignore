@@ -1,3 +1,23 @@
+# INSPIRATION FROM https://github.com/GitHawkApp/GitHawk/blob/master/.gitignore
+
+## OSX
+.DS_Store
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+# CocoaPods
+Pods/
+
+## MISC
 screenshots/de-DE/*.png
 screenshots/en-US/*.png
 screenshots/es-ES/*.png
@@ -5,3 +25,9 @@ screenshots/fr-FR/*.png
 screenshots/ru-RU/*.png
 screenshots/screenshots.html
 *.orig
+fastlane/report.xml
+fastlane/report.xml.orig
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+node_modules

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftTheme
 
 class ThemableTableViewController: UITableViewController {
     
@@ -14,16 +15,19 @@ class ThemableTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.tableFooterView = UIView(frame: .zero)
+        
+        self.tableView.theme_sectionIndexBackgroundColor = "Global.backgroundColor"
     }
     
-    private func setupTitleView(withTitle _titleString: String?, withSubtitle _subtitleString: String?) {
+    func setupVCTwoLineTitle(withTitle _titleString: String?, withSubtitle _subtitleString: String?) {
         
         if let titleString = _titleString {
-            let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 17)]
+            let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)]
             let _title:NSMutableAttributedString = NSMutableAttributedString(string: titleString, attributes: attrs)
             
             if let subtitleString = _subtitleString {
-                let __attrs = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11, weight: .ultraLight)]
+                let __attrs = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 11, weight: .ultraLight)]
                 let __subTitle:NSMutableAttributedString = NSMutableAttributedString(string: subtitleString, attributes: __attrs)
                 
                 _title.append(NSAttributedString(string:"\n"))
@@ -69,10 +73,10 @@ class ThemableTableViewController: UITableViewController {
             let yearProgressString = "\(yearProgressLocalizedString): \(yearProgress)%"
             let todaysDateString = dateFormatter.string(from: todaysDate)
             
-            let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 16)]
+            let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16)]
             let _title:NSMutableAttributedString = NSMutableAttributedString(string: todaysDateString, attributes: attrs)
             
-            let __attrs = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 13, weight: .ultraLight)]
+            let __attrs = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13, weight: .ultraLight)]
             let __subTitle:NSMutableAttributedString = NSMutableAttributedString(string: "\(yearProgressString)", attributes: __attrs)
             
             _title.append(NSAttributedString(string:"\n"))
@@ -100,7 +104,7 @@ class ThemableTableViewController: UITableViewController {
         } else {
             customNavigationTitle = NSLocalizedString("NOT SET forNavigationTitleText", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND NOT SET forNavigationTitleText **", comment: "")
         }
-        setupTitleView(withTitle: customNavigationTitle, withSubtitle: subtitleText)
+        setupVCTwoLineTitle(withTitle: customNavigationTitle, withSubtitle: subtitleText)
     }
 
 }

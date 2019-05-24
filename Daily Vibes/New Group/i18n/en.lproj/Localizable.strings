@@ -57,6 +57,7 @@
 "Archived" = "Archived";
 "Unsorted" = "Unsorted";
 "Change Project" = "Change Project";
+"Change" = "Change";
 
 // Todo Item Modification Screen
 "Add a to-do" = "New To-do";
@@ -74,7 +75,7 @@
 "Set" = "Set";
 "Notes" = "Notes";
 "Due" = "Due";
-"One new to-do item task per line" = "One new to-do item task per line";
+"One new to-do item task per line" = "One new to-do item task per line due tomorrow";
 "You can also include #tags" = "You can also include #tags";
 "Single" = "Single";
 "Multiple" = "Multiple";
@@ -95,6 +96,8 @@
 // Empty Screen
 "Your list is currently empty" = "Your list is currently empty";
 "You can add a new to-do to get started" = "You can add a new to-do to get started";
+
+"Add new project or list" = "Add new project or list";
 
 // Progress Screen
 "Daily task completion history" = "Daily task completion history";
@@ -125,6 +128,60 @@
 "Done Notifications" = "Done Notifications";
 "Delete Notifications" = "Delete Notifications";
 "Export" = "Export";
+"Export data" = "Export data";
 "How would you like to export your data?" = "How would you like to export your data?";
 "Export to Text" = "Export to Text";
 "Export to Email" = "Export to Email";
+
+// Likert
+"Vibes" = "Vibes";
+"Current Vibes" = "Record your current vibes";
+"Self" = "Self";
+"Environment" = "Environment";
+"entries" = "entries";
+"entry" = "entry";
+"Entry" = "Entry";
+
+"Reset" = "Reset";
+"Edit" = "Edit";
+"Switch" = "Switch";
+"Switch Project" = "Switch Project";
+"Change" = "Change";
+"Change Date" = "Change Date";
+"Change Time" = "Change Time";
+
+"New" = "New";
+"Default" = "Default";
+"Custom" = "Custom";
+"Vibes" = "Vibes";
+
+"Time" = "Time";
+"Motivation" = "Motivation";
+"Mood" = "Mood";
+"Stress" = "Stress";
+"Work" = "Work";
+"Life" = "Life";
+"Health" = "Health";
+"Good" = "Good";
+"Bad" = "Bad";
+
+"This week" = "This week";
+"28 days" = "28 days";
+"Rate Daily Vibes" = "Rate Daily Vibes";
+"Rename" = "Rename";
+
+"View" = "View";
+"Icon" = "Icon";
+
+"Sunday" = "Sunday";
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+
+"Start" = "Starts";
+"End" = "Ends";
+"Set End Date" = "Set End Date";
+"Set Start Date" = "Set Start Date";

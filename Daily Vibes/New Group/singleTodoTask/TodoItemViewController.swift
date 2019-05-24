@@ -13,7 +13,8 @@ import UIKit
 import CoreData
 import UserNotifications
 import SwiftyChrono
-//import SwiftSpinner
+import SwiftTheme
+import ContextMenu
 
 class TodoItemViewController:
     ThemableTableViewController,
@@ -21,14 +22,6 @@ class TodoItemViewController:
     UINavigationControllerDelegate,
     UIPickerViewDataSource,
     UIPickerViewDelegate {
-    // MARK: Properties
-//    private var todoItemTaskViewModel: DVTodoItemTaskViewModel? {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
     
     private var todoItemTaskViewModel: DVTodoItemTaskViewModel?
     private var store = CoreDataManager.store
@@ -52,6 +45,9 @@ class TodoItemViewController:
     @IBOutlet private weak var reminderCell: UITableViewCell!
     @IBOutlet private weak var reminderCellLabel: UILabel!
     @IBOutlet private weak var reminderToggle: UISwitch!
+    @IBOutlet weak var startDateCell: UITableViewCell!
+    @IBOutlet weak var endDateCell: UITableViewCell!
+    
     
     private var statusPickerVisible: Bool = false
     
@@ -69,12 +65,42 @@ class TodoItemViewController:
         ["Angry", UIColor.purple]
     ]
     
+    lazy var customSelectionView : UIView = {
+        let view = UIView(frame: .zero)
+        
+        view.theme_backgroundColor = "Global.selectionBackgroundColor"
+        
+        return view
+    }()
+    
     fileprivate func refreshNotesInlineCell() {
         let notesContent = store.editingDVTodotaskItem?.note?.content
         
         if notesContent == nil {
-            let emptyNotesText = NSLocalizedString("Notes", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Notes **", comment: "")
-            notesInlineCell.setText(text: emptyNotesText)
+//            let emptyNotesText = NSLocalizedString("Notes", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Notes **", comment: "")
+//            notesInlineCell.setText(text: emptyNotesText)
+            let txt = """
+            # Add Notes
+
+            ## Optionally use Markdown
+            
+            Use **Markdown** to create beautiful *notes*.
+            
+            Write code : ` let str = "Hello World" `
+
+            Jot down quotes like this and [reference them](https://dailyvibes.ca):
+
+            > Here is an important quote
+
+            * Quickly make lists
+            - Breakdown large ideas
+            + Reduce stress by writing things down
+
+            [ ] create a sample demo list
+            [X] show a completed task
+            """
+//            var string = "# "+emptyNotesText
+            notesInlineCell.setAttributedText(text: txt)
         } else {
             notesInlineCell.setAttributedText(text: notesContent)
         }
@@ -91,47 +117,17 @@ class TodoItemViewController:
         todoItemTaskViewModel = store.editingDVTodotaskItem
         
         let _title = "Details"
-        let actionButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleActionButton))
-        //            let actionButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "more_icon_dailyvibes"), style: .plain, target: self, action: #selector(handleActionButton))
         
         if let curProject = todoItemTaskViewModel?.list {
             self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: curProject)
         }
         
-        navigationItem.rightBarButtonItems = [saveTodoitemButton, actionButton]
+        navigationItem.rightBarButtonItems = [saveTodoitemButton]
         
         setupNavigationTitleText(title: _title, subtitle: nil)
         
         self.tableView.reloadData()
         
-//        if todoItemTaskViewModel == nil {
-//            // new
-//
-//            print("new task")
-//
-//            store.findOrCreateTodoitemTaskDeepNested(withUUID: nil)
-//            todoItemTaskViewModel = store.editingDVTodotaskItem
-//            todoItemTaskViewModel?.todoItemText = NSLocalizedString("Title", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND TITLE STRING **", comment: "")
-//            let _title = "Add a to-do"
-//            setupNavigationTitleText(title: _title, subtitle: nil)
-//        } else {
-//            // existing
-//            print("existing task")
-//
-//            let _title = "Details"
-//            let actionButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleActionButton))
-////            let actionButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "more_icon_dailyvibes"), style: .plain, target: self, action: #selector(handleActionButton))
-//
-//            if let curProject = todoItemTaskViewModel?.list {
-//                self.store.editingDVTodotaskItemListPlaceholder = DVListViewModel.copyWithoutListItems(list: curProject)
-//            }
-//
-//            navigationItem.rightBarButtonItems = [saveTodoitemButton, actionButton]
-//
-//            setupNavigationTitleText(title: _title, subtitle: nil)
-//        }
-        
-        //        let cancelText = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel **", comment: "")
         let cancelBn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         cancelBn.accessibilityIdentifier = "details_cancel_btn"
         navigationItem.leftBarButtonItems = [cancelBn]
@@ -143,24 +139,14 @@ class TodoItemViewController:
         refreshNotesInlineCell()
     }
     
-    @objc func handleActionButton() {
-        UIPasteboard.general.string = todoItemTaskViewModel?.encodedString()
-        
-        let copiedText = NSLocalizedString("Copied to clipboard", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Copied to clipboard **", comment: "")
-        let alert = UIAlertController(title: "", message: copiedText, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.estimatedRowHeight = 44.0
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         
         tableView.register(ThemableBaseTableViewCell.self, forCellReuseIdentifier: "DefaultCell")
-        
-        // Handle the text field’s user input through delegate callbacks.
+
         todoItemTextView.delegate = self
         deleteCell.delegate = self
         
@@ -168,7 +154,19 @@ class TodoItemViewController:
         dateFormatter?.dateStyle = DateFormatter.Style.short
         dateFormatter?.timeStyle = DateFormatter.Style.short
         
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(reloadTVC), name: Notification.Name("ListTableViewController.projectListChange"), object: nil)
+        
         showOrHideKeyboard()
+    }
+    
+    @objc
+    func reloadTVC() {
+        self.tableView.reloadData()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func showOrHideKeyboard() {
@@ -193,7 +191,6 @@ class TodoItemViewController:
         self.todoItemTaskViewModel = nil
         self.store.editingDVTodotaskItemListPlaceholder = nil
         
-//        DispatchQueue.main.async {
             let isPresentingInADDMode = self.presentingViewController is DailyVibesTabBarViewController
             
             if isPresentingInADDMode {
@@ -203,7 +200,6 @@ class TodoItemViewController:
             } else {
                 fatalError("The TodoItemViewController is not inside a navigation controller.")
             }
-//        }
     }
     
     @objc func cancel(_ sender: UIBarButtonItem) {
@@ -216,16 +212,50 @@ class TodoItemViewController:
         let saveButtonSegueIdentifier = "saveButtonSegue"
         
         if segue.identifier == saveButtonSegueIdentifier {
-            // LOOK AT TODO
-//            let startTime = CACurrentMediaTime()
             store.editingDVTodotaskItem = todoItemTaskViewModel
-//            let midTime = CACurrentMediaTime()
-//            print("MidTime - \(midTime - startTime)")
             self.store.saveEditingDVTodotaskItem()
-//            let endTime = CACurrentMediaTime()
-//            print("Time - \(endTime - startTime)")
-//            print("MidTime to EndTime - \(endTime - midTime)")
         }
+        
+//        if segue.identifier == "newNoteSegue" {
+//            if let goto = segue.destination as? NotesViewController {
+
+//                let _color = ThemeManager.value(for: "Global.barTintColor")
+//
+//                guard let rgba = _color as? String else {
+//                    fatalError("could not get value from ThemeManager")
+//                }
+//
+//                let color = UIColor(rgba: rgba)
+//
+//                ContextMenu.shared.show(sourceViewController: self, viewController: <#T##UIViewController#>)
+//
+//                ContextMenu.shared.show(
+//                    sourceViewController: self,
+//                    viewController: goto,
+//                    sourceView: self
+//                )
+//
+//                goto.modalPresentationStyle = .pageSheet
+//
+//                let sourceViewController = self
+//
+//                if let topvc = UIApplication.shared.keyWindow?.rootViewController {
+//                    ContextMenu.shared.show(sourceViewController: topvc, viewController: goto, options: ContextMenu.Options(containerStyle: ContextMenu.ContainerStyle(backgroundColor: color)))
+//                }
+//
+//                alert.addAction(image: notificationsImage, title: "View Notifications", color: .black, style: .default, isEnabled: true) { (action) in
+//                    let storyboard = UIStoryboard.init(name: "DVLocalNotifications", bundle: nil)
+//                    let tvc = storyboard.instantiateViewController(withIdentifier: "dvLNTableViewController")
+//
+//                }
+//                let navigationController = UINavigationController(rootViewController: goto)
+//                navigationController.navigationBar.isTranslucent = false
+//                navigationController.navigationBar.theme_barTintColor = "Global.barTintColor"
+//                navigationController.navigationBar.barStyle = .blackTranslucent
+//
+//                present(navigationController, animated: true, completion: nil)
+//        }
+//    }
     }
     
     //MARK: - Delegates and data sources
@@ -277,7 +307,6 @@ class TodoItemViewController:
             
             if textView.text.trimmingCharacters(in: .whitespaces).isEmpty {
                 textView.text = NSLocalizedString("Title", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND TITLE STRING **", comment: "")
-//                textView.textColor = UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)
                 textView.theme_tintColor = "Global.textColor"
                 textView.theme_textColor = "Global.textColor"
             }
@@ -328,7 +357,7 @@ class TodoItemViewController:
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -340,13 +369,100 @@ class TodoItemViewController:
         
         if cell == duedateAtDateCell {
             cell.textLabel?.text = NSLocalizedString("Due", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Due **", comment: "")
+            cell.selectedBackgroundView = customSelectionView
             
             let dueDateLabelString = todoItemTaskViewModel?.duedateAt
             
             if dueDateLabelString != nil {
                 duedateAtDateCell?.detailTextLabel?.text = dateFormatter?.string(from: dueDateLabelString!)
             } else {
-                duedateAtDateCell?.detailTextLabel?.text = NSLocalizedString("None", tableName: "Localizable", bundle: .main, value: "** Did not find None **", comment: "")
+                if ProcessInfo.processInfo.arguments.contains("IS_RUNNING_UITEST") {
+                    let cal = Calendar.current
+                    var customtime = DateComponents()
+                    let now = Date().add(days:1)
+                    
+                    customtime.year = now.year
+                    customtime.day = now.day
+                    customtime.month = now.month
+                    customtime.hour = 09
+                    customtime.minute = 41
+                    
+                    if let date = cal.date(from: customtime) {
+                        let dformatter = DateFormatter()
+                        dformatter.dateStyle = .short
+                        dformatter.timeStyle = .short
+                        
+                        duedateAtDateCell.detailTextLabel?.text = dformatter.string(from: date)
+                    }
+                } else {
+                    duedateAtDateCell?.detailTextLabel?.text = NSLocalizedString("None", tableName: "Localizable", bundle: .main, value: "** Did not find None **", comment: "")
+                }
+            }
+        }
+        
+        if cell == startDateCell {
+            cell.textLabel?.text = NSLocalizedString("Start", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Start **", comment: "")
+            cell.selectedBackgroundView = customSelectionView
+            
+            let startdateLabelString = todoItemTaskViewModel?.startdateAt
+            
+            if let duedate = startdateLabelString {
+                startDateCell?.detailTextLabel?.text = dateFormatter?.string(from: duedate)
+            } else {
+                if ProcessInfo.processInfo.arguments.contains("IS_RUNNING_UITEST") {
+                    let cal = Calendar.current
+                    var customtime = DateComponents()
+                    let now = Date()
+                    
+                    customtime.year = now.year
+                    customtime.day = now.day
+                    customtime.month = now.month
+                    customtime.hour = 09
+                    customtime.minute = 41
+                    
+                    if let date = cal.date(from: customtime) {
+                        let dformatter = DateFormatter()
+                        dformatter.dateStyle = .short
+                        dformatter.timeStyle = .short
+                        
+                        startDateCell.detailTextLabel?.text = dformatter.string(from: date)
+                    }
+                } else {
+                    startDateCell?.detailTextLabel?.text = NSLocalizedString("None", tableName: "Localizable", bundle: .main, value: "** Did not find None **", comment: "")
+                }
+            }
+        }
+        
+        if cell == endDateCell {
+            cell.textLabel?.text = NSLocalizedString("End", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND End **", comment: "")
+            cell.selectedBackgroundView = customSelectionView
+            
+            let enddateLabelString = todoItemTaskViewModel?.enddateAt
+            
+            if let duedate = enddateLabelString {
+                endDateCell?.detailTextLabel?.text = dateFormatter?.string(from: duedate)
+            } else {
+                if ProcessInfo.processInfo.arguments.contains("IS_RUNNING_UITEST") {
+                    let cal = Calendar.current
+                    var customtime = DateComponents()
+                    let now = Date().add(days: 1)
+                    
+                    customtime.year = now.year
+                    customtime.day = now.day
+                    customtime.month = now.month
+                    customtime.hour = 09
+                    customtime.minute = 41
+                    
+                    if let date = cal.date(from: customtime) {
+                        let dformatter = DateFormatter()
+                        dformatter.dateStyle = .short
+                        dformatter.timeStyle = .short
+                        
+                        endDateCell.detailTextLabel?.text = dformatter.string(from: date)
+                    }
+                } else {
+                    endDateCell?.detailTextLabel?.text = NSLocalizedString("None", tableName: "Localizable", bundle: .main, value: "** Did not find None **", comment: "")
+                }
             }
         }
         
@@ -366,8 +482,15 @@ class TodoItemViewController:
                     reminderToggle.isOn = false
                 }
             } else {
-                reminderToggle.isEnabled = false
-                reminderToggle.isOn = false
+//                reminderToggle.isEnabled = false
+//                reminderToggle.isOn = false
+                if ProcessInfo.processInfo.arguments.contains("IS_RUNNING_UITEST") {
+                    reminderToggle.isEnabled = true
+                    reminderToggle.isOn = true
+                } else {
+                    reminderToggle.isEnabled = false
+                    reminderToggle.isOn = false
+                }
             }
         }
         
@@ -381,6 +504,7 @@ class TodoItemViewController:
             }
             
             cell.detailTextLabel?.text = tagsText
+            cell.selectedBackgroundView = customSelectionView
         }
         
         if cell == listsCell {
@@ -393,12 +517,21 @@ class TodoItemViewController:
                 let emptyLabel = NSLocalizedString("None", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND None **", comment: "")
                 cell.detailTextLabel?.text = emptyLabel
             } else {
-                cell.detailTextLabel?.text = listLabel
+//                cell.detailTextLabel?.text = listLabel
+//                if let title = store.editingDVTodotaskItemListPlaceholder?.title {
+                    if let _emoji = store.editingDVTodotaskItemListPlaceholder?.emoji {
+                        cell.detailTextLabel?.text = listLabel + " " + _emoji
+                    } else {
+                        cell.detailTextLabel?.text = listLabel
+                    }
+//                }
             }
+            cell.selectedBackgroundView = customSelectionView
         }
         
         if cell == notesInlineCell {
             refreshNotesInlineCell()
+            cell.selectedBackgroundView = customSelectionView
         }
         
         if cell == deleteCell {
@@ -421,10 +554,119 @@ class TodoItemViewController:
         self.tableView.beginUpdates()
         
         if (cell == self.duedateAtDateCell) {
+            let btnfeedback = UIImpactFeedbackGenerator()
+            btnfeedback.impactOccurred()
+            
             datePickerTappedForDuedateAtDateCell()
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        if (cell == self.startDateCell) {
+            let btnfeedback = UIImpactFeedbackGenerator()
+            btnfeedback.impactOccurred()
+            
+            datePickerTappedForStartDateCell()
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        if (cell == self.endDateCell) {
+            let btnfeedback = UIImpactFeedbackGenerator()
+            btnfeedback.impactOccurred()
+            
+            datePickerTappedForEndDateCell()
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        if cell == self.listsCell {
+            let feedback = UIImpactFeedbackGenerator()
+            feedback.impactOccurred()
+            
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let tvc = storyboard.instantiateViewController(withIdentifier: "ListTableViewController")
+            
+            if let goto = tvc as? ListTableViewController {
+                
+                let _color = ThemeManager.value(for: "Global.backgroundColor")
+                
+                guard let rgba = _color as? String else {
+                    fatalError("could not get value from ThemeManager")
+                }
+                
+                let color = UIColor(rgba: rgba)
+                
+                goto.inModalView = true
+                
+                ContextMenu.shared.show(sourceViewController: self, viewController: goto, options: ContextMenu.Options(containerStyle: ContextMenu.ContainerStyle(backgroundColor: color)), delegate: self)
+                
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
         
         self.tableView.endUpdates()
+    }
+    
+    func datePickerTappedForStartDateCell() {
+        let setDueDateTitle = NSLocalizedString("Set Start Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Start Date ***", comment: "")
+        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+        let resetString = NSLocalizedString("Reset", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Reset **", comment: "")
+        
+        let alert = UIAlertController(style: .actionSheet, title: setDueDateTitle, message: nil)
+        
+        alert.addDatePicker(mode: .dateAndTime, date: Date(), minimumDate: nil, maximumDate: nil) { date in
+            self.todoItemTaskViewModel?.startdateAt = date
+            self.tableView.beginUpdates()
+            self.startDateCell.detailTextLabel?.text = self.dateFormatter?.string(from: date)
+            self.tableView.endUpdates()
+            self.tableView.reloadData()
+        }
+        
+        if let _ = self.todoItemTaskViewModel?.startdateAt {
+            alert.addAction(title: resetString, style: .destructive, handler: { data in
+                self.todoItemTaskViewModel?.startdateAt = nil
+                self.tableView.beginUpdates()
+                self.startDateCell.detailTextLabel?.text = setDueDateTitle
+                self.tableView.endUpdates()
+                self.tableView.reloadData()
+            })
+        }
+        
+        alert.addAction(title: setString, style: .default)
+        alert.addAction(title: cancelString, style: .cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func datePickerTappedForEndDateCell() {
+        let setDueDateTitle = NSLocalizedString("Set End Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set End Date ***", comment: "")
+        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+        let resetString = NSLocalizedString("Reset", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Reset **", comment: "")
+        
+        let suggesteddate = self.todoItemTaskViewModel?.startdateAt?.add(days:1) ?? Date()
+        
+        let alert = UIAlertController(style: .actionSheet, title: setDueDateTitle, message: nil)
+        alert.addDatePicker(mode: .dateAndTime, date: suggesteddate, minimumDate: nil, maximumDate: nil) { date in
+            //            Log(date)
+            self.todoItemTaskViewModel?.enddateAt = date
+            self.tableView.beginUpdates()
+            self.endDateCell.detailTextLabel?.text = self.dateFormatter?.string(from: date)
+            self.tableView.endUpdates()
+            self.tableView.reloadData()
+        }
+        
+        if let _ = self.todoItemTaskViewModel?.enddateAt {
+            alert.addAction(title: resetString, style: .destructive, handler: { data in
+                self.todoItemTaskViewModel?.enddateAt = nil
+//                self.todoItemTaskViewModel?.isRemindable = false
+                self.tableView.beginUpdates()
+                self.endDateCell.detailTextLabel?.text = setDueDateTitle
+                self.tableView.endUpdates()
+                self.tableView.reloadData()
+            })
+        }
+        alert.addAction(title: setString, style: .default)
+        alert.addAction(title: cancelString, style: .cancel)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Reminder Switch
@@ -452,7 +694,7 @@ class TodoItemViewController:
         
         let settingsTxt = NSLocalizedString("Go to Settings", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Go to Settings **", comment: "")
         let settingsAct = UIAlertAction.init(title: settingsTxt, style: .default) { (_) in
-            guard let settingsUrl = URL.init(string: UIApplicationOpenSettingsURLString) else { return }
+            guard let settingsUrl = URL.init(string: UIApplication.openSettingsURLString) else { return }
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
@@ -469,29 +711,37 @@ class TodoItemViewController:
     
     // MARK: - Datepickertapped
     func datePickerTappedForDuedateAtDateCell() {
-//        let datePicker = DatePickerDialog()
-//        
-//        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
-//        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
-//        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
-//        
-//        datePicker.show(setDueDateTitle,
-//                        doneButtonTitle: setString,
-//                        cancelButtonTitle: cancelString,
-//                        defaultDate: Date().endTime()) { [unowned self] (date) in
-//                            if let dt = date {
-//                                self.todoItemTaskViewModel?.duedateAt = dt
-//                                self.tableView.beginUpdates()
-//                                self.duedateAtDateCell.detailTextLabel?.text = self.dateFormatter?.string(from: dt)
-//                                self.tableView.endUpdates()
-//                                //                                self.tableView.reloadData()
-//                            }
-//        }
+        let setDueDateTitle = NSLocalizedString("Set Due Date", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Set Due Date ***", comment: "")
+        let setString = NSLocalizedString("Set", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Done ***", comment: "")
+        let cancelString = NSLocalizedString("Cancel", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Cancel ***", comment: "")
+        let resetString = NSLocalizedString("Reset", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Reset **", comment: "")
+        
+        let alert = UIAlertController(style: .actionSheet, title: setDueDateTitle, message: nil)
+        alert.addDatePicker(mode: .dateAndTime, date: Date(), minimumDate: nil, maximumDate: nil) { date in
+//            Log(date)
+            self.todoItemTaskViewModel?.duedateAt = date
+            self.tableView.beginUpdates()
+            self.duedateAtDateCell.detailTextLabel?.text = self.dateFormatter?.string(from: date)
+            self.tableView.endUpdates()
+            self.tableView.reloadData()
+        }
+        if let _ = self.todoItemTaskViewModel?.duedateAt {
+            alert.addAction(title: resetString, style: .destructive, handler: { data in
+                self.todoItemTaskViewModel?.duedateAt = nil
+                self.todoItemTaskViewModel?.isRemindable = false
+                self.tableView.beginUpdates()
+                self.duedateAtDateCell.detailTextLabel?.text = setDueDateTitle
+                self.tableView.endUpdates()
+                self.tableView.reloadData()
+            })
+        }
+        alert.addAction(title: setString, style: .default)
+        alert.addAction(title: cancelString, style: .cancel)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: Private Methods
     private func updateSaveButtonState() {
-        // Disable the Save button if the text field is empty.
         let text = todoItemTaskViewModel?.todoItemText ?? ""
         let isEmptyField = text.trimmingCharacters(in: .whitespaces).isEmpty
         
@@ -525,6 +775,16 @@ class TodoItemViewController:
         reminderCell.theme_backgroundColor = "Global.barTintColor"
         reminderCellLabel.theme_textColor = "Global.textColor"
         reminderToggle.theme_onTintColor = "Global.barTextColor"
+        
+        startDateCell.theme_backgroundColor = "Global.barTintColor"
+        startDateCell.theme_tintColor = "Global.textColor"
+        startDateCell.textLabel?.theme_textColor = "Global.textColor"
+        startDateCell.detailTextLabel?.theme_textColor = "Global.placeholderColor"
+        
+        endDateCell.theme_backgroundColor = "Global.barTintColor"
+        endDateCell.theme_tintColor = "Global.textColor"
+        endDateCell.textLabel?.theme_textColor = "Global.textColor"
+        endDateCell.detailTextLabel?.theme_textColor = "Global.placeholderColor"
     }
     
 }
@@ -568,5 +828,16 @@ extension TodoItemViewController : DeleteButtonTableViewCellDelegate {
             self.dismiss(animated: true, completion: nil)
             self.closeView()
         }
+    }
+}
+
+extension TodoItemViewController : ContextMenuDelegate {
+    func contextMenuWillDismiss(viewController: UIViewController, animated: Bool) {
+        //        super.contextMen
+    }
+    
+    func contextMenuDidDismiss(viewController: UIViewController, animated: Bool) {
+//        cookDatData()
+        print("exiting context menu")
     }
 }

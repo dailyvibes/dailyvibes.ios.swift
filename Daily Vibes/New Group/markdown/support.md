@@ -1,7 +1,7 @@
-We welcome and encourage your feedback =)
+I welcome and encourage your feedback =)
 
-Please contact us at:
+Please contact me via the official twitter account:
 
-- [@DailyVibesApp](https://twitter.com/dailyvibesapp) on Twitter for quick comments (if you use Twitter).
-
-We will try to attend to everyone. Thanks for understanding.
+- [@DailyVibesApp](https://twitter.com/dailyvibesapp)
+<br>
+I will try to attend to everyone. Thanks for understanding.

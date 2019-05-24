@@ -72,6 +72,10 @@ class ProgressViewController: ThemableViewController {
     }
     
     fileprivate func setupTheming() {
+        navigationController?.navigationBar.setValue(false, forKey: "hidesShadow")
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.theme_backgroundColor = "Global.backgroundColor"
+        
         view.theme_backgroundColor = "Global.backgroundColor"
         
         streaksStackView.theme_backgroundColor = "Global.backgroundColor"

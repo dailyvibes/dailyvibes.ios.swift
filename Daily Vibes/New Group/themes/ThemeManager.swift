@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import SwiftTheme
 
 enum MyThemes: Int {
@@ -37,5 +38,8 @@ enum MyThemes: Int {
         case .lightOrange:
             ThemeManager.setTheme(plistName: "LightOrange", path: .mainBundle)
         }
+        
+        let feedback = UIImpactFeedbackGenerator()
+        feedback.impactOccurred()
     }
 }

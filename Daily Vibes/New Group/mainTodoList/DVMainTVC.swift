@@ -120,7 +120,7 @@
 //        //        title.appendAttributedString(subtitle)
 //
 //        //        let titleParameters =
-//        let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 15)]
+//        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
 //        let _title:NSMutableAttributedString = NSMutableAttributedString(string: string, attributes: attrs)
 //
 //        //        let title = NSAttributedString(string: string)
@@ -636,14 +636,14 @@
 //        // based on - https://stackoverflow.com/q/44152721
 //        let result = NSMutableAttributedString(string: input)
 //        let range = (input as NSString).range(of: input)
-//        result.addAttribute(NSAttributedStringKey.strikethroughStyle,
+//        result.addAttribute(NSAttributedString.Key.strikethroughStyle,
 //                            value: NSUnderlineStyle.styleSingle.rawValue,
 //                            range: range)
 //
 //        if let backgroundColor = ThemeManager.value(for: "Global.barTintColor") as? String,
 //            let foregroundColor = ThemeManager.value(for: "Global.textColor") as? String {
-//            result.addAttributes([NSAttributedStringKey.backgroundColor: UIColor.from(hex: backgroundColor)], range: range)
-//            result.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.from(hex: foregroundColor)], range: range)
+//            result.addAttributes([NSAttributedString.Key.backgroundColor: UIColor.from(hex: backgroundColor)], range: range)
+//            result.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.from(hex: foregroundColor)], range: range)
 //        }
 //
 //        return result;

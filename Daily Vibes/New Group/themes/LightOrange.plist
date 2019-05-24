@@ -30,6 +30,8 @@
 	</dict>
 	<key>Global</key>
 	<dict>
+		<key>selectionBackgroundColor</key>
+		<string>#FDF5ED</string>
 		<key>toolbarStyle</key>
 		<string>default</string>
 		<key>keyboardStyle</key>
@@ -44,6 +46,13 @@
 		<string>#111111</string>
 		<key>backgroundColor</key>
 		<string>#FABE58</string>
+	</dict>
+	<key>Pill</key>
+	<dict>
+		<key>backgroundColor</key>
+		<string>#FABE58</string>
+		<key>textColor</key>
+		<string>#111111</string>
 	</dict>
 </dict>
 </plist>

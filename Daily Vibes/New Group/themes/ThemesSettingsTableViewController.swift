@@ -24,6 +24,14 @@ class ThemesSettingsTableViewController: ThemableTableViewController {
         }
     }
     
+    lazy var customSelectedView : UIView = {
+        let view = UIView(frame: .zero)
+        
+        view.theme_backgroundColor = "Global.selectionBackgroundColor"
+        
+        return view
+    }()
+    
     private weak var selectedTheme: ThemableBaseTableViewCell?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +44,9 @@ class ThemesSettingsTableViewController: ThemableTableViewController {
         
         tableView.theme_backgroundColor = "Global.backgroundColor"
         tableView.theme_separatorColor = "ListViewController.separatorColor"
+        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.theme_backgroundColor = "Global.backgroundColor"
     }
     
     fileprivate func syncThemePreferences() {
@@ -47,7 +58,7 @@ class ThemesSettingsTableViewController: ThemableTableViewController {
         
         tableView.register(ThemableBaseTableViewCell.self, forCellReuseIdentifier: "DefaultCell")
 
-        tableView.tableFooterView = UIView.init(coder: .init())
+//        tableView.tableFooterView = UIView.init(coder: .init())
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,6 +70,7 @@ class ThemesSettingsTableViewController: ThemableTableViewController {
         
         cell.textLabel?.theme_textColor = "Global.textColor"
         cell.textLabel?.text = themes[indexPath.row]
+        cell.selectedBackgroundView = customSelectedView
         
         if currentCellTheme == selectedEnumTheme {
             cell.accessoryType = .checkmark

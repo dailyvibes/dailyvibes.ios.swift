@@ -1,0 +1,432 @@
+[X]__smd__2019-02-06T16:03:41.335Z__emd____scd__2019-02-06T18:53:02.377Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add on save prompt for projects to prevent accident project creation__et__
+[X]__smd__2019-02-06T16:03:41.335Z__emd____scd__2019-02-06T17:15:15.152Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add delete prompt for project to prevent accidental project deletion__et__
+[ ]__smd__2019-02-06T16:02:52.581Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__try similar rounded table view cell for all table views? one issue I have is looking too weird and not apple like ... look at more Apple designs for 2019 maybe to compare__et__
+[ ]__smd__2019-02-06T16:01:35.481Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__show the theme selected as detail text in the settings page on the text label__et__
+[X]__smd__2019-02-05T21:08:56.933Z__emd____scd__2019-02-06T02:41:11.939Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add missing day data for week of empty with a random value? Or something__et__
+[ ]__smd__2019-02-05T20:34:31.508Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__maybe add images to themes page to show preview?__et__
+[X]__smd__2019-02-05T20:26:31.131Z__emd____scd__2019-02-06T02:41:26.198Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add 9:41 date for screenshots in all date fields__et__
+[ ]__smd__2019-02-05T18:42:17.693Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__pro idea animated 28 day graph every 28 days__et__
+[X]__smd__2019-02-05T12:17:08.427Z__emd____scd__2019-02-06T18:53:28.374Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__prototype added padding for project list similar to new entry cell spacing__et__
+[ ]__smd__2019-02-05T12:16:23.781Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__show word count or/and character count on the notes__et__
+[ ]__smd__2019-02-05T12:16:23.781Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__look into attachments for notes__et__
+[ ]__smd__2019-02-05T12:15:57.784Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__show last updated somewhere on date for vibes__et__
+[ ]__smd__2019-02-05T12:15:57.784Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__show last updated somewhere on project__et__
+[ ]__smd__2019-02-05T12:13:20.745Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__make today folder show items with due date of today or added manually to the folder of today__et__
+[ ]__smd__2019-02-05T12:13:20.745Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__make this week folder show items with due date of this week or added manually to the folder of this week__et__
+[X]__smd__2019-02-05T11:42:22.788Z__emd____scd__2019-02-06T18:53:43.006Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add number of items in a list before end of Sunday__et__
+[ ]__smd__2019-02-05T02:33:02.161Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__look up Maslows hierarchy and see how many levels and what is each level and see if any traits -> see if can correlate dv to some theory maybe industrial psych? Maybe positive psych?__et__
+[X]__smd__2019-02-04T19:16:36.072Z__emd____scd__2019-02-04T22:26:13.015Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add list checklist markdown parser for [ ] to ⚪️ and [X] to 🔘__et__
+[X]__smd__2019-02-04T14:26:59.129Z__emd____scd__2019-02-04T17:25:21.056Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__try different markdown parser for detail view__et__
+[ ]__smd__2019-02-04T14:26:34.250Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add ability to add note titles (because they already are there so why not)__et__
+[ ]__smd__2019-02-04T14:26:15.397Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add 140 char indicator to title per line?__et__
+[ ]__smd__2019-02-04T14:25:38.123Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__vibes page number - avg entries per day just to see? I hypothesize more entries better entries and better granularity but problem : how to ensure not addictive? But reflective or analytic.__et__
+[ ]__smd__2019-02-04T14:24:02.065Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__project idea clarity? Daily vibes - a personal timeline ? Your daily timeline? Your life timeline__et__
+[X]__smd__2019-02-04T05:16:46.288Z__emd____scd__2019-02-04T05:16:51.351Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__expand text on list item to 140 char limit and see how that feels__et__
+[X]__smd__2019-02-03T23:40:52.095Z__emd____scd__2019-02-04T04:14:53.714Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__create new screenshots before submitting to appl due tonight 10 pm__et__
+[ ]__smd__2019-02-03T22:24:28.399Z__emd____s+__👜_Clothes__e+____st__test this project sorting__et__
+[X]__smd__2019-02-03T21:36:46.340Z__emd____scd__2019-02-03T22:15:31.090Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__remove ability to rename default project labels for now but allow user to change icons__et__
+[X]__smd__2019-02-03T21:33:53.043Z__emd____scd__2019-02-03T21:33:56.865Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__make the xaxis of the dashboard progress screen be meaningful (and make chart iOS happy too)__et__
+[ ]__smd__2019-02-02T01:37:12.234Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add ability to sort order of icons on the tab? As pro version? or something? Or make it a manual preset until figure out more fluid.__et__
+[ ]__smd__2019-02-01T16:06:30.334Z__emd____st__Hey everyone! This week I want to talk about a feature I’ve added in my application that I thought was pretty cool, and I’ve decided why not share this to my audience. The feature I am referring to is an UIAlertController with a text field. Adding alert controller is not only a great way for displaying data and error, but it is also helpful in prompting a user to input some relevant information. I want to give you a short tutorial on how to implement the text field inside of an UIAlertController. Let’s get started!
+__et__
+[X]__smd__2019-02-01T15:39:25.371Z__emd____scd__2019-02-01T20:49:13.804Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__attach notes to the main window so it is top most? currently it is hidden by time and toolbar?__et__
+[X]__smd__2019-02-01T15:38:27.663Z__emd____scd__2019-02-03T19:15:58.797Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__maybe add project 7 day graph velocity to this view?__et__
+[ ]__smd__2019-02-01T15:37:02.771Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add somehow project creation date and project last updated date to the UI (to see which project I am working on or needs work on and is stagnant prior to suggestion Alg in future)__et__
+[X]__smd__2019-02-01T13:40:28.929Z__emd____scd__2019-02-01T15:33:26.038Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add project icon to task detail screen on the project cell__et__
+[X]__smd__2019-02-01T13:40:00.093Z__emd____scd__2019-02-01T13:40:09.594Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add project icons (emojis to start)__et__
+[X]__smd__2019-02-01T13:40:00.093Z__emd____scd__2019-02-01T13:40:03.882Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add change emoji functionality__et__
+[X]__smd__2019-01-31T15:10:44.011Z__emd____scd__2019-02-01T15:37:13.327Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Try moving graph axis to the right side__et__
+[X]__smd__2019-01-31T15:10:44.011Z__emd____scd__2019-02-03T21:29:36.989Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Try showing pretty bar graph for just week view in addition to 28 day view?__et__
+[ ]__smd__2019-01-31T01:34:09.183Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add sample markdown note to the last item in the test data to showcase markdown capability - also considering opening up note in a context view just like projects to deal with auto layout better? Or maybe do auto sizing text view?__et__
+[ ]__smd__2019-01-30T19:39:38.619Z__emd____s+__🚧_testing_new_project___e+____st__add close keyboard toolbar to all entries__et__
+[ ]__smd__2019-01-29T17:17:51.201Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__maybe - add exported data cannot be reimported text to the export functionality__et__
+[X]__smd__2019-01-29T17:16:59.220Z__emd____scd__2019-02-05T00:53:06.130Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add feedback on pop up - context menu and any pop ups?__et__
+[ ]__smd__2019-01-29T17:16:59.220Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add twitter cell to settings__et__
+[ ]__smd__2019-01-29T04:03:14.708Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__expand on previous tweet about reflections and positive psychology__et__
+[ ]__smd__2019-01-29T02:35:56.301Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add refresh button to progress screen to refresh view?__et__
+[ ]__smd__2019-01-29T02:35:02.711Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add notes? a Reflections box to a likertdayentry?__et__
+[ ]__smd__2019-01-28T14:24:26.619Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Investigate new date creation on vibes first entry__et__
+[X]__smd__2019-01-28T03:54:24.071Z__emd____scd__2019-02-04T05:15:07.904Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__rerun screenshots using latest data__et__
+[X]__smd__2019-01-28T03:54:24.071Z__emd____scd__2019-01-28T18:34:04.937Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__upload new screenshots to App Store__et__
+[ ]__smd__2019-01-28T03:53:33.012Z__emd____s+__💼 _Archived__e+____st__one more edit of the about text__et__
+[ ]__smd__2019-01-27T21:38:22.121Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__see what dynamic project title in the tab bar will look like__et__
+[X]__smd__2019-01-27T19:08:22.981Z__emd____scd__2019-01-27T19:08:27.437Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__rewrite about text__et__
+[X]__smd__2019-01-27T17:52:53.524Z__emd____scd__2019-01-27T17:52:58.060Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__rename home to projects__et__
+[X]__smd__2019-01-27T17:52:53.524Z__emd____scd__2019-01-27T19:09:50.245Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__find new icons for projects ?__et__
+[X]__smd__2019-01-27T17:52:53.524Z__emd____scd__2019-01-27T17:53:04.647Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__rename initial view to projects from swift projects__et__
+[X]__smd__2019-01-27T17:52:53.524Z__emd____scd__2019-01-27T17:53:09.693Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__switch project cell accessory type on projects (vs on switch projects ) view__et__
+[X]__smd__2019-01-27T13:35:56.470Z__emd____scd__2019-01-28T03:43:37.918Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__create next release for this week__et__
+[X]__smd__2019-01-26T23:45:07.687Z__emd____scd__2019-01-27T13:34:45.203Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__fix due dates and reminders not working on main task creation__et__
+[X]__smd__2019-01-26T02:43:43.312Z__emd____scd__2019-01-27T18:01:12.013Z__ecd____s+__🏆 _cspray__e+____st__send invoice to office for the cspray event__et__
+[ ]__smd__2019-01-25T15:04:21.359Z__emd____s+__🏆 _cspray__e+____st__being printed material to every event for people that like to read instead of talking to us or have a hearing issue or a language issue__et__
+[X]__smd__2019-01-24T17:47:38.707Z__emd____scd__2019-01-25T00:03:38.196Z__ecd____s+__🏆 _cspray__e+____st__find the headphone adapter for square thingy__et__
+[X]__smd__2019-01-24T17:47:38.707Z__emd____scd__2019-01-25T00:04:52.333Z__ecd____s+__🏆 _cspray__e+____st__connect square thingy to adapter in all of our phones and make sure accounts work__et__
+[X]__smd__2019-01-24T17:47:38.707Z__emd____scd__2019-01-25T00:05:01.048Z__ecd____s+__🏆 _cspray__e+____st__make sure account works on my phone__et__
+[X]__smd__2019-01-24T17:47:38.707Z__emd____scd__2019-01-27T21:37:23.455Z__ecd____s+__🏆 _cspray__e+____st__make sure account works on laura phone__et__
+[X]__smd__2019-01-24T17:46:45.919Z__emd____scd__2019-01-25T00:05:27.686Z__ecd____s+__🏆 _cspray__e+____st__find the square thing__et__
+[X]__smd__2019-01-24T12:43:59.371Z__emd____scd__2019-01-26T23:45:18.522Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__make same theme on all devices for testing__et__
+[ ]__smd__2019-01-24T12:43:59.371Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add ability to flag themes for testing__et__
+[X]__smd__2019-01-24T02:09:09.232Z__emd____scd__2019-01-25T00:05:37.485Z__ecd____s+__🏆 _cspray__e+____st__check the square app and account connection__et__
+[ ]__smd__2019-01-22T12:19:47.475Z__emd____s+__🏘_Elderoost__e+____st__move elderoost from 10$ to 5$__et__
+[ ]__smd__2019-01-22T12:19:47.475Z__emd____s+__🏘_Elderoost__e+____st__download all backups in preparation to migrate__et__
+[ ]__smd__2019-01-22T12:19:47.475Z__emd____s+__🏘_Elderoost__e+____st__migrate elderoost to new droplet__et__
+[ ]__smd__2019-01-21T17:42:31.613Z__emd____s+__👩‍🎤 _lastminutelaura__e+____st__10000 sub video - montage? Or other idea?__et__
+[ ]__smd__2019-01-21T14:02:13.336Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__trace progress view update mechanism on new save (maybe add event driven notification updates?)__et__
+[ ]__smd__2019-01-21T12:16:18.904Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__update localization phrases to update with English__et__
+[X]__smd__2019-01-21T00:16:27.725Z__emd____scd__2019-01-21T00:16:37.529Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__rework main home view to include back button__et__
+[X]__smd__2019-01-21T00:16:27.725Z__emd____scd__2019-01-22T12:43:57.340Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__the back button from main view will take back to top view of the nav controller__et__
+[X]__smd__2019-01-20T19:04:02.491Z__emd____scd__2019-01-25T00:05:44.028Z__ecd____s+__🏆 _cspray__e+____st__check how much business cheques cost, how long does it take to order__et__
+[ ]__smd__2019-01-20T19:04:02.491Z__emd____s+__💼 _Archived__e+____st__see if it makes sense to order rbc cheque before this Friday or maybe see if you can get them faster in the bank?__et__
+[ ]__smd__2019-01-20T18:31:55.650Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add select multiple items functionality from list__et__
+[ ]__smd__2019-01-20T18:31:55.650Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add new toolbar when multi selected which does delete selected, move selected, create project from selected__et__
+[ ]__smd__2019-01-20T18:30:13.840Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add label on project which shows number of items left ? Or maybe just total lumber for now?__et__
+[ ]__smd__2019-01-20T18:29:28.261Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add move item between projects functionality__et__
+[ ]__smd__2019-01-17T13:28:43.592Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__🐛 issue - likertitem new entry did not make new date ... but added it to the previous one instead of making new date and saving it there. Might as well fix it via adjusting logic in the entry__et__
+[ ]__smd__2019-01-16T22:37:32.596Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__have the circle ⭕️ of the calendar be reorientation of the number of entries for that day. Have a running top. As soon as that number is reached need to redraw.__et__
+[X]__smd__2019-01-16T21:36:03.631Z__emd____scd__2019-01-17T23:29:14.720Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__change progress view from bar chart to dotted or point based__et__
+[X]__smd__2019-01-16T21:01:10.137Z__emd____scd__2019-01-16T21:01:15.245Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add ability to change time of an entry__et__
+[ ]__smd__2019-01-16T18:17:44.554Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add ability to also change date of entry ... this means that if the date is not the same date we need to do some magic ... or constrained this to only today’s entry__et__
+[X]__smd__2019-01-16T18:15:58.221Z__emd____scd__2019-01-16T18:16:02.338Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__fix running total on edits and one aves logic__et__
+[ ]__smd__2019-01-15T21:13:17.155Z__emd____s+__🚧_testing_new_project___e+____st__Test moving tasks between projects__et__
+[X]__smd__2019-01-15T15:39:51.966Z__emd____scd__2019-01-20T16:58:12.914Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__refresh calendar view on view appear ... somehow?__et__
+[ ]__smd__2019-01-15T15:39:01.147Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__show view notifications screen only if there are any in queue? Or continue as now?__et__
+[ ]__smd__2019-01-15T15:38:29.127Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__make new project detail screen that is not a modal view__et__
+[ ]__smd__2019-01-15T15:38:29.127Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add edit button to this new detail view and pop up current view then__et__
+[X]__smd__2019-01-15T15:38:29.127Z__emd____scd__2019-01-19T04:49:52.304Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Try adding hide tab bar for bigger screen real estate__et__
+[ ]__smd__2019-01-15T15:38:29.127Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Make tag selection appear in pop up as well__et__
+[X]__smd__2019-01-15T15:37:03.978Z__emd____scd__2019-01-16T03:01:27.683Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__make project pop up instead of how it works now because it closes project on change__et__
+[ ]__smd__2019-01-14T15:04:37.339Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__a brand new day causes a brand new entry by default and thus creates a weird artifact on the calendar on load. Need to fix it so that if there is no date entry set yet, maybe show nothing? Also need to update the calendar as new entry gets added to brand new day. Out of sync currently__et__
+[X]__smd__2019-01-13T20:13:08.386Z__emd____scd__2019-01-14T21:37:24.906Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add fscalendar to thanks with the link__et__
+[X]__smd__2019-01-13T20:13:08.386Z__emd____scd__2019-01-14T21:37:27.718Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add floating button to thanks with link__et__
+[X]__smd__2019-01-13T19:21:01.554Z__emd____scd__2019-01-13T20:09:13.615Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add floating button that does same exact behavior as the previous add button from the tab__et__
+[X]__smd__2019-01-13T19:20:37.794Z__emd____scd__2019-01-13T20:07:42.351Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__remove add button from tab to have 4 buttons again__et__
+[X]__smd__2019-01-13T19:15:06.407Z__emd____scd__2019-01-13T20:08:21.526Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Test does everything still work? #dailyvibes__et__
+[ ]__smd__2019-01-12T21:41:57.841Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add ability to edit specific entry - when open if no fields give defaults with middle value__et__
+[X]__smd__2019-01-12T21:07:38.382Z__emd____scd__2019-01-14T15:03:32.131Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add ability to delete entry on swipe or on edit - not sure yet. Probably on edit the easiest.__et__
+[X]__smd__2019-01-12T18:53:18.567Z__emd____scd__2019-01-20T18:32:39.322Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add ability to delete entry ... you can have mistakes and it affects your overall day ... wanna fix mistakes -_- and adjusting running totals at the same time__et__
+[X]__smd__2019-01-12T16:10:12.824Z__emd____scd__2019-01-13T20:08:38.429Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Look up swipe down actions and helpers for ideas__et__
+[ ]__smd__2019-01-11T13:23:37.156Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__main list remove completed word or due word underneath the title and use color instead. Just color. Red for past. Default tint color for today. Green for completed?__et__
+[X]__smd__2019-01-11T01:39:32.026Z__emd____scd__2019-01-20T18:32:57.602Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__try using multi select back to calendar to see what it looks like over time. The current small dots are not efficient enough. Dark theme is nice  but should work on all themes mode intuitive__et__
+[ ]__smd__2019-01-11T01:37:13.585Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add tool bar to detail todo item or open in context view but how to figure out scroll with keyboard?__et__
+[ ]__smd__2019-01-11T01:27:38.386Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__transform set and Unset foundation ? Think about using hashing instead of arrays. Faster lookup why keep searching. Just do look up using uuid :)__et__
+[ ]__smd__2019-01-11T01:24:45.423Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__change the detail display on click for cell into similar UI as this multi entry. Except allow to close by swipe where in multi entry we do not. Maybe. But maybe just add toolbar. Similarly.__et__
+[ ]__smd__2019-01-10T22:07:09.816Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__2 vibes instead of 3 because when wake and when go bed three maybe too much__et__
+[X]__smd__2019-01-10T22:05:13.624Z__emd____scd__2019-01-11T00:14:26.954Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__change Swap for Switch__et__
+[X]__smd__2019-01-10T17:04:05.325Z__emd____scd__2019-01-10T21:48:29.224Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__restyle record your vibes view to adapt to the new large title design choice__et__
+[ ]__smd__2019-01-10T17:02:33.052Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add field to each list so save per list sort options__et__
+[ ]__smd__2019-01-10T17:02:33.052Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__explore possibility for setting default user set sorting property for new items__et__
+[X]__smd__2019-01-10T16:33:53.145Z__emd____scd__2019-01-23T23:54:01.766Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__try to switch calendar from showing the number for the date instead for the icon? So if the date is shown and not the icon .... means you didn’t enter?__et__
+[ ]__smd__2019-01-10T03:27:48.792Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__adjust entry TVC into large to see if the text fits better (currently experience ... in 7 plus ... this probably worse on 7 and 8)__et__
+[X]__smd__2019-01-10T02:29:25.588Z__emd____scd__2019-01-23T23:53:45.231Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__fix export text to include utc style dates because easier to parse__et__
+[X]__smd__2019-01-10T01:29:29.182Z__emd____scd__2019-01-21T13:04:52.027Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Change chart on progress view to show a week or a month. Week for now?__et__
+[ ]__smd__2019-01-08T18:24:32.044Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__search by title of the item__et__
+[ ]__smd__2019-01-08T18:24:32.044Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__search by tag__et__
+[ ]__smd__2019-01-08T18:24:32.044Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__search by project to quickly switch to a project__et__
+[ ]__smd__2019-01-08T18:23:21.979Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__search bar instead of tags clicking table on the progress page.__et__
+[ ]__smd__2019-01-08T18:23:00.408Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Fix fast lane tests for ui while I have that app for 7 days #dailyvibes__et__
+[X]__smd__2019-01-08T13:29:26.990Z__emd____scd__2019-01-09T01:41:19.319Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Remove notification from bar menu since it’s in the alert sheet__et__
+[ ]__smd__2019-01-07T22:33:10.564Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__add reminders somehow with 3 default settings with input box for people to change so you can do every day morning day evening and yes no to each one__et__
+[ ]__smd__2019-01-07T22:32:05.274Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__remove click on tag view (after removing tag view below that table and change table into something more meaningful)__et__
+[X]__smd__2019-01-07T22:30:15.729Z__emd____scd__2019-01-10T20:51:40.071Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add ability to rename project__et__
+[X]__smd__2019-01-06T21:33:15.289Z__emd____scd__2019-01-06T21:33:23.141Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__submit iOS app for review__et__
+[X]__smd__2019-01-06T12:54:59.735Z__emd____scd__2019-01-10T20:51:55.425Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add a userdefault attribute for last opened project and save it on project change #dailyvibes__et__
+[X]__smd__2019-01-05T21:25:59.098Z__emd____scd__2019-01-10T01:26:43.024Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__find a way to set user default for initial screen (Inbox) set to default? #dailyvibes__et__
+[X]__smd__2019-01-04T21:19:09.890Z__emd____scd__2019-01-27T18:01:56.733Z__ecd____s+__🌞 _Today__e+____st__Install what’s new from https://github.com/BalestraPatrick/WhatsNew/tree/master/Example__et__
+[X]__smd__2019-01-04T21:10:27.612Z__emd____scd__2019-01-27T18:00:03.319Z__ecd____s+__🌞 _Today__e+____st__install AppVersionMonitor to #dailyvibes__et__
+[X]__smd__2019-01-04T13:40:08.947Z__emd____scd__2019-01-27T18:00:06.505Z__ecd____s+__🌞 _Today__e+____st__adjust icons on settings page as they show white residue instead of transparent #dailyvibes__et__
+[ ]__smd__2019-01-04T13:39:17.206Z__emd____s+__🌞 _Today__e+____st__write down how you feel after doing something you don’t want to do? Somehow? Improve yourself somehow. #dailyvibes__et__
+[ ]__smd__2019-01-04T13:37:56.077Z__emd____s+__💼 _Archived__e+____st__Add new buttonitem to listvc to create new list on click rather than inline? #dailyvibes__et__
+[ ]__smd__2019-01-04T13:36:19.396Z__emd____s+__🌞 _Today__e+____st__add move item to a different project function #dailyvibes__et__
+[ ]__smd__2019-01-04T13:35:32.367Z__emd____s+__🌞 _Today__e+____st__add priority to a task item? #dailyvibes__et__
+[ ]__smd__2019-01-04T03:36:26.550Z__emd____s+__🌞 _Today__e+____st__add label to each list to see how many items in sub list #dailyvibes__et__
+[ ]__smd__2019-01-04T03:36:26.550Z__emd____s+__🌞 _Today__e+____st__use contextmenu for tags vc #dailyvibes__et__
+[X]__smd__2019-01-04T03:36:26.550Z__emd____scd__2019-01-27T18:01:22.603Z__ecd____s+__🌞 _Today__e+____st__use contextmenu for list vc #dailyvibes__et__
+[ ]__smd__2019-01-04T03:36:26.550Z__emd____s+__🌞 _Today__e+____st__in contextmenu for tags add add tags button #dailyvibes__et__
+[ ]__smd__2019-01-04T03:36:26.550Z__emd____s+__💼 _Archived__e+____st__In contextmenu for list add list button #dailyvibes__et__
+[X]__smd__2019-01-03T21:28:59.685Z__emd____scd__2019-01-04T16:23:37.591Z__ecd____s+__🌞 _Today__e+____st__look into why statusbar is not set to brighter color on modal ui for multi entry. Works on dark themes but stopped functioning on darker themes.__et__
+[ ]__smd__2018-12-29T01:46:34.944Z__emd____s+__🌞 _Today__e+____st__add timespent in app and update on each open__et__
+[X]__smd__2018-12-28T21:44:44.824Z__emd____scd__2019-01-02T20:42:05.983Z__ecd____s+__🌞 _Today__e+____st__Add position to each likert item. Integer.__et__
+[X]__smd__2018-12-27T18:11:40.466Z__emd____scd__2018-12-27T22:41:05.306Z__ecd____s+__🌞 _Today__e+____st__Check MacBook prices for dad within 1699 price range__et__
+[ ]__smd__2018-12-27T18:11:20.679Z__emd____s+__🌞 _Today__e+____st__Check CRA notification in email about address__et__
+[X]__smd__2018-12-27T15:12:47.351Z__emd____scd__2018-12-27T15:35:21.363Z__ecd____s+__🌞 _Today__e+____st__contact thinko and wish them happy holidays__et__
+[ ]__smd__2018-12-27T03:34:27.184Z__emd____s+__🌞 _Today__e+____st__Go to Toronto public library and checkout the design book that tells about history of design from 2018 that everyone talks about__et__
+[X]__smd__2018-12-27T03:31:02.311Z__emd____scd__2018-12-27T18:10:55.349Z__ecd____s+__🌞 _Today__e+____st__Wireframe new daily vibes likercell follow simple Apple design. Use default. Two line cell. With date.__et__
+[ ]__smd__2018-12-27T03:30:12.057Z__emd____s+__🌞 _Today__e+____st__deposit cspray cash to bank 🏦__et__
+[X]__smd__2018-12-24T23:18:01.142Z__emd____scd__2018-12-27T03:28:27.327Z__ecd____s+__😜 _everything_else__e+____st__Remind laura to fill in her YouTube description__et__
+[X]__smd__2018-12-20T22:44:37.718Z__emd____scd__2019-01-07T22:30:46.624Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Find calendar for day entries__et__
+[X]__smd__2018-12-20T22:44:37.718Z__emd____scd__2019-01-10T01:14:01.722Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Install calendar above table probably just a custom cell or something__et__
+[X]__smd__2018-12-20T22:44:37.718Z__emd____scd__2019-01-10T01:13:54.713Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Hook up data to calendar for visuals__et__
+[ ]__smd__2018-12-13T20:59:57.989Z__emd____s+__😜 _everything_else__e+____st__Remove all of my wasted documents and boxes at home__et__
+[X]__smd__2018-12-04T17:16:24.553Z__emd____scd__2019-01-02T20:41:52.540Z__ecd____s+__🌞 _Today__e+____st__Add a way to remove due date #dailyvibes__et__
+[X]__smd__2018-12-04T17:15:47.249Z__emd____scd__2019-01-02T20:39:02.126Z__ecd____s+__🌞 _Today__e+____st__Pay 80$ PEO fees #life__et__
+[ ]__smd__2018-12-04T17:15:47.249Z__emd____s+__🌞 _Today__e+____st__Pay ATIP fees? Check when. #life__et__
+[ ]__smd__2018-12-04T16:14:33.779Z__emd____s+__🌞 _Today__e+____st__Change how today is sorted. Should be by creation date because there might be not completed items from previous “today” day__et__
+[X]__smd__2018-12-04T16:11:51.625Z__emd____scd__2018-12-27T03:29:49.916Z__ecd____s+__🌞 _Today__e+____st__Sync cash on hand #cspray__et__
+[ ]__smd__2018-12-04T16:11:51.625Z__emd____s+__🌞 _Today__e+____st__Find how to withdraw money from business in Canada and what it takes to do it #cspray__et__
+[X]__smd__2018-12-04T16:11:51.625Z__emd____scd__2018-12-27T22:41:09.060Z__ecd____s+__🌞 _Today__e+____st__Cancel Moneris with aim to use square #cspray__et__
+[X]__smd__2018-12-04T16:09:08.770Z__emd____scd__2018-12-27T03:29:34.871Z__ecd____s+__🌞 _Today__e+____st__Pay tangerine monthly cc bills__et__
+[X]__smd__2018-05-24T12:05:01.043Z__emd____scd__2018-12-27T03:28:37.992Z__ecd____s+__😜 _everything_else__e+____st__istatsmenu__et__
+[ ]__smd__2018-05-14T19:32:41.913Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Format proposal__et__
+[X]__smd__2018-05-14T19:27:09.883Z__emd____scd__2019-01-10T01:14:26.591Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add activity view button to main table view__et__
+[X]__smd__2018-05-14T19:27:09.883Z__emd____scd__2019-01-10T01:14:21.994Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add activity view that opens after button press__et__
+[X]__smd__2018-05-14T19:27:09.883Z__emd____scd__2019-01-10T01:14:32.319Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__In activity view - simple table view - show upcoming notification__et__
+[X]__smd__2018-05-14T19:27:09.883Z__emd____scd__2019-01-10T01:28:41.110Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__In activity view - slide left to delete the notification (all of them)__et__
+[ ]__smd__2018-05-14T18:11:25.825Z__emd____s+__🔗_Unsorted__e+____st__indieweb.org__et__
+[ ]__smd__2018-05-14T18:10:07.891Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__login/signup workflow ala microblog__et__
+[ ]__smd__2018-04-07T23:17:07.910Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Look at Hadoop and text indexing__et__
+[ ]__smd__2018-04-06T11:31:04.658Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Create an account - anon for people that don’t want an account (and then link them if they decide to add one)__et__
+[X]__smd__2018-03-27T17:39:49.081Z__emd____scd__2018-03-27T17:39:55.505Z__ecd____s+__👩‍🎤 _lastminutelaura__e+____st__Create first medium post__et__
+[ ]__smd__2018-03-17T11:44:32.620Z__emd____s+__😜 _everything_else__e+____st__A little bird told me - excerpts__et__
+[ ]__smd__2018-03-17T11:32:45.667Z__emd____s+__😜 _everything_else__e+____st__A little bird told me - book review__et__
+[X]__smd__2018-03-15T17:31:54.530Z__emd____scd__2018-03-15T17:33:44.478Z__ecd____s+__😜 _everything_else__e+____st__Testing and trying to find bugs save__et__
+[X]__smd__2018-03-15T10:23:09.391Z__emd____scd__2019-01-06T21:33:44.029Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Test mongodb cloud atlas connection__et__
+[X]__smd__2018-03-14T11:29:37.690Z__emd____scd__2019-01-03T20:24:08.305Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add clear due date button to details view__et__
+[X]__smd__2018-03-14T11:29:07.438Z__emd____scd__2019-01-03T20:24:15.687Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__create notifications/alerts area so you can show__et__
+[X]__smd__2018-03-14T11:29:07.438Z__emd____scd__2019-01-03T20:24:21.168Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__remove notification from notifications/alerts area__et__
+[ ]__smd__2018-03-14T11:27:35.373Z__emd____s+__💼 _Archived__e+____st__authentication via autho__et__
+[ ]__smd__2018-03-14T11:27:35.373Z__emd____s+__💼 _Archived__e+____st__authorization via autho__et__
+[ ]__smd__2018-03-14T11:26:41.648Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__reach out to some providers and ask for sponsorship for dB__et__
+[ ]__smd__2018-03-14T11:26:41.648Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__reach out to some providers and ask for sponsorship for servers__et__
+[X]__smd__2018-03-13T23:46:42.432Z__emd____scd__2018-03-14T10:48:31.662Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Remove the triangle from the toolbar and replace with a Done button__et__
+[X]__smd__2018-03-13T23:46:42.432Z__emd____scd__2018-03-14T11:25:08.457Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Move note rest calls to note class__et__
+[X]__smd__2018-03-13T23:46:42.432Z__emd____scd__2018-03-15T10:26:45.219Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Move project rest calls to project class__et__
+[X]__smd__2018-03-13T23:46:42.432Z__emd____scd__2018-03-15T10:27:00.037Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Move tag rest calls to tag class__et__
+[X]__smd__2018-03-12T19:32:52.418Z__emd____scd__2018-03-13T23:45:41.048Z__ecd____s+__😜 _everything_else__e+____st__Pick up connectors besides HDMI tomorrow at 7 am__et__
+[X]__smd__2018-03-12T18:13:32.393Z__emd____scd__2018-03-15T17:53:47.437Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__syncing - add device id so that merging will be easier later down the road__et__
+[ ]__smd__2018-03-12T17:22:42.968Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Marketing ideas for landing page__et__
+[ ]__smd__2018-03-12T15:29:34.406Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__features idea - add filter by tags somehow to the main screen__et__
+[ ]__smd__2018-03-12T15:28:51.146Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__change localization title for the different stores (start with RU)__et__
+[ ]__smd__2018-03-12T15:28:51.146Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__change localization description for the different stores (start with RU)__et__
+[X]__smd__2018-03-12T15:25:47.659Z__emd____scd__2018-03-27T17:39:25.935Z__ecd____s+__👩‍🎤 _lastminutelaura__e+____st__Open up a medium place (or check where similar businesses post) - might even be just Facebook?__et__
+[ ]__smd__2018-03-12T15:25:47.659Z__emd____s+__💼 _Archived__e+____st__Retake photos on white background__et__
+[ ]__smd__2018-03-12T15:25:47.659Z__emd____s+__💼 _Archived__e+____st__Edit photos on white background__et__
+[ ]__smd__2018-03-11T02:03:36.083Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Ideas for catching importing for software tracing__et__
+[ ]__smd__2018-03-11T01:58:28.176Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__daily reminder on what happened today - also may include a mood feature that is/was missing a place__et__
+[ ]__smd__2018-03-11T01:58:28.176Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__monthly reminder on what happened - also include feeling for the month that is separate from what individual day may hold__et__
+[ ]__smd__2018-03-11T01:58:28.176Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__automated email based on potential daily and monthly these reminders?__et__
+[X]__smd__2018-03-10T21:28:37.516Z__emd____scd__2018-03-15T18:00:26.262Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Try a new process for #fixing__et__
+[ ]__smd__2018-03-10T17:50:02.705Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Add rate us pop up to increase reviews #new__et__
+[X]__smd__2018-03-10T17:40:26.315Z__emd____scd__2018-04-26T19:41:10.220Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__On delete should clear any pending notifications related to task #fixed #dailyvibes__et__
+[X]__smd__2018-03-10T17:38:55.704Z__emd____scd__2018-03-10T17:39:26.062Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Updates are not syncing main table on save #fixed__et__
+[ ]__smd__2018-03-10T17:38:55.704Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Check what is up with notes in a detail view on save #fixed #dailyvibes__et__
+[X]__smd__2018-03-10T16:56:54.029Z__emd____scd__2018-03-10T19:44:10.104Z__ecd____s+__😜 _everything_else__e+____st__Maybe multiple entries will work now?__et__
+[X]__smd__2018-03-07T05:01:43.526Z__emd____scd__2018-04-26T19:41:26.783Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Create a new task todo item thing #dailyvibes__et__
+[X]__smd__2018-03-07T04:25:44.943Z__emd____scd__2018-03-10T19:34:01.900Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Try raw json sync for funnies #dailyvibes__et__
+[ ]__smd__2018-03-02T16:55:44.244Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Send weekly reports on second Tuesday of every month__et__
+[ ]__smd__2018-03-01T03:21:51.641Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Test this entry business due tonight #dailyvibes__et__
+[ ]__smd__2018-02-28T19:30:01.063Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__tag ideas 💡 #new #fixed #improved__et__
+[ ]__smd__2018-02-28T15:02:08.878Z__emd____s+__🔗_Unsorted__e+____st__Password Autofill in iOS 11 – codeburst__et__
+[X]__smd__2018-02-27T21:00:03.605Z__emd____scd__2018-12-27T03:29:32.176Z__ecd____s+__🌞 _Today__e+____st__You can type #withtags #andstuff and due tonight__et__
+[X]__smd__2018-02-27T20:02:57.505Z__emd____scd__2018-12-27T03:29:29.322Z__ecd____s+__🌞 _Today__e+____st__Transfer money 💰 to pay end of month bills due tonight at 530 pm__et__
+[X]__smd__2018-02-27T19:31:02.710Z__emd____scd__2018-03-10T17:41:39.730Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add a numeric keyboard for quick acccess? #newfeature__et__
+[ ]__smd__2018-02-27T19:28:14.267Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__display some kind of change log to profile maybe add some kind of toggle that person will have to manually turn on if they want the task to appear as part of summary)... maybe the isPublic switch? #newfeature__et__
+[ ]__smd__2018-02-27T19:14:49.038Z__emd____s+__🔗_Unsorted__e+____st__GitHub - todotxt/todo.txt: ‼️ A complete primer on the whys and hows of todo.txt.__et__
+[ ]__smd__2018-02-27T18:47:45.193Z__emd____s+__🔗_Unsorted__e+____st__qingmang-for-mac for macOS - Cocoa Controls__et__
+[ ]__smd__2018-02-27T18:27:02.687Z__emd____s+__🔗_Unsorted__e+____st__Today Extension Tutorial: Getting Started__et__
+[ ]__smd__2018-02-27T16:04:49.733Z__emd____s+__🔗_Unsorted__e+____st__Mindbliss: Meditation Music and Guided Meditation for Self-Awareness.__et__
+[ ]__smd__2018-02-27T15:50:23.554Z__emd____s+__🔗_Unsorted__e+____st__Snapshot / Xcode 9 performance hit · Issue #10714 · fastlane/fastlane · GitHub__et__
+[X]__smd__2018-02-27T04:42:17.511Z__emd____scd__2018-02-27T20:03:04.594Z__ecd____s+__👨‍💻_Job_Search__e+____st__meeting with Alice tomorrow at 3 pm__et__
+[X]__smd__2018-02-26T17:00:23.877Z__emd____scd__2018-02-26T17:39:24.921Z__ecd____s+__🍟_grocery_list__e+____st__buy dog 🐕 pee pads__et__
+[X]__smd__2018-02-26T16:59:24.491Z__emd____scd__2018-02-26T17:56:55.654Z__ecd____s+__🍟_grocery_list__e+____st__buy dog 🐶 food__et__
+[X]__smd__2018-02-26T16:59:24.491Z__emd____scd__2018-02-26T17:56:59.249Z__ecd____s+__🍟_grocery_list__e+____st__buy cat 🐈 food__et__
+[X]__smd__2018-02-26T16:59:24.491Z__emd____scd__2018-02-26T17:39:22.469Z__ecd____s+__🍟_grocery_list__e+____st__buy coffee ☕️ cream__et__
+[X]__smd__2018-02-26T16:59:24.491Z__emd____scd__2018-02-26T17:57:02.413Z__ecd____s+__🍟_grocery_list__e+____st__buy wet cat 🐱 food__et__
+[X]__smd__2018-02-26T16:59:24.491Z__emd____scd__2018-02-26T19:36:04.489Z__ecd____s+__🍟_grocery_list__e+____st__buy dog 💩 💼__et__
+[ ]__smd__2018-02-26T00:41:28.099Z__emd____s+__🔗_Unsorted__e+____st__Umbrella/README.md at master · devxoul/Umbrella · GitHub__et__
+[ ]__smd__2018-02-26T00:17:47.109Z__emd____s+__🔗_Unsorted__e+____st__quire-io/SwiftyChrono · GitHub__et__
+[ ]__smd__2018-02-26T00:13:33.326Z__emd____s+__🔗_Unsorted__e+____st__Swift World: What’s new in iOS 11 — Natural Language Processing__et__
+[ ]__smd__2018-02-25T15:23:17.784Z__emd____s+__🔗_Unsorted__e+____st__Swift Modal View Controller with transparent background · GitHub__et__
+[ ]__smd__2018-02-25T15:10:29.755Z__emd____s+__🔗_Unsorted__e+____st__iTunes Search API – Affiliate Resources__et__
+[ ]__smd__2018-02-25T14:52:55.180Z__emd____s+__🔗_Unsorted__e+____st__Instructions/README.md at master · ephread/Instructions · GitHub__et__
+[ ]__smd__2018-02-25T14:52:02.452Z__emd____s+__🔗_Unsorted__e+____st__DateTools/README.md at master · MatthewYork/DateTools · GitHub__et__
+[X]__smd__2018-02-25T02:09:45.064Z__emd____scd__2018-03-10T17:41:10.124Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add fake data to have consistent UI screenshots for different locales __et__
+[X]__smd__2018-02-24T03:28:03.823Z__emd____scd__2018-02-24T17:54:30.184Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__test multiple todo alarms__et__
+[X]__smd__2018-02-24T03:28:03.823Z__emd____scd__2018-02-24T17:55:04.400Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__seems to be only one that fires ... so maybe have to add 1 second per each item to make sure they fire__et__
+[ ]__smd__2018-02-23T19:04:02.643Z__emd____s+__🔗_Unsorted__e+____st__Daily Vibes__et__
+[ ]__smd__2018-02-23T19:01:15.126Z__emd____s+__💼 _Archived__e+____st__you can even enter multiple todo item tasks at the same time __et__
+[X]__smd__2018-02-23T19:01:15.126Z__emd____scd__2018-02-24T17:54:47.946Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__yes, it even works for single entry __et__
+[X]__smd__2018-02-23T19:01:15.126Z__emd____scd__2018-02-24T17:54:53.716Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__due date will be set the same for each task in the list of entries __et__
+[X]__smd__2018-02-23T18:56:31.202Z__emd____scd__2018-02-24T17:54:55.338Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Make video__et__
+[ ]__smd__2018-02-23T15:02:59.324Z__emd____s+__🔗_Unsorted__e+____st__Apple-Reminders-to-Todoist/README.md at master · FirePanther/Apple-Reminders-to-Todoist · GitHub__et__
+[ ]__smd__2018-02-23T14:59:11.359Z__emd____s+__🔗_Unsorted__e+____st__Manage, Delete and Update Notifications in iOS 10 – Making App Pie__et__
+[X]__smd__2018-02-23T14:57:50.179Z__emd____scd__2018-02-25T02:10:23.903Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Notifications have a 50 notification limit per application this is a great feature for repeat notifications. __et__
+[X]__smd__2018-02-23T12:59:24.196Z__emd____scd__2018-02-23T13:01:57.531Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add remind me to the multiple entry view __et__
+[X]__smd__2018-02-23T12:59:24.196Z__emd____scd__2018-02-23T13:05:16.330Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Wire up remind me in the multiple entry view to work based on due date __et__
+[X]__smd__2018-02-23T12:17:57.887Z__emd____scd__2018-02-23T12:18:11.726Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add little accent to each row where there is a reminder__et__
+[X]__smd__2018-02-23T11:25:19.060Z__emd____scd__2018-02-23T18:44:12.713Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Wire up remind me to work based on due date entry for new tasks and existing tasks__et__
+[X]__smd__2018-02-23T11:24:16.308Z__emd____scd__2018-02-23T11:30:21.400Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add remind me to the detail view__et__
+[ ]__smd__2018-02-21T20:50:07.759Z__emd____s+__🏘_Elderoost__e+____st__figure out how to parse emails and search database for nursing house names __et__
+[ ]__smd__2018-02-21T20:50:07.759Z__emd____s+__🏘_Elderoost__e+____st__figure out if parsing news text to sentiment analysis __et__
+[ ]__smd__2018-02-21T20:50:07.759Z__emd____s+__🏘_Elderoost__e+____st__figure out if we need to go to website from the parsed email __et__
+[ ]__smd__2018-02-21T20:47:57.828Z__emd____s+__🏘_Elderoost__e+____st__Get mail messages from Gmail based on title (the automated emails)__et__
+[ ]__smd__2018-02-21T19:21:37.537Z__emd____s+__🔗_Unsorted__e+____st__GitHub - bustoutsolutions/siesta: The civilized way to write REST API clients for iOS / macOS__et__
+[ ]__smd__2018-02-21T19:20:23.783Z__emd____s+__🔗_Unsorted__e+____st__IceCream/README.md at master · insidegui/IceCream · GitHub__et__
+[ ]__smd__2018-02-20T19:48:14.282Z__emd____s+__🔗_Unsorted__e+____st__Summit Day Planner - Tasks, Calendar & Notes App__et__
+[ ]__smd__2018-02-20T16:07:01.030Z__emd____s+__🔗_Unsorted__e+____st__Building a ToDo App Using Realm and Swift__et__
+[X]__smd__2018-02-20T16:00:36.600Z__emd____scd__2018-03-10T17:41:20.774Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__maybe add idea of sections toggle __et__
+[ ]__smd__2018-02-20T16:00:36.600Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__investigate integrating Siri __et__
+[ ]__smd__2018-02-19T21:39:06.700Z__emd____s+__🔗_Unsorted__e+____st__Reachability.swift/README.md at master · ashleymills/Reachability.swift · GitHub__et__
+[X]__smd__2018-02-19T19:36:09.588Z__emd____scd__2018-02-19T19:36:38.615Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__play with fonts in titles - change for one version __et__
+[X]__smd__2018-02-19T19:36:09.588Z__emd____scd__2018-02-19T19:36:17.000Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__mod please rate us button into a clickable button __et__
+[X]__smd__2018-02-19T19:36:09.588Z__emd____scd__2018-02-19T22:36:34.235Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add new translation strings to poeeditor __et__
+[X]__smd__2018-02-19T19:32:00.327Z__emd____scd__2018-02-19T19:32:09.553Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Fix aknowck bug where it said About in title for now__et__
+[X]__smd__2018-02-19T17:45:16.682Z__emd____scd__2018-02-19T17:45:41.435Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__add multiple items __et__
+[ ]__smd__2018-02-19T03:31:41.623Z__emd____s+__🔗_Unsorted__e+____st__A Guide to Securing your Core Data on an iOS Device - Cuelogic Blog__et__
+[ ]__smd__2018-02-19T03:28:41.593Z__emd____s+__🔗_Unsorted__e+____st__Export Core Data into CSV in Swift 3 · GitHub__et__
+[ ]__smd__2018-02-17T21:55:24.265Z__emd____s+__🔗_Unsorted__e+____st__On CustomWidgets__et__
+[ ]__smd__2018-02-17T20:52:16.344Z__emd____s+__🔗_Unsorted__e+____st__GitHub - KennethTsang/GrowingTextView: An UITextView in Swift3, Swift4 and Swift2.3. Support auto growing, placeholder and length limit.__et__
+[ ]__smd__2018-02-17T20:49:36.316Z__emd____s+__🔗_Unsorted__e+____st__Mustard/README.md at master · mathewsanders/Mustard · GitHub__et__
+[X]__smd__2018-02-17T01:02:31.204Z__emd____scd__2018-02-17T01:02:45.318Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add multiple tasks MVP #dailyvibes__et__
+[X]__smd__2018-02-16T17:23:31.412Z__emd____scd__2018-02-16T17:37:42.502Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Update translations__et__
+[X]__smd__2018-02-16T16:41:17.256Z__emd____scd__2018-02-16T17:23:45.713Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add share/action button to to-do item 📝 __et__
+[X]__smd__2018-02-16T16:28:00.545Z__emd____scd__2018-02-16T16:40:42.255Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add share/action button to to-do item task__et__
+[ ]__smd__2018-02-15T19:59:55.419Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Play with idea reading calendar and showing upcoming events for today in a quick view but having no way of editing them... just read only if possible__et__
+[ ]__smd__2018-02-15T19:55:05.296Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Share project - ?__et__
+[X]__smd__2018-02-15T19:51:33.110Z__emd____scd__2018-02-16T17:55:25.605Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Share todo - notes only - as markdown?__et__
+[X]__smd__2018-02-15T19:50:52.222Z__emd____scd__2018-02-16T17:55:22.861Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Share todo - title and tags__et__
+[ ]__smd__2018-02-15T19:03:20.582Z__emd____s+__🔗_Unsorted__e+____st__Clothing to pack
+
+[x] underwear (3)
+[x] tights (2)
+[x] socks (6pairs)
+[x] big sweaters (2)
+[x] shoes (2 pairs)
+[x] tank tops (3)
+[x] long sleeve shirts (2)
+[x] tee shirts (4)
+[x] jeans__et__
+[ ]__smd__2018-02-15T19:02:17.126Z__emd____s+__🔗_Unsorted__e+____st__Some list - Title
+
+[ ] One list
+[ ] Two list
+[ ] Three list
+[ ] Four
+[ ] Twst__et__
+[ ]__smd__2018-02-15T18:43:11.872Z__emd____s+__🔗_Unsorted__e+____st__Export Core Data into CSV in Swift 3 · GitHub__et__
+[ ]__smd__2018-02-15T18:35:46.294Z__emd____s+__🔗_Unsorted__e+____st__GitHub - 1amageek/Toolbar: Awesome autolayout Toolbar. Toolbar is a library for iOS. You can easily create chat InputBar.__et__
+[ ]__smd__2018-02-15T16:12:05.013Z__emd____s+__🔗_Unsorted__e+____st__About Incorporating iCloud into Your App__et__
+[ ]__smd__2018-02-15T16:11:14.606Z__emd____s+__🔗_Unsorted__e+____st__Store CoreData in iCloud - Stack Overflow__et__
+[ ]__smd__2018-02-15T16:02:20.079Z__emd____s+__🔗_Unsorted__e+____st__Sync an iOS app that uses core data to cloud - Stack Overflow__et__
+[ ]__smd__2018-02-15T15:52:11.827Z__emd____s+__🔗_Unsorted__e+____st__CloudCore/README.md at master · Sorix/CloudCore · GitHub__et__
+[ ]__smd__2018-02-15T15:44:52.622Z__emd____s+__🔗_Unsorted__e+____st__SwiftOCR/README.md at master · garnele007/SwiftOCR · GitHub__et__
+[ ]__smd__2018-02-15T15:25:06.939Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Investigate grabbing events from Reminders App automatically... seen some Apps offer that__et__
+[ ]__smd__2018-02-15T15:11:54.838Z__emd____s+__🔗_Unsorted__e+____st__Seam3/README.md at master · paulw11/Seam3 · GitHub__et__
+[ ]__smd__2018-02-15T15:07:52.473Z__emd____s+__🔗_Unsorted__e+____st__About Incorporating iCloud into Your App__et__
+[ ]__smd__2018-02-15T13:36:01.368Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Add simple view toggle__et__
+[X]__smd__2018-02-14T22:17:12.287Z__emd____scd__2018-02-16T15:48:13.594Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add Please Review US link__et__
+[X]__smd__2018-02-14T22:16:08.214Z__emd____scd__2018-02-16T14:20:56.432Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Change App Store Category to regular because will not require https requests by default. Will ask safari to open. If blocked... oh well http website like in there. __et__
+[X]__smd__2018-02-14T21:47:04.010Z__emd____scd__2018-02-15T03:17:05.165Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add markdown support to the preview of to-do details__et__
+[ ]__smd__2018-02-14T21:46:38.791Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Add markdown support to editing notes__et__
+[X]__smd__2018-02-14T18:00:23.059Z__emd____scd__2018-02-14T21:41:11.846Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Transfer Ack page to local markdown__et__
+[X]__smd__2018-02-14T17:59:39.753Z__emd____scd__2018-02-14T21:41:13.637Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Transfer support page to local markdown__et__
+[X]__smd__2018-02-14T17:58:21.629Z__emd____scd__2018-02-14T21:41:15.766Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Transfer About page to local markdown__et__
+[X]__smd__2018-02-14T17:57:56.124Z__emd____scd__2018-02-14T22:15:13.516Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Find, pick and install Markdown support__et__
+[ ]__smd__2018-02-14T16:10:06.006Z__emd____s+__🔗_Unsorted__e+____st__Some list
+
+[ ] One list
+[ ] Two list
+[ ] Three list
+[ ] Four__et__
+[X]__smd__2018-02-14T04:37:53.829Z__emd____scd__2018-02-14T05:40:16.964Z__ecd____s+__🗓_This_week__e+____st__In the past this week__et__
+[ ]__smd__2018-02-14T04:34:22.448Z__emd____s+__🔗_Unsorted__e+____st__Today
+
+OVERDUE
+- Okey (2017-12-10)
+
+
+From TickTick:
+https://ticktick.com__et__
+[X]__smd__2018-02-14T00:47:57.620Z__emd____scd__2018-02-14T01:55:20.643Z__ecd____s+__😜 _everything_else__e+____st__Post update to wip.chat__et__
+[X]__smd__2018-02-14T00:44:24.876Z__emd____scd__2018-02-14T04:35:54.219Z__ecd____s+__🗓_This_week__e+____st__Due date in past but part of This Week__et__
+[X]__smd__2018-02-14T00:34:58.485Z__emd____scd__2018-02-14T05:40:13.674Z__ecd____s+__🗓_This_week__e+____st__Test more this week__et__
+[ ]__smd__2018-02-14T00:34:20.230Z__emd____s+__🗓_This_week__e+____st__Has no due date. Has tags. Has note. __et__
+[ ]__smd__2018-02-14T00:33:44.292Z__emd____s+__🗓_This_week__e+____st__Has no due date. Has no tags. Has notes__et__
+[ ]__smd__2018-02-14T00:30:40.131Z__emd____s+__🗓_This_week__e+____st__Has no due date. Has tags__et__
+[ ]__smd__2018-02-14T00:29:55.479Z__emd____s+__🗓_This_week__e+____st__Has no due date__et__
+[X]__smd__2018-02-13T23:48:02.097Z__emd____scd__2018-02-14T00:42:44.528Z__ecd____s+__🗓_This_week__e+____st__This week project__et__
+[X]__smd__2018-02-13T19:11:51.090Z__emd____scd__2018-02-14T00:42:24.409Z__ecd____s+__😜 _everything_else__e+____st__Make seven days show today - to - 7 days__et__
+[X]__smd__2018-02-13T19:07:08.309Z__emd____scd__2018-02-13T22:54:14.459Z__ecd____s+__😜 _everything_else__e+____st__Make today list filter items by due today__et__
+[X]__smd__2018-02-06T19:14:08.661Z__emd____scd__2018-12-27T03:32:25.942Z__ecd____s+__💡_Ideation__e+____st__Set of generic localized strings__et__
+[ ]__smd__2018-02-06T18:37:10.516Z__emd____s+__🔗_Unsorted__e+____st__All Things Distributed - All Things Distributed__et__
+[X]__smd__2018-02-03T16:23:13.387Z__emd____scd__2018-02-04T01:36:49.692Z__ecd____s+__😜 _everything_else__e+____st__Remind Laura to Take mouse from parents house__et__
+[ ]__smd__2018-01-31T20:20:10.927Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Ideas for filtering the main table__et__
+[ ]__smd__2018-01-31T20:19:16.639Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Idea for notes desires markdown __et__
+[X]__smd__2018-01-31T20:13:48.260Z__emd____scd__2018-12-27T03:32:50.950Z__ecd____s+__📂_EIT__e+____st__Ideas Jan 2018__et__
+[ ]__smd__2018-01-31T20:01:29.730Z__emd____s+__🔗_Unsorted__e+____st__A cartoon intro to Redux – Code Cartoons__et__
+[X]__smd__2018-01-31T14:05:03.944Z__emd____scd__2018-02-06T18:50:26.307Z__ecd____s+__👨‍💻_Job_Search__e+____st__Phone call__et__
+[ ]__smd__2018-01-29T17:17:17.304Z__emd____s+__💼 _Archived__e+____st__Core ML in depth - WWDC 2017 - Videos - Apple Developer__et__
+[ ]__smd__2018-01-29T17:10:41.665Z__emd____s+__💼 _Archived__e+____st__Testing archive 2__et__
+[ ]__smd__2018-01-29T17:10:34.298Z__emd____s+__💼 _Archived__e+____st__Testing archive 1__et__
+[ ]__smd__2018-01-29T17:10:10.893Z__emd____s+__💼 _Archived__e+____st__Testing delete 1__et__
+[ ]__smd__2018-01-29T17:09:49.347Z__emd____s+__💼 _Archived__e+____st__Incoming__et__
+[X]__smd__2018-01-29T16:10:11.465Z__emd____scd__2018-01-29T17:05:14.752Z__ecd____s+__💼 _Archived__e+____st__Ok__et__
+[ ]__smd__2018-01-29T15:39:02.748Z__emd____s+__💼 _Archived__e+____st__Home - Quora__et__
+[ ]__smd__2018-01-29T14:43:32.055Z__emd____s+__💼 _Archived__e+____st__Home - Quora__et__
+[X]__smd__2018-01-29T14:17:16.547Z__emd____scd__2018-01-29T17:17:53.350Z__ecd____s+__💼 _Archived__e+____st__ios project list icon - Google Search__et__
+[ ]__smd__2018-01-29T13:59:12.246Z__emd____s+__💼 _Archived__e+____st__ios project list icon - Google Search__et__
+[ ]__smd__2018-01-29T12:56:49.014Z__emd____s+__🔗_Unsorted__e+____st__ios project list icon - Google Search - https://www.google.ca/search?q=ios+project+list+icon&ie=UTF-8&oe=UTF-8&hl=en-ca&client=safari__et__
+[X]__smd__2018-01-24T14:45:55.648Z__emd____scd__2018-01-27T20:26:26.655Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Add this year is  % complete somewhere__et__
+[X]__smd__2018-01-19T02:12:57.182Z__emd____scd__2018-01-19T12:57:06.484Z__ecd____st__Okey__et__
+[X]__smd__2018-01-18T22:20:10.876Z__emd____scd__2018-01-19T16:05:25.610Z__ecd____st__Matching left alignment of custom & standard UITableViewCell types - Stack Overflow - https://stackoverflow.com/questions/29349917/matching-left-alignment-of-custom-standard-uitableviewcell-types__et__
+[X]__smd__2018-01-18T17:05:42.965Z__emd____scd__2018-01-18T20:46:43.977Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Remove automatic due date on todo item creation - show None or Set or something instead__et__
+[X]__smd__2018-01-18T17:05:08.900Z__emd____scd__2018-01-18T22:14:25.307Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Fix placeholder text color for Tags and List View__et__
+[X]__smd__2018-01-18T17:04:21.369Z__emd____scd__2018-01-19T13:13:59.841Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Fix placeholder text color in new todo screen - probably barTextColor for now__et__
+[X]__smd__2018-01-18T17:04:04.136Z__emd____scd__2018-01-18T20:47:39.781Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Fix delete button size on new todo screen__et__
+[X]__smd__2018-01-18T17:03:34.632Z__emd____scd__2018-01-19T16:05:35.088Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Adjust the text view on new todo to be dynamic and look good. __et__
+[X]__smd__2018-01-18T14:05:25.932Z__emd____scd__2018-01-18T17:03:33.362Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Change the progress tableview theming to reflect the rest of the tableview__et__
+[ ]__smd__2018-01-16T19:57:20.345Z__emd____sdd__2018-01-17T04:59:59.000Z__edd____st__Gang of Four Design Patterns - Spring Framework Guru - https://springframework.guru/gang-of-four-design-patterns/__et__
+[ ]__smd__2018-01-16T19:09:24.316Z__emd____sdd__2018-01-17T04:59:59.000Z__edd____st__Design Patterns & Refactoring - https://sourcemaking.com/__et__
+[X]__smd__2018-01-16T16:39:53.113Z__emd____scd__2018-01-29T17:09:02.026Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Apple SearchAds__et__
+[ ]__smd__2018-01-15T19:36:25.072Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Idea to favorite a to-do task__et__
+[ ]__smd__2018-01-15T19:31:59.680Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Add sub tasks to a to-do task item. Can only create, rename, and complete or delete them. __et__
+[ ]__smd__2018-01-15T19:28:09.888Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Idea for tab__et__
+[ ]__smd__2018-01-15T19:26:18.569Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Idea for list view__et__
+[X]__smd__2018-01-15T19:24:41.686Z__emd____scd__2018-01-29T00:18:18.420Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__Fix theme for sections in a table view__et__
+[ ]__smd__2018-01-15T19:22:22.639Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__Add status field to a to-do task__et__
+[X]__smd__2018-01-15T17:49:32.266Z__emd____scd__2018-01-15T19:22:20.716Z__ecd____s+__👜_Clothes__e+____st__Edit product photos of 🎩 __et__
+[X]__smd__2018-01-15T17:47:50.023Z__emd____scd__2018-01-15T17:49:59.455Z__ecd____s+__👜_Clothes__e+____st__Take product photos of hats__et__
+[X]__smd__2018-01-15T05:37:07.949Z__emd____scd__2018-01-15T05:37:47.902Z__ecd____s+__😜 _everything_else__e+____st__Testing__et__
+[X]__smd__2018-01-14T07:04:13.277Z__emd____scd__2018-01-15T13:23:22.098Z__ecd____st__Using Gesture Recognizers · codepath/ios_guides Wiki · GitHub - https://github.com/codepath/ios_guides/wiki/Using-Gesture-Recognizers__et__
+[X]__smd__2018-01-14T06:58:09.454Z__emd____scd__2018-01-19T16:50:37.907Z__ecd____s+__💼 _Archived__e+____st__Add delete to-do to this screen (new to-do). Clear button within a cell type look. In its own section. Below notes. Probably using the tint color to indicate that it is an actionable. __et__
+[X]__smd__2018-01-13T05:49:18.827Z__emd____scd__2018-12-27T03:28:45.022Z__ecd____s+__😜 _everything_else__e+____st__MarkdownTextView/README.md at master · indragiek/MarkdownTextView · GitHub - https://github.com/indragiek/MarkdownTextView/blob/master/README.md__et__
+[ ]__smd__2018-01-13T05:34:29.054Z__emd____sdd__2018-01-14T04:59:59.000Z__edd____st__Custom UITextView in Swift - http://ilya.puchka.me/custom-uitextview-in-swift/__et__
+[ ]__smd__2018-01-13T05:30:33.255Z__emd____sdd__2018-01-14T04:59:59.000Z__edd____st__youtube-iOS/README.md at Master · aslanyanhaik/youtube-iOS · GitHub - https://github.com/aslanyanhaik/youtube-iOS/blob/Master/README.md__et__
+[ ]__smd__2018-01-13T05:29:26.374Z__emd____sdd__2018-01-14T04:59:59.000Z__edd____st__CVCalendar/README.md at master · CVCalendar/CVCalendar · GitHub - https://github.com/CVCalendar/CVCalendar/blob/master/README.md__et__
+[X]__smd__2018-01-13T05:14:44.947Z__emd____scd__2018-01-13T06:22:27.961Z__ecd____s+__💼 _Archived__e+____st__Test__et__
+[X]__smd__2018-01-13T05:14:03.402Z__emd____scd__2018-01-13T06:22:18.662Z__ecd____st__Test__et__
+[ ]__smd__2018-01-12T19:56:26.420Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__Get UIScrollView to scroll to the top - Stack Overflow - https://stackoverflow.com/questions/9450302/get-uiscrollview-to-scroll-to-the-top__et__
+[ ]__smd__2018-01-12T06:04:21.054Z__emd____s+__🧠 _Daily_Vibes_Project__e+____st__PaintCode - Turn your drawings into Objective-C or Swift drawing code - https://www.paintcodeapp.com/pricing__et__
+[ ]__smd__2018-01-12T06:03:53.233Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__Greater App - http://greaterapp.com/__et__
+[ ]__smd__2018-01-12T06:03:16.117Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__Launch an app from within another (iPhone) - Stack Overflow - https://stackoverflow.com/questions/419119/launch-an-app-from-within-another-iphone__et__
+[ ]__smd__2018-01-12T06:02:54.245Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__LaunchMe: Using a custom URL scheme to interact with your application - https://developer.apple.com/library/content/samplecode/LaunchMe/Introduction/Intro.html#//apple_ref/doc/uid/DTS40007417__et__
+[ ]__smd__2018-01-12T06:01:36.797Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__iOS open YouTube App with query (url schemes) iOS Cake - http://ioscake.com/ios-open-youtube-app-with-query-url-schemes.html__et__
+[ ]__smd__2018-01-12T06:01:16.194Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__Inter-App Communication - https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html__et__
+[ ]__smd__2018-01-12T06:00:44.255Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__Portfolio — Daniel Amitay - http://danielamitay.com/portfolio/__et__
+[ ]__smd__2018-01-12T06:00:20.645Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__Mattt - https://mat.tt/__et__
+[ ]__smd__2018-01-12T05:59:30.514Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__GitHub - futurice/ios-good-practices: Good ideas for iOS development, by Futurice developers. - https://github.com/futurice/ios-good-practices__et__
+[ ]__smd__2018-01-12T05:58:54.765Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__Core Graphics Tutorial Part 2: Gradients and Contexts - https://www.raywenderlich.com/162313/core-graphics-tutorial-part-2-gradients-contexts__et__
+[ ]__smd__2018-01-12T05:36:06.163Z__emd____sdd__2018-01-13T04:59:59.000Z__edd____st__GitHub - sergdort/CleanArchitectureRxSwift: Example of Clean Architecture of iOS app using RxSwift - https://github.com/sergdort/cleanarchitecturerxswift__et__
+[X]__smd__2018-01-12T05:35:13.078Z__emd____scd__2018-01-15T19:25:47.131Z__ecd____s+__🧠 _Daily_Vibes_Project__e+____st__UINavigationBar custom back button without title - Stack Overflow - https://stackoverflow.com/questions/18870128/uinavigationbar-custom-back-button-without-title__et__
+[ ]__smd__2018-01-11T19:13:24.731Z__emd____sdd__2018-01-12T04:59:59.000Z__edd____st__Create Account | Slack - https://overcastfm.slack.com/join/shared_invite/enQtMjc4ODkwMjg3Njk4LWUyMjhlZDIwODNmMzczZTE4OWFkNWNkNzE4MzgwOWUxMGZmZWUxMTBiN2NmMWJjZTQwZGJhOWM5MDBhYzFkNjU__et__
+[ ]__smd__2018-01-11T15:53:01.718Z__emd____sdd__2018-01-12T04:59:59.000Z__edd____st__UNCalendarNotificationTrigger__et__
+[ ]__smd__2018-01-10T17:57:21.041Z__emd____sdd__2018-01-11T04:59:59.000Z__edd____st__Rosetta Code - http://rosettacode.org/wiki/Rosetta_Code__et__
+[ ]__smd__2018-01-10T17:39:18.412Z__emd____sdd__2018-01-11T04:59:59.000Z__edd____st__GitHub - sergdort/CleanArchitectureRxSwift: Example of Clean Architecture of iOS app using RxSwift - https://github.com/sergdort/cleanarchitecturerxswift__et__
+[ ]__smd__2018-01-10T15:15:20.228Z__emd____sdd__2018-01-11T04:59:59.000Z__edd____st__accelerate framework ios - Google Search - https://www.google.ca/search?q=accelerate+framework+ios&ie=UTF-8&oe=UTF-8&hl=en-ca&client=safari__et__
+[X]__smd__2018-01-09T20:06:25.268Z__emd____scd__2018-01-12T04:20:12.656Z__ecd____st__Add analytics to dailyvibes.ca__et__
+[ ]__smd__2018-01-09T19:56:27.401Z__emd____sdd__2018-01-10T04:59:59.000Z__edd____st__Core Graphics Tutorial Part 2: Gradients and Contexts - https://www.raywenderlich.com/162313/core-graphics-tutorial-part-2-gradients-contexts__et__
+[ ]__smd__2018-01-09T19:53:47.617Z__emd____sdd__2018-01-10T04:59:59.000Z__edd____st__PaintCode - Turn your drawings into Objective-C or Swift drawing code - https://www.paintcodeapp.com/__et__
+[ ]__smd__2018-01-09T18:42:58.743Z__emd____sdd__2018-01-10T04:59:59.000Z__edd____st__GitHub - futurice/ios-good-practices: Good ideas for iOS development, by Futurice developers. - https://github.com/futurice/ios-good-practices__et__
+[X]__smd__2018-01-09T18:35:23.319Z__emd____scd__2018-01-13T22:10:54.213Z__ecd____st__Check out if you can do core data with swift and remain immutable __et__
+[ ]__smd__2018-01-09T17:36:57.139Z__emd____sdd__2018-01-10T04:59:59.000Z__edd____st__Dice Careers Mobile App | Dice Products - https://www.dice.com/products/mobile-app/__et__
+[ ]__smd__2018-01-09T16:21:57.503Z__emd____sdd__2018-01-10T04:59:59.000Z__edd____st__Add task version numbers on each touch/update__et__
+[ ]__smd__2018-01-09T13:06:39.635Z__emd____sdd__2018-01-10T04:59:59.000Z__edd____st__Enable iTunes file sharing__et__
+[X]__smd__2018-01-09T01:19:12.196Z__emd____scd__2018-01-09T22:34:45.587Z__ecd____st__Hey 👋 welcome to daily vibes. This is one of our projects. For more of our projects check them out at https://sugarplumoriginals.com__et__
+[ ]__smd__2018-01-09T01:06:45.012Z__emd____sdd__2018-01-09T04:59:59.000Z__edd____st__How do you feel today? 1 question per day but it I not final - you can edit. On main page above the current table where the segment. Move segment into a filter button some kind.  Do they have choices? Or is it colours? Picks. Word? Pick a colour? Two different. 1) they can clock and pick any colour and any word. Text field. How do you feel? 2) set ways to be feeling and set colours. Limit to 150 chars. OR some people might use this as status or daily quote. Which could be a cool page that they access to and pick from __et__
+[ ]__smd__2018-01-08T17:59:04.410Z__emd____sdd__2018-01-09T04:59:59.000Z__edd____st__YC in Toronto and Seattle - http://blog.ycombinator.com/yc-in-toronto-and-seattle/__et__
+[ ]__smd__2018-01-08T05:01:15.997Z__emd____sdd__2018-01-09T04:59:59.000Z__edd____st__How can I open a Twitter tweet using the native Twitter app on iOS? - Stack Overflow - https://stackoverflow.com/questions/10424275/how-can-i-open-a-twitter-tweet-using-the-native-twitter-app-on-ios__et__
+[ ]__smd__2018-01-08T04:50:48.151Z__emd____sdd__2018-01-08T04:59:59.000Z__edd____st__Down/README.md at master · iwasrobbed/Down · GitHub - https://github.com/iwasrobbed/Down/blob/master/README.md__et__
+[ ]__smd__2018-01-08T04:36:46.773Z__emd____sdd__2018-01-08T04:59:59.000Z__edd____st__Reddit - Telegram - [Question] URL scheme for sending to group - https://www.reddit.com/r/Telegram/comments/6ao2kb/question_url_scheme_for_sending_to_group/__et__
+[ ]__smd__2018-01-08T04:33:49.825Z__emd____sdd__2018-01-08T04:59:59.000Z__edd____st__Inter-App Communication - https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html__et__
+[ ]__smd__2018-01-08T04:33:31.014Z__emd____sdd__2018-01-08T04:59:59.000Z__edd____st__How to open an iOS app with custom URL - Kitefaster - https://kitefaster.com/2016/07/13/how-to-open-ios-app-with-custom-url/__et__
+[ ]__smd__2018-01-08T04:26:57.679Z__emd____sdd__2018-01-08T04:59:59.000Z__edd____st__Capculator – Simple crypto coin market cap estimation tool - https://www.capculator.co/__et__
+[X]__smd__2018-01-07T23:12:52.355Z__emd____scd__2018-01-07T23:13:13.790Z__ecd____st__Test 123__et__

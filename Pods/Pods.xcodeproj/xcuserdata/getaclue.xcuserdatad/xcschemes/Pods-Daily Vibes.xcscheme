@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "71A173044932D322D84C2406DB69456C"
+               BlueprintIdentifier = "5309C44ACA90F3B0D272C2F2497706E9"
                BuildableName = "Pods_Daily_Vibes.framework"
                BlueprintName = "Pods-Daily Vibes"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "71A173044932D322D84C2406DB69456C"
+            BlueprintIdentifier = "5309C44ACA90F3B0D272C2F2497706E9"
             BuildableName = "Pods_Daily_Vibes.framework"
             BlueprintName = "Pods-Daily Vibes"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -101,7 +101,7 @@ class TodoItemSettingsData {
             let fallbackString = UUID.init(uuidString: "00000000-0000-0000-0000-000000000000")
             let curDate = Date()
             
-            let newDVModel = DVTodoItemTaskViewModel.init(uuid: fallbackString!, versionId: nil, versionPrevId: nil, version: nil, todoItemText: "", createdAt: curDate, updatedAt: curDate, duedateAt: nil, completedAt: nil, archivedAt: nil, completed: false, isArchived: false, isNew: true, isPublic: false, isFavourite: false)
+            let newDVModel = DVTodoItemTaskViewModel.init(uuid: fallbackString!, versionId: nil, versionPrevId: nil, version: nil, todoItemText: "", createdAt: curDate, updatedAt: curDate, duedateAt: nil, completedAt: nil, archivedAt: nil, completed: false, isArchived: false, isNew: true, isPublic: false, isFavourite: false, startdateAt: nil, enddateAt: nil, pos:0, priority:0)
             self.todoItemViewModel = newDVModel
             self.data = newDVModel
             self.tags = [DVTagViewModel]()

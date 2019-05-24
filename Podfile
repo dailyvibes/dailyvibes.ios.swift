@@ -1,37 +1,32 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '12.0'
+ platform :ios, '12.1'
 
 target 'Daily Vibes' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for Daily Vibes
-  pod 'Notepad', :path => '/Users/getaclue/dev/DailyVibes.iOS/Notepad/'
+  pod 'Notepad', :git => 'https://github.com/ruddfawcett/Notepad.git', :branch => 'master'
+  pod 'ContextMenu', :git => 'https://github.com/GitHawkApp/ContextMenu.git', :branch => 'master'
+
   pod 'SwiftyChrono', :path => '/Users/getaclue/dev/DailyVibes.iOS/SwiftyChrono'
-  # pod "ILLoginKit", :path => '/Users/getaclue/dev/DailyVibes.iOS/LoginKit'
-  
+
   pod 'Disk'
   pod 'DeckTransition'
   pod 'GrowingTextView'
-  
+  pod 'SwiftEntryKit'
   pod 'Charts'
   pod 'SwiftTheme'
   pod 'Down'
-  pod 'SimulatorStatusMagic', :configurations => ['Debug']
-  
-  # pod 'EFMarkdown' - potential candidate Feb 2018
-  # pod 'MarkdownView'
-  # pod 'MarkdownKit'
-  # pod 'Haring' # is the updated MarkdownKit
-  # pod 'SwiftSpinner' # while i figure out why the delay is there
-  # pod 'MarkdownTextView' - not in cocoapods Feb 2018
-  # pod 'Notepad' - not updated for Swift 4 Feb 2018
-  # pod 'Eureka'
 
-  # target 'Daily VibesTests' do
-  #   inherit! :search_paths
-  #   # Pods for testing
-  # end
+  pod 'FSCalendar'
+  pod 'MarkdownKit', :git => 'https://github.com/bmoliveira/MarkdownKit', :branch => 'master'
+
+  pod 'SimulatorStatusMagic', :configurations => ['Debug']
+
+  target 'Daily VibesTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 
 end
 

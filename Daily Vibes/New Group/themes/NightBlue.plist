@@ -6,6 +6,8 @@
 	<string>LightContent</string>
 	<key>Global</key>
 	<dict>
+		<key>selectionBackgroundColor</key>
+		<string>#1F303F</string>
 		<key>toolbarStyle</key>
 		<string>black</string>
 		<key>keyboardStyle</key>
@@ -45,5 +47,12 @@
 		<key>buttonBackgroundColor</key>
 		<string>#EB4F38</string>
 	</dict>
+    <key>Pill</key>
+    <dict>
+        <key>backgroundColor</key>
+        <string>#151E29</string>
+        <key>textColor</key>
+        <string>#8a929f</string>
+    </dict>
 </dict>
 </plist>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2no-lC-OBf">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home-->
+        <scene sceneID="fuG-Ba-f6G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2no-lC-OBf" customClass="DVMainNavigationViewController" customModule="Daily_Vibes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="dvHome003Icon" landscapeImage="dvHome003Icon" largeContentSizeImage="dvHome003Icon" id="W5M-Bz-otb">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="0mn-UM-mxF">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zv1-f7-J9d">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="Tpb-b4-q32" kind="relationship" relationship="rootViewController" id="w1e-dq-mr8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jau-mL-WY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="91.304347826086968"/>
+        </scene>
+        <!--DailyVibesMainTableVC-->
+        <scene sceneID="9U4-ew-iww">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DailyVibesMainTableVC" storyboardName="Main" referencedIdentifier="DailyVibesMainTableVC" id="Tpb-b4-q32" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qL8-BY-I5L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2006" y="91"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="dvHome003Icon" width="28" height="28"/>
+    </resources>
+</document>

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftTheme
 
 struct TagCreator {
     private var location = IndexPath(row: 0, section:0)
@@ -25,6 +26,14 @@ class TagsTableViewController: ThemableTableViewController, UITextFieldDelegate,
     
     // MARK: - Properties
     private var tagCreator = TagCreator()
+    
+    lazy var customSelectionView : UIView = {
+        let view = UIView(frame: .zero)
+        
+        view.theme_backgroundColor = "Global.selectionBackgroundColor"
+        
+        return view
+    }()
     
 //    private var todoItemSettingsData: TodoItemSettingsData?
     private var store = CoreDataManager.store
@@ -62,8 +71,6 @@ class TagsTableViewController: ThemableTableViewController, UITextFieldDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        TODO: figure out how to instantiate tableFooterView
-//        tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,7 +95,7 @@ class TagsTableViewController: ThemableTableViewController, UITextFieldDelegate,
         
         if tagCreator.isLocated(at: indexPath) {
             let cell = tableView.dequeueReusableCell(withIdentifier: createCell, for: indexPath) as! TagsCreationTableViewCell
-//            cell.tagLabeler.delegate = self
+            cell.tagLabeler.delegate = self
             return cell
         } else {
             // display
@@ -116,6 +123,8 @@ class TagsTableViewController: ThemableTableViewController, UITextFieldDelegate,
             cell.theme_backgroundColor = "Global.barTintColor"
             cell.textLabel?.theme_textColor = "Global.textColor"
             cell.theme_tintColor = "Global.barTextColor"
+            cell.selectedBackgroundView = customSelectionView
+            
             return cell
         }
     }
@@ -156,7 +165,7 @@ class TagsTableViewController: ThemableTableViewController, UITextFieldDelegate,
     }
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let adjustedIndexPath = IndexPath.init(row: adjustedRow(indexPath.row), section: indexPath.section)
             let removableTag = tagsVM[adjustedIndexPath.row]

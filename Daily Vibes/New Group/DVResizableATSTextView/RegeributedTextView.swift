@@ -37,40 +37,40 @@ open class RegeributedTextView: UITextView {
         fileprivate func attributedValue(_ currentFont: UIFont?) -> [String: Any] {
             switch self {
             case .backgroundColor(let color):
-                return [NSAttributedStringKey.backgroundColor.rawValue: color]
+                return [NSAttributedString.Key.backgroundColor.rawValue: color]
             case .bold:
                 guard let font = currentFont else { return [:] }
-                return [NSAttributedStringKey.font.rawValue: UIFont.boldSystemFont(ofSize: font.pointSize)]
+                return [NSAttributedString.Key.font.rawValue: UIFont.boldSystemFont(ofSize: font.pointSize)]
             case .boldWithFontSize(let size):
-                return [NSAttributedStringKey.font.rawValue: UIFont.boldSystemFont(ofSize: size)]
+                return [NSAttributedString.Key.font.rawValue: UIFont.boldSystemFont(ofSize: size)]
             case .font(let font):
-                return [NSAttributedStringKey.font.rawValue: font]
+                return [NSAttributedString.Key.font.rawValue: font]
             case .fontName(let name):
                 guard let current = currentFont,
                     let font = UIFont(name: name, size: current.pointSize) else { return [:] }
-                return [NSAttributedStringKey.font.rawValue: font]
+                return [NSAttributedString.Key.font.rawValue: font]
             case .fontSize(let size):
                 guard let current = currentFont,
                     let font = UIFont(name: current.fontName, size: size) else { return [:] }
-                return [NSAttributedStringKey.font.rawValue: font]
+                return [NSAttributedString.Key.font.rawValue: font]
             case .italic(let value):
-                return [NSAttributedStringKey.obliqueness.rawValue: value]
+                return [NSAttributedString.Key.obliqueness.rawValue: value]
             case .linkColor:
-                return [NSAttributedStringKey.foregroundColor.rawValue: UIColor.blue]
+                return [NSAttributedString.Key.foregroundColor.rawValue: UIColor.blue]
             case .shadow(let shadow):
-                return [NSAttributedStringKey.shadow.rawValue: shadow]
+                return [NSAttributedString.Key.shadow.rawValue: shadow]
             case .strikeColor(let color):
-                return [NSAttributedStringKey.strikethroughColor.rawValue: color]
+                return [NSAttributedString.Key.strikethroughColor.rawValue: color]
             case .strikeWithThickness(let value):
-                return [NSAttributedStringKey.strikethroughStyle.rawValue: value]
+                return [NSAttributedString.Key.strikethroughStyle.rawValue: value]
             case .strokeWidth(let value):
-                return [NSAttributedStringKey.strokeWidth.rawValue: value]
+                return [NSAttributedString.Key.strokeWidth.rawValue: value]
             case .textColor(let color):
-                return [NSAttributedStringKey.foregroundColor.rawValue: color]
+                return [NSAttributedString.Key.foregroundColor.rawValue: color]
             case .underline(let style):
-                return [NSAttributedStringKey.underlineStyle.rawValue: style.value]
+                return [NSAttributedString.Key.underlineStyle.rawValue: style.value]
             case .underlineColor(let color):
-                return [NSAttributedStringKey.underlineColor.rawValue: color]
+                return [NSAttributedString.Key.underlineColor.rawValue: color]
             }
         }
     }
@@ -212,7 +212,7 @@ open class RegeributedTextView: UITextView {
                     .forEach { attribute in
                         attribute.element.attributeNames
                             .forEach {
-                                attributedString.removeAttribute(NSAttributedStringKey(rawValue: $0), range: text.nsRange(from: attribute.element.range))
+                                attributedString.removeAttribute(NSAttributedString.Key(rawValue: $0), range: text.nsRange(from: attribute.element.range))
                         }
                         attributedRanges.remove(at: attribute.offset)
                 }
@@ -227,7 +227,7 @@ open class RegeributedTextView: UITextView {
                     attributes.merge(values, uniquingKeysWith: { old, new -> Any in
                         return new
                     })
-                    let addedAttribute = Dictionary(uniqueKeysWithValues: attribute.lazy.map { (NSAttributedStringKey($0.key), $0.value) })
+                    let addedAttribute = Dictionary(uniqueKeysWithValues: attribute.lazy.map { (NSAttributedString.Key($0.key), $0.value) })
                     attributedString.addAttributes(addedAttribute, range: text.nsRange(from: range))
                     attributedRanges.append(AttributedRange(attributeNames: attribute.keys.map{ String($0) }, priority: priority, range: range))
                 }
@@ -267,7 +267,7 @@ open class RegeributedTextView: UITextView {
             .forEach {
                 let range = text.nsRange(from: $0.element.range)
                 $0.element.attributeNames.forEach {
-                    attributedString.removeAttribute(NSAttributedStringKey(rawValue: $0), range: range)
+                    attributedString.removeAttribute(NSAttributedString.Key(rawValue: $0), range: range)
                 }
                 attributedRanges.remove(at: $0.offset)
         }
@@ -287,7 +287,7 @@ open class RegeributedTextView: UITextView {
             .forEach { attribute in
                 attribute.attributeNames
                     .forEach {
-                        attributedString.removeAttribute(NSAttributedStringKey(rawValue: $0), range: text.nsRange(from: attribute.range))
+                        attributedString.removeAttribute(NSAttributedString.Key(rawValue: $0), range: text.nsRange(from: attribute.range))
                 }
         }
         attributedText = attributedString
@@ -379,6 +379,6 @@ extension NSAttributedString {
         return mutableCopy() as? NSMutableAttributedString
     }
     fileprivate func attribute(at offset: Int, attributeNames: [String]) -> [String: Any]? {
-        return attribute(NSAttributedStringKey(rawValue: RegeributedTextView.Constants.Meta.AttributeKey.rawValue), at: offset, effectiveRange: nil) as? [String: Any]
+        return attribute(NSAttributedString.Key(rawValue: RegeributedTextView.Constants.Meta.AttributeKey.rawValue), at: offset, effectiveRange: nil) as? [String: Any]
     }
 }

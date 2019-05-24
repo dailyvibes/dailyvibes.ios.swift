@@ -1,22 +1,32 @@
 ## Down
 [![Build Status](https://travis-ci.org/iwasrobbed/Down.svg?branch=master)](https://travis-ci.org/iwasrobbed/Down)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/iwasrobbed/Down/blob/master/LICENSE)
-[![CocoaPods](https://img.shields.io/cocoapods/v/Down.svg?maxAge=2592000)]()
+[![CocoaPods](https://img.shields.io/cocoapods/v/Down.svg?maxAge=10800)]()
 [![Swift 4](https://img.shields.io/badge/language-Swift-blue.svg)](https://swift.org)
 [![macOS](https://img.shields.io/badge/OS-macOS-orange.svg)](https://developer.apple.com/macos/)
 [![iOS](https://img.shields.io/badge/OS-iOS-orange.svg)](https://developer.apple.com/ios/)
 [![tvOS](https://img.shields.io/badge/OS-tvOS-orange.svg)](https://developer.apple.com/tvos/)
 [![Coverage Status](https://coveralls.io/repos/github/iwasrobbed/Down/badge.svg?branch=master)](https://coveralls.io/github/iwasrobbed/Down?branch=master)
 
-Blazing fast Markdown rendering in Swift, built upon [cmark](https://github.com/jgm/cmark).
+Blazing fast Markdown (CommonMark) rendering in Swift, built upon [cmark v0.28.3](https://github.com/commonmark/cmark).
 
-Is your app using it? [Let me know!](mailto:rob@robphillips.me)
+Is your app using it? [Let us know!](mailto:rob@robphillips.me)
+
+#### Maintainers
+
+- [Rob Phillips](https://github.com/iwasrobbed)
+- [Keaton Burleson](https://github.com/128keaton)
+- [phoney](https://github.com/phoney)
+- [Tony Arnold](https://github.com/tonyarnold)
+- [Ken Harris](https://github.com/kengruven)
+- [Chris Zielinski](https://github.com/chriszielinski)
+- [Other contributors](https://github.com/iwasrobbed/Down/graphs/contributors) 🙌
 
 ### Installation
 
 Note: Swift 4 support is now on the `master` branch and any tag >= 0.4.x (Swift 3 is 0.3.x)
 
-Quickly install using [CocoaPods](https://cocoapods.org): 
+Quickly install using [CocoaPods](https://cocoapods.org):
 
 ```ruby
 pod 'Down'
@@ -27,6 +37,11 @@ Or [Carthage](https://github.com/Carthage/Carthage):
 ```
 github "iwasrobbed/Down"
 ```
+Due to limitations in Carthage regarding platform specification, you need to define the platform with Carthage.
+
+e.g.
+
+```carthage update --platform iOS```
 
 Or manually install:
 
@@ -38,7 +53,7 @@ Or manually install:
 
 ### Robust Performance
 
->[cmark](https://github.com/jgm/cmark) can render a Markdown version of War and Peace in the blink of an eye (127 milliseconds on a ten year old laptop, vs. 100-400 milliseconds for an eye blink). In our [benchmarks](https://github.com/jgm/cmark/blob/master/benchmarks.md), cmark is 10,000 times faster than the original Markdown.pl, and on par with the very fastest available Markdown processors.
+>[cmark](https://github.com/commonmark/cmark) can render a Markdown version of War and Peace in the blink of an eye (127 milliseconds on a ten year old laptop, vs. 100-400 milliseconds for an eye blink). In our [benchmarks](https://github.com/commonmark/cmark/blob/master/benchmarks.md), cmark is 10,000 times faster than the original Markdown.pl, and on par with the very fastest available Markdown processors.
 
 > The library has been extensively fuzz-tested using [american fuzzy lop](http://lcamtuf.coredump.cx/afl). The test suite includes pathological cases that bring many other Markdown parsers to a crawl (for example, thousands-deep nested bracketed text or block quotes).
 
@@ -71,12 +86,9 @@ Meta example of rendering this README:
 
 ![Example gif](Images/ohhai.gif)
 
-##### Prevent zoom
-The default implementation of the `DownView` allows for zooming in the rendered content. If you want to disable this, then you’ll need to instantiate the `DownView` with a custom bundle where the `viewport` in `index.html` has been assigned `user-scalable=no`. More info can be found [here](https://github.com/iwasrobbed/Down/pull/30).
-
 ### Parsing API
 
-The `Down` struct has everything you need if you just want out-of-the-box setup for parsing and conversion. 
+The `Down` struct has everything you need if you just want out-of-the-box setup for parsing and conversion.
 
 ```swift
 let down = Down(markdownString: "## [Down](https://github.com/iwasrobbed/Down)")
@@ -103,7 +115,9 @@ let commonMark = try? down.toCommonMark()
 
 // Convert to an attributed string
 let attributedString = try? down.toAttributedString()
-// NSAttributedString representation of the rendered HTML
+// NSAttributedString representation of the rendered HTML;
+// by default, uses a stylesheet that matches NSAttributedString's default font,
+// but you can override this by passing in your own, using the 'stylesheet:' parameter.
 
 // Convert to abstract syntax tree
 let ast = try? down.toAST()
@@ -146,6 +160,17 @@ public struct MarkdownToHTML: DownHTMLRenderable {
 }
 ```
 
+### Configuration of `DownView`
+
+`DownView` can be configured with a custom bundle using your own HTML / CSS or to do things like supporting
+Dynamic Type or custom fonts, etc. It's completely configurable.
+
+This option can be found in [DownView's instantiation function](https://github.com/iwasrobbed/Down/blob/master/Source/Views/DownView.swift#L26).
+
+##### Prevent zoom
+
+The default implementation of the `DownView` allows for zooming in the rendered content. If you want to disable this, then you’ll need to instantiate the `DownView` with a custom bundle where the `viewport` in `index.html` has been assigned `user-scalable=no`. More info can be found [here](https://github.com/iwasrobbed/Down/pull/30).
+
 ### Options
 
 Each protocol has options that will influence either rendering or parsing:
@@ -154,19 +179,19 @@ Each protocol has options that will influence either rendering or parsing:
 /**
  Default options
 */
-public static let Default = DownOptions(rawValue: 0)
+public static let `default` = DownOptions(rawValue: 0)
 
 // MARK: - Rendering Options
 
 /**
  Include a `data-sourcepos` attribute on all block elements
 */
-public static let SourcePos = DownOptions(rawValue: 1 << 1)
+public static let sourcePos = DownOptions(rawValue: 1 << 1)
 
 /**
  Render `softbreak` elements as hard line breaks.
 */
-public static let HardBreaks = DownOptions(rawValue: 1 << 2)
+public static let hardBreaks = DownOptions(rawValue: 1 << 2)
 
 /**
  Suppress raw HTML and unsafe links (`javascript:`, `vbscript:`,
@@ -175,29 +200,29 @@ public static let HardBreaks = DownOptions(rawValue: 1 << 2)
  by a placeholder HTML comment. Unsafe links are replaced by
  empty strings.
 */
-public static let Safe = DownOptions(rawValue: 1 << 3)
+public static let safe = DownOptions(rawValue: 1 << 3)
 
 // MARK: - Parsing Options
 
 /**
  Normalize tree by consolidating adjacent text nodes.
 */
-public static let Normalize = DownOptions(rawValue: 1 << 4)
+public static let normalize = DownOptions(rawValue: 1 << 4)
 
 /**
  Validate UTF-8 in the input before parsing, replacing illegal
  sequences with the replacement character U+FFFD.
 */
-public static let ValidateUTF8 = DownOptions(rawValue: 1 << 5)
+public static let validateUTF8 = DownOptions(rawValue: 1 << 5)
 
 /**
  Convert straight quotes to curly, --- to em dashes, -- to en dashes.
 */
-public static let Smart = DownOptions(rawValue: 1 << 6)
+public static let smart = DownOptions(rawValue: 1 << 6)
 ```
 
 ### Supports
-Swift, ARC & iOS 8+
+Swift; iOS 9+, tvOS 9+, macOS 10.11+
 
 ### Markdown Specification
 
@@ -207,6 +232,6 @@ Down is built upon the [CommonMark](http://commonmark.org) specification.
 Please feel free to fork and create a pull request for bug fixes or improvements, being sure to maintain the general coding style, adding tests, and adding comments as necessary.
 
 ### Credit
-This library is a wrapper around [cmark](https://github.com/jgm/cmark), which is built upon the [CommonMark](http://commonmark.org) Markdown specification. 
+This library is a wrapper around [cmark](https://github.com/commonmark/cmark), which is built upon the [CommonMark](http://commonmark.org) Markdown specification.
 
-[cmark](https://github.com/jgm/cmark) is Copyright (c) 2014, John MacFarlane. View [full license](https://github.com/jgm/cmark/blob/master/COPYING).
+[cmark](https://github.com/commonmark/cmark) is Copyright (c) 2014 - 2017, John MacFarlane. View [full license](https://github.com/commonmark/cmark/blob/master/COPYING).

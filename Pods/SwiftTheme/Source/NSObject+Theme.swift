@@ -8,6 +8,16 @@
 
 import UIKit
 
+fileprivate typealias setCGColorValueIMP        = @convention(c) (NSObject, Selector, CGColor) -> Void
+fileprivate typealias setCGFloatValueIMP        = @convention(c) (NSObject, Selector, CGFloat) -> Void
+fileprivate typealias setValueForStateIMP       = @convention(c) (NSObject, Selector, AnyObject, UIControl.State) -> Void
+fileprivate typealias setKeyboardValueIMP       = @convention(c) (NSObject, Selector, UIKeyboardAppearance) -> Void
+fileprivate typealias setActivityStyleValueIMP  = @convention(c) (NSObject, Selector, UIActivityIndicatorView.Style) -> Void
+#if os(iOS)
+fileprivate typealias setBarStyleValueIMP       = @convention(c) (NSObject, Selector, UIBarStyle) -> Void
+fileprivate typealias setStatusBarStyleValueIMP = @convention(c) (NSObject, Selector, UIStatusBarStyle, Bool) -> Void
+#endif
+
 extension NSObject {
     
     typealias ThemePickers = [String: ThemePicker]
@@ -36,19 +46,23 @@ extension NSObject {
         
         if let statePicker = picker as? ThemeStatePicker {
             let setState = unsafeBitCast(method(for: sel), to: setValueForStateIMP.self)
-            statePicker.values.forEach { setState(self, sel, $1.value()! as AnyObject, UIControlState(rawValue: $0)) }
+            statePicker.values.forEach { setState(self, sel, $1.value()! as AnyObject, UIControl.State(rawValue: $0)) }
         }
-            
+        
         else if let statusBarStylePicker = picker as? ThemeStatusBarStylePicker {
+            #if os(iOS)
             let setStatusBarStyle = unsafeBitCast(method(for: sel), to: setStatusBarStyleValueIMP.self)
             setStatusBarStyle(self, sel, value as! UIStatusBarStyle, statusBarStylePicker.animated)
+            #endif
         }
             
         else if picker is ThemeBarStylePicker {
+            #if os(iOS)
             let setBarStyle = unsafeBitCast(method(for: sel), to: setBarStyleValueIMP.self)
             setBarStyle(self, sel, value as! UIBarStyle)
+            #endif
         }
-            
+        
         else if picker is ThemeKeyboardAppearancePicker {
             let setKeyboard = unsafeBitCast(method(for: sel), to: setKeyboardValueIMP.self)
             setKeyboard(self, sel, value as! UIKeyboardAppearance)
@@ -56,7 +70,7 @@ extension NSObject {
             
         else if picker is ThemeActivityIndicatorViewStylePicker {
             let setActivityStyle = unsafeBitCast(method(for: sel), to: setActivityStyleValueIMP.self)
-            setActivityStyle(self, sel, value as! UIActivityIndicatorViewStyle)
+            setActivityStyle(self, sel, value as! UIActivityIndicatorView.Style)
         }
         
         else if picker is ThemeCGFloatPicker {
@@ -71,21 +85,12 @@ extension NSObject {
         
         else { perform(sel, with: value) }
     }
-    
-    fileprivate typealias setCGColorValueIMP        = @convention(c) (NSObject, Selector, CGColor) -> Void
-    fileprivate typealias setCGFloatValueIMP        = @convention(c) (NSObject, Selector, CGFloat) -> Void
-    fileprivate typealias setValueForStateIMP       = @convention(c) (NSObject, Selector, AnyObject, UIControlState) -> Void
-    fileprivate typealias setKeyboardValueIMP       = @convention(c) (NSObject, Selector, UIKeyboardAppearance) -> Void
-    fileprivate typealias setActivityStyleValueIMP  = @convention(c) (NSObject, Selector, UIActivityIndicatorViewStyle) -> Void
-    fileprivate typealias setBarStyleValueIMP       = @convention(c) (NSObject, Selector, UIBarStyle) -> Void
-    fileprivate typealias setStatusBarStyleValueIMP = @convention(c) (NSObject, Selector, UIStatusBarStyle, Bool) -> Void
-    
 }
 
 extension NSObject {
     
     fileprivate func _setupThemeNotification() {
-        if #available(iOS 9.0, *) {
+        if #available(iOS 9.0, tvOS 9.0, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(_updateTheme), name: NSNotification.Name(rawValue: ThemeUpdateNotification), object: nil)
         } else {
             NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: ThemeUpdateNotification), object: nil, queue: nil, using: { [weak self] notification in self?._updateTheme() })

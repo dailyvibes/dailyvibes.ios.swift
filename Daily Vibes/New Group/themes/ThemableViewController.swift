@@ -17,7 +17,7 @@ class ThemableViewController: UIViewController {
     }
     
     private func setupTitleView(withString string: String) {
-        let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 17)]
+        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)]
         let _title:NSMutableAttributedString = NSMutableAttributedString(string: string, attributes: attrs)
         
         let size = _title.size()

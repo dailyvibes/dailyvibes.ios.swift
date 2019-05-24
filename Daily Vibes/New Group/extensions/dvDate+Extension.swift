@@ -10,6 +10,7 @@
  https://d.pr/UiGCXq
  */
 
+import UIKit
 import Foundation
 
 extension Date {
@@ -136,5 +137,85 @@ extension Date {
 //        dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
         return dateFormatter.string(from: self)
+    }
+    
+    /// Returns true if two dates belong to the same day. Useful for deciding whether the user has taken today's daily challenge or not.
+    func isSameDay(as other: Date) -> Bool {
+        return Calendar.current.isDate(self, inSameDayAs: other)
+    }
+    
+    /// Calculates the number of days between two dates. Useful for figuring out whether the user's current streak is still active.
+    func days(between otherDate: Date) -> Int {
+        let calendar = Calendar.current
+        
+        let startOfSelf = calendar.startOfDay(for: self)
+        let startOfOther = calendar.startOfDay(for: otherDate)
+        let components = calendar.dateComponents([.day], from: startOfSelf, to: startOfOther)
+        
+        return abs(components.day ?? 0)
+    }
+    
+    func since() -> String {
+        let seconds = abs(Date().timeIntervalSince1970 - self.timeIntervalSince1970)
+        if seconds <= 120 {
+//            return "just now"
+            return "now"
+        }
+        let minutes = Int(floor(seconds / 60))
+        if minutes <= 60 {
+            return "\(minutes)min"
+        }
+        let hours = minutes / 60
+        if hours <= 24 {
+//            return "\(hours) hrs ago"
+            return "\(hours)h"
+        }
+        if hours <= 48 {
+//            return "yesterday"
+            return "\(hours)h"
+        }
+        let days = hours / 24
+        if days <= 30 {
+//            return "\(days) days ago"
+            return "\(days)d"
+        }
+        if days <= 14 {
+//            return "last week"
+//            return "2W"
+            return "\(days)d"
+        }
+        
+        let months = days / 30
+        if months == 1 {
+//            return "last month"
+//            return "1M"
+            return "\(months)mo"
+        }
+        if months <= 12 {
+//            return "\(months) months ago"
+            return "\(months)mo"
+        }
+        let years = months / 12
+        let remainder = months % 12
+        
+        if remainder == 0 {
+            return "\(years)y"
+        } else {
+            return "\(years)y\(remainder)mo"
+        }
+//        return "\(years) years ago"
+//        return "\(years)y"
+    }
+    
+    public var weekDay: Int {
+        return Calendar.current.component(.weekday, from: self)
+    }
+    
+    public var weekDayFromMonday: Int {
+        var day = self.weekDay - 2
+        if day < 0 {
+            day = 6
+        }
+        return day
     }
 }

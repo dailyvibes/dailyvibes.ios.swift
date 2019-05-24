@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoTaskItemFiltersViewController: UITableViewController {
+class TodoTaskItemFiltersViewController: ThemableTableViewController {
     
     let store = CoreDataManager.store
     
@@ -25,12 +25,35 @@ class TodoTaskItemFiltersViewController: UITableViewController {
                 store.dvfilter = .all
             }
             tableView.reloadData()
+            let nc = NotificationCenter.default
+            nc.post(name: Notification.Name("handleTasksFilterChange-TodoTaskItemFiltersViewController"), object: nil)
         }
     }
     
     @IBOutlet private weak var filterSHOWALLCell: UITableViewCell!
     @IBOutlet private weak var filterSHOWCOMPLETEDONLYCell: UITableViewCell!
     @IBOutlet private weak var filterSHOWUPCOMINGCell: UITableViewCell!
+    
+    lazy var customSelectedView : UIView = {
+        let view = UIView(frame: .zero)
+        
+        view.theme_backgroundColor = "Global.selectionBackgroundColor"
+        
+        return view
+    }()
+    
+    lazy var cancelBtn : UIBarButtonItem = {
+        let btn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancelBtn))
+        
+        btn.accessibilityIdentifier = "dvlistitem.filtervc.cancel.btn"
+        
+        return btn
+    }()
+    
+    @objc
+    func handleCancelBtn() {
+        dismiss(animated: true, completion: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,27 +65,34 @@ class TodoTaskItemFiltersViewController: UITableViewController {
         filterSHOWALLCell.textLabel?.text = incomingCellLabel
         filterSHOWALLCell.theme_backgroundColor = "Global.barTintColor"
         filterSHOWALLCell.textLabel?.theme_textColor = "Global.textColor"
+        filterSHOWALLCell.selectedBackgroundView = customSelectedView
+        
         filterSHOWCOMPLETEDONLYCell.textLabel?.text = completedCellLabel
         filterSHOWCOMPLETEDONLYCell.theme_backgroundColor = "Global.barTintColor"
         filterSHOWCOMPLETEDONLYCell.textLabel?.theme_textColor = "Global.textColor"
+        filterSHOWCOMPLETEDONLYCell.selectedBackgroundView = customSelectedView
+        
         filterSHOWUPCOMINGCell.textLabel?.text = archivedCellLabel
         filterSHOWUPCOMINGCell.theme_backgroundColor = "Global.barTintColor"
         filterSHOWUPCOMINGCell.textLabel?.theme_textColor = "Global.textColor"
+        filterSHOWUPCOMINGCell.selectedBackgroundView = customSelectedView
         
-        if store.filteredTag == nil {
-            let projectlistFilter = UIBarButtonItem.init(image: #imageLiteral(resourceName: "list_baritem_icon_dailyvibes"), style: .plain, target: self, action: #selector(handleListChange))
+        navigationItem.leftBarButtonItems = [cancelBtn]
+        
+//        if store.filteredTag == nil {
+//            let projectlistFilter = UIBarButtonItem.init(image: #imageLiteral(resourceName: "list_baritem_icon_dailyvibes"), style: .plain, target: self, action: #selector(handleListChange))
             
-            navigationItem.rightBarButtonItem = projectlistFilter
-        }
+//            navigationItem.rightBarButtonItem = projectlistFilter
+//        }
         
         tableView.theme_backgroundColor = "Global.backgroundColor"
     }
     
-    @objc func handleListChange() {
-        let storyboard = UIStoryboard.init(name: "DVProjectListStoryboard", bundle: nil)
-        let tvc = storyboard.instantiateViewController(withIdentifier: "DVListTableViewController")
-        navigationController?.pushViewController(tvc, animated: true)
-    }
+//    @objc func handleListChange() {
+//        let storyboard = UIStoryboard.init(name: "DVProjectListStoryboard", bundle: nil)
+//        let tvc = storyboard.instantiateViewController(withIdentifier: "DVListTableViewController")
+//        navigationController?.pushViewController(tvc, animated: true)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +105,15 @@ class TodoTaskItemFiltersViewController: UITableViewController {
         case .upcoming:
             selectedCell = filterSHOWUPCOMINGCell
         }
+        
+        let title = NSLocalizedString("Sort by", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Sort by **", comment: "")
+        setupNavigationTitleText(title: title, subtitle: nil)
+        
+        let screenRect = UIScreen.main.bounds
+        let screenWidth = screenRect.size.width
+        let screenHeight = screenRect.size.height
+        
+        self.preferredContentSize = CGSize(width: (screenWidth - 32), height: (screenHeight/2))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,9 +121,9 @@ class TodoTaskItemFiltersViewController: UITableViewController {
         super.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSLocalizedString("Sort by", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Sort by **", comment: "")
-    }
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return NSLocalizedString("Sort by", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Sort by **", comment: "")
+//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -120,7 +159,8 @@ class TodoTaskItemFiltersViewController: UITableViewController {
         
         // viewFilter = store.dvfilter
         
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

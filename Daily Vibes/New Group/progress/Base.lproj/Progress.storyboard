@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X6Y-Ys-JYx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X6Y-Ys-JYx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +13,7 @@
         <scene sceneID="jJ3-6T-z2j">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X6Y-Ys-JYx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tabbar_progress_dailyvibes" landscapeImage="tabbar_progress_dailyvibes" largeContentSizeImage="tabbar_progress_dailyvibes" id="DaS-Vy-ifo"/>
+                    <tabBarItem key="tabBarItem" title="" image="dvProgressIcon002" landscapeImage="dvProgressIcon002" largeContentSizeImage="dvProgressIcon002" id="DaS-Vy-ifo"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="b1J-gg-Bv6">
@@ -42,7 +40,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2BJ-OF-3Js">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2BJ-OF-3Js">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fYI-Ta-Mlh">
@@ -79,60 +77,25 @@
                                             <outlet property="delegate" destination="68z-Cq-wQr" id="rEC-8h-dDm"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AXB-Vx-r8O" customClass="BarChartView" customModule="Charts">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFg-gJ-R9W" customClass="BarChartView" customModule="Charts">
                                         <rect key="frame" x="0.0" y="184.5" width="375" height="185"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DBI-gv-lyB">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J9A-2D-NQ7" customClass="BarChartView" customModule="Charts">
                                         <rect key="frame" x="0.0" y="369.5" width="375" height="184.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DefaultTagsCell" textLabel="mi1-IB-2vE" detailTextLabel="HDz-JK-zpK" style="IBUITableViewCellStyleValue1" id="QBK-Wn-NbK" customClass="ThemableBaseTableViewCell" customModule="Daily_Vibes" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QBK-Wn-NbK" id="hWg-kH-bod">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mi1-IB-2vE">
-                                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HDz-JK-zpK">
-                                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <segue destination="I0g-Lc-Tn6" kind="show" identifier="showMainTableVCFilteredByTag" id="BFf-Nv-K3K"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="68z-Cq-wQr" id="9Ea-X1-fQo"/>
-                                            <outlet property="delegate" destination="68z-Cq-wQr" id="DCD-pk-Ww8"/>
-                                        </connections>
-                                    </tableView>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="DBI-gv-lyB" firstAttribute="top" secondItem="AXB-Vx-r8O" secondAttribute="bottom" id="1n6-UH-tpz"/>
-                                    <constraint firstItem="DBI-gv-lyB" firstAttribute="leading" secondItem="2BJ-OF-3Js" secondAttribute="leadingMargin" id="2BM-f6-ZaL"/>
-                                    <constraint firstItem="DBI-gv-lyB" firstAttribute="top" secondItem="AXB-Vx-r8O" secondAttribute="bottom" id="EIf-Sm-yU3"/>
-                                    <constraint firstItem="DBI-gv-lyB" firstAttribute="bottom" secondItem="2BJ-OF-3Js" secondAttribute="bottomMargin" id="H1W-G8-pSe"/>
+                                    <constraint firstItem="WFg-gJ-R9W" firstAttribute="top" secondItem="fYI-Ta-Mlh" secondAttribute="bottom" id="1n6-Ds-XEP"/>
+                                    <constraint firstItem="J9A-2D-NQ7" firstAttribute="bottom" secondItem="2BJ-OF-3Js" secondAttribute="bottomMargin" id="8eg-jL-ix4"/>
+                                    <constraint firstItem="J9A-2D-NQ7" firstAttribute="leading" secondItem="2BJ-OF-3Js" secondAttribute="leadingMargin" id="COt-NW-r3t"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="J9A-2D-NQ7" secondAttribute="trailing" id="D8n-HJ-w3B"/>
+                                    <constraint firstItem="WFg-gJ-R9W" firstAttribute="leading" secondItem="2BJ-OF-3Js" secondAttribute="leadingMargin" id="Fip-fR-mX7"/>
                                     <constraint firstItem="fYI-Ta-Mlh" firstAttribute="trailing" secondItem="2BJ-OF-3Js" secondAttribute="trailingMargin" id="Ii9-1q-ceg"/>
+                                    <constraint firstItem="J9A-2D-NQ7" firstAttribute="top" secondItem="WFg-gJ-R9W" secondAttribute="bottom" id="Lnk-hn-joM"/>
                                     <constraint firstItem="fYI-Ta-Mlh" firstAttribute="leading" secondItem="2BJ-OF-3Js" secondAttribute="leadingMargin" id="TpZ-Qo-GFj"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="DBI-gv-lyB" secondAttribute="trailing" id="Uqi-Td-Wxm"/>
-                                    <constraint firstItem="AXB-Vx-r8O" firstAttribute="top" secondItem="fYI-Ta-Mlh" secondAttribute="bottom" id="Vo8-v6-tUb"/>
-                                    <constraint firstItem="AXB-Vx-r8O" firstAttribute="leading" secondItem="2BJ-OF-3Js" secondAttribute="leading" id="hou-cB-Nbr"/>
-                                    <constraint firstAttribute="trailing" secondItem="AXB-Vx-r8O" secondAttribute="trailing" id="o5h-7j-AcS"/>
-                                    <constraint firstItem="AXB-Vx-r8O" firstAttribute="top" secondItem="fYI-Ta-Mlh" secondAttribute="bottom" id="tTs-LZ-5tb"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="WFg-gJ-R9W" secondAttribute="trailing" id="aG1-Mz-6Xy"/>
                                     <constraint firstItem="fYI-Ta-Mlh" firstAttribute="top" secondItem="2BJ-OF-3Js" secondAttribute="topMargin" id="tfe-2v-Ta8"/>
                                 </constraints>
                             </stackView>
@@ -148,25 +111,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="UjN-Cb-Uhe"/>
                     <connections>
-                        <outlet property="barChartView" destination="AXB-Vx-r8O" id="dmj-gV-UMy"/>
+                        <outlet property="barChartView" destination="J9A-2D-NQ7" id="iVa-0X-Lff"/>
+                        <outlet property="longtermBarChartView" destination="WFg-gJ-R9W" id="Y88-wH-O21"/>
                         <outlet property="performanceTableView" destination="fYI-Ta-Mlh" id="hE6-Ji-bNV"/>
-                        <outlet property="tagsTableView" destination="DBI-gv-lyB" id="s5c-7j-DhZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybp-oL-5Em" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-959.20000000000005" y="828.93553223388312"/>
         </scene>
-        <!--DailyVibesMainTableVC-->
-        <scene sceneID="MaF-z2-BlL">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="DailyVibesMainTableVC" id="I0g-Lc-Tn6" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fds-K8-kSe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-136" y="828"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="tabbar_progress_dailyvibes" width="25" height="25"/>
+        <image name="dvProgressIcon002" width="28" height="28"/>
     </resources>
 </document>

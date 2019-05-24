@@ -32,5 +32,19 @@ class TodoItemTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+//    override var frame: CGRect {
+//        get {
+//            return super.frame
+//        }
+//        set (newFrame) {
+//            var frame = newFrame
+//            frame.origin.x += 16
+//            frame.size.width -= 2 * 16
+//            cornerRadius = 8
+//            borderWidth = 1
+//            super.frame = frame
+//        }
+//    }
 
 }

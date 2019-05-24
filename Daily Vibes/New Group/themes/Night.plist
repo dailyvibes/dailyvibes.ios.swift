@@ -30,6 +30,8 @@
 	</dict>
 	<key>Global</key>
 	<dict>
+		<key>selectionBackgroundColor</key>
+		<string>#010101</string>
 		<key>toolbarStyle</key>
 		<string>black</string>
 		<key>keyboardStyle</key>
@@ -37,7 +39,7 @@
 		<key>placeholderColor</key>
 		<string>#98979c</string>
 		<key>barTintColor</key>
-		<string>#010101</string>
+		<string>#1E201F</string>
 		<key>barTextColor</key>
 		<string>#F8E71C</string>
 		<key>textColor</key>
@@ -45,5 +47,12 @@
 		<key>backgroundColor</key>
 		<string>#0c0c0c</string>
 	</dict>
+    <key>Pill</key>
+    <dict>
+        <key>backgroundColor</key>
+        <string>#0c0c0c</string>
+        <key>textColor</key>
+        <string>#98979c</string>
+    </dict>
 </dict>
 </plist>

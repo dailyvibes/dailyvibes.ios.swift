@@ -17,10 +17,14 @@ struct DVTodoItemTaskViewModel: Codable {
     var versionId: UUID?
     var versionPrevId: UUID?
     var version: Int64
+    var pos: Int64 = 0
+    var priority: Int64 = 0
     var todoItemText: String
     var createdAt: Date
-    var updatedAt: Date
+    var updatedAt: Date?
+    var startdateAt: Date?
     var duedateAt: Date?
+    var enddateAt: Date?
     var completedAt: Date?
     var archivedAt: Date?
     var isCompleted: Bool
@@ -41,15 +45,19 @@ struct DVTodoItemTaskViewModel: Codable {
     var syncedFinishedAt: Date?
     var syncedDeviceID: String?
     
-    init(uuid:UUID, versionId:UUID?, versionPrevId: UUID?, version:Int64?, todoItemText:String, createdAt:Date, updatedAt:Date, duedateAt:Date?, completedAt:Date?, archivedAt:Date?, completed:Bool?, isArchived:Bool?, isNew:Bool?, isPublic:Bool?, isFavourite:Bool?, isRemindable: Bool? = false) {
+    init(uuid:UUID, versionId:UUID?, versionPrevId: UUID?, version:Int64?, todoItemText:String, createdAt:Date, updatedAt:Date, duedateAt:Date?, completedAt:Date?, archivedAt:Date?, completed:Bool?, isArchived:Bool?, isNew:Bool?, isPublic:Bool?, isFavourite:Bool?, isRemindable: Bool? = false, startdateAt: Date?, enddateAt: Date?, pos:Int64, priority:Int64) {
         self.uuid = uuid
         self.versionId = versionId
         self.versionPrevId = versionPrevId
         self.version = version ?? 0
         self.todoItemText = todoItemText
         self.createdAt = createdAt
+        self.startdateAt = startdateAt
         self.updatedAt = updatedAt
         self.duedateAt = duedateAt
+        self.enddateAt = enddateAt
+        self.pos = pos
+        self.priority = priority
         self.completedAt = completedAt
         self.archivedAt = archivedAt
         self.isCompleted = completed ?? false
@@ -69,7 +77,11 @@ struct DVTodoItemTaskViewModel: Codable {
         case todoItemText
         case createdAt
         case updatedAt
+        case startdateAt
         case duedateAt
+        case enddateAt
+        case pos
+        case priority
         case completedAt
         case archivedAt
         case isCompleted
@@ -212,40 +224,68 @@ struct DVTodoItemTaskViewModel: Codable {
 
 extension DVTodoItemTaskViewModel {
     func encodedString() -> String {
-        let dateFormatter = DateFormatter()
+//        let dateFormatter = DateFormatter()
         var encodedString = ""
+//
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        let createdDate = "__STARTCREATEDATE__" + createdAt.iso8601String + "__ENDCREATEDATE__"
+        let createdDate = "__smd__" + createdAt.iso8601String + "__emd__"
         
         if isCompleted {
-            encodedString.append("[X] ")
+            encodedString += "[X]"
+            
+            encodedString += createdDate
+//            encodedString.append("[X] ")
             if let dateCompletedAt = completedAt {
-                let completedDate = dateFormatter.string(from: dateCompletedAt)
-                encodedString.append("\(completedDate) ")
+//                let completedDate = "__STARTCOMPLETEDDATE__" + dateCompletedAt.iso8601String + "__ENDCOMPLETEDDATE__"
+                let completedDate = "__scd__" + dateCompletedAt.iso8601String + "__ecd__"
+                encodedString += completedDate
+//                encodedString.append("\(completedDate) ")
             }
         } else {
-            encodedString.append("[ ] ")
+            encodedString += "[ ]"
+            
+            encodedString += createdDate
+            
+            if let dueDate = duedateAt {
+//                let encodedDueDate = "__STARTDUEDATE__" + dueDate.iso8601String + "__ENDDUEDATE__"
+                let encodedDueDate = "__sdd__" + dueDate.iso8601String + "__edd__"
+                encodedString += encodedDueDate
+                //            encodedString.append("due:\(encodedDueDate)")
+            }
+//            encodedString.append("[ ] ")
         }
-        
-        let createdDate = dateFormatter.string(from: createdAt)
-        encodedString.append("\(createdDate) ")
-        
-        encodedString.append("\(todoItemText) ")
+//        encodedString.append("\(createdDate) ")
+//        encodedString.append("__STARTTEXT__\(todoItemText)__ENDTEXT__ ")
         
         if let project = list, let title = project.title {
-            encodedString.append("+\(title) ")
+            var convertedTitle = title.replacingOccurrences(of: " ", with: "_")
+            
+            if let _emoji = project.emoji {
+                convertedTitle = _emoji + "_" + convertedTitle
+            }
+            
+            let projectTitle = "__s+__" + convertedTitle + "__e+__"
+            encodedString += projectTitle
+//            encodedString.append("+\(title) ")
         }
         
         if let tagList = tags, tagList.count > 0 {
+            var __tags = "__s#__"
+            
             for tag in tagList {
-                encodedString.append("#\(tag.label) ")
+                let tagLabelConverted = tag.label.replacingOccurrences(of: " ", with: "_")
+                let tagLabel = "#" + tagLabelConverted + ""
+                __tags += tagLabel
+//                encodedString.append("#\(tag.label) ")
             }
+            __tags +=  "__e#__"
+            encodedString += __tags
         }
         
-        if let dueDate = duedateAt {
-            let encodedDueDate = dateFormatter.string(from: dueDate)
-            encodedString.append("due:\(encodedDueDate)")
-        }
+        let encodedText = "__st__" + todoItemText + "__et__"
+        encodedString += encodedText
         
         return encodedString
     }
@@ -271,7 +311,11 @@ extension DVTodoItemTaskViewModel {
                                                          isNew: todoItem.isNew,
                                                          isPublic: todoItem.isPublic,
                                                          isFavourite: todoItem.isFavourite,
-                                                         isRemindable: todoItem.isRemindable)
+                                                         isRemindable: todoItem.isRemindable,
+                                                         startdateAt: todoItem.startdateAt,
+                                                         enddateAt: todoItem.enddateAt,
+                                                         pos: todoItem.pos,
+                                                         priority: todoItem.priority)
                 if let hasNote = todoItem.notes {
                     converted?.note = DVNoteViewModel.fromCoreData(note: hasNote)
                 }
@@ -309,7 +353,7 @@ extension DVTodoItemTaskViewModel {
         let curDate = Date()
         let emptyString = String()
         
-        var result =  DVTodoItemTaskViewModel.init(uuid: fallbackString!, versionId: nil, versionPrevId: nil, version: nil, todoItemText: emptyString, createdAt: curDate, updatedAt: curDate, duedateAt: nil, completedAt: nil, archivedAt: nil, completed: false, isArchived: false, isNew: true, isPublic: false, isFavourite: false, isRemindable: false)
+        var result =  DVTodoItemTaskViewModel.init(uuid: fallbackString!, versionId: nil, versionPrevId: nil, version: nil, todoItemText: emptyString, createdAt: curDate, updatedAt: curDate, duedateAt: nil, completedAt: nil, archivedAt: nil, completed: false, isArchived: false, isNew: true, isPublic: false, isFavourite: false, isRemindable: false, startdateAt: nil, enddateAt: nil, pos: 0, priority: 0)
         
         result.tags = [DVTagViewModel]()
         

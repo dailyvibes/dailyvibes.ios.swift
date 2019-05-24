@@ -24,13 +24,13 @@ class ThemableBaseTextView: UITextView {
     }
     
     @objc func setAttributed(text string:String) {
-        var uiTextViewStringAttributes: [NSAttributedStringKey:Any]?
+        var uiTextViewStringAttributes: [NSAttributedString.Key:Any]?
         
         if let backgroundColor = ThemeManager.value(for: "Global.barTintColor") as? String,
             let foregroundColor = ThemeManager.value(for: "Global.textColor") as? String {
             uiTextViewStringAttributes = [
-                NSAttributedStringKey.backgroundColor: UIColor.from(hex: backgroundColor),
-                NSAttributedStringKey.foregroundColor: UIColor.from(hex: foregroundColor)
+                NSAttributedString.Key.backgroundColor: UIColor.from(hex: backgroundColor),
+                NSAttributedString.Key.foregroundColor: UIColor.from(hex: foregroundColor)
             ]
         }
         

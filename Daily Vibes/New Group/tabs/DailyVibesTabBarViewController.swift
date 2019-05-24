@@ -45,8 +45,9 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
     }
     
     fileprivate func setupTabLocalization() {
-        self.tabBar.items?[0].title = NSLocalizedString("Home", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Home**", comment: "")
-        self.tabBar.items?[1].title = NSLocalizedString("Add", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Add**", comment: "")
+        self.tabBar.items?[0].title = NSLocalizedString("Projects", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Home**", comment: "")
+        self.tabBar.items?[1].title = NSLocalizedString("Vibes", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Vibes**", comment: "")
+//        self.tabBar.items?[2].title = NSLocalizedString("Add", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Add**", comment: "")
         self.tabBar.items?[2].title = NSLocalizedString("Progress", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Progress**", comment: "")
         self.tabBar.items?[3].title = NSLocalizedString("Settings", tableName: "Localizable", bundle: .main, value: "**DID NOT FIND Settings**", comment: "")
     }
@@ -61,33 +62,41 @@ class DailyVibesTabBarViewController: UITabBarController, UITabBarControllerDele
     
     // MARK - Custom TabBarControllerAction
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController is DummyViewController {
-            let storyboard = UIStoryboard.init(name: "DVMultipleTodoitemtaskItems", bundle: nil)
-            let tvc = storyboard.instantiateViewController(withIdentifier: "DVMultipleTodoitemtaskItemsNC")
-            
-            let transitionDelegate = DeckTransitioningDelegate(isSwipeToDismissEnabled: false)
-            tvc.transitioningDelegate = transitionDelegate
-            tvc.modalPresentationStyle = .custom
-//            UIApplication.shared.statusBarStyle = .lightContent
-            
-            self.present(tvc, animated: true, completion: nil)
-            
-            return false
-        }
+//        if viewController is DummyViewController {
+//            let storyboard = UIStoryboard.init(name: "DVMultipleTodoitemtaskItems", bundle: nil)
+//            let tvc = storyboard.instantiateViewController(withIdentifier: "DVMultipleTodoitemtaskItemsNC")
+//
+//            let transitionDelegate = DeckTransitioningDelegate(isSwipeToDismissEnabled: false)
+//            tvc.transitioningDelegate = transitionDelegate
+//            tvc.modalPresentationStyle = .custom
+////            UIApplication.shared.statusBarStyle = .lightContent
+//
+//            self.present(tvc, animated: true, completion: nil)
+//
+//            return false
+//        }
         
         if viewController is DVMainNavigationViewController {
-            if viewController == tabBarController.selectedViewController {
-//                print("selected the same DVMainNavigationViewController controller")
-                let nav = viewController as! DVMainNavigationViewController
-                guard let tableCont = nav.topViewController as? TodoItemsTableViewController else {
-                    return true
-                }
-//                tableCont.tableView.setContentOffset(CGPoint(x: 0.0, y: -tableCont.tableView.contentInset.top), animated: true)
-//                tableCont.tableView.setContentOffset(CGPointZero, animated: true)
-//                tableCont.tableView.scrollRectToVisible(CGRect.init(x: 0, y: 0, width: 1, height: 1), animated: true)
-                tableCont.tableView.setContentOffset(CGPoint.zero, animated: true)
-//                print("should have scrolled to the top")
-            }
+//            if viewController == tabBarController.selectedViewController {
+////                print("selected: \(viewController)")
+//                if let nav = viewController as? DVMainNavigationViewController {
+//                    if let topvc = nav.topViewController as? ListTableViewController {
+////                        print("in ListTableViewController")
+//                        topvc.tableView.setContentOffset(.zero, animated: true)
+//                        return false
+//                    }
+//                    
+//                    if let topvc = nav.topViewController as? DVProjectItemsTVC {
+////                        print("in TodoItemsTableViewController")
+//                        topvc.tableView.setContentOffset(.zero, animated: true)
+//                        return false
+//                    }
+//                }
+//            }
+        }
+        
+        if viewController is LikertScaleDateTVC {
+            print("selected LikertScaleDateTVC")
         }
         
         return true

@@ -12,7 +12,7 @@ import Foundation
     
     public typealias ValueType = () -> Any?
     
-    var value: ValueType
+    public var value: ValueType
     
     required public init(v: @escaping ValueType) {
         value = v

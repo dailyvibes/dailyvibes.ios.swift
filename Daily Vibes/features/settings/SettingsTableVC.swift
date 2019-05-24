@@ -23,45 +23,78 @@ class SettingsTableVC: ThemableTableViewController {
     @IBOutlet private weak var acknowledgementCell: UITableViewCell!
     @IBOutlet private weak var madeInTorontoCell: UITableViewCell!
     @IBOutlet private weak var themesCell: UITableViewCell!
+    @IBOutlet weak var rateUsCell: UITableViewCell!
+    @IBOutlet weak var exportDataCell: UITableViewCell!
+    
+    lazy var customSelectedView : UIView = {
+        let view = UIView(frame: .zero)
+        
+        view.theme_backgroundColor = "Global.selectionBackgroundColor"
+        
+        return view
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         userPreferencesCell.textLabel?.text = NSLocalizedString("Notifications", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Preferences **", comment: "")
         themesCell.textLabel?.text = NSLocalizedString("Themes", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Themes **", comment: "")
+//        themesCell.detailTextLabel?.text = "Default"
+        
         aboutCell.textLabel?.text = NSLocalizedString("About", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND About **", comment: "")
+        rateUsCell.textLabel?.text = NSLocalizedString("Rate Daily Vibes", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Rate Daily Vibes", comment: "")
+        exportDataCell.textLabel?.text = NSLocalizedString("Export data", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Export data **", comment: "")
+        
         supportCell.textLabel?.text = NSLocalizedString("Support", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Support **", comment: "")
         acknowledgementCell.textLabel?.text = NSLocalizedString("Acknowledgement", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Acknowledgement **", comment: "")
         madeInTorontoLabel.text = NSLocalizedString("Made in Toronto", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Made in Toronto **", comment: "")
-        madeInTorontoCell.selectionStyle = UITableViewCellSelectionStyle.none
+        madeInTorontoCell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         tableView.theme_backgroundColor = "Global.backgroundColor"
         tableView.theme_separatorColor = "ListViewController.separatorColor"
         
         userPreferencesCell.theme_backgroundColor = "Global.barTintColor"
         userPreferencesCell.textLabel?.theme_textColor = "Global.textColor"
+        userPreferencesCell.selectedBackgroundView = customSelectedView
+        
         themesCell.theme_backgroundColor = "Global.barTintColor"
         themesCell.textLabel?.theme_textColor = "Global.textColor"
+        themesCell.selectedBackgroundView = customSelectedView
+        
         aboutCell.theme_backgroundColor = "Global.barTintColor"
         aboutCell.textLabel?.theme_textColor = "Global.textColor"
+        aboutCell.selectedBackgroundView = customSelectedView
+        
         supportCell.theme_backgroundColor = "Global.barTintColor"
         supportCell.textLabel?.theme_textColor = "Global.textColor"
+        supportCell.selectedBackgroundView = customSelectedView
+        
         acknowledgementCell.theme_backgroundColor = "Global.barTintColor"
         acknowledgementCell.textLabel?.theme_textColor = "Global.textColor"
+        acknowledgementCell.selectedBackgroundView = customSelectedView
+        
+        rateUsCell.theme_backgroundColor = "Global.barTintColor"
+        rateUsCell.textLabel?.theme_textColor = "Global.textColor"
+        rateUsCell.selectedBackgroundView = customSelectedView
+        
+        exportDataCell.theme_backgroundColor = "Global.barTintColor"
+        exportDataCell.textLabel?.theme_textColor = "Global.textColor"
+        exportDataCell.selectedBackgroundView = customSelectedView
         
         madeInTorontoLabel.theme_textColor = "Global.textColor"
         
         let titleString = "Settings"
-        setupNavigationTitleText(title: titleString, subtitle: nil)
+        let appVersion = WhatsNew.Version.current().description
+        setupNavigationTitleText(title: titleString, subtitle: appVersion)
         
-        let starButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "starFilled_icon_daily_vibes"), style: .plain, target: self, action: #selector(handleRateButton))
-        starButton.accessibilityIdentifier = "settings_rate_us_btn"
-        navigationItem.leftBarButtonItem = starButton
-        
-//        let shareButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleExport))
-        let shareButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleExport(sender:)))
-        shareButton.accessibilityIdentifier = "settings_export_btn"
-        navigationItem.rightBarButtonItem = shareButton
+//        let starButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "starFilled_icon_daily_vibes"), style: .plain, target: self, action: #selector(handleRateButton))
+//        starButton.accessibilityIdentifier = "settings_rate_us_btn"
+//        navigationItem.leftBarButtonItem = starButton
+//
+////        let shareButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleExport))
+//        let shareButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(handleExport(sender:)))
+//        shareButton.accessibilityIdentifier = "settings_export_btn"
+//        navigationItem.rightBarButtonItem = shareButton
     }
     
     fileprivate func handleExportToText() {
@@ -172,7 +205,7 @@ class SettingsTableVC: ThemableTableViewController {
         }
     }
     
-    @objc func handleExport(sender:UIBarButtonItem) {
+    @objc func handleExport(sender:UIBarButtonItem?) {
         let exportTextTitle = NSLocalizedString("Export", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Export **", comment: "")
         let exportTitleText = NSLocalizedString("How would you like to export your data?", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND How would you like to export your data? **", comment: "")
         let actionController = UIAlertController.init(title: exportTextTitle, message: exportTitleText, preferredStyle: .actionSheet)
@@ -202,6 +235,9 @@ class SettingsTableVC: ThemableTableViewController {
             popOver.barButtonItem = sender
         }
         
+        let feedback = UIImpactFeedbackGenerator()
+        feedback.impactOccurred()
+        
         present(actionController, animated: true, completion: nil)
     }
     
@@ -215,6 +251,18 @@ class SettingsTableVC: ThemableTableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if rateUsCell == tableView.cellForRow(at: indexPath) {
+            handleRateButton()
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        if exportDataCell == tableView.cellForRow(at: indexPath) {
+            handleExport(sender: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 }
 

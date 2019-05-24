@@ -7,8 +7,42 @@
 //
 
 import UIKit
+import SwiftTheme
 
 class DVMainNavigationViewController: UINavigationController {
+    
+    lazy var projectlistitemstvc : DVProjectItemsTVC = {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let cidentifier = "DailyVibesMainTableVC"
+        
+        guard let tvc = sb.instantiateViewController(withIdentifier: cidentifier) as? DVProjectItemsTVC else {
+            fatalError("cast to TodoItemsTableViewController did not work")
+        }
+        
+        return tvc
+    }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationBar.isTranslucent = false
+        navigationBar.theme_backgroundColor = "Global.backgroundColor"
+        view.theme_backgroundColor = "Global.backgroundColor"
+        
+//        var vclrs = viewControllers
+//        
+//        if !viewControllers.contains(projectlistitemstvc) {
+//            print("does not contain projectlistitemstvc ... adding")
+////            viewControllers.append(projectlistitemstvc)
+//            vclrs.append(projectlistitemstvc)
+//            setViewControllers(vclrs, animated: false)
+//            if viewControllers.contains(projectlistitemstvc) {
+//                print("added projectlistitemstvc all good")
+//            }
+//        } else {
+//            print("contains projectlistitemstvc ... doin nothing")
+//        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +61,8 @@ class DVMainNavigationViewController: UINavigationController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+         Get the new view controller using segue.destinationViewController.
+         Pass the selected object to the new view controller.
     }
     */
 

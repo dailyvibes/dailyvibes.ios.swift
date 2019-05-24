@@ -28,7 +28,7 @@ class DVmainTVSettingsLauncher: NSObject {
     private var myArray = [[SettingsData]]()
     
     private var myTableView: UITableView = {
-        let style = UITableViewStyle.plain
+        let style = UITableView.Style.plain
         let tv = UITableView.init(frame: .zero, style: style)
         return tv
     }()

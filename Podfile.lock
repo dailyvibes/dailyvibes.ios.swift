@@ -1,24 +1,34 @@
 PODS:
-  - Charts (3.0.5):
-    - Charts/Core (= 3.0.5)
-  - Charts/Core (3.0.5)
-  - DeckTransition (2.0.0)
-  - Disk (0.3.3)
-  - Down (0.4.2)
-  - GrowingTextView (0.5.4)
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
+  - ContextMenu (0.5.1)
+  - DeckTransition (2.1.0)
+  - Disk (0.4.0)
+  - Down (0.6.2)
+  - FSCalendar (2.8.0)
+  - GrowingTextView (0.6.1)
+  - MarkdownKit (1.5)
   - Notepad (0.2.4)
-  - SimulatorStatusMagic (2.1)
-  - SwiftTheme (0.4.0)
+  - QuickLayout (2.1.1)
+  - SimulatorStatusMagic (2.4.1)
+  - SwiftEntryKit (0.8.7):
+    - QuickLayout (= 2.1.1)
+  - SwiftTheme (0.4.3)
   - SwiftyChrono (1.0.2)
 
 DEPENDENCIES:
   - Charts
+  - ContextMenu (from `https://github.com/GitHawkApp/ContextMenu.git`, branch `master`)
   - DeckTransition
   - Disk
   - Down
+  - FSCalendar
   - GrowingTextView
-  - Notepad (from `/Users/getaclue/dev/DailyVibes.iOS/Notepad/`)
+  - MarkdownKit (from `https://github.com/bmoliveira/MarkdownKit`, branch `master`)
+  - Notepad (from `https://github.com/ruddfawcett/Notepad.git`, branch `master`)
   - SimulatorStatusMagic
+  - SwiftEntryKit
   - SwiftTheme
   - SwiftyChrono (from `/Users/getaclue/dev/DailyVibes.iOS/SwiftyChrono`)
 
@@ -28,27 +38,53 @@ SPEC REPOS:
     - DeckTransition
     - Disk
     - Down
+    - FSCalendar
     - GrowingTextView
+    - QuickLayout
     - SimulatorStatusMagic
+    - SwiftEntryKit
     - SwiftTheme
 
 EXTERNAL SOURCES:
+  ContextMenu:
+    :branch: master
+    :git: https://github.com/GitHawkApp/ContextMenu.git
+  MarkdownKit:
+    :branch: master
+    :git: https://github.com/bmoliveira/MarkdownKit
   Notepad:
-    :path: "/Users/getaclue/dev/DailyVibes.iOS/Notepad/"
+    :branch: master
+    :git: https://github.com/ruddfawcett/Notepad.git
   SwiftyChrono:
     :path: "/Users/getaclue/dev/DailyVibes.iOS/SwiftyChrono"
 
+CHECKOUT OPTIONS:
+  ContextMenu:
+    :commit: 03c33c46e0c768f2bc3f85e5c6eb53677b9d6004
+    :git: https://github.com/GitHawkApp/ContextMenu.git
+  MarkdownKit:
+    :commit: 03dc629185be45226e5089610e93797ea84ab3a3
+    :git: https://github.com/bmoliveira/MarkdownKit
+  Notepad:
+    :commit: e6b3375a7319ca33671beb465e5f04b357a2904e
+    :git: https://github.com/ruddfawcett/Notepad.git
+
 SPEC CHECKSUMS:
-  Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
-  DeckTransition: 2300694f94fbeca2c103f365dc9dc09ffae14a4f
-  Disk: d1f55cd61f6ca20f368232d0c6e37e3c3dfcb63e
-  Down: 92efba7c95a8efdb84b7114e365db4a37f3df76e
-  GrowingTextView: 0615429affef558cbbb610aa6f9baf19b027fdbe
-  Notepad: d9789be919e73aaaeb17806c629526decae2ae84
-  SimulatorStatusMagic: 481558caf2b9ccb2ceba2cc193728d4db3dcac07
-  SwiftTheme: 548eff28a606d0975e04b2e708b879d7eea660f6
-  SwiftyChrono: ce872ee580ebbc5bc6efa7deb72cdcf7cfe0a78d
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
+  ContextMenu: ac51afb5eec6022a3d1e7a99cd1dc9fc8e9d7505
+  DeckTransition: ca707456e3d83928c895fed6f458cbf68c5cac84
+  Disk: ef2956657d5bb56034b38b29b352170165226440
+  Down: 8c59a03cb229ef28dfa774b2132da860f3dee0ac
+  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
+  GrowingTextView: 335aefa45df7df06b01edede1363414d6ee5d6bc
+  MarkdownKit: 379028e9cd3ebf05ccac87205cd9aead446159d4
+  Notepad: ac7bcace29c8020691946fe1f4cace8d390859eb
+  QuickLayout: 9af2b7fd89a6552828f51a5aba28d1bcdb8b340c
+  SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
+  SwiftEntryKit: 004afd63b47c24e81960066ed4860b186d18bbd0
+  SwiftTheme: 628345b948068a48d330d76dffb1a990ea5f90aa
+  SwiftyChrono: 6ec5ffaaee8a14b147efec5af91a3c0e8e3c1bcc
 
-PODFILE CHECKSUM: d9ff28884231d9d38702585ae2d8f88a09af9846
+PODFILE CHECKSUM: cbb185a5fd1474ffee192d08f5c4921250481dc2
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2

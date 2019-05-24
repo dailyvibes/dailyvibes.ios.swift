@@ -71,7 +71,7 @@ class ShareViewController: SLComposeServiceViewController {
         let contentTypeURL = kUTTypeURL as String
         let contentTypeText = kUTTypeText as String
         
-        for attachment in extensionItem.attachments as! [NSItemProvider] {
+        for attachment in extensionItem.attachments! {
             if attachment.isURL {
                 attachment.loadItem(forTypeIdentifier: contentTypeURL, options: nil, completionHandler: { (results, error) in
                     let url = results as! URL?

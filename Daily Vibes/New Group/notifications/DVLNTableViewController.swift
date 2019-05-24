@@ -6,13 +6,22 @@
 //  Copyright © 2018 Alex Kluew. All rights reserved.
 //
 
+import SwiftTheme
 import UIKit
 import UserNotifications
 
-class DVLNTableViewController: UITableViewController, UNUserNotificationCenterDelegate {
+class DVLNTableViewController: ThemableTableViewController, UNUserNotificationCenterDelegate {
     
     var isGrantedNotificationAccess: Bool = false
     var requestData: [UNNotificationRequest]?
+    
+    lazy var customSelectionView: UIView = {
+        let view = UIView(frame: .zero)
+        
+        view.theme_backgroundColor = "Global.selectionBackgroundColor"
+        
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,15 +40,16 @@ class DVLNTableViewController: UITableViewController, UNUserNotificationCenterDe
                 }
         })
         
-        self.title = NSLocalizedString("Notifications", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Notifications String **", comment: "")
-        
+//        self.title = NSLocalizedString("Notifications", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Notifications String **", comment: "")
+        let vctitle = NSLocalizedString("Notifications", tableName: "Localizable", bundle: .main, value: "** DID NOT FIND Notifications String **", comment: "")
+        setupVCTwoLineTitle(withTitle: vctitle, withSubtitle: nil)
         UNUserNotificationCenter.current().delegate = self
         
         navigationController?.navigationBar.isTranslucent = false
         tableView.theme_backgroundColor = "Global.backgroundColor"
         tableView.theme_separatorColor = "ListViewController.separatorColor"
         
-        tableView.tableFooterView = UIView.init(coder: .init())
+//        tableView.tableFooterView = UIView.init(coder: .init())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +75,12 @@ class DVLNTableViewController: UITableViewController, UNUserNotificationCenterDe
             }
             //            print(self.requestData)
         })
+        
+        let screenRect = UIScreen.main.bounds
+        let screenWidth = screenRect.size.width
+        let screenHeight = screenRect.size.height
+        
+        self.preferredContentSize = CGSize(width: (screenWidth - 32), height: (screenHeight/2))
         
         //        UNUserNotificationCenter.current().getDeliveredNotifications(completionHandler: {deliveredNotifications -> () in
         //            print("\(deliveredNotifications.count) Delivered notifications-------")
@@ -109,6 +125,8 @@ class DVLNTableViewController: UITableViewController, UNUserNotificationCenterDe
         cell.textLabel?.theme_textColor = "Global.textColor"
         cell.detailTextLabel?.theme_textColor = "Global.placeholderColor"
         
+        cell.selectedBackgroundView = customSelectionView
+        
         if let _requestData = requestData {
             let cellData = _requestData[indexPath.row]
             
@@ -126,7 +144,7 @@ class DVLNTableViewController: UITableViewController, UNUserNotificationCenterDe
     
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let deleteNotificationID = self.requestData?.remove(at: indexPath.row) {
                 let toDelete = deleteNotificationID.identifier

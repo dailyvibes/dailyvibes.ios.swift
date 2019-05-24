@@ -14,12 +14,13 @@ class TodoItemUITableView: UITableView {
     
     func showEmptyView() {
         emptyView.isHidden = false
+        self.tableFooterView = UIView(frame: .zero)
         self.backgroundView = emptyView
     }
     
     func hideEmptyView() {
         emptyView.isHidden = true
-        self.sendSubview(toBack: emptyView)
+        self.sendSubviewToBack(emptyView)
         self.backgroundView = nil
     }
 

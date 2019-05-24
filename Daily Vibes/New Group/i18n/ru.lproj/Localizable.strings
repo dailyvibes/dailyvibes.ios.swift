@@ -134,3 +134,11 @@
 "Export to Text" = "Экспорт в текст";
 "Export to Email" = "Экспорт в Эл. адрес";
 "Tomorrow" = "Завтра";
+
+"Sunday" = "Воскресенье";
+"Monday" = "Понедельник";
+"Tuesday" = "Вторник";
+"Wednesday" = "Среда";
+"Thursday" = "Четверг";
+"Friday" = "Пятница";
+"Saturday" = "Суббота";

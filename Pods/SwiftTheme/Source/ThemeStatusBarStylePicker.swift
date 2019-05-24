@@ -8,6 +8,12 @@
 
 import UIKit
 
+#if os(tvOS)
+    
+final class ThemeStatusBarStylePicker: ThemePicker {}
+    
+#else
+
 @objc public final class ThemeStatusBarStylePicker: ThemePicker {
     
     var animated = true
@@ -76,3 +82,5 @@ public extension ThemeStatusBarStylePicker {
 
 extension ThemeStatusBarStylePicker: ExpressibleByArrayLiteral {}
 extension ThemeStatusBarStylePicker: ExpressibleByStringLiteral {}
+
+#endif

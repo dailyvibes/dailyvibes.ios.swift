@@ -8,6 +8,12 @@
 
 import UIKit
 
+#if os(tvOS)
+    
+final class ThemeBarStylePicker: ThemePicker {}
+    
+#else
+
 @objc public final class ThemeBarStylePicker: ThemePicker {
     
     public convenience init(keyPath: String) {
@@ -74,3 +80,5 @@ public extension ThemeBarStylePicker {
 
 extension ThemeBarStylePicker: ExpressibleByArrayLiteral {}
 extension ThemeBarStylePicker: ExpressibleByStringLiteral {}
+
+#endif
